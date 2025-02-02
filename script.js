@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     let sections = document.querySelectorAll("section");
-    let options = { threshold: 0.2 };
+    let options = { threshold: 0.3 };
 
-    let observer = new IntersectionObserver(function (entries, observer) {
+    let observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
@@ -18,13 +18,15 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Navbar background change on scroll
-    window.addEventListener("scroll", function () {
-        let header = document.querySelector("header");
-        if (window.scrollY > 50) {
-            header.style.background = "rgba(0, 0, 0, 0.95)";
-        } else {
-            header.style.background = "rgba(0, 0, 0, 0.8)";
-        }
-    });
+    let backgrounds = document.querySelectorAll('.background');
+    let index = 0;
+
+    function changeBackground() {
+        backgrounds.forEach((bg, i) => {
+            bg.style.opacity = (i === index) ? "1" : "0";
+        });
+        index = (index + 1) % backgrounds.length;
+    }
+
+    setInterval(changeBackground, 5000); 
 });
