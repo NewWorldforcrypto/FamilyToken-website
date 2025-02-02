@@ -5,23 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
     let observer = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
             }
         });
     }, options);
 
     sections.forEach(section => {
-        section.classList.add('before-view');
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "all 0.6s ease-out";
         observer.observe(section);
     });
 
-    // Change header background on scroll
-    window.addEventListener('scroll', function () {
-        let header = document.querySelector('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    // Optional: Add a background animation to sections as they become visible
+    const sectionsWithBackground = document.querySelectorAll("#about, #roadmap, #team");
+    sectionsWithBackground.forEach(section => {
+        section.style.transition = "background-color 1s ease-out";
+        observer.observe(section);
     });
 });
