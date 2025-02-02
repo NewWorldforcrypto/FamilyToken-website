@@ -6,6 +6,7 @@ body {
     background-color: #121212;
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -47,22 +48,43 @@ nav ul li a:hover {
     color: #ff416c;
 }
 
-/* Hero Section */
-#hero {
+/* Background Animation */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: url('images/background.jpg') no-repeat center center/cover;
-    animation: moveBackground 10s infinite linear;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
 }
 
-@keyframes moveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
+#bg1 { background-image: url('images/background.jpg'); }
+#bg2 { background-image: url('images/background2.jpg'); }
+#bg3 { background-image: url('images/background3.jpg'); }
+#bg4 { background-image: url('images/background4.jpg'); }
+
+/* Sections */
+section {
+    padding: 100px 20px;
 }
 
-/* Button */
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Buttons */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
@@ -78,28 +100,4 @@ nav ul li a:hover {
 .btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 20px rgba(255, 65, 108, 0.8);
-}
-
-/* Sections */
-section {
-    padding: 100px 20px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-/* Team Section */
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-
-/* Footer */
-footer {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
 }
