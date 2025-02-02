@@ -14,7 +14,7 @@ body {
     padding: 0 20px;
 }
 
-/* Background Animation */
+/* Background Animation (Parallax Effect) */
 .background-animation {
     position: fixed;
     top: 0;
@@ -23,28 +23,35 @@ body {
     height: 100%;
     background: radial-gradient(circle, rgba(0, 0, 50, 0.8) 10%, rgba(0, 0, 0, 0.9) 90%);
     z-index: -1;
+    transform: translateZ(0);
+    animation: moveBackground 20s infinite linear;
+}
+
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
 }
 
 /* Header */
-.header {
+header {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
     padding: 100px 20px;
     text-align: center;
 }
 
-.header h1 {
+header h1 {
     font-size: 3rem;
     animation: fadeIn 1.5s ease-in-out;
 }
 
-.header p {
+header p {
     font-size: 1.2rem;
     margin-top: 10px;
     animation: fadeIn 2s ease-in-out;
 }
 
-.header .btn {
+header .btn {
     display: inline-block;
     padding: 12px 25px;
     background-color: #ffcc00;
@@ -65,6 +72,12 @@ body {
 @keyframes slideInUp {
     from { opacity: 0; transform: translateY(100px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 /* Roadmap */
