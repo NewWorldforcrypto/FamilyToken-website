@@ -1,22 +1,27 @@
-const text = "Building Stronger Families with Blockchain";
-let index = 0;
+document.addEventListener("DOMContentLoaded", function () {
+    let sections = document.querySelectorAll("section");
+    let options = { threshold: 0.2 };
 
-function typeEffect() {
-    document.getElementById("typing-text").textContent = text.substring(0, index++);
-    if (index <= text.length) {
-        setTimeout(typeEffect, 100);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", typeEffect);
-
-// Optional: Add smooth scrolling to all anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    let observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
+    }, options);
+
+    sections.forEach(section => {
+        section.classList.add('before-view');
+        observer.observe(section);
+    });
+
+    // Change header background on scroll
+    window.addEventListener('scroll', function () {
+        let header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
 });
