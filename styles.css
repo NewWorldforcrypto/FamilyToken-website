@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Background Animation */
+/* Background Animation (Parallax Effect) */
 .background-animation {
     position: fixed;
     top: 0;
@@ -21,25 +21,25 @@ body {
 }
 
 /* Header Section */
-header {
+.header {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
     padding: 100px 20px;
     position: relative;
 }
 
-header h1 {
+.header h1 {
     font-size: 3rem;
     animation: fadeIn 1.5s ease-in-out;
 }
 
-header p {
+.header p {
     font-size: 1.2rem;
     margin-top: 10px;
     animation: fadeIn 2s ease-in-out;
 }
 
-header .btn {
+.header .btn {
     display: inline-block;
     padding: 12px 25px;
     background-color: #ffcc00;
