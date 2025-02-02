@@ -1,20 +1,22 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let sections = document.querySelectorAll("section");
-    let options = { threshold: 0.2 };
+const text = "Building Stronger Families with Blockchain";
+let index = 0;
 
-    let observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
-            }
+function typeEffect() {
+    document.getElementById("typing-text").textContent = text.substring(0, index++);
+    if (index <= text.length) {
+        setTimeout(typeEffect, 100);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
+
+// Optional: Add smooth scrolling to all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
-    }, options);
-
-    sections.forEach(section => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(50px)";
-        section.style.transition = "all 0.6s ease-out";
-        observer.observe(section);
     });
 });
