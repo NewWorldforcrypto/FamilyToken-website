@@ -3,13 +3,18 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
     background-color: #111;
     color: white;
-    overflow-x: hidden;
 }
 
-/* Background Animation (Parallax Effect) */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Background Animation */
 .background-animation {
     position: fixed;
     top: 0;
@@ -20,12 +25,12 @@ body {
     z-index: -1;
 }
 
-/* Header Section */
+/* Header */
 .header {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     color: white;
     padding: 100px 20px;
-    position: relative;
+    text-align: center;
 }
 
 .header h1 {
@@ -51,42 +56,18 @@ body {
     animation: slideInUp 2s ease-in-out;
 }
 
-/* Navigation Menu */
-.navBar {
-    background-color: #333;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-nav ul li {
-    display: inline;
-    margin: 15px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
-/* Sections */
-.section {
-    padding: 60px 20px;
-}
-
-.dark-bg {
-    background-color: #222;
-}
-
+/* Roadmap */
 .roadmap {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -100,44 +81,23 @@ nav ul li a {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
 /* Social Buttons */
 .social-btn {
     display: inline-block;
     padding: 10px 20px;
     margin: 10px;
     border-radius: 5px;
-    color: white;
-    text-decoration: none;
     font-weight: bold;
-}
-
-.twitter {
-    background-color: #1DA1F2;
-}
-
-.telegram {
-    background-color: #0088cc;
-}
-
-.social-btn:hover {
-    opacity: 0.8;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInUp {
-    from { opacity: 0; transform: translateY(100px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
 }
 
 /* Footer */
@@ -145,5 +105,5 @@ footer {
     background: #111;
     color: white;
     padding: 15px;
-    margin-top: 20px;
+    text-align: center;
 }
