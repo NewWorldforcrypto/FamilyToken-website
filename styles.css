@@ -1,156 +1,89 @@
-/* General Styles */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #111;
-    color: white;
+    background-color: #f4f4f4;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Background Animation (Parallax Effect) */
-.background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('your-background-image.jpg') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1;
-    transform: translateZ(0);
-    animation: moveBackground 20s infinite linear;
-}
-
-@keyframes moveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}
-
-/* Header */
 header {
-    background: linear-gradient(to right, #1e3c72, #2a5298);
+    background: #2c3e50;
     color: white;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-header h1 {
-    font-size: 3rem;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-header p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-header .btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #ffcc00;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 20px;
-    animation: slideInUp 2s ease-in-out;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideInUp {
-    from { opacity: 0; transform: translateY(100px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* Roadmap */
-.roadmap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.roadmap-item {
-    background: #444;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #ffcc00;
-    color: black;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-/* Social Buttons */
-.social-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-/* Footer */
-footer {
-    background: #111;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
-/* Responsive Design with Flexbox */
-.navBar {
+    padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    background-color: #333;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 nav ul {
+    list-style: none;
     display: flex;
+    gap: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: url('images/background.jpg') no-repeat center center/cover;
+    color: white;
+}
+
+#hero h1 {
+    font-size: 40px;
+}
+
+.btn {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.timeline {
+    display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
-nav ul li {
-    list-style: none;
+.event {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-    .navBar ul {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .header h1 {
-        font-size: 2rem;
-    }
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.member img {
+    width: 100px;
+    border-radius: 50%;
+}
+
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
