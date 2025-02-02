@@ -18,10 +18,13 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(section);
     });
 
-    // Optional: Add a background animation to sections as they become visible
-    const sectionsWithBackground = document.querySelectorAll("#about, #roadmap, #team");
-    sectionsWithBackground.forEach(section => {
-        section.style.transition = "background-color 1s ease-out";
-        observer.observe(section);
+    // Navbar background change on scroll
+    window.addEventListener("scroll", function () {
+        let header = document.querySelector("header");
+        if (window.scrollY > 50) {
+            header.style.background = "rgba(0, 0, 0, 0.95)";
+        } else {
+            header.style.background = "rgba(0, 0, 0, 0.8)";
+        }
     });
 });
