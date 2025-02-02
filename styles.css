@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,11 +9,14 @@ body {
 header {
     background: #2c3e50;
     color: white;
-    padding: 15px 0;
+    padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
 }
 
 .logo {
@@ -23,62 +27,102 @@ header {
 nav ul {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s;
 }
 
+nav ul li a:hover {
+    color: #e74c3c;
+}
+
+/* Hero Section */
 #hero {
     text-align: center;
-    padding: 100px 20px;
+    padding: 150px 20px;
     background: url('images/background.jpg') no-repeat center center/cover;
     color: white;
+    animation: fadeIn 2s ease-in-out;
 }
 
 #hero h1 {
-    font-size: 40px;
+    font-size: 45px;
+}
+
+#hero p {
+    font-size: 20px;
 }
 
 .btn {
     display: inline-block;
     background: #e74c3c;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 30px;
     text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 30px;
+    transition: background-color 0.3s;
 }
 
+.btn:hover {
+    background-color: #c0392b;
+}
+
+/* About Us Section */
 section {
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
 }
 
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Roadmap Section */
 .timeline {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .event {
     background: white;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
 }
 
+.event h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+/* Team Section */
 .team-container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .member img {
-    width: 100px;
+    width: 120px;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
 footer {
@@ -86,4 +130,17 @@ footer {
     color: white;
     text-align: center;
     padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Animation for Hero Section */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
