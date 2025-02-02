@@ -6,24 +6,24 @@ body {
     background-color: #121212;
     color: white;
     text-align: center;
-    overflow-x: hidden;
 }
 
 /* Header */
 header {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    padding: 15px 40px;
+    background: rgba(0, 0, 0, 0.85);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+    transition: background 0.3s;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+.logo img {
+    width: 50px;
 }
 
 nav ul {
@@ -39,23 +39,12 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    position: relative;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-nav ul li a::after {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background: #ff416c;
-    transition: all 0.3s ease;
-    bottom: -5px;
-    left: 0;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
+nav ul li a:hover {
+    color: #ff416c;
 }
 
 /* Hero Section */
@@ -65,24 +54,12 @@ nav ul li a:hover::after {
     flex-direction: column;
     justify-content: center;
     background: url('images/background.jpg') no-repeat center center/cover;
-    animation: moveBackground 15s infinite linear;
-    position: relative;
+    animation: moveBackground 10s infinite linear;
 }
 
 @keyframes moveBackground {
     0% { background-position: 0 0; }
     100% { background-position: 100% 100%; }
-}
-
-h1 {
-    font-size: 3rem;
-    margin: 0;
-    animation: fadeIn 2s ease-out;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
 }
 
 /* Button */
@@ -95,20 +72,17 @@ h1 {
     transition: 0.3s;
     display: inline-block;
     margin-top: 20px;
-    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(255, 65, 108, 0.5);
 }
 
 .btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+    box-shadow: 0 0 20px rgba(255, 65, 108, 0.8);
 }
 
 /* Sections */
 section {
-    padding: 80px 20px;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
+    padding: 100px 20px;
 }
 
 h2 {
@@ -117,16 +91,6 @@ h2 {
 }
 
 /* Team Section */
-.team-member {
-    display: inline-block;
-    margin-top: 20px;
-    transition: transform 0.3s ease-in-out;
-}
-
-.team-member:hover {
-    transform: scale(1.1);
-}
-
 .team-member img {
     width: 150px;
     height: 150px;
@@ -138,22 +102,4 @@ h2 {
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.8);
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .btn {
-        font-size: 14px;
-    }
-
-    section {
-        padding: 60px 15px;
-    }
 }
