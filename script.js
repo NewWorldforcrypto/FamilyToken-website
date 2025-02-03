@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let sections = document.querySelectorAll("section");
+    let sections = document.querySelectorAll(".parallax .content");
     let options = { threshold: 0.2 };
 
-    let observer = new IntersectionObserver(function (entries, observer) {
+    let observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
