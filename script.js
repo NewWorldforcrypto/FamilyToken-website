@@ -1,12 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-  let images = document.querySelectorAll(".image-container");
-  let delay = 0;
+    let sections = document.querySelectorAll("section");
+    let options = { threshold: 0.2 };
 
-  // Adding class 'visible' to each image with a delay to create the timeline effect
-  images.forEach((image, index) => {
-    setTimeout(() => {
-      image.classList.add("visible");
-    }, delay);
-    delay += 500; // Increasing delay to space out the animations for each image
-  });
+    let observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "all 0.6s ease-out";
+        observer.observe(section);
+    });
 });
