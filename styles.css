@@ -1,4 +1,4 @@
-/* ========== عمومی ========== */
+/* ========== 1. استایل‌های عمومی ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -7,16 +7,14 @@ body {
     color: white;
     text-align: center;
     overflow-x: hidden;
-    display: flex;
-    justify-content: center;
 }
 
-/* ========== نوار بالا ========== */
+/* ========== 2. نوار بالای صفحه و منوی همبرگری ========== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 20px;
     background: rgba(0, 0, 0, 0.8);
     position: fixed;
     width: 100%;
@@ -58,7 +56,7 @@ header {
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* استایل منو در موبایل */
+/* استایل برای نمایش منوی بازشونده */
 nav ul {
     display: none;
     flex-direction: column;
@@ -112,13 +110,6 @@ nav ul li a:hover {
     nav ul li {
         margin: 0 20px;
     }
-}
-
-/* ========== تنظیمات وسط‌چینی محتوا ========== */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
 /* ========== 3. پس‌زمینه‌ها با حرکت متناوب ========== */
@@ -177,14 +168,14 @@ nav ul li a:hover {
 }
 
 .token-logo {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     margin-top: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-/* ========== دکمه‌ها ========== */
+/* ========== 5. دکمه‌ها ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
