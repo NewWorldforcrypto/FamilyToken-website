@@ -151,7 +151,7 @@ nav ul li a:hover {
 }
 
 /* ========== 5. پس‌زمینه‌ها و تصاویر ========== */
-#hero, #hero2, #hero3 {
+#hero, #hero2, #hero3, #hero4 {
     height: 100vh; /* اطمینان از پوشش کل صفحه */
     display: flex;
     flex-direction: column;
@@ -176,6 +176,11 @@ nav ul li a:hover {
 #hero3 {
     background: url('images/background3.jpg') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
+}
+
+#hero4 {
+    background: url('images/background4.jpg') no-repeat center center/cover;
+    animation: moveLeft 20s infinite linear;
 }
 
 @keyframes moveRight {
@@ -272,7 +277,7 @@ footer {
         margin: 0 20px;
     }
 
-    #hero, #hero2, #hero3 {
+    #hero, #hero2, #hero3, #hero4 {
         height: 100vh;
         background-size: cover;
         background-position: center;
