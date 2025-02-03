@@ -9,6 +9,13 @@ body {
     overflow-x: hidden;
 }
 
+/* تقارن محتوا در وسط صفحه */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* ========== 2. نوار بالای صفحه و منوی همبرگری ========== */
 header {
     display: flex;
@@ -150,29 +157,22 @@ nav ul li a:hover {
     100% { background-position: 0 0; }
 }
 
-/* ========== 4. بخش‌های بین تصاویر ========== */
+/* ========== 4. طراحی جدید برای بخش‌های بین تصاویر ========== */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 65, 108, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    transform: scale(0.9);
+    transition: 0.5s ease-in-out;
 }
 
-.info-section h3 {
-    font-size: 2rem;
-    color: white;
-}
-
-.info-section p {
-    font-size: 1.5rem;
-    color: white;
-}
-
-.token-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+.info-section:hover {
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
 }
 
 /* ========== 5. دکمه‌ها ========== */
@@ -204,14 +204,13 @@ nav ul li a:hover {
 /* ========== 6. انیمیشن‌های ورود بخش‌ها هنگام اسکرول ========== */
 section {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
+    transform: translateY(100px) rotateX(30deg);
+    transition: all 1s ease-out;
 }
 
-/* وقتی کاربر اسکرول می‌کند، بخش‌ها ظاهر می‌شوند */
 section.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) rotateX(0deg);
 }
 
 /* ========== 7. استایل‌های بخش فوتر ========== */
@@ -221,4 +220,4 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
-    }
+}
