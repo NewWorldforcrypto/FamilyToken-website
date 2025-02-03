@@ -7,6 +7,10 @@ body {
     color: white;
     text-align: center;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* تقارن محتوا در وسط صفحه */
@@ -119,7 +123,7 @@ nav ul li a:hover {
     }
 }
 
-/* ========== 3. پس‌زمینه‌ها با حرکت متناوب ========== */
+/* ========== 3. پس‌زمینه‌ها بدون حرکت متناوب ========== */
 #hero, #hero2, #hero3 {
     height: 100vh;
     display: flex;
@@ -131,30 +135,17 @@ nav ul li a:hover {
     position: relative;
 }
 
-/* تنظیم جهت حرکت پس‌زمینه */
+/* تنظیم جهت پس‌زمینه‌ها */
 #hero {
     background: url('images/background.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
 }
 
 #hero2 {
     background: url('images/background2.jpg') no-repeat center center/cover;
-    animation: moveLeft 20s infinite linear;
 }
 
 #hero3 {
     background: url('images/background3.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
-}
-
-@keyframes moveRight {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-@keyframes moveLeft {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
 }
 
 /* ========== 4. طراحی جدید برای بخش‌های بین تصاویر ========== */
