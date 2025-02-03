@@ -1,18 +1,18 @@
-// ================== 1. مدیریت منوی همبرگری ==================
+// ================== Hamburger Menu ==================
 function toggleMenu() {
     const menu = document.querySelector('nav ul');
     menu.classList.toggle('show');
 
-    // تغییر آیکون منوی همبرگری هنگام باز و بسته شدن
+    // Change the hamburger icon
     const menuIcon = document.querySelector('.menu-icon');
     if (menu.classList.contains('show')) {
-        menuIcon.innerHTML = "✖"; // تغییر آیکون به ضربدر
+        menuIcon.innerHTML = "✖"; // Change to close icon
     } else {
-        menuIcon.innerHTML = "&#9776;"; // تغییر به آیکون سه خط
+        menuIcon.innerHTML = "&#9776;"; // Change back to hamburger icon
     }
 }
 
-// بستن منو هنگام کلیک روی گزینه‌ها (فقط در موبایل)
+// Close the menu when clicking on a menu item (mobile)
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", () => {
         const menu = document.querySelector('nav ul');
@@ -20,12 +20,12 @@ document.querySelectorAll("nav ul li a").forEach(link => {
         
         if (menu.classList.contains('show')) {
             menu.classList.remove('show');
-            menuIcon.innerHTML = "&#9776;"; // بازگرداندن آیکون به سه خط
+            menuIcon.innerHTML = "&#9776;"; // Revert to hamburger icon
         }
     });
 });
 
-// بستن منو هنگام کلیک خارج از آن در موبایل
+// Close the menu when clicking outside of it (mobile)
 document.addEventListener("click", (event) => {
     const menu = document.querySelector('nav ul');
     const menuIcon = document.querySelector('.menu-icon');
@@ -36,7 +36,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+// ================== Fade-in effect for sections on scroll ==================
 document.addEventListener("DOMContentLoaded", function () {
     let sections = document.querySelectorAll("section");
     let options = { threshold: 0.2 };
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// ================== 3. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
+// ================== Parallax effect for background ==================
 document.addEventListener("DOMContentLoaded", function () {
     const backgrounds = [
         { element: document.getElementById("hero"), speed: 0.02, direction: 1 },
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     moveBackgrounds();
 });
 
-// ================== 4. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
+// ================== Button click alert ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("click", function (event) {
         event.preventDefault();
