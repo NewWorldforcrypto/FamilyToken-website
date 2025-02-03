@@ -19,6 +19,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 100;
+    transition: top 0.3s;
 }
 
 .logo {
@@ -41,7 +42,22 @@ nav ul li a {
     text-decoration: none;
 }
 
-/* Hero Section with background image */
+/* Hamburger Menu */
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    z-index: 110;
+}
+
+.menu-icon:hover {
+    color: #ff4b2b;
+}
+
+/* Hero Section with background image (Image 1) */
 #hero {
     height: 100vh;
     display: flex;
@@ -73,6 +89,38 @@ h1 {
     z-index: 2;
 }
 
+/* Hero Section with background image (Image 2 - background2.jpg) */
+#hero2 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('images/background2.jpg') no-repeat center center/cover;
+    animation: moveBackground2 10s infinite linear;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes moveBackground2 {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+h2 {
+    font-size: 3rem;
+    margin: 0;
+    color: white;
+    z-index: 2;
+}
+
+#hero2 p {
+    font-size: 1.25rem;
+    color: white;
+    z-index: 2;
+}
+
 /* Button */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
@@ -98,76 +146,6 @@ section {
     overflow: hidden;
 }
 
-section:nth-child(even) {
-    background: url('images/background2.jpg') no-repeat center center/cover;
-    background-size: cover;
-    animation: moveBackground2 10s infinite linear;
-}
-
-section:nth-child(odd) {
-    background: url('images/background3.jpg') no-repeat center center/cover;
-    background-size: cover;
-    animation: moveBackground3 10s infinite linear;
-}
-
-@keyframes moveBackground2 {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}
-
-@keyframes moveBackground3 {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}
-
-/* Section Text Animations */
-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s forwards;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-section p {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1.2s forwards;
-    animation-delay: 0.5s;
-}
-
-/* Team Section */
-.team-member {
-    display: inline-block;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid white;
-    transition: transform 0.3s ease;
-}
-
-.team-member img:hover {
-    transform: scale(1.1);
-}
-
 /* Footer */
 footer {
     padding: 20px;
@@ -177,21 +155,34 @@ footer {
     width: 100%;
 }
 
-/* Adding spacing between sections */
-section {
-    margin-bottom: 50px;
-}
+/* For Mobile View */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        height: 100vh;
+        z-index: 101;
+        align-items: flex-start;
+    }
 
-/* For the contact section, you may want to add a background */
-#contact {
-    background: url('images/background4.jpg') no-repeat center center/cover;
-    background-size: cover;
-    animation: moveBackground4 10s infinite linear;
-    padding: 80px 20px;
-    text-align: center;
-}
+    nav ul li {
+        margin: 20px 0;
+    }
 
-@keyframes moveBackground4 {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
+    .menu-icon {
+        display: block;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    nav ul li a {
+        padding: 10px;
+    }
     }
