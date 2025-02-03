@@ -1,116 +1,53 @@
-/* General Styles */
+/* Basic styles for layout and positioning */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    color: white;
-    text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
 }
 
-/* Header */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
+#timeline {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  padding: 20px;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
+/* Style for individual images */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+  margin-right: 15px;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-nav ul li {
-    margin: 0 15px;
+/* Visible class for when images are animated into view */
+.image-container.visible {
+  transform: translateX(0);
+  opacity: 1;
 }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-/* Hero & Parallax Sections */
-.parallax {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-}
-
-.bg1 { background-image: url('images/background.jpg'); }
-.bg2 { background-image: url('images/background2.jpg'); }
-.bg3 { background-image: url('images/background3.jpg'); }
-.bg4 { background-image: url('images/background4.jpg'); }
-
-.content {
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-}
-
-/* Buttons */
-.btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-    margin-top: 20px;
-    box-shadow: 0px 5px 15px rgba(255, 65, 108, 0.5);
-}
-
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 10px 20px rgba(255, 65, 108, 0.8);
-}
-
-/* Sections */
-section {
-    padding: 80px 20px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-/* Team Section */
-.team-member {
-    display: inline-block;
-    margin-top: 20px;
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 3px solid white;
-}
-
-/* Footer */
-footer {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
+/* Parallax effect for background images */
+@keyframes parallax {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+        }
