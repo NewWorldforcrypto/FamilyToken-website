@@ -3,68 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FamilyToken - Strengthening Families</title>
+    <title>FamilyToken Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
 </head>
 <body>
 
+    <!-- Header with Hamburger Menu -->
     <header>
         <div class="logo">FamilyToken</div>
         <nav>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">FAQ</a></li>
             </ul>
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with background image (Image 1) -->
     <section id="hero">
-        <h1>Strengthening Family Bonds with FamilyToken</h1>
-        <p>Empowering financial unity and strengthening family values through blockchain.</p>
-        <a href="#about" class="btn">Learn More</a>
+        <h1>Welcome to FamilyToken</h1>
+        <p>Your future starts here</p>
+        <a href="#" class="btn">Learn More</a>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About FamilyToken</h2>
-        <p>FamilyToken is designed to foster financial stability and unity among families, ensuring equality and shared prosperity.</p>
+    <!-- Hero Section with background image (Image 2 - background2.jpg) -->
+    <section id="hero2">
+        <h2>Empowering Families Worldwide</h2>
+        <p>Join us today and be part of the change</p>
+        <a href="#" class="btn">Get Started</a>
     </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap">
-        <h2>Our Roadmap</h2>
-        <ul>
-            <li>Phase 1: Token Launch</li>
-            <li>Phase 2: Community Building</li>
-            <li>Phase 3: Exchange Listings</li>
-            <li>Phase 4: Family Financial Solutions</li>
-        </ul>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team">
-        <h2>Meet Our Team</h2>
-        <div class="team-member">
-            <img src="images/founder.jpg" alt="Founder">
-            <p>Founder & Visionary</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>Follow us on social media and stay connected.</p>
-        <a href="#" class="btn">Join Our Community</a>
-    </section>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 FamilyToken. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript to toggle menu -->
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('nav ul');
+            menu.classList.toggle('show');
+        }
+    </script>
+
 </body>
-</html>
+                                             </html>
