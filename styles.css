@@ -73,9 +73,9 @@ nav ul {
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: fixed;
-    top: 70px; /* پایین‌تر بردن منو تا زیر هدر */
+    top: 70px;
     right: 10px;
-    width: 90%; /* کمی کوچک‌تر کردن عرض منو */
+    width: 90%;
     max-width: 250px; 
     border-radius: 10px;
     padding: 15px;
@@ -112,7 +112,7 @@ nav ul li a:hover {
     }
 
     .menu-icon {
-        top: 10px; /* اصلاح موقعیت همبرگر */
+        top: 10px;
         right: 10px;
     }
 
@@ -138,12 +138,6 @@ nav ul li a:hover {
         font-size: 22px;
     }
 
-    #hero, #hero2, #hero3 {
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-    }
-
     .info-section {
         margin: 30px auto;
         padding: 30px 20px;
@@ -152,7 +146,7 @@ nav ul li a:hover {
 
 /* ========== 5. پس‌زمینه‌ها و تصاویر ========== */
 #hero, #hero2, #hero3, #hero4 {
-    height: 100vh; /* اطمینان از پوشش کل صفحه */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -193,11 +187,23 @@ nav ul li a:hover {
     100% { background-position: 0 0; }
 }
 
-/* ========== 6. Info Sections Between Backgrounds ========== */
+/* ========== 6. بهبود خوانایی متن‌های روی تصاویر ========== */
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    display: inline-block;
+}
+
+/* ========== 7. Info Sections Between Backgrounds ========== */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.1); /* Transparent Background */
-    backdrop-filter: blur(10px); /* Glass Effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     text-align: center;
@@ -224,7 +230,7 @@ nav ul li a:hover {
     margin-top: 10px;
 }
 
-/* ========== 7. دکمه‌ها ========== */
+/* ========== 8. دکمه‌ها ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
@@ -250,7 +256,7 @@ nav ul li a:hover {
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
 }
 
-/* ========== 8. تنظیمات فوتر ========== */
+/* ========== 9. تنظیمات فوتر ========== */
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.8);
@@ -259,7 +265,7 @@ footer {
     width: 100%;
 }
 
-/* ========== 9. تنظیمات برای تبلت و دسکتاپ ========== */
+/* ========== 10. تنظیمات برای تبلت و دسکتاپ ========== */
 @media (min-width: 1024px) {
     .menu-icon {
         display: none;
@@ -288,4 +294,4 @@ footer {
         margin: 50px auto;
         max-width: 800px;
     }
-    }
+}
