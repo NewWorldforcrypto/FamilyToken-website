@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== Header Section ========== */
+/* ========== Header & Navigation ========== */
 header {
     display: flex;
     justify-content: space-between;
@@ -22,27 +22,49 @@ header {
     z-index: 100;
 }
 
-.logo-container {
+/* Logo */
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff8c00;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
     display: flex;
     align-items: center;
-    gap: 10px; /* فاصله بین لوگو و اسم */
 }
 
 .token-logo {
-    width: 40px; /* اندازه لوگو رو کوچیک می‌کنیم */
-    height: 40px; /* ارتفاع لوگو رو هم برابر عرضش می‌گذاریم */
-    border-radius: 50%; /* دایره‌ای کردن لوگو */
-    object-fit: cover; /* اطمینان از این‌که فقط قسمت سکه نمایش داده بشه */
+    width: 30px; /* Reduced size of the logo */
+    height: 30px; /* Reduced size of the logo */
+    border-radius: 50%;
+    margin-right: 10px; /* Space between logo and text */
 }
 
-.logo-text {
-    font-size: 24px; /* اندازه متن "FamilyToken" */
+/* Hamburger Menu */
+.menu-icon {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+    background-color: #ff8c00;
+    color: white;
+    font-size: 32px;
     font-weight: bold;
-    color: #ff8c00; /* رنگ طلایی یا رنگ دلخواه */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    line-height: 55px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 200;
+    transition: 0.3s ease-in-out;
 }
 
-/* Navigation Menu */
+.menu-icon:hover {
+    background-color: #ff6500;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+}
+
 nav ul {
     display: none;
     flex-direction: column;
@@ -79,46 +101,41 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* Main Menu Icon */
-.menu-icon {
-    display: block;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-    background-color: #ff8c00;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 55px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    z-index: 200;
-    transition: 0.3s ease-in-out;
-}
-
-.menu-icon:hover {
-    background-color: #ff6500;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* ========== Hero Section ========== */
-#hero {
+/* ========== Hero Section & Backgrounds ========== */
+#hero, #hero2, #hero3 {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+#hero {
     background: url('images/background.jpg') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
+}
+
+#hero2 {
+    background: url('images/background2.jpg') no-repeat center center/cover;
+    animation: moveLeft 20s infinite linear;
+}
+
+#hero3 {
+    background: url('images/background3.jpg') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
 }
 
 @keyframes moveRight {
     0% { background-position: 0 0; }
     100% { background-position: 100% 0; }
+}
+
+@keyframes moveLeft {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
 }
 
 /* ========== Info Section ========== */
@@ -139,14 +156,14 @@ nav ul li a:hover {
 }
 
 .token-logo {
-    width: 80px;
-    height: 80px;
+    width: 80px; /* Adjusted size */
+    height: 80px; /* Adjusted size */
     border-radius: 50%;
     margin-top: 20px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-/* ========== Button Styles ========== */
+/* ========== Buttons ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
@@ -161,6 +178,14 @@ nav ul li a:hover {
 .btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+}
+
+.blue-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.blue-btn:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
 }
 
 /* ========== Footer Section ========== */
