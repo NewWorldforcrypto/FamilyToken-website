@@ -1,4 +1,4 @@
-/* ========== 1. استایل‌های عمومی ========== */
+/* ========== 1. تنظیمات عمومی ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== 2. نوار بالای صفحه و منوی همبرگری ========== */
+/* ========== 2. نوار بالا و منو ========== */
 header {
     display: flex;
     justify-content: space-between;
@@ -20,43 +20,22 @@ header {
     width: 100%;
     top: 0;
     z-index: 100;
+    transition: 0.4s;
 }
 
-/* استایل لوگو */
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: #ff8c00;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-}
-
-/* منوی همبرگری */
+/* استایل منوی همبرگری */
 .menu-icon {
-    display: block;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-    background-color: #ff8c00;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 55px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    z-index: 200;
-    transition: 0.3s ease-in-out;
+    font-size: 30px;
+    color: #ff8c00;
+    transition: transform 0.3s ease;
 }
 
-.menu-icon:hover {
-    background-color: #ff6500;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+.menu-icon.active {
+    transform: rotate(180deg);
 }
 
-/* استایل برای نمایش منوی بازشونده */
+/* منوی باز شونده */
 nav ul {
     display: none;
     flex-direction: column;
@@ -67,56 +46,21 @@ nav ul {
     width: 250px;
     border-radius: 10px;
     padding: 15px;
-    z-index: 150;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
 }
 
 nav ul.show {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-nav ul li {
-    margin: 15px 0;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    display: block;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    background-color: #ff4b2b;
-    border-radius: 5px;
-}
-
-/* نمایش منوی اصلی در دسکتاپ */
-@media (min-width: 1024px) {
-    .menu-icon {
-        display: none;
-    }
-
-    nav ul {
-        display: flex;
-        position: static;
-        background: none;
-        width: auto;
-        box-shadow: none;
-    }
-
-    nav ul li {
-        margin: 0 20px;
-    }
-}
-
-/* ========== 3. پس‌زمینه‌ها با حرکت متناوب ========== */
+/* ========== 3. پس‌زمینه‌های پویا ========== */
 #hero, #hero2, #hero3 {
     height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-size: cover;
@@ -124,67 +68,19 @@ nav ul li a:hover {
     position: relative;
 }
 
-/* تنظیم جهت حرکت پس‌زمینه */
-#hero {
-    background: url('images/background.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
-}
+/* تنظیم جهت حرکت */
+#hero { background-image: url('images/background.jpg'); }
+#hero2 { background-image: url('images/background2.jpg'); }
+#hero3 { background-image: url('images/background3.jpg'); }
 
-#hero2 {
-    background: url('images/background2.jpg') no-repeat center center/cover;
-    animation: moveLeft 20s infinite linear;
-}
-
-#hero3 {
-    background: url('images/background3.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
-}
-
-@keyframes moveRight {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-@keyframes moveLeft {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
-}
-
-/* ========== 4. بخش‌های بین تصاویر ========== */
-.info-section {
-    padding: 50px 20px;
-    background: rgba(255, 65, 108, 0.8);
-    text-align: center;
-}
-
-.info-section h3 {
-    font-size: 2rem;
-    color: white;
-}
-
-.info-section p {
-    font-size: 1.5rem;
-    color: white;
-}
-
-.token-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-}
-
-/* ========== 5. دکمه‌ها ========== */
+/* ========== 4. دکمه‌های زیبا ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-    margin-top: 20px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover {
@@ -192,33 +88,14 @@ nav ul li a:hover {
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
 }
 
-/* دکمه با رنگ آبی برای تنوع */
-.blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-}
-
-.blue-btn:hover {
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-}
-
-/* ========== 6. انیمیشن‌های ورود بخش‌ها هنگام اسکرول ========== */
+/* ========== 5. انیمیشن‌های حرفه‌ای ========== */
 section {
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.6s ease-out;
 }
 
-/* وقتی کاربر اسکرول می‌کند، بخش‌ها ظاهر می‌شوند */
 section.show {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* ========== 7. استایل‌های بخش فوتر ========== */
-footer {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    position: relative;
-    bottom: 0;
-    width: 100%;
 }
