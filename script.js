@@ -35,3 +35,57 @@ document.addEventListener("click", (event) => {
         menuIcon.innerHTML = "&#9776;";
     }
 });
+
+// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+document.addEventListener("DOMContentLoaded", function () {
+    let sections = document.querySelectorAll("section");
+    let options = { threshold: 0.2 };
+
+    let observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, options);
+
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "all 0.6s ease-out";
+        observer.observe(section);
+    });
+});
+
+// ================== 3. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
+document.addEventListener("DOMContentLoaded", function () {
+    const backgrounds = [
+        { element: document.getElementById("hero"), speed: 0.02, direction: 1 },
+        { element: document.getElementById("hero2"), speed: 0.02, direction: -1 },
+        { element: document.getElementById("hero3"), speed: 0.02, direction: 1 }
+    ];
+
+    let position = 0;
+
+    function moveBackgrounds() {
+        position += 1;
+        backgrounds.forEach(bg => {
+            if (bg.element) {
+                let movement = position * bg.speed * bg.direction;
+                bg.element.style.backgroundPosition = `${movement}px 0`;
+            }
+        });
+        requestAnimationFrame(moveBackgrounds);
+    }
+
+    moveBackgrounds();
+});
+
+// ================== 4. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
+document.querySelectorAll(".btn").forEach(button => {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("This feature is coming soon!");
+    });
+});
