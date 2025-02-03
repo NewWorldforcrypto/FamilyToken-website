@@ -1,12 +1,31 @@
-// Toggle Menu
+// ================== 1. مدیریت منوی همبرگری ==================
 function toggleMenu() {
     const menu = document.querySelector('nav ul');
     menu.classList.toggle('show');
+
+    // تغییر آیکون منوی همبرگری هنگام باز و بسته شدن
     const menuIcon = document.querySelector('.menu-icon');
-    menuIcon.innerHTML = menu.classList.contains('show') ? "✖" : "&#9776;";
+    if (menu.classList.contains('show')) {
+        menuIcon.innerHTML = "✖"; // تغییر آیکون به ضربدر
+    } else {
+        menuIcon.innerHTML = "&#9776;"; // تغییر به آیکون سه خط
+    }
 }
 
-// Hide menu on clicking outside
+// بستن منو هنگام کلیک روی گزینه‌ها (فقط در موبایل)
+document.querySelectorAll("nav ul li a").forEach(link => {
+    link.addEventListener("click", () => {
+        const menu = document.querySelector('nav ul');
+        const menuIcon = document.querySelector('.menu-icon');
+        
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+            menuIcon.innerHTML = "&#9776;"; // بازگرداندن آیکون به سه خط
+        }
+    });
+});
+
+// بستن منو هنگام کلیک خارج از آن در موبایل
 document.addEventListener("click", (event) => {
     const menu = document.querySelector('nav ul');
     const menuIcon = document.querySelector('.menu-icon');
@@ -17,12 +36,12 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// Section Scroll Animation
+// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", function () {
     let sections = document.querySelectorAll("section");
     let options = { threshold: 0.2 };
 
-    let observer = new IntersectionObserver((entries) => {
+    let observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
@@ -39,15 +58,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Smooth Background Animation
+// ================== 3. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
 document.addEventListener("DOMContentLoaded", function () {
+    const backgrounds = [
+        { element: document.getElementById("hero"), speed: 0.02, direction: 1 },
+        { element: document.getElementById("hero2"), speed: 0.02, direction: -1 },
+        { element: document.getElementById("hero3"), speed: 0.02, direction: 1 }
+    ];
+
     let position = 0;
+
     function moveBackgrounds() {
         position += 1;
-        document.getElementById("hero").style.backgroundPosition = `${position}px 0`;
-        document.getElementById("hero2").style.backgroundPosition = `-${position}px 0`;
-        document.getElementById("hero3").style.backgroundPosition = `${position}px 0`;
+        backgrounds.forEach(bg => {
+            if (bg.element) {
+                let movement = position * bg.speed * bg.direction;
+                bg.element.style.backgroundPosition = `${movement}px 0`;
+            }
+        });
         requestAnimationFrame(moveBackgrounds);
     }
+
     moveBackgrounds();
+});
+
+// ================== 4. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
+document.querySelectorAll(".btn").forEach(button => {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        alert("This feature is coming soon!");
+    });
 });
