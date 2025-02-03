@@ -1,4 +1,4 @@
-/* ========== 1. تنظیمات عمومی ========== */
+/* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ========== 2. نوار بالا و منو ========== */
+/* Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -20,67 +20,84 @@ header {
     width: 100%;
     top: 0;
     z-index: 100;
-    transition: 0.4s;
 }
 
-/* استایل منوی همبرگری */
-.menu-icon {
-    cursor: pointer;
+.logo {
     font-size: 30px;
+    font-weight: bold;
     color: #ff8c00;
-    transition: transform 0.3s ease;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-.menu-icon.active {
-    transform: rotate(180deg);
+/* Navigation */
+.menu-icon {
+    display: block;
+    top: 15px;
+    right: 15px;
+    width: 55px;
+    height: 55px;
+    background-color: #ff8c00;
+    color: white;
+    font-size: 32px;
+    text-align: center;
+    line-height: 55px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* منوی باز شونده */
+.menu-icon:hover {
+    background-color: #ff6500;
+}
+
 nav ul {
     display: none;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
     position: fixed;
     top: 80px;
     right: 20px;
     width: 250px;
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     padding: 15px;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
+    z-index: 150;
 }
 
 nav ul.show {
     display: flex;
-    opacity: 1;
-    transform: translateY(0);
 }
 
-/* ========== 3. پس‌زمینه‌های پویا ========== */
+/* Hero Sections */
 #hero, #hero2, #hero3 {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-size: cover;
     background-position: center;
-    position: relative;
 }
 
-/* تنظیم جهت حرکت */
 #hero { background-image: url('images/background.jpg'); }
 #hero2 { background-image: url('images/background2.jpg'); }
 #hero3 { background-image: url('images/background3.jpg'); }
 
-/* ========== 4. دکمه‌های زیبا ========== */
+/* Info Section */
+.info-section {
+    padding: 50px 20px;
+    background: rgba(255, 65, 108, 0.8);
+}
+
+/* Buttons */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .btn:hover {
@@ -88,14 +105,15 @@ nav ul.show {
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
 }
 
-/* ========== 5. انیمیشن‌های حرفه‌ای ========== */
-section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
+.blue-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
 }
 
-section.show {
-    opacity: 1;
-    transform: translateY(0);
+/* Footer */
+footer {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
