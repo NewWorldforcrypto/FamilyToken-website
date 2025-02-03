@@ -33,9 +33,9 @@ header {
 }
 
 .token-logo {
-    width: 30px; /* Reduced size of the logo */
-    height: 30px; /* Reduced size of the logo */
-    border-radius: 50%;
+    width: 15px; /* Reduced size of the logo */
+    height: 15px; /* Reduced size of the logo */
+    border-radius: 75%;
     margin-right: 10px; /* Space between logo and text */
 }
 
