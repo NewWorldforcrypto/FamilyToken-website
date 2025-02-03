@@ -9,6 +9,14 @@ body {
     overflow-x: hidden;
 }
 
+/* تقارن محتوا در وسط صفحه */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 /* ========== 2. نوار بالای صفحه و منوی همبرگری ========== */
 header {
     display: flex;
@@ -222,3 +230,108 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+/* ========== 8. Media Queries برای ریسپانسیو ========== */
+
+/* موبایل */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        width: 100%;
+        position: static;
+        background-color: rgba(0, 0, 0, 0.95);
+        margin-top: 20px;
+    }
+
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    #hero, #hero2, #hero3 {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .info-section {
+        margin: 30px auto;
+        padding: 30px 20px;
+    }
+}
+
+/* تبلت */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        width: 80%;
+    }
+
+    nav ul.show {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #hero, #hero2, #hero3 {
+        height: 90vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .info-section {
+        margin: 40px auto;
+    }
+}
+
+/* دسکتاپ */
+@media (min-width: 1025px) {
+    .menu-icon {
+        display: none;
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: flex-start;
+        width: auto;
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    #hero, #hero2, #hero3 {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .info-section {
+        padding: 50px 20px;
+        margin: 50px auto;
+    }
+    }
