@@ -7,6 +7,8 @@ body {
     color: white;
     text-align: center;
     overflow-x: hidden;
+    width: 100%; /* افزودن این برای پر کردن عرض صفحه */
+    height: 100%; /* تنظیم ارتفاع صفحه برای پوشش کل صفحه */
 }
 
 /* تقارن محتوا در وسط صفحه */
@@ -71,12 +73,14 @@ nav ul {
     background: rgba(0, 0, 0, 0.95);
     position: fixed;
     top: 80px;
-    right: 20px;
-    width: 250px;
+    right: 0; /* اصلاح موقعیت منو در سمت راست صفحه */
+    width: 100%; /* عرض کامل صفحه */
+    max-width: 300px; /* برای جلوگیری از بیرون زدن از صفحه */
     border-radius: 10px;
     padding: 15px;
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 nav ul.show {
@@ -122,7 +126,7 @@ nav ul li a:hover {
 
 /* ========== 3. پس‌زمینه‌ها با حرکت متناوب ========== */
 #hero, #hero2, #hero3 {
-    height: 100vh;
+    height: 100vh; /* اطمینان از اینکه تمام صفحه پوشش داده می‌شود */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -333,5 +337,6 @@ footer {
     .info-section {
         padding: 50px 20px;
         margin: 50px auto;
+        max-width: 800px;
     }
-    }
+}
