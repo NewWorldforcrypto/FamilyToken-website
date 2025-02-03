@@ -1,48 +1,43 @@
-/* Basic reset for the body */
-body, h1, h2, p, ul {
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* General layout settings */
-body {
-    background-color: #f4f4f4;
+    background-color: #121212;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
 }
 
 /* Header */
 header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
-header .logo {
-    font-size: 1.8rem;
+.logo {
+    font-size: 24px;
     font-weight: bold;
 }
 
-header nav ul {
+nav ul {
     list-style: none;
     display: flex;
+    padding: 0;
 }
 
-header nav ul li {
-    margin-left: 2rem;
+nav ul li {
+    margin: 0 15px;
 }
 
-header nav ul li a {
+nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-}
-
-header nav ul li a:hover {
-    color: #ffcc00;
 }
 
 /* Hero Section */
@@ -51,174 +46,132 @@ header nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
     background: url('images/background.jpg') no-repeat center center/cover;
     animation: moveBackground 10s infinite linear;
+    position: relative;
     background-size: cover;
+    background-position: center;
 }
 
-#hero h1 {
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin: 0;
+    color: white;
+    z-index: 2;
 }
 
 #hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-#hero .btn {
-    padding: 1rem 2rem;
-    background-color: #ffcc00;
+    font-size: 1.25rem;
     color: white;
-    text-decoration: none;
+    z-index: 2;
+}
+
+/* Button */
+.btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
     font-weight: bold;
-    border-radius: 5px;
+    transition: 0.3s;
+    display: inline-block;
+    margin-top: 20px;
+    z-index: 2;
 }
 
-#hero .btn:hover {
-    background-color: #e6b800;
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
 }
 
-/* About Section */
-#about {
-    height: 100vh;
-    padding: 5rem;
+/* Section Background Animation */
+section {
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+section:nth-child(even) {
     background: url('images/background2.jpg') no-repeat center center/cover;
-    animation: fadeInBackground 15s ease-in-out infinite;
     background-size: cover;
-    background-position: center;
+    animation: moveBackground2 10s infinite linear;
 }
 
-#about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-#about p {
-    font-size: 1.2rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* Roadmap Section */
-#roadmap {
-    height: 100vh;
-    padding: 5rem;
+section:nth-child(odd) {
     background: url('images/background3.jpg') no-repeat center center/cover;
-    animation: fadeInBackground2 15s ease-in-out infinite;
     background-size: cover;
-    background-position: center;
+    animation: moveBackground3 10s infinite linear;
 }
 
-#roadmap h2 {
+@keyframes moveBackground2 {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+@keyframes moveBackground3 {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+/* Animations for Sections */
+section h2 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
-#roadmap ul {
-    font-size: 1.2rem;
-    list-style-type: none;
-}
-
-#roadmap ul li {
-    margin: 0.5rem 0;
+section p {
+    font-size: 1.25rem;
+    line-height: 1.5;
 }
 
 /* Team Section */
-#team {
-    height: 100vh;
-    padding: 5rem;
-    background: url('images/background4.jpg') no-repeat center center/cover;
-    animation: fadeInBackground3 15s ease-in-out infinite;
-    background-size: cover;
-    background-position: center;
-}
-
-#team h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
 .team-member {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .team-member img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-right: 1rem;
+    border: 3px solid white;
+    transition: transform 0.3s ease;
 }
 
-.team-member p {
-    font-size: 1.2rem;
-}
-
-/* Contact Section */
-#contact {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #333;
-    color: white;
-    padding: 5rem;
-}
-
-#contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-#contact .btn {
-    padding: 1rem 2rem;
-    background-color: #ffcc00;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-}
-
-#contact .btn:hover {
-    background-color: #e6b800;
+.team-member img:hover {
+    transform: scale(1.1);
 }
 
 /* Footer */
 footer {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Adding spacing between sections */
+section {
+    margin-bottom: 50px;
+}
+
+/* For the contact section, you may want to add a background */
+#contact {
+    background: url('images/background4.jpg') no-repeat center center/cover;
+    background-size: cover;
+    animation: moveBackground4 10s infinite linear;
+    padding: 80px 20px;
     text-align: center;
 }
 
-/* Animations */
-@keyframes moveBackground {
+@keyframes moveBackground4 {
     0% { background-position: 0 0; }
     100% { background-position: 100% 100%; }
-}
-
-@keyframes fadeInBackground {
-    0% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.5; transform: scale(1); }
-}
-
-@keyframes fadeInBackground2 {
-    0% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.5; transform: scale(1); }
-}
-
-@keyframes fadeInBackground3 {
-    0% { opacity: 0.5; transform: scale(1); }
-    50% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.5; transform: scale(1); }
 }
