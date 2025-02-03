@@ -1,17 +1,18 @@
-/* ========== 1. استایل‌های عمومی ========== */
-body {
-    font-family: 'Poppins', sans-serif;
+/* ========== 1. تنظیمات عمومی ========== */
+html, body {
+    width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
     background-color: #121212;
     color: white;
     text-align: center;
-    overflow-x: hidden;
-    width: 100%; /* افزودن این برای پر کردن عرض صفحه */
-    height: 100%; /* تنظیم ارتفاع صفحه برای پوشش کل صفحه */
 }
 
-/* تقارن محتوا در وسط صفحه */
+/* تنظیم برای اطمینان از اینکه محتوا در مرکز صفحه قرار بگیرد */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -19,43 +20,43 @@ body {
     padding: 0 20px;
 }
 
-/* ========== 2. نوار بالای صفحه و منوی همبرگری ========== */
+/* ========== 2. نوار بالای سایت (هدر) ========== */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 20px;
-    background: rgba(0, 0, 0, 0.8);
+    padding: 12px 20px;
+    background: rgba(0, 0, 0, 0.85);
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
 }
 
 /* استایل لوگو */
 .logo {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: bold;
     color: #ff8c00;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* منوی همبرگری */
+/* ========== 3. منوی همبرگری ========== */
 .menu-icon {
     display: block;
     position: fixed;
-    top: 15px;
+    top: 15px;  
     right: 15px;
-    width: 55px;
-    height: 55px;
+    width: 45px;  
+    height: 45px;
     background-color: #ff8c00;
     color: white;
-    font-size: 32px;
+    font-size: 28px; 
     font-weight: bold;
     text-align: center;
-    line-height: 55px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    line-height: 45px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     z-index: 200;
     transition: 0.3s ease-in-out;
@@ -63,24 +64,23 @@ header {
 
 .menu-icon:hover {
     background-color: #ff6500;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* استایل برای نمایش منوی بازشونده */
+/* تنظیم منو برای موبایل */
 nav ul {
     display: none;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: fixed;
-    top: 80px;
-    right: 0; /* اصلاح موقعیت منو در سمت راست صفحه */
-    width: 100%; /* عرض کامل صفحه */
-    max-width: 300px; /* برای جلوگیری از بیرون زدن از صفحه */
+    top: 70px; /* پایین‌تر بردن منو تا زیر هدر */
+    right: 10px;
+    width: 90%; /* کمی کوچک‌تر کردن عرض منو */
+    max-width: 250px; 
     border-radius: 10px;
     padding: 15px;
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    box-sizing: border-box;
 }
 
 nav ul.show {
@@ -105,28 +105,54 @@ nav ul li a:hover {
     border-radius: 5px;
 }
 
-/* نمایش منوی اصلی در دسکتاپ */
-@media (min-width: 1024px) {
+/* ========== 4. نمایش صحیح سایت در موبایل ========== */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
     .menu-icon {
-        display: none;
+        top: 10px; /* اصلاح موقعیت همبرگر */
+        right: 10px;
     }
 
     nav ul {
+        display: none;
+        width: 100%;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.95);
+        margin-top: 10px;
+    }
+
+    nav ul.show {
         display: flex;
-        position: static;
-        background: none;
-        width: auto;
-        box-shadow: none;
+        flex-direction: column;
+        align-items: center;
     }
 
     nav ul li {
-        margin: 0 20px;
+        margin: 10px 0;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+
+    #hero, #hero2, #hero3 {
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .info-section {
+        margin: 30px auto;
+        padding: 30px 20px;
     }
 }
 
-/* ========== 3. پس‌زمینه‌ها با حرکت متناوب ========== */
+/* ========== 5. پس‌زمینه‌ها و تصاویر ========== */
 #hero, #hero2, #hero3 {
-    height: 100vh; /* اطمینان از اینکه تمام صفحه پوشش داده می‌شود */
+    height: 100vh; /* اطمینان از پوشش کل صفحه */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -162,32 +188,7 @@ nav ul li a:hover {
     100% { background-position: 0 0; }
 }
 
-/* ========== 4. بخش‌های بین تصاویر ========== */
-.info-section {
-    padding: 50px 20px;
-    background: rgba(255, 65, 108, 0.8);
-    text-align: center;
-}
-
-.info-section h3 {
-    font-size: 2rem;
-    color: white;
-}
-
-.info-section p {
-    font-size: 1.5rem;
-    color: white;
-}
-
-.token-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-}
-
-/* ========== 5. دکمه‌ها ========== */
+/* ========== 6. دکمه‌ها ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
@@ -204,29 +205,7 @@ nav ul li a:hover {
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
 }
 
-/* دکمه با رنگ آبی برای تنوع */
-.blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-}
-
-.blue-btn:hover {
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
-}
-
-/* ========== 6. انیمیشن‌های ورود بخش‌ها هنگام اسکرول ========== */
-section {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease-out;
-}
-
-/* وقتی کاربر اسکرول می‌کند، بخش‌ها ظاهر می‌شوند */
-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ========== 7. استایل‌های بخش فوتر ========== */
+/* ========== 7. تنظیمات فوتر ========== */
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.8);
@@ -235,93 +214,18 @@ footer {
     width: 100%;
 }
 
-/* ========== 8. Media Queries برای ریسپانسیو ========== */
-
-/* موبایل */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-
+/* ========== 8. تنظیمات برای تبلت و دسکتاپ ========== */
+@media (min-width: 1024px) {
     .menu-icon {
-        display: block;
+        display: none;
     }
 
     nav ul {
-        display: none;
-        width: 100%;
+        display: flex;
         position: static;
-        background-color: rgba(0, 0, 0, 0.95);
-        margin-top: 20px;
-    }
-
-    nav ul.show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-
-    #hero, #hero2, #hero3 {
-        height: 100vh;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .info-section {
-        margin: 30px auto;
-        padding: 30px 20px;
-    }
-}
-
-/* تبلت */
-@media (max-width: 1024px) {
-    .container {
-        padding: 0 10px;
-    }
-
-    .menu-icon {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-        width: 80%;
-    }
-
-    nav ul.show {
-        display: flex;
-        flex-direction: column;
-    }
-
-    #hero, #hero2, #hero3 {
-        height: 90vh;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .info-section {
-        margin: 40px auto;
-    }
-}
-
-/* دسکتاپ */
-@media (min-width: 1025px) {
-    .menu-icon {
-        display: none;
-    }
-
-    nav ul {
-        display: flex;
-        justify-content: flex-start;
+        background: none;
         width: auto;
+        box-shadow: none;
     }
 
     nav ul li {
@@ -339,4 +243,4 @@ footer {
         margin: 50px auto;
         max-width: 800px;
     }
-}
+    }
