@@ -156,7 +156,17 @@ nav ul li a:hover {
     position: relative;
 }
 
-/* تنظیم جهت حرکت پس‌زمینه */
+@keyframes moveRight {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+@keyframes moveLeft {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* تنظیم جهت حرکت پس‌زمینه برای هر تصویر */
 #hero {
     background: url('images/background.jpg') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
@@ -179,17 +189,7 @@ nav ul li a:hover {
 
 #hero5 {
     background: url('images/background5.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
-}
-
-@keyframes moveRight {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-@keyframes moveLeft {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
+    animation: moveRight 20s infinite linear; /* حرکت به سمت راست */
 }
 
 /* ========== 6. بهبود خوانایی متن‌های روی تصاویر ========== */
