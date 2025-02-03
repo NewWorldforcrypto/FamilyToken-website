@@ -145,7 +145,7 @@ nav ul li a:hover {
 }
 
 /* ========== 5. پس‌زمینه‌ها و تصاویر ========== */
-#hero, #hero2, #hero3, #hero4 {
+#hero, #hero2, #hero3, #hero4, #hero5 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -177,14 +177,9 @@ nav ul li a:hover {
     animation: moveLeft 20s infinite linear;
 }
 
-@keyframes moveRight {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-@keyframes moveLeft {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
+#hero5 {
+    background: url('images/background5.jpg') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
 }
 
 /* ========== 6. بهبود خوانایی متن‌های روی تصاویر ========== */
@@ -198,7 +193,6 @@ nav ul li a:hover {
     border-radius: 10px;
     display: inline-block;
 }
-
 /* ========== 7. Info Sections Between Backgrounds ========== */
 .info-section {
     padding: 50px 20px;
@@ -283,7 +277,7 @@ footer {
         margin: 0 20px;
     }
 
-    #hero, #hero2, #hero3, #hero4 {
+    #hero, #hero2, #hero3, #hero4, #hero5 {
         height: 100vh;
         background-size: cover;
         background-position: center;
