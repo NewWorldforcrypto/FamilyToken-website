@@ -1,4 +1,4 @@
-/* Global Styles */
+/* ========== General Styles ========== */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -9,7 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
+/* ========== Header Section ========== */
 header {
     display: flex;
     justify-content: space-between;
@@ -22,16 +22,67 @@ header {
     z-index: 100;
 }
 
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: #ff8c00;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* فاصله بین لوگو و اسم */
 }
 
-/* Navigation */
+.token-logo {
+    width: 40px; /* اندازه لوگو رو کوچیک می‌کنیم */
+    height: 40px; /* ارتفاع لوگو رو هم برابر عرضش می‌گذاریم */
+    border-radius: 50%; /* دایره‌ای کردن لوگو */
+    object-fit: cover; /* اطمینان از این‌که فقط قسمت سکه نمایش داده بشه */
+}
+
+.logo-text {
+    font-size: 24px; /* اندازه متن "FamilyToken" */
+    font-weight: bold;
+    color: #ff8c00; /* رنگ طلایی یا رنگ دلخواه */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation Menu */
+nav ul {
+    display: none;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 250px;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 150;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+nav ul.show {
+    display: flex;
+}
+
+nav ul li {
+    margin: 15px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ff4b2b;
+    border-radius: 5px;
+}
+
+/* Main Menu Icon */
 .menu-icon {
     display: block;
+    position: fixed;
     top: 15px;
     right: 15px;
     width: 55px;
@@ -39,56 +90,63 @@ header {
     background-color: #ff8c00;
     color: white;
     font-size: 32px;
+    font-weight: bold;
     text-align: center;
     line-height: 55px;
     border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: 0.3s;
+    z-index: 200;
+    transition: 0.3s ease-in-out;
 }
 
 .menu-icon:hover {
     background-color: #ff6500;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
 }
 
-nav ul {
-    display: none;
-    flex-direction: column;
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    width: 250px;
-    background: rgba(0, 0, 0, 0.95);
-    border-radius: 10px;
-    padding: 15px;
-    z-index: 150;
-}
-
-nav ul.show {
-    display: flex;
-}
-
-/* Hero Sections */
-#hero, #hero2, #hero3 {
+/* ========== Hero Section ========== */
+#hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: cover;
-    background-position: center;
+    background: url('images/background.jpg') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
 }
 
-#hero { background-image: url('images/background.jpg'); }
-#hero2 { background-image: url('images/background2.jpg'); }
-#hero3 { background-image: url('images/background3.jpg'); }
+@keyframes moveRight {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
 
-/* Info Section */
+/* ========== Info Section ========== */
 .info-section {
     padding: 50px 20px;
     background: rgba(255, 65, 108, 0.8);
+    text-align: center;
 }
 
-/* Buttons */
+.info-section h3 {
+    font-size: 2rem;
+    color: white;
+}
+
+.info-section p {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.token-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+/* ========== Button Styles ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
@@ -105,11 +163,7 @@ nav ul.show {
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
 }
 
-.blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-}
-
-/* Footer */
+/* ========== Footer Section ========== */
 footer {
     padding: 20px;
     background: rgba(0, 0, 0, 0.8);
