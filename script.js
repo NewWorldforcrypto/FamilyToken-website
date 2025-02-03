@@ -1,24 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let sections = document.querySelectorAll(".parallax");
+    let sections = document.querySelectorAll("section");
+    let options = { threshold: 0.3 };
 
-    window.addEventListener("scroll", function () {
-        let scrollY = window.scrollY;
-        sections.forEach((section, index) => {
-            let speed = section.getBoundingClientRect().top * 0.1;
-            section.style.backgroundPositionY = `${speed}px`;
-            
-            // Smooth fade-in effect for text and buttons
-            let text = section.querySelector("h1, h2, p, .btn");
-            if (text) {
-                let opacity = Math.max(0, 1 - Math.abs(speed) / 200);
-                text.style.opacity = opacity;
-                text.style.transform = `translateY(${speed * 0.2}px)`;
+    let observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
             }
         });
-    });
+    }, options);
 
-    sections.forEach((section) => {
-        let bgImage = section.getAttribute("data-bg");
-        section.style.backgroundImage = `url('images/${bgImage}')`;
+    sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "all 0.6s ease-out";
+        observer.observe(section);
     });
 });
