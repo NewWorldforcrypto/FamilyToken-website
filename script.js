@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let sections = document.querySelectorAll(".parallax .content");
+    let sections = document.querySelectorAll("section");
     let options = { threshold: 0.2 };
 
-    let observer = new IntersectionObserver(function (entries) {
+    let observer = new IntersectionObserver(function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = "1";
@@ -12,17 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }, options);
 
     sections.forEach(section => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        section.style.transition = "all 0.6s ease-out";
         observer.observe(section);
     });
-
-    // Fixing Parallax Issue for Mobile
-    function updateParallax() {
-        let scrollPosition = window.scrollY;
-        document.querySelectorAll(".parallax").forEach((section, index) => {
-            let speed = 0.5;
-            section.style.backgroundPositionY = (scrollPosition * speed) + "px";
-        });
-    }
-
-    window.addEventListener("scroll", updateParallax);
 });
