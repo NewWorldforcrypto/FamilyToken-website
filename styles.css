@@ -1,48 +1,48 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
+/* Basic reset for the body */
+body, h1, h2, p, ul {
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: white;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* General layout settings */
+body {
+    background-color: #f4f4f4;
 }
 
 /* Header */
 header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
+    align-items: center;
 }
 
-.logo {
-    font-size: 24px;
+header .logo {
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
-nav ul {
+header nav ul {
     list-style: none;
     display: flex;
-    padding: 0;
 }
 
-nav ul li {
-    margin: 0 15px;
+header nav ul li {
+    margin-left: 2rem;
 }
 
-nav ul li a {
+header nav ul li a {
     color: white;
     text-decoration: none;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-    color: #ff416c;
+header nav ul li a:hover {
+    color: #ffcc00;
 }
 
 /* Hero Section */
@@ -51,109 +51,174 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
     background: url('images/background.jpg') no-repeat center center/cover;
     animation: moveBackground 10s infinite linear;
+    background-size: cover;
 }
 
-@keyframes moveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
-}
-
-h1 {
+#hero h1 {
     font-size: 3rem;
-    margin: 0;
-    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
-p {
+#hero p {
     font-size: 1.2rem;
-    margin-top: 10px;
+    margin-bottom: 2rem;
 }
 
-/* Button */
-.btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+#hero .btn {
+    padding: 1rem 2rem;
+    background-color: #ffcc00;
     color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
+    text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
-    display: inline-block;
-    margin-top: 20px;
+    border-radius: 5px;
 }
 
-.btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+#hero .btn:hover {
+    background-color: #e6b800;
 }
 
-/* Sections */
-section {
-    padding: 80px 20px;
+/* About Section */
+#about {
+    height: 100vh;
+    padding: 5rem;
+    background: url('images/background2.jpg') no-repeat center center/cover;
+    animation: fadeInBackground 15s ease-in-out infinite;
+    background-size: cover;
+    background-position: center;
 }
 
-h2 {
+#about h2 {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
+}
+
+#about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Roadmap Section */
+#roadmap {
+    height: 100vh;
+    padding: 5rem;
+    background: url('images/background3.jpg') no-repeat center center/cover;
+    animation: fadeInBackground2 15s ease-in-out infinite;
+    background-size: cover;
+    background-position: center;
+}
+
+#roadmap h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#roadmap ul {
+    font-size: 1.2rem;
+    list-style-type: none;
+}
+
+#roadmap ul li {
+    margin: 0.5rem 0;
 }
 
 /* Team Section */
+#team {
+    height: 100vh;
+    padding: 5rem;
+    background: url('images/background4.jpg') no-repeat center center/cover;
+    animation: fadeInBackground3 15s ease-in-out infinite;
+    background-size: cover;
+    background-position: center;
+}
+
+#team h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
 .team-member {
-    display: inline-block;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
 .team-member img {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 3px solid white;
+    margin-right: 1rem;
+}
+
+.team-member p {
+    font-size: 1.2rem;
+}
+
+/* Contact Section */
+#contact {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    color: white;
+    padding: 5rem;
+}
+
+#contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#contact .btn {
+    padding: 1rem 2rem;
+    background-color: #ffcc00;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#contact .btn:hover {
+    background-color: #e6b800;
 }
 
 /* Footer */
 footer {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    position: relative;
-    bottom: 0;
-    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-    .logo {
-        font-size: 20px;
-    }
-
-    nav ul {
-        flex-direction: column;
-    }
-
-    #hero {
-        height: 80vh;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
+/* Animations */
+@keyframes moveBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
 }
 
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
+@keyframes fadeInBackground {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
 
-    .team-member img {
-        width: 120px;
-        height: 120px;
-    }
+@keyframes fadeInBackground2 {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
 
-    section {
-        padding: 50px 10px;
-    }
+@keyframes fadeInBackground3 {
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.5; transform: scale(1); }
 }
