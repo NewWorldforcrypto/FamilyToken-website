@@ -20,81 +20,10 @@ header {
     width: 100%;
     top: 0;
     z-index: 100;
-    transition: top 0.3s;
 }
 
-.logo {
-    font-size: 30px;
-    font-weight: bold;
-    color: #ff8c00;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
-}
-
-/* منوی همبرگری */
-.menu-icon {
-    display: block;
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    width: 55px;
-    height: 55px;
-    background-color: #ff8c00;
-    color: white;
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    line-height: 55px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    z-index: 200;
-    transition: 0.3s ease-in-out;
-}
-
-.menu-icon:hover {
-    background-color: #ff6500;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-/* استایل برای نمایش منوی بازشونده */
-nav ul {
-    display: none;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    width: 250px;
-    border-radius: 10px;
-    padding: 15px;
-    z-index: 150;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-}
-
-nav ul.show {
-    display: flex;
-}
-
-nav ul li {
-    margin: 15px 0;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    display: block;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    background-color: #ff4b2b;
-    border-radius: 5px;
-}
-
-/* Hero Section */
-#hero, #hero2 {
+/* Hero Sections */
+#hero, #hero2, #hero3 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -102,39 +31,51 @@ nav ul li a:hover {
     align-items: center;
     background-size: cover;
     background-position: center;
-    animation: moveBackground 20s infinite linear;
+    position: relative;
 }
 
+/* پس‌زمینه‌ها با حرکت متناوب */
 #hero {
     background: url('images/background.jpg') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
 }
 
 #hero2 {
     background: url('images/background2.jpg') no-repeat center center/cover;
+    animation: moveLeft 20s infinite linear;
 }
 
-@keyframes moveBackground {
+#hero3 {
+    background: url('images/background3.jpg') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
+}
+
+/* انیمیشن‌های حرکت پس‌زمینه */
+@keyframes moveRight {
     0% { background-position: 0 0; }
-    100% { background-position: 100% 100%; }
+    100% { background-position: 100% 0; }
 }
 
-/* بخش بین دو تصویر */
-#section-middle {
+@keyframes moveLeft {
+    0% { background-position: 100% 0; }
+    100% { background-position: 0 0; }
+}
+
+/* بخش‌های توضیحی بین تصاویر */
+.info-section {
     padding: 50px 20px;
     background: rgba(255, 65, 108, 0.8);
     text-align: center;
 }
 
-#section-middle h3 {
+.info-section h3 {
     font-size: 2rem;
     color: white;
-    margin-bottom: 10px;
 }
 
-#section-middle p {
+.info-section p {
     font-size: 1.5rem;
     color: white;
-    margin-top: 20px;
 }
 
 .token-logo {
@@ -155,12 +96,20 @@ nav ul li a:hover {
     transition: 0.3s;
     display: inline-block;
     margin-top: 20px;
-    z-index: 2;
 }
 
 .btn:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+}
+
+/* دکمه با رنگ آبی برای تنوع */
+.blue-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.blue-btn:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
 }
 
 /* Footer */
