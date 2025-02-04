@@ -144,7 +144,7 @@ nav ul li a:hover {
     }
 }
 
-/* ========== 5. پس‌زمینه‌ها و تصاویر ========== */
+/* استایل کلی پس‌زمینه‌ها */
 #hero, #hero2, #hero3, #hero4, #hero5 {
     height: 100vh;
     display: flex;
@@ -154,8 +154,10 @@ nav ul li a:hover {
     background-size: cover;
     background-position: center;
     position: relative;
+    background-attachment: fixed; /* اضافه کردن پارالاکس */
 }
 
+/* تنظیم جهت حرکت پس‌زمینه‌ها */
 @keyframes moveRight {
     0% { background-position: 0 0; }
     100% { background-position: 100% 0; }
@@ -166,7 +168,6 @@ nav ul li a:hover {
     100% { background-position: 0 0; }
 }
 
-/* تنظیم جهت حرکت پس‌زمینه برای هر تصویر */
 #hero {
     background: url('images/background.jpg') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
@@ -189,7 +190,7 @@ nav ul li a:hover {
 
 #hero5 {
     background: url('images/background5.jpg') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear; /* حرکت به سمت راست */
+    animation: moveRight 20s infinite linear;
 }
 
 /* ========== 6. بهبود خوانایی متن‌های روی تصاویر ========== */
