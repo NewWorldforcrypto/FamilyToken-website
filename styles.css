@@ -1,10 +1,22 @@
-/* ========== 1. General Styles ========== */
+/* پس‌زمینه متحرک مرتبط با خانواده */
+#familyBackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* پس‌زمینه در پشت همه عناصر باشه */
+    pointer-events: none; /* جلوگیری از کلیک روی پس‌زمینه */
+    background: radial-gradient(circle, rgba(255, 200, 100, 0.2) 20%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+/* تنظیمات عمومی سایت */
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
+    overflow-x: hidden;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     background-color: #121212;
@@ -12,14 +24,14 @@ html, body {
     text-align: center;
 }
 
+/* تضمین اینکه محتوای سایت روی پس‌زمینه باقی بمونه */
 body {
     position: relative;
     z-index: 1;
 }
-
 section {
     position: relative;
-    z-index: 2; /* بخش‌های سایت باید روی گوی و ستاره‌ها باشن */
+    z-index: 2;
 }
 
 /* تنظیم برای اطمینان از اینکه محتوا در مرکز صفحه قرار بگیرد */
@@ -323,16 +335,6 @@ footer {
 }
 
 #starsCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -5;
-    pointer-events: none;
-}
-
-#threeCanvas {
     position: fixed;
     top: 0;
     left: 0;
