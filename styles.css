@@ -300,3 +300,22 @@ footer {
         max-width: 800px;
     }
 }
+
+
+#starsCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* ستاره‌ها باید پشت محتوا باشند */
+}
+
+#threeCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* گوی سه‌بعدی باید پشت محتوا باشد */
+}
