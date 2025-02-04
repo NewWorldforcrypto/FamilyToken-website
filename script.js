@@ -72,99 +72,59 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
-const canvas = document.getElementById("starsCanvas");
-const ctx = canvas.getContext("2d");
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("nightSceneCanvas"), alpha: true });
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-// آرایه خانه‌های نورانی
-let houses = [];
-const numHouses = 20; // تعداد خانه‌ها
+// نورپردازی
+const streetLight = new THREE.PointLight(0xffd700, 1, 50); // نور زرد گرم
+streetLight.position.set(0, 5, 10);
+scene.add(streetLight);
 
-for (let i = 0; i < numHouses; i++) {
-    houses.push({
-        x: Math.random() * canvas.width,
-        y: canvas.height - Math.random() * 100 - 50,
-        width: 50,
-        height: 40,
-        lightOn: Math.random() > 0.5, // روشن یا خاموش
-        lightAlpha: Math.random() * 0.5 + 0.5, // شدت نور
-        fadeDirection: Math.random() > 0.5 ? 1 : -1
-    });
-}
+// ساخت خانه‌ها
+const houseGeometry = new THREE.BoxGeometry(4, 4, 4);
+const houseMaterial = new THREE.MeshLambertMaterial({ color: 0xf2c57f });
+const house = new THREE.Mesh(houseGeometry, houseMaterial);
+house.position.set(0, 2, -10);
+scene.add(house);
 
-// ایجاد ستاره‌های دنباله‌دار
-let shootingStars = [];
+// اضافه کردن پنجره‌ها و چراغ‌ها داخل خانه‌ها
+const windowLight = new THREE.PointLight(0xfff000, 0.5, 10); // رنگ نور گرم برای پنجره‌ها
+windowLight.position.set(0, 2, -10);
+scene.add(windowLight);
 
-function createShootingStar() {
-    return {
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height * 0.5,
-        length: Math.random() * 50 + 30,
-        speed: Math.random() * 5 + 2
-    };
-}
+// ماه و ستاره‌ها
+const moonGeometry = new THREE.SphereGeometry(1, 32, 32);
+const moonMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaaa });
+const moon = new THREE.Mesh(moonGeometry, moonMaterial);
+moon.position.set(10, 10, -30);
+scene.add(moon);
 
-setInterval(() => {
-    shootingStars.push(createShootingStar());
-    if (shootingStars.length > 5) shootingStars.shift();
-}, 3000);
-
-// انیمیشن نهایی
-function animateScene() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // کهکشان درخشان
-    const gradient = ctx.createRadialGradient(
-        canvas.width / 2, canvas.height / 3, 50,
-        canvas.width / 2, canvas.height / 3, 300
-    );
-    gradient.addColorStop(0, "rgba(255, 215, 0, 0.5)");
-    gradient.addColorStop(1, "rgba(255, 165, 0, 0)");
-
-    ctx.fillStyle = gradient;
-    ctx.beginPath();
-    ctx.arc(canvas.width / 2, canvas.height / 3, 300, 0, Math.PI * 2);
-    ctx.fill();
-
-    // خانه‌های نورانی
-    houses.forEach(house => {
-        house.lightAlpha += house.fadeDirection * 0.01;
-        if (house.lightAlpha <= 0.3 || house.lightAlpha >= 1) {
-            house.fadeDirection *= -1;
-        }
-
-        ctx.fillStyle = "#8B4513"; // رنگ خانه
-        ctx.fillRect(house.x, house.y, house.width, house.height);
-        
-        ctx.fillStyle = `rgba(255, 223, 186, ${house.lightAlpha})`; // نور پنجره
-        ctx.fillRect(house.x + 15, house.y + 10, 20, 20);
-    });
-
-    // ستاره‌های دنباله‌دار
-    shootingStars.forEach(star => {
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(star.x, star.y);
-        ctx.lineTo(star.x - star.length, star.y + star.length);
-        ctx.stroke();
-        star.x += star.speed;
-        star.y += star.speed * 0.5;
-    });
-
-    requestAnimationFrame(animateScene);
-}
-
-// شروع انیمیشن
-animateScene();
-
-// واکنش‌گرایی
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+// آسمان با افکت‌های ستاره‌ای
+const starsGeometry = new THREE.SphereGeometry(100, 100, 100);
+const starsMaterial = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    wireframe: true,
+    opacity: 0.1,
+    transparent: true
 });
+const starsMesh = new THREE.Mesh(starsGeometry, starsMaterial);
+scene.add(starsMesh);
+
+camera.position.z = 30;
+
+function animate() {
+    requestAnimationFrame(animate);
+    moon.rotation.y += 0.01;
+    starsMesh.rotation.y += 0.0001;
+
+    renderer.render(scene, camera);
+}
+
+animate();
 
 // ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
 document.querySelectorAll(".btn").forEach(button => {
