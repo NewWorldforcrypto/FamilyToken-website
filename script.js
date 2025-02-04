@@ -72,104 +72,67 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
-// ستاره‌های متحرک
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 
-// تنظیم اندازه canvas
+// تنظیم اندازه‌ی canvas به اندازه‌ی صفحه
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// چاپ ابعاد canvas در کنسول برای بررسی
-console.log("Canvas Size: ", canvas.width, canvas.height);
-
+// ایجاد آرایه‌ی ستاره‌ها
 let stars = [];
-let numStars = 150;
+const numStars = 200; // تعداد ستاره‌ها
 
-// ایجاد ستاره‌ها
 for (let i = 0; i < numStars; i++) {
     stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-        speed: Math.random() * 0.5 + 0.2
+        radius: Math.random() * 2 + 1, // اندازه‌ی متغیر
+        speed: Math.random() * 0.5 + 0.2,
+        alpha: Math.random() * 0.5 + 0.5, // میزان درخشندگی تصادفی
+        fadeDirection: Math.random() > 0.5 ? 1 : -1 // تغییر شفافیت
     });
 }
 
-// چاپ اطلاعات ستاره‌ها در کنسول برای بررسی
-console.log("Stars: ", stars);
-
+// متحرک‌سازی ستاره‌ها
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+    
     stars.forEach(star => {
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "white";
-        ctx.fill();
+        // درخشندگی نرم
+        star.alpha += star.fadeDirection * 0.01;
+        if (star.alpha <= 0.3 || star.alpha >= 1) {
+            star.fadeDirection *= -1;
+        }
 
+        // حرکت ستاره‌ها
         star.y += star.speed;
         if (star.y > canvas.height) {
             star.y = 0;
             star.x = Math.random() * canvas.width;
         }
+
+        // رسم ستاره
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 223, 186, ${star.alpha})`; // رنگ گرم (طلایی)
+        ctx.fill();
     });
 
     requestAnimationFrame(animateStars);
 }
 
+// شروع انیمیشن
 animateStars();
 
-// ایجاد صحنه، دوربین و رندر
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("familyBackground"), alpha: true });
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// ایجاد پارتیکل‌ها (نقاط نورانی)
-const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 200; // تعداد نقاط نورانی
-const positions = new Float32Array(particlesCount * 3);
-
-for (let i = 0; i < particlesCount * 3; i++) {
-    positions[i] = (Math.random() - 0.5) * 20; // پراکندگی در فضا
-}
-
-particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-
-// متریال نقاط نورانی
-const particlesMaterial = new THREE.PointsMaterial({
-    color: 0xffcc99, // رنگ گرم برای حس خانوادگی
-    size: 0.2, // اندازه نقاط
-    transparent: true,
-    opacity: 0.8
-});
-
-const particles = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particles);
-
-camera.position.z = 10;
-
-// متحرک‌سازی پارتیکل‌ها
-function animateParticles() {
-    requestAnimationFrame(animateParticles);
-
-    // حرکت آرام نقاط نورانی
-    particles.rotation.y += 0.002;
-    particles.rotation.x += 0.001;
-
-    renderer.render(scene, camera);
-}
-
-animateParticles();
-
-// تنظیمات ریسایز برای واکنش‌گرایی
+// واکنش‌گرایی برای تنظیم اندازه‌ی مجدد
 window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    stars.forEach(star => {
+        star.x = Math.random() * canvas.width;
+        star.y = Math.random() * canvas.height;
+    });
 });
 
 // ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
