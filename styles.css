@@ -328,8 +328,9 @@ footer {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -5;
+    z-index: -1;
     pointer-events: none;
+    background: linear-gradient(to bottom, #ffcc70, #ff9f45, #ffd369); /* پس‌زمینه‌ی گرم */
 }
 
 /* پس‌زمینه با حرکت پارالاکس */
