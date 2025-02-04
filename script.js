@@ -106,7 +106,15 @@ scene.add(moon);
 
 // آسمان با افکت‌های ستاره‌ای
 const textureLoader = new THREE.TextureLoader();
-const galaxyTexture = textureLoader.load("images/galaxy.jpg");
+const galaxyTexture = textureLoader.load("images/galaxy.jpg", 
+    function(texture) {
+        console.log("Texture loaded successfully");
+    }, 
+    undefined, 
+    function(err) {
+        console.log("Error loading texture:", err);
+    }
+);
 
 const starsMaterial = new THREE.MeshBasicMaterial({
     map: galaxyTexture, // اعمال تصویر کهکشان
