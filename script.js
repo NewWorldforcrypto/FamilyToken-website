@@ -82,6 +82,7 @@ canvas.height = window.innerHeight;
 let stars = [];
 let numStars = 150;
 
+// تنظیم ستاره‌ها
 for (let i = 0; i < numStars; i++) {
     stars.push({
         x: Math.random() * canvas.width,
@@ -91,6 +92,7 @@ for (let i = 0; i < numStars; i++) {
     });
 }
 
+// حرکت ستاره‌ها
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -119,10 +121,15 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("thre
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// ایجاد گوی سه‌بعدی
 const geometry = new THREE.SphereGeometry(5, 32, 32);
 const material = new THREE.MeshBasicMaterial({ color: 0xffcc00, wireframe: true });
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
+
+// اضافه کردن نور به صحنه
+const light = new THREE.AmbientLight(0x404040, 1);  // نور ملایم محیط
+scene.add(light);
 
 camera.position.z = 20;
 
@@ -133,7 +140,7 @@ function animate() {
 }
 animate();
 
-// ================== 4. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
+// ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("click", (event) => {
         event.preventDefault();
