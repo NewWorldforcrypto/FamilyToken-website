@@ -332,65 +332,66 @@ footer {
     pointer-events: none;
 }
 
-/* پس‌زمینه اصلی با رنگ‌های غنی و انتقالات نرم */
+/* پس‌زمینه متحرک به صورت طبیعی با گرادیان‌های پیچیده */
 .animated-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to bottom, #E0AFFF, #9B82D3, #6E5B99);
-    animation: backgroundMovement 20s ease-in-out infinite;
+    background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88);
+    animation: naturalBackgroundMovement 30s ease-in-out infinite;
     z-index: -1;
 }
 
-/* تپه‌های زیبا و طبیعی با عمق بیشتر */
+/* تپه‌های طبیعی با سایه و عمق واقعی */
 .hill {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 250px;
-    background: radial-gradient(circle at bottom, #A3D9A5, #5B9A69);
+    height: 300px;
+    background: radial-gradient(circle at bottom, #7C9A92, #4E6C56);
     border-radius: 50% 50% 0 0;
-    box-shadow: inset 0px -20px 30px rgba(0, 0, 0, 0.2), 0px 20px 50px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px -40px 80px rgba(0, 0, 0, 0.15), 0px 40px 60px rgba(0, 0, 0, 0.1);
 }
 
-/* اضافه کردن سایه به تپه‌ها */
+/* طراحی سایه تپه‌ها برای عمق بیشتر */
 .hill-shadow {
     position: absolute;
-    bottom: 10px;
+    bottom: 20px;
     width: 100%;
-    height: 30px;
-    background: rgba(0, 0, 0, 0.2);
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
 }
 
-/* طراحی ابرها با جزئیات و حرکت طبیعی */
+/* ابرهای طبیعی و حرکت تصادفی آن‌ها */
 .cloud {
     position: absolute;
-    width: 200px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.9);
+    width: 250px;
+    height: 130px;
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 50%;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-    animation: cloudMove 30s linear infinite;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    animation: cloudMove 25s ease-in-out infinite;
 }
 
-/* حرکت ابرها */
+/* حرکت تصادفی ابرها برای طبیعی‌تر شدن */
 @keyframes cloudMove {
-    0% { transform: translateX(-150px); }
-    100% { transform: translateX(100vw); }
+    0% { transform: translateX(-300px) translateY(0); }
+    50% { transform: translateX(50vw) translateY(-50px); }
+    100% { transform: translateX(100vw) translateY(0); }
 }
 
-/* سرعت‌های متفاوت برای ابرها */
-.cloud1 { top: 20%; left: -150px; animation-duration: 35s; }
-.cloud2 { top: 40%; left: -250px; animation-duration: 40s; }
-.cloud3 { top: 60%; left: -300px; animation-duration: 45s; }
-.cloud4 { top: 70%; left: -350px; animation-duration: 50s; }
+/* سرعت‌های متفاوت برای حرکت ابرها */
+.cloud1 { top: 15%; left: -150px; animation-duration: 30s; }
+.cloud2 { top: 40%; left: -200px; animation-duration: 35s; }
+.cloud3 { top: 60%; left: -250px; animation-duration: 40s; }
+.cloud4 { top: 70%; left: -300px; animation-duration: 50s; }
 
-/* انیمیشن پس‌زمینه */
-@keyframes backgroundMovement {
-    0% { background: linear-gradient(to bottom, #FFD700, #FF5733, #9B4D20); }
-    50% { background: linear-gradient(to bottom, #D1C4E9, #9A90C8, #6E5B99); }
-    100% { background: linear-gradient(to bottom, #E0AFFF, #9B82D3, #6E5B99); }
+/* انیمیشن پس‌زمینه طبیعی (تغییر در طول زمان) */
+@keyframes naturalBackgroundMovement {
+    0% { background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88); }
+    50% { background: linear-gradient(to bottom, #6C9DC2, #4A7D92, #3F5768); }
+    100% { background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88); }
 }
