@@ -322,34 +322,12 @@ footer {
     transform: translateY(0);
 }
 
-#starsCanvas {
+#nightSceneCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(to top, #1a1a2e, #16213e, #0f3460);
-}
-
-/* پس‌زمینه با حرکت پارالاکس */
-.parallax-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url('path_to_your_image.jpg') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1;
-    transform: translateZ(0) scale(1.1);
-    will-change: transform;
-    animation: parallaxEffect 30s ease-in-out infinite;
-}
-
-@keyframes parallaxEffect {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-    100% { transform: translateY(0); }
+    z-index: -2; /* پشت محتوا قرار بگیرد */
+    pointer-events: none; /* جلوگیری از تداخل با کلیک‌ها */
 }
