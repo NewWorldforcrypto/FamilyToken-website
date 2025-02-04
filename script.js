@@ -120,57 +120,57 @@ function animateStars() {
 
 animateStars();
 
-// 1️⃣ ایجاد صحنه، دوربین و رندرر
+// ایجاد صحنه، دوربین و رندر
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("threeCanvas"), alpha: true });
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("familyBackground"), alpha: true });
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// 2️⃣ اضافه کردن نور برای جلوه‌ی طبیعی‌تر
-const light = new THREE.PointLight(0xffffff, 1.5, 100);
-light.position.set(10, 10, 10);
-scene.add(light);
+// ایجاد پارتیکل‌ها (نقاط نورانی)
+const particlesGeometry = new THREE.BufferGeometry();
+const particlesCount = 200; // تعداد نقاط نورانی
+const positions = new Float32Array(particlesCount * 3);
 
-const ambientLight = new THREE.AmbientLight(0x404040);
-scene.add(ambientLight);
+for (let i = 0; i < particlesCount * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 20; // پراکندگی در فضا
+}
 
-// بارگذاری تکسچر
-const textureLoader = new THREE.TextureLoader();
-const saturnTexture = textureLoader.load('images/saturn_texture.jpg');
+particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-// ایجاد گوی با تکسچر زحل
-const geometry = new THREE.SphereGeometry(5, 64, 64); // افزایش تعداد تقسیمات برای دقت بیشتر
-const material = new THREE.MeshPhongMaterial({
-    map: saturnTexture,
-    shininess: 5,  // تنظیم میزان درخشندگی
+// متریال نقاط نورانی
+const particlesMaterial = new THREE.PointsMaterial({
+    color: 0xffcc99, // رنگ گرم برای حس خانوادگی
+    size: 0.2, // اندازه نقاط
+    transparent: true,
+    opacity: 0.8
 });
-const sphere = new THREE.Mesh(geometry, material);
-scene.add(sphere);
 
-// تنظیم موقعیت دوربین
-camera.position.z = 20;
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+scene.add(particles);
 
-// نورپردازی
-const ambientLight = new THREE.AmbientLight(0x404040, 1); // نور محیطی
-scene.add(ambientLight);
+camera.position.z = 10;
 
-const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-pointLight.position.set(10, 10, 10);
-scene.add(pointLight);
+// متحرک‌سازی پارتیکل‌ها
+function animateParticles() {
+    requestAnimationFrame(animateParticles);
 
-// چرخش طبیعی گوی
-function animate() {
-    requestAnimationFrame(animate);
-
-    // چرخش گوی به سمت y و کج کردن آن به سمت x
-    sphere.rotation.y += 0.01; // چرخش حول محور Y
-    sphere.rotation.x += 0.002; // کمی کج کردن حول محور X
+    // حرکت آرام نقاط نورانی
+    particles.rotation.y += 0.002;
+    particles.rotation.x += 0.001;
 
     renderer.render(scene, camera);
 }
 
-animate();
+animateParticles();
+
+// تنظیمات ریسایز برای واکنش‌گرایی
+window.addEventListener("resize", () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+});
 
 // ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
 document.querySelectorAll(".btn").forEach(button => {
