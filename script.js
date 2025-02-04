@@ -80,7 +80,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // نورپردازی
-const streetLight = new THREE.PointLight(0xffd700, 1, 50); // نور زرد گرم
+const streetLight = new THREE.PointLight(0xffd700, 1, 100);
+streetLight.castShadow = true; // اضافه کردن سایه برای طبیعی‌تر شدن
 streetLight.position.set(0, 5, 10);
 scene.add(streetLight);
 
@@ -104,12 +105,12 @@ moon.position.set(10, 10, -30);
 scene.add(moon);
 
 // آسمان با افکت‌های ستاره‌ای
-const starsGeometry = new THREE.SphereGeometry(100, 100, 100);
+const textureLoader = new THREE.TextureLoader();
+const galaxyTexture = textureLoader.load("images/galaxy.jpg");
+
 const starsMaterial = new THREE.MeshBasicMaterial({
-    color: 0xffffff,
-    wireframe: true,
-    opacity: 0.1,
-    transparent: true
+    map: galaxyTexture, // اعمال تصویر کهکشان
+    side: THREE.BackSide // معکوس کردن جهت آسمان برای نمایش داخل
 });
 const starsMesh = new THREE.Mesh(starsGeometry, starsMaterial);
 scene.add(starsMesh);
