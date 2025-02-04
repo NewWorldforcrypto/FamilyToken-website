@@ -120,24 +120,55 @@ function animateStars() {
 
 animateStars();
 
-// گوی سه‌بعدی با Three.js
+// 1️⃣ ایجاد صحنه، دوربین و رندرر
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("threeCanvas"), alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// ایجاد گوی
-const geometry = new THREE.SphereGeometry(5, 32, 32);
-const material = new THREE.MeshBasicMaterial({ color: 0xffcc00, wireframe: true });
-const sphere = new THREE.Mesh(geometry, material);
-scene.add(sphere);
+// 2️⃣ اضافه کردن نور برای جلوه‌ی طبیعی‌تر
+const light = new THREE.PointLight(0xffffff, 1.5, 100);
+light.position.set(10, 10, 10);
+scene.add(light);
 
+const ambientLight = new THREE.AmbientLight(0x404040);
+scene.add(ambientLight);
+
+// 3️⃣ بارگذاری تکسچر زحل
+const textureLoader = new THREE.TextureLoader();
+const saturnTexture = textureLoader.load('images/saturn_texture.jpg');  // مسیر تکسچر زحل
+
+// 4️⃣ ایجاد کره برای سیاره زحل
+const geometry = new THREE.SphereGeometry(5, 64, 64);
+const material = new THREE.MeshStandardMaterial({
+    map: saturnTexture,
+    metalness: 0.7,
+    roughness: 0.3
+});
+const saturn = new THREE.Mesh(geometry, material);
+scene.add(saturn);
+
+// 5️⃣ ایجاد حلقه‌ی زحل
+const ringGeometry = new THREE.RingGeometry(6, 10, 64);
+const ringMaterial = new THREE.MeshStandardMaterial({
+    color: 0xd4af37, // رنگ طلایی برای حلقه
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.7
+});
+const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+ring.rotation.x = Math.PI / 2.2; // چرخاندن حلقه به زاویه مناسب
+scene.add(ring);
+
+// 6️⃣ تنظیم موقعیت دوربین
 camera.position.z = 20;
 
+// 7️⃣ تابع انیمیشن برای چرخش سیاره و حلقه
 function animate() {
     requestAnimationFrame(animate);
-    sphere.rotation.y += 0.01;
+    saturn.rotation.y += 0.002; // چرخش آهسته سیاره
+    ring.rotation.z += 0.001;   // چرخش آهسته حلقه
     renderer.render(scene, camera);
 }
 
