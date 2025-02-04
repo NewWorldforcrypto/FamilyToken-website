@@ -76,12 +76,17 @@ document.addEventListener("DOMContentLoaded", () => {
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 
+// تنظیم اندازه canvas
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+// چاپ ابعاد canvas در کنسول برای بررسی
+console.log("Canvas Size: ", canvas.width, canvas.height);
 
 let stars = [];
 let numStars = 150;
 
+// ایجاد ستاره‌ها
 for (let i = 0; i < numStars; i++) {
     stars.push({
         x: Math.random() * canvas.width,
@@ -90,6 +95,9 @@ for (let i = 0; i < numStars; i++) {
         speed: Math.random() * 0.5 + 0.2
     });
 }
+
+// چاپ اطلاعات ستاره‌ها در کنسول برای بررسی
+console.log("Stars: ", stars);
 
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -119,6 +127,7 @@ const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("thre
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
+// ایجاد گوی
 const geometry = new THREE.SphereGeometry(5, 32, 32);
 const material = new THREE.MeshBasicMaterial({ color: 0xffcc00, wireframe: true });
 const sphere = new THREE.Mesh(geometry, material);
@@ -131,6 +140,7 @@ function animate() {
     sphere.rotation.y += 0.01;
     renderer.render(scene, camera);
 }
+
 animate();
 
 // ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
