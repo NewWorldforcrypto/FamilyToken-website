@@ -332,66 +332,51 @@ footer {
     pointer-events: none;
 }
 
-/* پس‌زمینه متحرک برای کل سایت */
+/* پس‌زمینه اصلی با گرادیان گرم و طبیعی */
 .animated-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    z-index: -1;  /* باعث می‌شود محتوا روی پس‌زمینه قرار بگیرد */
-    background: linear-gradient(to bottom, #FFCC70, #FF9F45, #FFD369); /* گرادیان گرم */
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+    z-index: -1; /* محتوا روی پس‌زمینه قرار بگیرد */
+    background: linear-gradient(to top, #FFD3A5, #FF9A8B, #FF6F61);
+    overflow: hidden;
 }
 
-/* طراحی تپه سبز */
+/* طراحی تپه‌های نرم و واقع‌گرایانه */
 .hill {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 200px;
-    background: radial-gradient(circle at bottom, #5CDB95, #379683); /* رنگ سبز طبیعی */
+    height: 220px;
+    background: radial-gradient(circle at bottom, #4CAF50, #2E7D32);
     border-radius: 50% 50% 0 0;
+    box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* تنظیم ابرها */
+/* تنظیم ابرهای واقعی‌تر */
 .cloud {
     position: absolute;
-    width: 120px;
-    height: 60px;
+    width: 140px;
+    height: 80px;
     background: white;
     border-radius: 50px;
     box-shadow: 
-        30px 10px 0 10px white, 
-        -30px 10px 0 10px white;
-    opacity: 0.8;
+        35px 15px 0 10px white, 
+        -35px 15px 0 10px white,
+        0px 20px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
 }
 
-/* حرکت ملایم ابرها */
+/* حرکت طبیعی ابرها با زمان‌بندی متفاوت */
 @keyframes moveClouds {
-    0% { transform: translateX(-200px); }
+    0% { transform: translateX(-150px); }
     100% { transform: translateX(100vw); }
 }
 
-/* ابر ۱ */
-.cloud1 {
-    top: 20%;
-    left: -100px;
-    animation: moveClouds 30s linear infinite;
-}
-
-/* ابر ۲ */
-.cloud2 {
-    top: 40%;
-    left: -150px;
-    animation: moveClouds 40s linear infinite;
-}
-
-/* ابر ۳ */
-.cloud3 {
-    top: 60%;
-    left: -200px;
-    animation: moveClouds 35s linear infinite;
-}
+/* اضافه کردن چند ابر با سرعت و مکان مختلف */
+.cloud1 { top: 15%; left: -100px; animation: moveClouds 50s linear infinite; }
+.cloud2 { top: 30%; left: -150px; animation: moveClouds 60s linear infinite; }
+.cloud3 { top: 50%; left: -200px; animation: moveClouds 55s linear infinite; }
+.cloud4 { top: 70%; left: -250px; animation: moveClouds 65s linear infinite; }
