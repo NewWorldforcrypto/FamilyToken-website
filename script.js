@@ -135,40 +135,38 @@ scene.add(light);
 const ambientLight = new THREE.AmbientLight(0x404040);
 scene.add(ambientLight);
 
-// 3️⃣ بارگذاری تکسچر زحل
+// بارگذاری تکسچر
 const textureLoader = new THREE.TextureLoader();
-const saturnTexture = textureLoader.load('images/saturn_texture.jpg');  // مسیر تکسچر زحل
+const saturnTexture = textureLoader.load('images/saturn_texture.jpg');
 
-// 4️⃣ ایجاد کره برای سیاره زحل
-const geometry = new THREE.SphereGeometry(5, 64, 64);
-const material = new THREE.MeshStandardMaterial({
+// ایجاد گوی با تکسچر زحل
+const geometry = new THREE.SphereGeometry(5, 64, 64); // افزایش تعداد تقسیمات برای دقت بیشتر
+const material = new THREE.MeshPhongMaterial({
     map: saturnTexture,
-    metalness: 0.7,
-    roughness: 0.3
+    shininess: 5,  // تنظیم میزان درخشندگی
 });
-const saturn = new THREE.Mesh(geometry, material);
-scene.add(saturn);
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
 
-// 5️⃣ ایجاد حلقه‌ی زحل
-const ringGeometry = new THREE.RingGeometry(6, 10, 64);
-const ringMaterial = new THREE.MeshStandardMaterial({
-    color: 0xd4af37, // رنگ طلایی برای حلقه
-    side: THREE.DoubleSide,
-    transparent: true,
-    opacity: 0.7
-});
-const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-ring.rotation.x = Math.PI / 2.2; // چرخاندن حلقه به زاویه مناسب
-scene.add(ring);
-
-// 6️⃣ تنظیم موقعیت دوربین
+// تنظیم موقعیت دوربین
 camera.position.z = 20;
 
-// 7️⃣ تابع انیمیشن برای چرخش سیاره و حلقه
+// نورپردازی
+const ambientLight = new THREE.AmbientLight(0x404040, 1); // نور محیطی
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);
+
+// چرخش طبیعی گوی
 function animate() {
     requestAnimationFrame(animate);
-    saturn.rotation.y += 0.002; // چرخش آهسته سیاره
-    ring.rotation.z += 0.001;   // چرخش آهسته حلقه
+
+    // چرخش گوی به سمت y و کج کردن آن به سمت x
+    sphere.rotation.y += 0.01; // چرخش حول محور Y
+    sphere.rotation.x += 0.002; // کمی کج کردن حول محور X
+
     renderer.render(scene, camera);
 }
 
