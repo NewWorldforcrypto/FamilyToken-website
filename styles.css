@@ -332,66 +332,75 @@ footer {
     pointer-events: none;
 }
 
-/* پس‌زمینه متحرک به صورت طبیعی با گرادیان‌های پیچیده */
+/* پس‌زمینه با گرادیان پویا */
 .animated-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88);
-    animation: naturalBackgroundMovement 30s ease-in-out infinite;
-    z-index: -1;
+    z-index: -1;  /* برای اینکه محتوا روی پس‌زمینه قرار بگیره */
+    background: linear-gradient(to bottom, #3b8d99, #6b4f97, #f26e2e); /* رنگ‌های طبیعی و گرم */
+    animation: gradientAnimation 30s infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* تپه‌های طبیعی با سایه و عمق واقعی */
-.hill {
+/* انیمیشن تغییر رنگ گرادیان برای ایجاد تغییرات طبیعی */
+@keyframes gradientAnimation {
+    0% { background: linear-gradient(to bottom, #3b8d99, #6b4f97, #f26e2e); }
+    50% { background: linear-gradient(to bottom, #ff9a8b, #d6a2e8, #6a4c93); }
+    100% { background: linear-gradient(to bottom, #56ccf2, #2f80ed, #4b86b4); }
+}
+
+/* ایجاد عمق با لایه‌های مختلف برای پارالاکس */
+.layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* از پس‌زمینه اصلی استفاده می‌کنیم */
+    animation: moveLayer 100s linear infinite;
+}
+
+/* افکت حرکت لایه‌ها به صورت پارالاکس */
+@keyframes moveLayer {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* طراحی مدل‌های طبیعی (درخت‌ها یا کوه‌ها) */
+.tree, .mountain {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 300px;
-    background: radial-gradient(circle at bottom, #7C9A92, #4E6C56);
-    border-radius: 50% 50% 0 0;
-    box-shadow: inset 0px -40px 80px rgba(0, 0, 0, 0.15), 0px 40px 60px rgba(0, 0, 0, 0.1);
+    height: 50%;
+    background: url('tree.png') no-repeat center bottom;
+    background-size: contain;
+    z-index: -2;
+    animation: parallaxMove 200s linear infinite;
 }
 
-/* طراحی سایه تپه‌ها برای عمق بیشتر */
-.hill-shadow {
+/* افکت پارالاکس برای مدل‌های طبیعی */
+@keyframes parallaxMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50vw); }
+}
+
+/* ابرها با حرکت نرم */
+.clouds {
     position: absolute;
-    bottom: 20px;
+    top: 10%;
     width: 100%;
-    height: 50px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
+    height: 20%;
+    background: url('clouds.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.6;
+    animation: moveClouds 30s linear infinite;
 }
 
-/* ابرهای طبیعی و حرکت تصادفی آن‌ها */
-.cloud {
-    position: absolute;
-    width: 250px;
-    height: 130px;
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 50%;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
-    animation: cloudMove 25s ease-in-out infinite;
-}
-
-/* حرکت تصادفی ابرها برای طبیعی‌تر شدن */
-@keyframes cloudMove {
-    0% { transform: translateX(-300px) translateY(0); }
-    50% { transform: translateX(50vw) translateY(-50px); }
-    100% { transform: translateX(100vw) translateY(0); }
-}
-
-/* سرعت‌های متفاوت برای حرکت ابرها */
-.cloud1 { top: 15%; left: -150px; animation-duration: 30s; }
-.cloud2 { top: 40%; left: -200px; animation-duration: 35s; }
-.cloud3 { top: 60%; left: -250px; animation-duration: 40s; }
-.cloud4 { top: 70%; left: -300px; animation-duration: 50s; }
-
-/* انیمیشن پس‌زمینه طبیعی (تغییر در طول زمان) */
-@keyframes naturalBackgroundMovement {
-    0% { background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88); }
-    50% { background: linear-gradient(to bottom, #6C9DC2, #4A7D92, #3F5768); }
-    100% { background: linear-gradient(to bottom, #A8D8FF, #74A9D6, #2C6B88); }
+/* حرکت آرام ابرها */
+@keyframes moveClouds {
+    0% { transform: translateX(-100vw); }
+    100% { transform: translateX(100vw); }
 }
