@@ -12,6 +12,16 @@ html, body {
     text-align: center;
 }
 
+body {
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    position: relative;
+    z-index: 2; /* بخش‌های سایت باید روی گوی و ستاره‌ها باشن */
+}
+
 /* تنظیم برای اطمینان از اینکه محتوا در مرکز صفحه قرار بگیرد */
 .container {
     width: 100%;
