@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
-// ================== 4. ستاره‌های متحرک ==================
+// ستاره‌های متحرک
 const canvas = document.getElementById("starsCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -93,13 +93,13 @@ for (let i = 0; i < numStars; i++) {
 
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
         ctx.fillStyle = "white";
         ctx.fill();
-        
+
         star.y += star.speed;
         if (star.y > canvas.height) {
             star.y = 0;
@@ -112,7 +112,7 @@ function animateStars() {
 
 animateStars();
 
-// ================== 5. گوی سه‌بعدی با Three.js ==================
+// گوی سه‌بعدی با Three.js
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("threeCanvas"), alpha: true });
