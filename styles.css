@@ -322,8 +322,8 @@ footer {
     transform: translateY(0);
 }
 
-/* پس‌زمینه آسمان شب حرفه‌ای */
-#nightSkyCanvas {
+/* پس‌زمینه‌ی شهر مدرن در شب */
+#cityBackground {
     position: fixed;
     top: 0;
     left: 0;
