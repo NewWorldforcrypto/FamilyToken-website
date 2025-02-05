@@ -41,17 +41,17 @@ document.addEventListener("click", (event) => {
 
 // ================== 1. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
-    const fadeElements = document.querySelectorAll(".fade-in, .hero-text");
+    const sections = document.querySelectorAll(".fade-in");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("show");
+                entry.target.classList.add("visible");
             }
         });
     }, { threshold: 0.2 });
 
-    fadeElements.forEach(element => observer.observe(element));
+    sections.forEach(section => observer.observe(section));
 });
 
 // ================== 2. افکت نمایش تدریجی نوشته‌ها ==================
