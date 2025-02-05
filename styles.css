@@ -270,7 +270,7 @@ nav ul li a:hover {
     position: relative;
 }
 
-/* اضافه کردن انیمیشن تدریجی */
+/* انیمیشن تدریجی برای بخش‌ها */
 @keyframes fadeInEffect {
     0% {
         opacity: 0;
@@ -282,15 +282,19 @@ nav ul li a:hover {
     }
 }
 
-/* حرکت نرم و زیبای نوشته‌ها */
-.hero-text.animate {
-    animation: fadeInEffect 1.5s ease-out forwards;
+/* نمایش نرم و تدریجی برای تصاویر از #hero2 به بعد */
+#hero2, #hero3, #hero4, #hero5, 
+#hero2 .hero-text, #hero3 .hero-text, #hero4 .hero-text, #hero5 .hero-text,
+.info-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-/* استایل برای نمایش متن */
-#hero .hero-text, #hero2 .hero-text, #hero3 .hero-text, #hero4 .hero-text, #hero5 .hero-text {
-    opacity: 0;
-    animation: fadeInEffect 1.5s ease-out forwards;
+/* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* ========== 1. پس‌زمینه شیک و مدرن ========== */
