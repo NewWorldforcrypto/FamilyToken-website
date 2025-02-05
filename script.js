@@ -1,17 +1,34 @@
-// ================== 1. مدیریت منوی همبرگری ==================
+// ================== 1. مدیریت منوی همبرگری با افکت‌های حرفه‌ای ==================
 const toggleMenu = () => {
     const menu = document.querySelector('nav ul');
     const menuIcon = document.querySelector('.menu-icon');
-    
+
+    // باز یا بسته کردن منو با افکت
     menu.classList.toggle('show');
-    menuIcon.innerHTML = menu.classList.contains('show') ? "✖" : "&#9776;";
+
+    // تغییر آیکون منو
+    if (menu.classList.contains('show')) {
+        menuIcon.innerHTML = "✖"; // تغییر به ضربدر هنگام باز شدن
+        animateMenuItems(); // اجرای انیمیشن نمایش گزینه‌ها
+    } else {
+        menuIcon.innerHTML = "&#9776;"; // تغییر به همبرگر هنگام بسته شدن
+    }
 };
 
+// تابع برای انیمیشن ورود گزینه‌های منو
+const animateMenuItems = () => {
+    const menuItems = document.querySelectorAll("nav ul li");
+    menuItems.forEach((item, index) => {
+        item.style.animation = `slideIn 0.5s ease-in-out ${index * 0.1 + 0.2}s forwards`;
+    });
+};
+
+// بستن منو هنگام کلیک روی گزینه‌های داخلی
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", () => {
         const menu = document.querySelector('nav ul');
         const menuIcon = document.querySelector('.menu-icon');
-        
+
         if (menu.classList.contains('show')) {
             menu.classList.remove('show');
             menuIcon.innerHTML = "&#9776;";
@@ -19,10 +36,11 @@ document.querySelectorAll("nav ul li a").forEach(link => {
     });
 });
 
+// بستن منو هنگام کلیک خارج از آن
 document.addEventListener("click", (event) => {
     const menu = document.querySelector('nav ul');
     const menuIcon = document.querySelector('.menu-icon');
-    
+
     if (!menu.contains(event.target) && !menuIcon.contains(event.target) && menu.classList.contains('show')) {
         menu.classList.remove('show');
         menuIcon.innerHTML = "&#9776;";
