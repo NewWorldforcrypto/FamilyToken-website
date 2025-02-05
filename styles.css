@@ -322,7 +322,7 @@ footer {
     transform: translateY(0);
 }
 
-/* پس‌زمینه مینیمال و مدرن */
+/* پس‌زمینه مدرن و لوکس */
 #minimalBackground {
     position: fixed;
     top: 0;
@@ -330,5 +330,12 @@ footer {
     width: 100vw;
     height: 100vh;
     z-index: -10;
-    background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460); /* گرادینت مدرن */
+    background: radial-gradient(circle, rgba(26, 26, 46, 1) 20%, rgba(15, 52, 96, 1) 80%);
+}
+
+/* اضافه کردن افکت درخشش */
+@keyframes glowAnimation {
+    0% { box-shadow: 0 0 10px rgba(0, 150, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(0, 150, 255, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(0, 150, 255, 0.5); }
 }
