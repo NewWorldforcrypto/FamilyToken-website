@@ -176,3 +176,6 @@ function animateParticles() {
 
     requestAnimationFrame(animateParticles);
 }
+
+// اجرای انیمیشن
+animateParticles();
