@@ -85,18 +85,19 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-// ایجاد ذرات درخشان در پس‌زمینه
+// ایجاد ذرات درخشان با رنگ‌های متغیر
 const particles = [];
-const numParticles = 100;
+const numParticles = 120;
 
 for (let i = 0; i < numParticles; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 0.5,
-        speedY: (Math.random() - 0.5) * 0.5,
-        opacity: Math.random() * 0.5 + 0.5
+        radius: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 0.6,
+        speedY: (Math.random() - 0.5) * 0.6,
+        opacity: Math.random() * 0.5 + 0.3,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`
     });
 }
 
@@ -104,7 +105,7 @@ for (let i = 0; i < numParticles; i++) {
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // طراحی گرادینت پویا
+    // گرادینت متحرک پس‌زمینه
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "#1a1a2e");
     gradient.addColorStop(0.5, "#16213e");
@@ -113,16 +114,23 @@ function animateParticles() {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // طراحی ذرات
+    // طراحی ذرات با تغییر رنگ‌های پویا
     particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
+        ctx.fillStyle = particle.color;
         ctx.fill();
 
         // حرکت نرم ذرات
         particle.x += particle.speedX;
         particle.y += particle.speedY;
+
+        // تغییر تدریجی رنگ
+        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 70%)`;
+
+        // تنظیم شفافیت برای افکت نرمی
+        particle.opacity += (Math.random() - 0.5) * 0.02;
+        particle.opacity = Math.max(0.3, Math.min(0.8, particle.opacity));
 
         // بازگرداندن ذرات به صفحه در صورت خروج
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
