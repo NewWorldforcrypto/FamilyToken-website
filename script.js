@@ -176,11 +176,3 @@ function animateParticles() {
 
     requestAnimationFrame(animateParticles);
 }
-
-// اجرای انیمیشن
-animateParticles();
-
-window.addEventListener("load", () => {
-    const loadingScreen = document.getElementById("loading-screen");
-    loadingScreen.classList.add("hidden");
-});
