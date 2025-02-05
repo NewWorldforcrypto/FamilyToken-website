@@ -322,37 +322,13 @@ footer {
     transform: translateY(0);
 }
 
-/* استایل کلی برای پس‌زمینه‌ی انیمیشنی */
-#nightSceneCanvas {
+/* پس‌زمینه آسمان شب حرفه‌ای */
+#nightSkyCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -5; /* پس‌زمینه در عقب‌تر از محتوا باشد */
-    pointer-events: none; /* جلوگیری از تعامل کاربر با پس‌زمینه */
-}
-
-/* تنظیم بدنه و محتوا برای نمایش بهتر روی صحنه */
-body {
-    position: relative;
-    z-index: 1;
-    background: transparent; /* شفاف کردن پس‌زمینه‌ی اصلی */
-    overflow-x: hidden; /* جلوگیری از اسکرول افقی */
-}
-
-section {
-    position: relative;
-    z-index: 2; /* محتوا بالاتر از پس‌زمینه نمایش داده شود */
-    color: white; /* اطمینان از خوانایی متن در پس‌زمینه‌ی تاریک */
-}
-
-/* تنظیمات فوتر برای هماهنگی با صحنه‌ی شب */
-footer {
-    position: relative;
-    z-index: 3;
-    background: rgba(0, 0, 0, 0.8); /* کمی شفافیت برای هماهنگی با پس‌زمینه */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
+    z-index: -10;
+    background: black;
 }
