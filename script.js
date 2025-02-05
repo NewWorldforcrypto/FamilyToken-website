@@ -3,16 +3,8 @@ const toggleMenu = () => {
     const menu = document.querySelector('nav ul');
     const menuIcon = document.querySelector('.menu-icon');
 
-    // باز یا بسته کردن منو با افکت
     menu.classList.toggle('show');
-
-    // تغییر آیکون منو
-    if (menu.classList.contains('show')) {
-        menuIcon.innerHTML = "✖"; // تغییر به ضربدر هنگام باز شدن
-        animateMenuItems(); // اجرای انیمیشن نمایش گزینه‌ها
-    } else {
-        menuIcon.innerHTML = "&#9776;"; // تغییر به همبرگر هنگام بسته شدن
-    }
+    menuIcon.innerHTML = menu.classList.contains('show') ? "✖" : "&#9776;";
 };
 
 // تابع برای انیمیشن ورود گزینه‌های منو
