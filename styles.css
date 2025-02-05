@@ -167,6 +167,12 @@ nav ul li a:hover {
     background-attachment: fixed; /* اضافه کردن پارالاکس */
 }
 
+ نوشته‌ها در زمان بارگذاری */
+#hero .hero-text, #hero2 .hero-text, #hero3 .hero-text, #hero4 .hero-text, #hero5 .hero-text {
+    opacity: 0;
+    animation: fadeInEffect 1.5s ease-out forwards;
+}
+
 /* تنظیم جهت حرکت پس‌زمینه‌ها */
 @keyframes moveRight {
     0% { background-position: 0 0; }
@@ -206,20 +212,47 @@ nav ul li a:hover {
 
 /* ========== 6. بهبود خوانایی متن‌های روی تصاویر ========== */
 .hero-text {
-    font-size: 3rem;
-    font-weight: bold;
-    color: white;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    font-family: 'Poppins', sans-serif; /* فونت مدرن و خوانا */
+    font-size: 4rem; /* اندازه بزرگتر نوشته */
+    font-weight: 600; /* ضخامت مناسب برای خوانایی بیشتر */
+    color: white; /* رنگ سفید برای خوانایی بیشتر */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* سایه نرم برای برجسته کردن نوشته */
+    padding: 20px 30px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1)); /* گرادیانت نرم */
+    border-radius: 12px;
     display: inline-block;
+    transform: scale(1);
+    opacity: 0;
+    transition: all 0.8s ease-out; /* انیمیشن برای نمایش نرم */
 }
 
-/* انیمیشن تایپ */
-@keyframes fadeInText {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+/* افکت ورود نوشته */
+.hero-text.show {
+    opacity: 1;
+    transform: scale(1.05); /* بزرگ شدن کمی برای جلوه بیشتر */
+}
+
+/* نوشته‌ها هنگام هاور */
+.hero-text:hover {
+    color: #ff6f00; /* رنگ خاص هنگام هاور */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* افزایش سایه برای تأثیر بیشتر */
+}
+
+/* افکت انیمیشن نمایش نوشته‌ها */
+@keyframes fadeInEffect {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* حرکت نرم و زیبای نوشته‌ها */
+.hero-text.animate {
+    animation: fadeInEffect 1.5s ease-out forwards; /* انیمیشن برای نمایش */
 }
 
 /* ========== 1. پس‌زمینه شیک و مدرن ========== */
