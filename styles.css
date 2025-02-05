@@ -205,38 +205,35 @@ nav ul li a:hover {
 }
 
 
-/* استایل کلی نوشته‌ها */
+/* استایل جدید برای نوشته‌های روی تصاویر */
 .hero-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem; /* اندازه مناسب */
-    font-weight: 500;
-    color: #ffffff; /* رنگ سفید برای خوانایی */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* سایه برای نوشتن بهتر */
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.2); /* پس‌زمینه شفاف */
-    backdrop-filter: blur(8px); /* ایجاد افکت بلور برای پس‌زمینه */
-    border-radius: 15px; /* گوشه‌های گرد */
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff80bf, #ff4d94, #ff1a75); /* گرادیان صورتی متالیک */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 4px 4px 10px rgba(255, 20, 147, 0.5); /* سایه نورانی صورتی */
     display: inline-block;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-/* افکت‌ها هنگام هاور */
+/* افکت هنگام هاور (نورانی‌تر شدن نوشته‌ها) */
 .hero-text:hover {
-    color: #ff6f00; /* رنگ گرم هنگام هاور */
-    background: rgba(255, 255, 255, 0.5); /* پس‌زمینه روشن‌تر هنگام هاور */
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6); /* سایه بیشتر هنگام هاور */
+    text-shadow: 5px 5px 15px rgba(255, 20, 147, 0.8); /* سایه قوی‌تر برای حالت درخشان */
+    transform: scale(1.05); /* کمی بزرگ‌تر شدن هنگام هاور */
 }
 
-/* تنظیمات برای فونت در اندازه‌های مختلف */
+/* تنظیم اندازه در نمایشگرهای کوچک‌تر */
 @media (max-width: 768px) {
     .hero-text {
-        font-size: 2rem; /* در صفحه‌های کوچکتر سایز فونت کوچکتر می‌شود */
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .hero-text {
-        font-size: 1.5rem; /* برای گوشی‌های موبایل سایز بیشتر کوچک می‌شود */
+        font-size: 2rem;
     }
 }
 
