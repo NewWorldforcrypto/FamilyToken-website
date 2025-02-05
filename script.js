@@ -85,19 +85,20 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-// ایجاد ذرات درخشان با رنگ‌های متغیر
+// ایجاد ذرات نوری با افکت‌های پویاتر
 const particles = [];
-const numParticles = 120;
+const numParticles = 100;
 
 for (let i = 0; i < numParticles; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.6,
-        speedY: (Math.random() - 0.5) * 0.6,
+        speedX: (Math.random() - 0.5) * 0.8,
+        speedY: (Math.random() - 0.5) * 0.8,
         opacity: Math.random() * 0.5 + 0.3,
-        color: `hsl(${Math.random() * 360}, 100%, 70%)`
+        color: `hsl(${Math.random() * 360}, 100%, 80%)`,
+        glow: Math.random() > 0.8 ? true : false // بعضی ذرات درخشان میشن
     });
 }
 
@@ -107,18 +108,20 @@ function animateParticles() {
 
     // گرادینت متحرک پس‌زمینه
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, "#1a1a2e");
-    gradient.addColorStop(0.5, "#16213e");
-    gradient.addColorStop(1, "#0f3460");
+    gradient.addColorStop(0, "#14142a");
+    gradient.addColorStop(0.5, "#0d284b");
+    gradient.addColorStop(1, "#081c33");
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // طراحی ذرات با تغییر رنگ‌های پویا
+    // طراحی ذرات با افکت‌های پویا
     particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
+        ctx.shadowBlur = particle.glow ? 15 : 0;
+        ctx.shadowColor = particle.glow ? particle.color : "transparent";
         ctx.fill();
 
         // حرکت نرم ذرات
@@ -126,11 +129,11 @@ function animateParticles() {
         particle.y += particle.speedY;
 
         // تغییر تدریجی رنگ
-        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 70%)`;
+        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 80%)`;
 
         // تنظیم شفافیت برای افکت نرمی
         particle.opacity += (Math.random() - 0.5) * 0.02;
-        particle.opacity = Math.max(0.3, Math.min(0.8, particle.opacity));
+        particle.opacity = Math.max(0.3, Math.min(0.9, particle.opacity));
 
         // بازگرداندن ذرات به صفحه در صورت خروج
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
