@@ -29,20 +29,59 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+// ================== 1. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
-    const options = { threshold: 0.2 };
-    const observer = new IntersectionObserver((entries) => {
+    const sections = document.querySelectorAll(".info-section");  // بخش‌های info-section رو پیدا می‌کنیم
+
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
+                // زمانی که بخش وارد دید کاربر میشه، کلاس show به اون اضافه میشه
+                entry.target.classList.add("show");
             }
         });
-    }, options);
+    }, { threshold: 0.2 });  // زمانی که 20% از بخش وارد دید میشه، افکت اعمال میشه
 
-    document.querySelectorAll("section").forEach(section => {
-        section.classList.add('hidden');
-        observer.observe(section);
+    // بخش‌ها رو به observer می‌سپاریم
+    sections.forEach(section => observer.observe(section));
+});
+
+// ================== 2. افکت تایپ متن ==================
+document.addEventListener("DOMContentLoaded", () => {
+    // تایپ افکت برای عنصر مشخص شده
+    function typeEffect(element, speed) {
+        const text = element.innerHTML;
+        element.innerHTML = "";
+        let i = 0;
+
+        function typing() {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);  // یکی یکی کاراکترها اضافه میشه
+                i++;
+                setTimeout(typing, speed);  // با فاصله زمانی تایپ میشه
+            }
+        }
+        typing();  // تایپ افکت شروع میشه
+    }
+
+    const heroText = document.querySelector(".hero-text");
+    if (heroText) {
+        typeEffect(heroText, 100);  // سرعت تایپ 100 میلی‌ثانیه
+    }
+});
+
+// ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
+document.querySelectorAll(".btn").forEach(button => {
+    button.addEventListener("mousedown", () => {
+        button.style.transform = "scale(0.95)";  // وقتی دکمه فشرده میشه، کمی کوچکتر میشه
+    });
+
+    button.addEventListener("mouseup", () => {
+        button.style.transform = "scale(1)";  // وقتی دست از دکمه برداشته میشه، اندازه به حالت اولیه برمی‌گرده
+    });
+
+    button.addEventListener("mouseleave", () => {
+        button.style.transform = "scale(1)";  // وقتی موس از دکمه بیرون میره، اندازه به حالت اولیه برمی‌گرده
     });
 });
 
