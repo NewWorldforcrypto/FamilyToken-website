@@ -57,101 +57,96 @@ header {
     position: fixed;
     top: 15px;  
     right: 15px;
-    width: 45px;  
-    height: 45px;
-    background-color: #ff8c00;
+    width: 50px;  
+    height: 50px;
+    background: linear-gradient(45deg, #ff7b00, #ff4500); /* گرادیان نارنجی */
     color: white;
-    font-size: 28px; 
+    font-size: 30px;
     font-weight: bold;
     text-align: center;
-    line-height: 45px;
-    border-radius: 8px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+    line-height: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 69, 0, 0.5);
     cursor: pointer;
     z-index: 200;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .menu-icon:hover {
-    background-color: #ff6500;
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ff4500, #ff2200);
+    box-shadow: 0px 6px 15px rgba(255, 69, 0, 0.7);
+    transform: scale(1.1);
 }
 
 /* تنظیم منو برای موبایل */
 nav ul {
     display: none;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
+    background: rgba(255, 140, 0, 0.95); /* پس‌زمینه نارنجی */
     position: fixed;
     top: 70px;
     right: 10px;
-    width: 90%;
-    max-width: 250px; 
-    border-radius: 10px;
+    width: 260px;  
+    border-radius: 12px;
     padding: 15px;
     z-index: 150;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 6px 20px rgba(255, 140, 0, 0.6);
 }
 
+/* نمایش منو هنگام فعال شدن */
 nav ul.show {
     display: flex;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
+/* استایل گزینه‌های داخل منو */
 nav ul li {
-    margin: 15px 0;
+    margin: 10px 0;
+    opacity: 0; /* پنهان کردن اولیه برای انیمیشن */
+    transform: translateY(20px);
+    animation: slideIn 0.5s ease-in-out forwards;
 }
 
+/* تأخیر در ورود هر گزینه برای افکت ظاهر شدن تدریجی */
+nav ul li:nth-child(1) { animation-delay: 0.2s; }
+nav ul li:nth-child(2) { animation-delay: 0.3s; }
+nav ul li:nth-child(3) { animation-delay: 0.4s; }
+nav ul li:nth-child(4) { animation-delay: 0.5s; }
+nav ul li:nth-child(5) { animation-delay: 0.6s; }
+nav ul li:nth-child(6) { animation-delay: 0.7s; }
+
+/* لینک‌های داخل منو */
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
     display: block;
-    transition: 0.3s;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    background: linear-gradient(45deg, #ff6600, #ff4500); /* گرادیان نارنجی */
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* افکت هاور روی گزینه‌ها */
 nav ul li a:hover {
-    background-color: #ff4b2b;
-    border-radius: 5px;
+    background: linear-gradient(45deg, #ff4500, #ff2200);
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(255, 69, 0, 0.8);
 }
 
-/* ========== 4. نمایش صحیح سایت در موبایل ========== */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
+/* انیمیشن ظاهر شدن تدریجی منو */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    .menu-icon {
-        top: 10px;
-        right: 10px;
-    }
-
-    nav ul {
-        display: none;
-        width: 100%;
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.95);
-        margin-top: 10px;
-    }
-
-    nav ul.show {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .logo {
-        font-size: 22px;
-    }
-
-    .info-section {
-        margin: 30px auto;
-        padding: 30px 20px;
-    }
+/* انیمیشن اسلاید برای گزینه‌های منو */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* استایل کلی پس‌زمینه‌ها */
