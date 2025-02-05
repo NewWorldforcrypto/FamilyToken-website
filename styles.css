@@ -95,29 +95,30 @@ nav ul {
     list-style: none; /* حذف نقطه‌های اضافی */
 
     opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-    pointer-events: none; /* در حالت مخفی قابل کلیک نباشد */
+    transform: translateX(100px); /* شروع از سمت راست */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: none; /* جلوگیری از کلیک در حالت بسته */
 }
 
 /* وقتی منو باز می‌شود */
 nav ul.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     pointer-events: auto;
 }
 
 /* تنظیم انیمیشن برای گزینه‌های منو */
 nav ul li {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateX(30px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    margin: 12px 0; /* افزایش فاصله بین گزینه‌ها */
 }
 
 /* وقتی منو باز شد، گزینه‌ها یکی‌یکی ظاهر شوند */
 nav ul.show li {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 /* تنظیم تاخیر برای نمایش یکی‌یکی گزینه‌ها */
