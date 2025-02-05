@@ -72,68 +72,73 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
+// **۱. ایجاد صحنه، دوربین و رندر**
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById("nightSceneCanvas"), alpha: true });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+renderer.shadowMap.enabled = true; // فعال کردن سایه‌ها
 
-// نورپردازی
+// **۲. ایجاد نورپردازی برای خیابان و پنجره‌های خانه‌ها**
 const streetLight = new THREE.PointLight(0xffd700, 1, 100);
-streetLight.castShadow = true; // اضافه کردن سایه برای طبیعی‌تر شدن
+streetLight.castShadow = true;
 streetLight.position.set(0, 5, 10);
 scene.add(streetLight);
 
-// ساخت خانه‌ها
+// **۳. ایجاد چند خانه در امتداد خیابان**
 const houseGeometry = new THREE.BoxGeometry(4, 4, 4);
 const houseMaterial = new THREE.MeshLambertMaterial({ color: 0xf2c57f });
-const house = new THREE.Mesh(houseGeometry, houseMaterial);
-house.position.set(0, 2, -10);
-scene.add(house);
 
-// اضافه کردن پنجره‌ها و چراغ‌ها داخل خانه‌ها
-const windowLight = new THREE.PointLight(0xfff000, 0.5, 10); // رنگ نور گرم برای پنجره‌ها
-windowLight.position.set(0, 2, -10);
-scene.add(windowLight);
+for (let i = -10; i <= 10; i += 6) {
+    let house = new THREE.Mesh(houseGeometry, houseMaterial);
+    house.position.set(i, 2, -15);
+    scene.add(house);
 
-// ماه و ستاره‌ها
-const moonGeometry = new THREE.SphereGeometry(1, 32, 32);
+    // اضافه کردن چراغ داخل هر خانه
+    let windowLight = new THREE.PointLight(0xfff000, 0.8, 10);
+    windowLight.position.set(i, 3, -14);
+    scene.add(windowLight);
+}
+
+// **۴. ایجاد ماه در آسمان**
+const moonGeometry = new THREE.SphereGeometry(1.5, 32, 32);
 const moonMaterial = new THREE.MeshBasicMaterial({ color: 0xaaaaaa });
 const moon = new THREE.Mesh(moonGeometry, moonMaterial);
 moon.position.set(10, 10, -30);
 scene.add(moon);
 
-// آسمان با افکت‌های ستاره‌ای
+// **۵. ساخت آسمان شب و کهکشان**
 const textureLoader = new THREE.TextureLoader();
-const galaxyTexture = textureLoader.load("images/galaxy.jpg", 
-    function(texture) {
-        console.log("Texture loaded successfully");
-    }, 
-    undefined, 
-    function(err) {
-        console.log("Error loading texture:", err);
-    }
-);
+const galaxyTexture = textureLoader.load("images/galaxy.jpg");
 
+const starsGeometry = new THREE.SphereGeometry(100, 32, 32);
 const starsMaterial = new THREE.MeshBasicMaterial({
-    map: galaxyTexture, // اعمال تصویر کهکشان
-    side: THREE.BackSide // معکوس کردن جهت آسمان برای نمایش داخل
+    map: galaxyTexture,
+    side: THREE.BackSide
 });
 const starsMesh = new THREE.Mesh(starsGeometry, starsMaterial);
 scene.add(starsMesh);
 
 camera.position.z = 30;
 
+// **۶. ایجاد انیمیشن شب زنده**
 function animate() {
     requestAnimationFrame(animate);
-    moon.rotation.y += 0.01;
-    starsMesh.rotation.y += 0.0001;
+    moon.rotation.y += 0.001; // چرخش آرام ماه
+    starsMesh.rotation.y += 0.0005; // حرکت آرام آسمان
 
     renderer.render(scene, camera);
 }
-
 animate();
+
+// **۷. تنظیم واکنش‌گرایی برای صفحه نمایش**
+window.addEventListener("resize", () => {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+});
 
 // ================== 6. نمایش پیام هشدار هنگام کلیک روی دکمه‌های مهم ==================
 document.querySelectorAll(".btn").forEach(button => {
