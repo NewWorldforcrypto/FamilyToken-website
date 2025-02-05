@@ -322,13 +322,13 @@ footer {
     transform: translateY(0);
 }
 
-/* پس‌زمینه‌ی شهر مدرن در شب */
-#cityBackground {
+/* پس‌زمینه مینیمال و مدرن */
+#minimalBackground {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     z-index: -10;
-    background: black;
+    background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460); /* گرادینت مدرن */
 }
