@@ -46,28 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach(section => observer.observe(section));
 });
 
-// ================== 2. افکت تایپ متن ==================
+// ================== 2. افکت نمایش تدریجی نوشته‌ها ==================
 document.addEventListener("DOMContentLoaded", () => {
-    // تایپ افکت برای عنصر مشخص شده
-    function typeEffect(element, speed) {
-        const text = element.innerHTML;
-        element.innerHTML = "";
-        let i = 0;
+    // انتخاب همه عناصر با کلاس .hero-text
+    const heroText = document.querySelectorAll(".hero-text");
 
-        function typing() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);  // یکی یکی کاراکترها اضافه میشه
-                i++;
-                setTimeout(typing, speed);  // با فاصله زمانی تایپ میشه
-            }
-        }
-        typing();  // تایپ افکت شروع میشه
-    }
-
-    const heroText = document.querySelector(".hero-text");
-    if (heroText) {
-        typeEffect(heroText, 100);  // سرعت تایپ 100 میلی‌ثانیه
-    }
+    // برای هر عنصر کلاس hero-text یک انیمیشن نمایشی اعمال می‌کنیم
+    heroText.forEach(element => {
+        element.classList.add("animate");
+    });
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
