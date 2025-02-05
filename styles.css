@@ -78,9 +78,9 @@ header {
     box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* تنظیم منو برای موبایل */
+/* تنظیمات اولیه برای منو */
 nav ul {
-    display: none;
+    display: flex;
     flex-direction: column;
     background: rgba(0, 0, 0, 0.95);
     position: fixed;
@@ -93,10 +93,18 @@ nav ul {
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     list-style: none; /* حذف نقطه‌های اضافی */
+    
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s ease-in-out;
+    pointer-events: none; /* جلوگیری از کلیک‌پذیری در حالت مخفی */
 }
 
+/* وقتی منو باز می‌شود */
 nav ul.show {
-    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 nav ul li {
