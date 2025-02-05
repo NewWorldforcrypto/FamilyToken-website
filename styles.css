@@ -208,73 +208,94 @@ nav ul li a:hover {
     font-size: 3rem;
     font-weight: bold;
     color: white;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8); /* درخشش ملایم */
     padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3); /* کاهش تیرگی پس‌زمینه */
     border-radius: 10px;
     display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInText 1.5s ease-in-out forwards 0.5s;
 }
+
+/* انیمیشن تایپ */
+@keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
 /* ========== 7. Info Sections Between Backgrounds ========== */
 .info-section {
     padding: 50px 20px;
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px) saturate(150%); /* افزایش شفافیت */
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     transform: scale(0.9);
-    transition: 0.5s ease-in-out;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
 }
 
 .info-section:hover {
     transform: scale(1);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15); /* افزایش شفافیت هنگام هاور */
 }
 
-.info-section h3 {
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-}
-
-.info-section p {
-    font-size: 1.2rem;
-    color: #ddd;
-    margin-top: 10px;
+/* افکت نمایش تدریجی هنگام اسکرول */
+.info-section.show {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* ========== 8. دکمه‌ها ========== */
 .btn {
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
     color: white;
     padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: 0.3s ease-in-out;
     display: inline-block;
     margin-top: 20px;
+    box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+    position: relative;
+    overflow: hidden;
 }
 
+/* افکت هاور */
 .btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+    box-shadow: 0 0 15px rgba(255, 65, 108, 1);
+    background: linear-gradient(90deg, #ff4b2b, #ff416c); /* تغییر رنگ گرادینتی */
 }
 
-/* Blue Button */
+/* افکت کلیک */
+.btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 5px rgba(255, 65, 108, 0.8);
+}
+
+/* دکمه آبی */
 .blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
+    background: linear-gradient(90deg, #007bff, #0056b3);
 }
 
 .blue-btn:hover {
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8);
+    background: linear-gradient(90deg, #0056b3, #007bff);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 1);
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
 footer {
     padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+    text-align: center;
+    font-size: 1rem;
+    color: white;
     position: relative;
     bottom: 0;
     width: 100%;
