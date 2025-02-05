@@ -72,14 +72,14 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
-// دریافت عنصر canvas و تنظیمات اولیه
-const canvas = document.getElementById("nightSkyCanvas");
+// تنظیمات اولیه
+const canvas = document.getElementById("cityBackground");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-// تغییر اندازه‌ی خودکار هنگام تغییر اندازه‌ی صفحه
+// تغییر اندازه‌ی خودکار
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -87,16 +87,17 @@ window.addEventListener("resize", () => {
 
 // اطلاعات اجرام آسمانی
 const stars = [];
-const numStars = 200; // تعداد ستاره‌ها
-const moon = { x: canvas.width - 150, y: 100, radius: 50 };
+const numStars = 150; // تعداد ستاره‌ها
+const moon = { x: canvas.width - 120, y: 80, radius: 50 };
 
-// ایجاد ستاره‌ها با موقعیت تصادفی
+// ایجاد ستاره‌های چشمک‌زن
 for (let i = 0; i < numStars; i++) {
     stars.push({
         x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height * 0.8,
+        y: Math.random() * canvas.height * 0.7,
         radius: Math.random() * 2 + 1,
-        speed: Math.random() * 0.5 + 0.2
+        speed: Math.random() * 0.3 + 0.1,
+        opacity: Math.random()
     });
 }
 
@@ -119,46 +120,71 @@ function drawNightSky() {
     ctx.fillRect(moon.x - moon.radius * 2, moon.y - moon.radius * 2, moon.radius * 4, moon.radius * 4);
 }
 
-// طراحی خیابان و خانه‌ها
-function drawStreet() {
-    // خیابان
-    ctx.fillStyle = "#333";
-    ctx.fillRect(0, canvas.height - 100, canvas.width, 100);
+// طراحی جاده‌ی پرسپکتیو
+function drawRoad() {
+    ctx.fillStyle = "#2C2C2C"; // رنگ آسفالت
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.3, canvas.height);
+    ctx.lineTo(canvas.width * 0.5 - 20, canvas.height * 0.4);
+    ctx.lineTo(canvas.width * 0.5 + 20, canvas.height * 0.4);
+    ctx.lineTo(canvas.width * 0.7, canvas.height);
+    ctx.closePath();
+    ctx.fill();
 
     // خط‌کشی خیابان
-    ctx.fillStyle = "yellow";
-    for (let i = 0; i < canvas.width; i += 40) {
-        ctx.fillRect(i, canvas.height - 50, 20, 5);
-    }
+    ctx.strokeStyle = "yellow";
+    ctx.lineWidth = 3;
+    ctx.setLineDash([20, 15]); // خط‌چین وسط خیابان
+    ctx.beginPath();
+    ctx.moveTo(canvas.width * 0.5, canvas.height);
+    ctx.lineTo(canvas.width * 0.5, canvas.height * 0.4);
+    ctx.stroke();
+}
 
-    // خانه‌ها
-    for (let i = 50; i < canvas.width; i += 150) {
-        ctx.fillStyle = "#654321"; // رنگ دیوار خانه
-        ctx.fillRect(i, canvas.height - 150, 80, 50); // دیوار خانه
+// طراحی خانه‌های مدرن در دو طرف جاده
+function drawBuildings() {
+    for (let i = 0; i < 6; i++) {
+        let x = (i % 2 === 0) ? canvas.width * 0.15 + i * 100 : canvas.width * 0.65 - i * 100;
+        let y = canvas.height * 0.5 - Math.random() * 50;
 
-        ctx.fillStyle = "#fffacd"; // پنجره‌های روشن
-        ctx.fillRect(i + 20, canvas.height - 140, 10, 15);
-        ctx.fillRect(i + 50, canvas.height - 140, 10, 15);
+        // بدنه خانه
+        ctx.fillStyle = "#4A4A4A";
+        ctx.fillRect(x, y, 60, 100);
+
+        // پنجره‌ها با نور گرم
+        ctx.fillStyle = Math.random() > 0.5 ? "#FFD700" : "#555";
+        ctx.fillRect(x + 10, y + 20, 15, 20);
+        ctx.fillRect(x + 35, y + 20, 15, 20);
+        ctx.fillRect(x + 10, y + 50, 15, 20);
+        ctx.fillRect(x + 35, y + 50, 15, 20);
+
+        // سقف خانه
+        ctx.fillStyle = "#3A3A3A";
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(x + 30, y - 30);
+        ctx.lineTo(x + 60, y);
+        ctx.closePath();
+        ctx.fill();
     }
 }
 
-// متحرک‌سازی ستاره‌ها
+// متحرک‌سازی ستاره‌های چشمک‌زن
 function animateStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawNightSky();
-    drawStreet();
+    drawRoad();
+    drawBuildings();
 
     stars.forEach(star => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "white";
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
         ctx.fill();
 
-        star.y += star.speed;
-        if (star.y > canvas.height - 100) {
-            star.y = 0;
-            star.x = Math.random() * canvas.width;
-        }
+        star.opacity += Math.random() * 0.02 - 0.01;
+        if (star.opacity > 1) star.opacity = 1;
+        if (star.opacity < 0.2) star.opacity = 0.2;
     });
 
     requestAnimationFrame(animateStars);
