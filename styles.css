@@ -282,9 +282,8 @@ nav ul li a:hover {
     }
 }
 
-/* نمایش نرم و تدریجی برای تصاویر از #hero2 به بعد */
+/* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
 #hero2, #hero3, #hero4, #hero5, 
-#hero2 .hero-text, #hero3 .hero-text, #hero4 .hero-text, #hero5 .hero-text,
 .info-section {
     opacity: 0;
     transform: translateY(30px);
@@ -292,7 +291,7 @@ nav ul li a:hover {
 }
 
 /* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
-.fade-in {
+.fade-in.visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
