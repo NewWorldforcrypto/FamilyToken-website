@@ -41,19 +41,17 @@ document.addEventListener("click", (event) => {
 
 // ================== 1. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".info-section");  // بخش‌های info-section رو پیدا می‌کنیم
+    const fadeElements = document.querySelectorAll(".fade-in, .hero-text");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // زمانی که بخش وارد دید کاربر میشه، کلاس show به اون اضافه میشه
                 entry.target.classList.add("show");
             }
         });
-    }, { threshold: 0.2 });  // زمانی که 20% از بخش وارد دید میشه، افکت اعمال میشه
+    }, { threshold: 0.2 });
 
-    // بخش‌ها رو به observer می‌سپاریم
-    sections.forEach(section => observer.observe(section));
+    fadeElements.forEach(element => observer.observe(element));
 });
 
 // ================== 2. افکت نمایش تدریجی نوشته‌ها ==================
