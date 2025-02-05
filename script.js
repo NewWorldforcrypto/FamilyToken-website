@@ -85,20 +85,20 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-// ایجاد ذرات نوری با افکت‌های پویاتر
+// ایجاد ذرات نوری با افکت‌های جذاب‌تر
 const particles = [];
-const numParticles = 100;
+const numParticles = 120;
 
 for (let i = 0; i < numParticles; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.8,
-        speedY: (Math.random() - 0.5) * 0.8,
-        opacity: Math.random() * 0.5 + 0.3,
-        color: `hsl(${Math.random() * 360}, 100%, 80%)`,
-        glow: Math.random() > 0.8 ? true : false // بعضی ذرات درخشان میشن
+        radius: Math.random() * 2.5 + 1,
+        speedX: (Math.random() - 0.5) * 0.7,
+        speedY: (Math.random() - 0.5) * 0.7,
+        opacity: Math.random() * 0.5 + 0.4,
+        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
+        glow: Math.random() > 0.7 ? true : false
     });
 }
 
@@ -115,27 +115,27 @@ function animateParticles() {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // طراحی ذرات با افکت‌های پویا
+    // طراحی ذرات
     particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
-        ctx.shadowBlur = particle.glow ? 15 : 0;
+        ctx.shadowBlur = particle.glow ? 12 : 0;
         ctx.shadowColor = particle.glow ? particle.color : "transparent";
         ctx.fill();
 
-        // حرکت نرم ذرات
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
+        // حرکت سینوسی نرم برای حس شناوری
+        particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.3;
+        particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.3;
 
-        // تغییر تدریجی رنگ
-        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 80%)`;
+        // تغییر رنگ برای زیبایی بیشتر
+        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 75%)`;
 
-        // تنظیم شفافیت برای افکت نرمی
-        particle.opacity += (Math.random() - 0.5) * 0.02;
-        particle.opacity = Math.max(0.3, Math.min(0.9, particle.opacity));
+        // تنظیم شفافیت برای حس زنده‌تر
+        particle.opacity += (Math.random() - 0.5) * 0.015;
+        particle.opacity = Math.max(0.4, Math.min(0.9, particle.opacity));
 
-        // بازگرداندن ذرات به صفحه در صورت خروج
+        // بازگرداندن ذرات در صورت خروج از صفحه
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
     });
