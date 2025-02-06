@@ -85,6 +85,15 @@ document.querySelectorAll(".btn").forEach(button => {
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", (event) => {
         event.preventDefault();  // از بارگذاری مجدد صفحه جلوگیری می‌کند
+
+        // حذف کلاس فعال از تمام لینک‌ها
+        document.querySelectorAll("nav ul li a").forEach(item => {
+            item.classList.remove('active');
+        });
+
+        // افزودن کلاس active به لینک کلیک شده
+        link.classList.add('active');
+
         const targetId = link.getAttribute("href").substring(1);  // بخش هدف را پیدا می‌کند
         const targetSection = document.getElementById(targetId);
 
