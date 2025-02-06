@@ -17,10 +17,21 @@ const animateMenuItems = () => {
 
 // بستن منو هنگام کلیک روی گزینه‌های داخلی
 document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (event) => {
         const menu = document.querySelector('nav ul');
         const menuIcon = document.querySelector('.menu-icon');
 
+        // پیمایش به بخش مورد نظر
+        const targetId = link.getAttribute("href").substring(1);  // بخش هدف را پیدا می‌کند
+        const targetSection = document.getElementById(targetId);
+
+        // پیمایش به بخش مورد نظر با انیمیشن
+        window.scrollTo({
+            top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
+            behavior: "smooth"  // انیمیشن روان برای اسکرول
+        });
+
+        // بستن منو بعد از کلیک
         if (menu.classList.contains('show')) {
             menu.classList.remove('show');
             menuIcon.innerHTML = "&#9776;";
@@ -39,7 +50,7 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// ================== 1. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in");
 
@@ -52,17 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
-});
-
-// ================== 2. افکت نمایش تدریجی نوشته‌ها ==================
-document.addEventListener("DOMContentLoaded", () => {
-    // انتخاب همه عناصر با کلاس .hero-text
-    const heroText = document.querySelectorAll(".hero-text");
-
-    // برای هر عنصر کلاس hero-text یک انیمیشن نمایشی اعمال می‌کنیم
-    heroText.forEach(element => {
-        element.classList.add("animate");
-    });
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
