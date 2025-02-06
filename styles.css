@@ -278,6 +278,8 @@ nav ul li a:hover {
     background-size: cover;
     background-position: center;
     position: relative;
+    background-attachment: fixed; /* اضافه کردن پارالاکس */
+    transition: background-position 0.5s ease; /* اضافه کردن انتقال صاف برای پس‌زمینه */
 }
 
 /* انیمیشن تدریجی برای بخش‌ها */
@@ -298,11 +300,6 @@ nav ul li a:hover {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-
-.info-section.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
