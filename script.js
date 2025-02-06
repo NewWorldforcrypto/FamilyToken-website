@@ -81,35 +81,42 @@ document.querySelectorAll(".btn").forEach(button => {
 });
 
 // ================== 4. اسکرول نرم هنگام کلیک روی گزینه‌های منو ==================
-// برای پیمایش به بخش‌های مختلف سایت
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", (event) => {
-        event.preventDefault();  // از بارگذاری مجدد صفحه جلوگیری می‌کند
-        
-        // حذف کلاس active از تمام لینک‌ها
-        document.querySelectorAll("nav ul li a").forEach(item => {
-            item.classList.remove('active');
+document.addEventListener("DOMContentLoaded", function () {
+    // مدیریت کلیک روی گزینه‌های منو برای اسکرول نرم
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();  // از بارگذاری مجدد صفحه جلوگیری می‌کند
+
+            // اطمینان از اینکه بخش موردنظر وجود دارد
+            const targetId = link.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (!targetSection) {
+                console.error(`بخش با ID ${targetId} یافت نشد.`);
+                return;
+            }
+
+            // حذف کلاس active از تمام لینک‌ها
+            document.querySelectorAll("nav ul li a").forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // افزودن کلاس active به لینک کلیک شده
+            link.classList.add('active');
+
+            // پیمایش به بخش مورد نظر با انیمیشن نرم
+            window.scrollTo({
+                top: targetSection.offsetTop - 50,
+                behavior: "smooth"
+            });
+
+            // بستن منو بعد از کلیک روی گزینه
+            const menu = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuIcon.innerHTML = "&#9776;";
+            }
         });
-
-        // افزودن کلاس active به لینک کلیک شده
-        link.classList.add('active');
-
-        const targetId = link.getAttribute("href").substring(1);  // بخش هدف را پیدا می‌کند
-        const targetSection = document.getElementById(targetId);
-
-        // پیمایش به بخش مورد نظر با انیمیشن
-        window.scrollTo({
-            top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
-            behavior: "smooth"  // انیمیشن روان برای اسکرول
-        });
-
-        // بستن منو بعد از کلیک
-        const menu = document.querySelector('nav ul');
-        const menuIcon = document.querySelector('.menu-icon');
-        if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-            menuIcon.innerHTML = "&#9776;";
-        }
     });
 });
 
