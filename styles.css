@@ -128,6 +128,7 @@ nav ul.show li:nth-child(3) { transition-delay: 0.3s; }
 nav ul.show li:nth-child(4) { transition-delay: 0.4s; }
 nav ul.show li:nth-child(5) { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) { transition-delay: 0.6s; }
+nav ul.show li:nth-child(7) { transition-delay: 0.7s; }
 
 nav ul li a {
     color: #ffffff;  /* تغییر رنگ به سفید برای خوانایی بهتر */
