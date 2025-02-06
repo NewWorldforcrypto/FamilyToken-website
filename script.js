@@ -85,8 +85,8 @@ document.querySelectorAll(".btn").forEach(button => {
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", (event) => {
         event.preventDefault();  // از بارگذاری مجدد صفحه جلوگیری می‌کند
-
-        // حذف کلاس فعال از تمام لینک‌ها
+        
+        // حذف کلاس active از تمام لینک‌ها
         document.querySelectorAll("nav ul li a").forEach(item => {
             item.classList.remove('active');
         });
@@ -102,6 +102,14 @@ document.querySelectorAll("nav ul li a").forEach(link => {
             top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
             behavior: "smooth"  // انیمیشن روان برای اسکرول
         });
+
+        // بستن منو بعد از کلیک
+        const menu = document.querySelector('nav ul');
+        const menuIcon = document.querySelector('.menu-icon');
+        if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+            menuIcon.innerHTML = "&#9776;";
+        }
     });
 });
 
