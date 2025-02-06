@@ -305,7 +305,7 @@ nav ul li a:hover {
 }
 
 /* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
-.info-section.visible {
+.info-section {
     opacity: 1;
     transform: translateY(0);
 }
