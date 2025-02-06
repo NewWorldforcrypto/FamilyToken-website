@@ -243,10 +243,6 @@ nav ul li a:hover {
     }
 }
 
-.info-section.animate {
-    animation: fadeInEffect 1.5s ease-out forwards;
-}
-
 /* افکت نوری متحرک */
 @keyframes neonGlow {
     0% {
@@ -305,9 +301,9 @@ nav ul li a:hover {
 }
 
 /* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
-.info-section {
-    opacity: 1;
-    transform: translateY(0);
+.fade-in.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* ========== 1. پس‌زمینه شیک و مدرن ========== */
