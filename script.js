@@ -81,19 +81,18 @@ document.querySelectorAll(".btn").forEach(button => {
 });
 
 // ================== 4. اسکرول نرم هنگام کلیک روی گزینه‌های منو ==================
-document.querySelectorAll("nav ul li a").forEach(anchor => {
-    anchor.addEventListener("click", function (event) {
-        event.preventDefault();
+// برای پیمایش به بخش‌های مختلف سایت
+document.querySelectorAll("nav ul li a").forEach(link => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();  // از بارگذاری مجدد صفحه جلوگیری می‌کند
+        const targetId = link.getAttribute("href").substring(1);  // بخش هدف را پیدا می‌کند
+        const targetSection = document.getElementById(targetId);
 
-        const targetId = this.getAttribute("href").substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 50,
-                behavior: "smooth"
-            });
-        }
+        // پیمایش به بخش مورد نظر با انیمیشن
+        window.scrollTo({
+            top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
+            behavior: "smooth"  // انیمیشن روان برای اسکرول
+        });
     });
 });
 
