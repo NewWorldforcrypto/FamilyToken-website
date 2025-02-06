@@ -172,8 +172,8 @@ nav ul li a:hover {
     background-position: center;
     position: relative;
     background-attachment: fixed; /* اضافه کردن پارالاکس */
+    transition: background-position 0.5s ease; /* اضافه کردن انتقال صاف برای پس‌زمینه */
 }
-
 
 /* تنظیم جهت حرکت پس‌زمینه‌ها */
 @keyframes moveRight {
@@ -210,7 +210,6 @@ nav ul li a:hover {
     background: url('images/background5.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
 }
-
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
 .hero-text {
