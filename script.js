@@ -68,15 +68,32 @@ document.addEventListener("DOMContentLoaded", () => {
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
-        button.style.transform = "scale(0.95)";  // وقتی دکمه فشرده میشه، کمی کوچکتر میشه
+        button.style.transform = "scale(0.95)";
     });
 
     button.addEventListener("mouseup", () => {
-        button.style.transform = "scale(1)";  // وقتی دست از دکمه برداشته میشه، اندازه به حالت اولیه برمی‌گرده
+        button.style.transform = "scale(1)";
     });
 
     button.addEventListener("mouseleave", () => {
-        button.style.transform = "scale(1)";  // وقتی موس از دکمه بیرون میره، اندازه به حالت اولیه برمی‌گرده
+        button.style.transform = "scale(1)";
+    });
+});
+
+// ================== 4. اسکرول نرم هنگام کلیک روی گزینه‌های منو ==================
+document.querySelectorAll("nav ul li a").forEach(anchor => {
+    anchor.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const targetId = this.getAttribute("href").substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 50,
+                behavior: "smooth"
+            });
+        }
     });
 });
 
