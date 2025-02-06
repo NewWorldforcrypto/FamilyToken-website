@@ -300,6 +300,11 @@ nav ul li a:hover {
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
+.info-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
 .fade-in.visible {
     opacity: 1 !important;
