@@ -96,7 +96,7 @@ document.querySelectorAll("nav ul li a").forEach(link => {
     });
 });
 
-// ================== 3. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
+// ================== 5. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
 document.addEventListener("DOMContentLoaded", () => {
     const backgrounds = [
         { element: document.getElementById("hero"), speed: 0.02, direction: 1 },
