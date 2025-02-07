@@ -8,10 +8,15 @@ const toggleMenu = () => {
 };
 
 // بستن منو هنگام کلیک روی گزینه‌های داخلی
+// متغیر برای کنترل وضعیت اسکرول
+let isScrolling = false;
+
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
+
+            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
 
             let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
             let targetSection = document.getElementById(targetId);
@@ -34,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
+            // نشان دادن اینکه اسکرول در حال انجام است
+            isScrolling = true;
+
             // اسکرول دقیق‌تر با scrollIntoView
             targetSection.scrollIntoView({
                 behavior: "smooth", // انیمیشن روان
@@ -47,6 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 menu.classList.remove('show');
                 menuIcon.innerHTML = "&#9776;";
             }
+
+            // خاتمه دادن اسکرول پس از انجام
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
         });
     });
 });
