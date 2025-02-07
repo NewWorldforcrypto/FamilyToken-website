@@ -34,11 +34,19 @@ document.addEventListener("DOMContentLoaded", function () {
             // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
-            // اسکرول نرم با استفاده از scrollIntoView
+            // اسکرول دقیق‌تر با scrollIntoView
             targetSection.scrollIntoView({
-                behavior: "smooth", // انیمیشن اسکرول
+                behavior: "smooth", // انیمیشن روان
                 block: "start" // شروع اسکرول از بالای بخش
             });
+
+            // بستن منو پس از اسکرول
+            const menu = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuIcon.innerHTML = "&#9776;";
+            }
         });
     });
 });
