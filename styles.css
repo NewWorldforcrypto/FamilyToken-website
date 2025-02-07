@@ -222,7 +222,7 @@ nav ul li a.active {
 
 #hero6 {
     background: url('images/background6.webp') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
+    animation: moveLeft 20s infinite linear;
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
