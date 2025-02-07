@@ -343,6 +343,7 @@ nav ul li a.active {
 }
 
 /* استایل برای عنوان‌های داخل بخش‌ها */
+/* استایل برای متن در داخل بخش‌ها (info-section) */
 .info-section h3 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -355,15 +356,15 @@ nav ul li a.active {
     margin-bottom: 20px;
 }
 
-/* تنظیمات متن پاراگراف در داخل بخش‌ها */
+/* متن پاراگراف در بخش‌ها */
 .info-section p {
     font-size: 1.2rem;
-    color: #ddd; /* رنگ خاکی برای خوانایی بهتر */
+    color: #ddd; /* رنگ خاکی یا خاکی روشن برای خوانایی بهتر */
     line-height: 1.6;
     margin-top: 10px;
 }
 
-/* استایل دکمه‌ها */
+/* تنظیم برای دکمه‌ها در داخل بخش‌ها */
 .btn {
     font-size: 1.2rem;
     background: linear-gradient(45deg, #ff416c, #ff4b2b); /* گرادیانت برای دکمه‌ها */
