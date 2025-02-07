@@ -342,7 +342,7 @@ nav ul li a.active {
 .info-section h3 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #ff8c00; /* رنگ نارنجی برای جذابیت بیشتر */
+    color: #ff8c00 !important; /* رنگ نارنجی با اولویت بالا */
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
