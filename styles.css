@@ -220,83 +220,68 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل متن با رنگ‌های نئونی و افکت سه‌بعدی */
+/* استایل برای نوشته‌ها */
 .hero-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
-    color: #FF00FF; /* نئون صورتی */
+    color: #fff; /* رنگ سفید برای خوانایی */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* فاصله بین حروف برای جذاب‌تر شدن */
     text-shadow: 
-        0px 0px 5px rgba(255, 0, 255, 0.8),  /* سایه نئون */
-        0px 0px 15px rgba(255, 0, 255, 0.6), 
-        0px 0px 30px rgba(255, 0, 255, 0.4); /* درخشش بیشتر */
+        0px 0px 10px rgba(255, 255, 255, 0.8), /* سایه نوری به رنگ سفید */
+        0px 0px 20px rgba(255, 0, 0, 1),      /* سایه قرمز برای درخشش */
+        0px 0px 30px rgba(0, 255, 255, 0.8),  /* سایه آبی برای درخشش */
+        0px 0px 40px rgba(255, 0, 255, 0.6),  /* سایه بنفش برای تاکید بیشتر */
+        0px 0px 50px rgba(0, 255, 0, 0.5);    /* سایه سبز برای جذابیت */
     display: inline-block;
-    animation: glow 1.5s infinite alternate; /* افکت درخشش متناوب */
-    transition: all 0.4s ease-in-out;
+    position: relative;
+    animation: glowEffect 3s infinite alternate, moveEffect 5s ease-in-out infinite;
 }
 
-/* انیمیشن درخشش سه‌بعدی */
-@keyframes glow {
+/* انیمیشن درخشش */
+@keyframes glowEffect {
     0% {
         text-shadow: 
-            0px 0px 5px rgba(255, 0, 255, 0.8), 
-            0px 0px 15px rgba(255, 0, 255, 0.6),
-            0px 0px 30px rgba(255, 0, 255, 0.4);
+            0px 0px 10px rgba(255, 255, 255, 0.8), 
+            0px 0px 20px rgba(255, 0, 0, 1), 
+            0px 0px 30px rgba(0, 255, 255, 0.8),
+            0px 0px 40px rgba(255, 0, 255, 0.6),
+            0px 0px 50px rgba(0, 255, 0, 0.5);
     }
     100% {
         text-shadow: 
-            0px 0px 15px rgba(255, 0, 255, 1), 
-            0px 0px 30px rgba(255, 0, 255, 0.8),
-            0px 0px 50px rgba(255, 0, 255, 0.6);
+            0px 0px 15px rgba(255, 255, 255, 1), 
+            0px 0px 30px rgba(255, 0, 0, 1),
+            0px 0px 45px rgba(0, 255, 255, 1),
+            0px 0px 60px rgba(255, 0, 255, 1),
+            0px 0px 80px rgba(0, 255, 0, 1);
     }
 }
 
-/* استایل برای متنی که جلوه سه‌بعدی دارد */
-.hero-text {
-    color: #FFD700; /* طلایی متالیک */
-    text-shadow: 
-        1px 1px 5px rgba(0, 0, 0, 0.7), 
-        0px 0px 10px rgba(255, 215, 0, 0.8),
-        0px 0px 15px rgba(255, 215, 0, 0.5);
-    display: inline-block;
-    transition: all 0.3s ease-in-out;
-}
-
-/* افکت متن در هنگام هاور */
-.hero-text:hover {
-    color: #FF6347; /* رنگ نارنجی روشن */
-    text-shadow: 
-        1px 1px 5px rgba(255, 99, 71, 0.8),
-        0px 0px 15px rgba(255, 99, 71, 0.6),
-        0px 0px 30px rgba(255, 99, 71, 0.4); 
-}
-
-/* انیمیشن ظاهر شدن برای متن */
-@keyframes fadeInText {
+/* انیمیشن حرکت برای متن */
+@keyframes moveEffect {
     0% {
-        opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
     100% {
-        opacity: 1;
         transform: translateY(0);
     }
 }
 
-.hero-text.animate {
-    animation: fadeInText 1.5s ease-out forwards;
-}
-
-/* افکت نوری متحرک (فقط در صورت تمایل) */
-@keyframes neonGlow {
-    0% {
-        text-shadow: 0px 0px 15px rgba(59, 130, 246, 0.8),
-                     0px 0px 30px rgba(147, 51, 234, 0.5);
-    }
-    100% {
-        text-shadow: 0px 0px 20px rgba(59, 130, 246, 1),
-                     0px 0px 50px rgba(147, 51, 234, 0.8);
-    }
+/* افکت حرکت در هنگام هاور */
+.hero-text:hover {
+    transform: scale(1.1); /* بزرگ شدن هنگام هاور */
+    color: #ff6347; /* تغییر رنگ به نارنجی پررنگ */
+    text-shadow: 
+        0px 0px 10px rgba(255, 255, 255, 0.8),
+        0px 0px 20px rgba(255, 0, 0, 1),
+        0px 0px 30px rgba(0, 255, 255, 0.8),
+        0px 0px 40px rgba(255, 0, 255, 0.6),
+        0px 0px 50px rgba(0, 255, 0, 0.5);
 }
 
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
