@@ -317,22 +317,22 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* پس‌زمینه کاملاً شیشه‌ای و طرح‌دار */
+/* پس‌زمینه شفاف، بدون تیرگی و مات‌شدگی */
 .info-section {
     padding: 50px 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05)); /* گرادینت روشن */
-    border-radius: 15px; /* گرد کردن لبه‌ها */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05); /* سایه نرم برای حالت شناور */
+    background: rgba(255, 255, 255, 0.05); /* کمترین میزان رنگ پس‌زمینه */
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* سایه ظریف */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: blur(1.5px) brightness(1.6); /* بلور کم و روشن‌تر شدن */
-    -webkit-backdrop-filter: blur(1.5px) brightness(1.6); /* پشتیبانی برای مرورگرهای قدیمی */
+    backdrop-filter: brightness(1.8) contrast(1.2); /* افزایش وضوح */
+    -webkit-backdrop-filter: brightness(1.8) contrast(1.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* افکت پترن ظریف برای پس‌زمینه */
+/* افکت پترن کاملاً نامحسوس، فقط برای زیبایی */
 .info-section::before {
     content: "";
     position: absolute;
@@ -340,15 +340,15 @@ nav ul li a.active {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/clean-textile.png'); /* پترن زیبا */
-    opacity: 0.15; /* میزان شفافیت پترن */
+    background-image: url('https://www.transparenttextures.com/patterns/diagmonds-light.png'); /* پترن خیلی ظریف */
+    opacity: 0.08; /* شفافیت خیلی زیاد */
     border-radius: 15px;
 }
 
-/* افکت زیبا در هاور */
+/* افکت هاور حرفه‌ای */
 .info-section:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
 }
 
 /* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
