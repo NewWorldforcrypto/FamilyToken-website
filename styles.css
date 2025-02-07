@@ -317,32 +317,38 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* استایل برای متن در داخل بخش‌ها (info-section) */
+/* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
+#hero2, #hero3, #hero4, #hero5, 
+.info-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+/* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
+.fade-in.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+/* ========== 1. پس‌زمینه شیک و مدرن ========== */
 .info-section {
     padding: 50px 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.2)); /* گرادیانت شفاف */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.2)); /* گرادیانت ملایم */
     border-radius: 20px; /* گرد کردن گوشه‌ها */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* سایه برای عمق */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* سایه ملایم برای عمق */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    
-    /* افکت شیشه‌ای با شفافیت */
-    backdrop-filter: blur(15px); /* ایجاد افکت شیشه‌ای */
-    -webkit-backdrop-filter: blur(15px); /* پشتیبانی برای مرورگرهای قدیمی‌تر */
-
-    /* انیمیشن */
-    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن برای هاور */
 }
 
-/* تغییرات هنگام هاور برای جذابیت بیشتر */
+/* ========== 2. تغییرات هنگام هاور برای جذابیت بیشتر ========== */
 .info-section:hover {
     transform: translateY(-10px); /* حرکت نرم به سمت بالا */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* سایه قوی‌تر در هاور */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر در هاور */
 }
 
-/* استایل برای عنوان‌های داخل بخش‌ها */
 /* استایل برای متن در داخل بخش‌ها (info-section) */
 .info-section h3 {
     font-size: 2.5rem;
