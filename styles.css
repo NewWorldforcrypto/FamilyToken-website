@@ -220,46 +220,35 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل برای نوشته‌ها */
+/* استایل متن سه‌بعدی با افکت‌های نورانی */
 .hero-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
-    font-weight: bold;
+    font-size: 4rem; /* اندازه بزرگ برای جذابیت */
+    font-weight: 700; /* وزن سنگین برای جلب توجه */
     color: #fff; /* رنگ سفید برای خوانایی */
     text-transform: uppercase;
-    letter-spacing: 3px; /* فاصله بین حروف برای جذاب‌تر شدن */
-    text-shadow: 
-        0px 0px 10px rgba(255, 255, 255, 0.8), /* سایه نوری به رنگ سفید */
-        0px 0px 20px rgba(255, 0, 0, 1),      /* سایه قرمز برای درخشش */
-        0px 0px 30px rgba(0, 255, 255, 0.8),  /* سایه آبی برای درخشش */
-        0px 0px 40px rgba(255, 0, 255, 0.6),  /* سایه بنفش برای تاکید بیشتر */
-        0px 0px 50px rgba(0, 255, 0, 0.5);    /* سایه سبز برای جذابیت */
-    display: inline-block;
+    letter-spacing: 5px; /* فاصله بیشتر بین حروف */
+    text-align: center;
     position: relative;
-    animation: glowEffect 3s infinite alternate, moveEffect 5s ease-in-out infinite;
+    display: inline-block;
+    z-index: 10;
+    animation: neonGlow 3s ease-in-out infinite, moveEffect 5s ease-in-out infinite;
 }
 
-/* انیمیشن درخشش */
-@keyframes glowEffect {
+/* انیمیشن برای درخشش متن */
+@keyframes neonGlow {
     0% {
-        text-shadow: 
-            0px 0px 10px rgba(255, 255, 255, 0.8), 
-            0px 0px 20px rgba(255, 0, 0, 1), 
-            0px 0px 30px rgba(0, 255, 255, 0.8),
-            0px 0px 40px rgba(255, 0, 255, 0.6),
-            0px 0px 50px rgba(0, 255, 0, 0.5);
+        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px rgba(255, 20, 147, 1), 0px 0px 60px rgba(0, 255, 255, 1), 0px 0px 80px rgba(255, 0, 255, 0.8);
+    }
+    50% {
+        text-shadow: 0px 0px 20px rgba(255, 255, 255, 1), 0px 0px 50px rgba(255, 20, 147, 1), 0px 0px 80px rgba(0, 255, 255, 1), 0px 0px 100px rgba(255, 0, 255, 0.9);
     }
     100% {
-        text-shadow: 
-            0px 0px 15px rgba(255, 255, 255, 1), 
-            0px 0px 30px rgba(255, 0, 0, 1),
-            0px 0px 45px rgba(0, 255, 255, 1),
-            0px 0px 60px rgba(255, 0, 255, 1),
-            0px 0px 80px rgba(0, 255, 0, 1);
+        text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.8), 0px 0px 70px rgba(255, 20, 147, 1), 0px 0px 100px rgba(0, 255, 255, 1), 0px 0px 120px rgba(255, 0, 255, 1);
     }
 }
 
-/* انیمیشن حرکت برای متن */
+/* انیمیشن حرکت متن */
 @keyframes moveEffect {
     0% {
         transform: translateY(0);
@@ -270,18 +259,6 @@ nav ul li a.active {
     100% {
         transform: translateY(0);
     }
-}
-
-/* افکت حرکت در هنگام هاور */
-.hero-text:hover {
-    transform: scale(1.1); /* بزرگ شدن هنگام هاور */
-    color: #ff6347; /* تغییر رنگ به نارنجی پررنگ */
-    text-shadow: 
-        0px 0px 10px rgba(255, 255, 255, 0.8),
-        0px 0px 20px rgba(255, 0, 0, 1),
-        0px 0px 30px rgba(0, 255, 255, 0.8),
-        0px 0px 40px rgba(255, 0, 255, 0.6),
-        0px 0px 50px rgba(0, 255, 0, 0.5);
 }
 
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
@@ -373,31 +350,38 @@ nav ul li a.active {
     margin-top: 10px;
 }
 
-/* ========== 4. دکمه‌ها ========== */
+/* استایل دکمه‌ها */
 .btn {
+    font-size: 1.2rem;
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
+    padding: 15px 30px;
+    border-radius: 50px;
     font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
     margin-top: 20px;
 }
 
-/* تغییرات هاور دکمه */
+/* تغییرات در هاور برای دکمه‌ها */
 .btn:hover {
-    transform: scale(1.05); /* بزرگ‌تر شدن دکمه */
-    box-shadow: 0 0 15px rgba(255, 65, 108, 0.8); /* سایه جذاب و مدرن */
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(255, 65, 108, 0.8);
 }
 
-/* دکمه آبی */
-.blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3);
-}
-
-.blue-btn:hover {
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+/* انیمیشن برای حرکت دکمه‌ها */
+@keyframes buttonEffect {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
