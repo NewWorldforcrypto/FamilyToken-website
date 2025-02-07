@@ -317,25 +317,25 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* استایل کاملاً شیشه‌ای، بدون رنگ اضافی */
+/* استایل کاملاً شیشه‌ای و تمیز */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.05); /* کاملاً شفاف، بدون تیرگی */
+    background: rgba(255, 255, 255, 0.02); /* تقریباً نامرئی، بدون تیرگی */
     border-radius: 15px;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* سایه ملایم برای برجستگی */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* سایه ملایم برای برجستگی */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: blur(8px) brightness(1.2); /* شفافیت واقعی بدون تغییر رنگ */
-    -webkit-backdrop-filter: blur(8px) brightness(1.2);
+    backdrop-filter: brightness(1.5); /* افزایش روشنایی بدون بلور */
+    -webkit-backdrop-filter: brightness(1.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* افکت بالا آمدن در هاور */
+/* افکت نور در هاور */
 .info-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
 }
 
 /* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
