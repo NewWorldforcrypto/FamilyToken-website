@@ -99,12 +99,12 @@ document.querySelectorAll(".btn").forEach(button => {
 
 // ================== 4. اسکرول نرم هنگام کلیک روی گزینه‌های منو ==================
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("اسکریپت اجرا شد");
-
+    // مدیریت کلیک روی گزینه‌های منو برای اسکرول نرم
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();  // جلوگیری از بارگذاری مجدد صفحه
 
+            // گرفتن ID از لینک
             const targetId = link.getAttribute("href").substring(1);
             const targetSection = document.getElementById(targetId);
 
@@ -112,8 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error(`بخش با ID ${targetId} پیدا نشد!`);
                 return;
             }
-
-            console.log(`در حال اسکرول به بخش: ${targetId}`);
 
             // حذف کلاس active از تمام لینک‌ها
             document.querySelectorAll("nav ul li a").forEach(item => {
@@ -123,13 +121,13 @@ document.addEventListener("DOMContentLoaded", function () {
             // افزودن کلاس active به لینک کلیک شده
             link.classList.add('active');
 
-            // پیمایش نرم به بخش مورد نظر
+            // پیمایش به بخش مورد نظر با انیمیشن نرم
             window.scrollTo({
-                top: targetSection.offsetTop - 50,
-                behavior: "smooth"
+                top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
+                behavior: "smooth"  // انیمیشن روان برای اسکرول
             });
 
-            // بستن منو بعد از کلیک
+            // بستن منو بعد از کلیک روی گزینه
             const menu = document.querySelector('nav ul');
             const menuIcon = document.querySelector('.menu-icon');
             if (menu.classList.contains('show')) {
