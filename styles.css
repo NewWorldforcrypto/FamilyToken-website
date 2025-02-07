@@ -399,15 +399,36 @@ nav ul li a.active {
 .social-links a {
     margin: 15px;
     color: #ffffff;
-    font-size: 2rem;
-    transition: all 0.3s ease;
+    font-size: 2rem;  /* تنظیم اندازه آیکون */
+    transition: all 0.3s ease;  /* انیمیشن برای تغییرات */
 }
 
 /* تغییرات رنگ و سایه هنگام هاور */
 .social-links a:hover {
-    color: #ff8c00; /* تغییر رنگ به نارنجی */
-    transform: scale(1.2); /* بزرگ شدن آیکون */
-    box-shadow: 0 0 15px rgba(255, 140, 0, 0.6); /* اضافه کردن سایه جذاب */
+    color: #ff8c00;  /* تغییر رنگ به نارنجی */
+    transform: scale(1.3); /* کمی بزرگ‌تر شدن آیکون */
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.6); /* اضافه کردن سایه جذاب */
+}
+
+/* استایل آیکون‌های شبکه‌های اجتماعی برای تمیزتر کردن نمایش */
+.social-links a i {
+    display: inline-block;
+    font-size: 2rem; /* اندازه آیکون‌ها */
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+}
+
+/* تنظیمات اضافی برای رنگ‌آمیزی بهتر */
+.social-links a i.fa-twitter {
+    color: #1da1f2;  /* رنگ آبی مخصوص توییتر */
+}
+
+.social-links a i.fa-instagram {
+    color: #e4405f;  /* رنگ صورتی مخصوص اینستاگرام */
+}
+
+.social-links a i.fa-telegram {
+    color: #0088cc;  /* رنگ آبی مخصوص تلگرام */
 }
 
 /* استایل فرم تماس */
