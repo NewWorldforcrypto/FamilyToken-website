@@ -317,47 +317,40 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* 🔹 پس‌زمینه شفاف (حالت شیشه‌ای) برای بخش‌های متنی */
+/* ========== 1. پس‌زمینه شیک و مدرن ========== */
 .info-section {
-    padding: 50px 30px;
-    max-width: 850px;
-    margin: 60px auto;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.2)); /* گرادیانت ملایم */
+    border-radius: 20px; /* گرد کردن گوشه‌ها */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* سایه ملایم برای عمق */
     text-align: center;
-    backdrop-filter: blur(12px);  /* افکت شیشه‌ای */
-    background: rgba(255, 255, 255, 0.12); /* شفافیت بیشتر */
-    border-radius: 15px; /* گرد کردن گوشه‌ها */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* سایه نرم */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* حاشیه نیمه شفاف */
-    transition: all 0.3s ease-in-out;
+    margin: 50px auto;
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن برای هاور */
 }
 
-/* 🔹 تغییرات هنگام هاور برای زیبایی بیشتر */
+/* ========== 2. تغییرات هنگام هاور برای جذابیت بیشتر ========== */
 .info-section:hover {
-    backdrop-filter: blur(15px); 
-    background: rgba(255, 255, 255, 0.18);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px); /* حرکت نرم به سمت بالا */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر در هاور */
 }
 
-/* 🔹 استایل متن‌های داخل بخش‌های شیشه‌ای */
+/* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
 .info-section h3 {
     font-size: 2.5rem;
     font-weight: bold;
+    color: #fff; /* رنگ سفید برای زیبایی و خوانایی */
+    margin-bottom: 20px;
     text-transform: uppercase;
-    color: #ffdf70; /* رنگ طلایی متالیک */
-    text-shadow: 2px 2px 8px rgba(255, 223, 112, 0.8); /* درخشش طلایی */
-    font-family: 'Poppins', sans-serif;
     letter-spacing: 1.5px;
 }
 
-/* 🔹 استایل حرفه‌ای‌تر برای متن پاراگراف */
+/* متن پاراگراف */
 .info-section p {
     font-size: 1.2rem;
-    line-height: 1.8;
-    color: #fff;
-    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
+    color: #ddd;
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
 /* ========== 4. دکمه‌ها ========== */
@@ -400,18 +393,10 @@ footer {
 }
 
 /* ========== 10. تنظیمات برای تبلت و دسکتاپ ========== */
-@media (max-width: 768px) {
-    .info-section {
-        padding: 40px 20px;
-        margin: 40px auto;
+@media (min-width: 1024px) {
+    .menu-icon {
+        display: none;
     }
-    .info-section h3 {
-        font-size: 2rem;
-    }
-    .info-section p {
-        font-size: 1.1rem;
-    }
-}
 
     nav ul {
         display: flex;
