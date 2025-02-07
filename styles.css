@@ -220,25 +220,34 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل بهبود یافته برای نوشته‌های روی تصاویر */
+/* استایل برای نوشته‌های روی تصاویر */
 .hero-text {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     font-weight: bold;
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)); /* پس‌زمینه شفاف */
-    color: #ffffff; /* رنگ سفید برای متن */
-    text-align: center;
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* سایه برای برجسته‌تر کردن متن */
+    color: #FFD700; /* رنگ طلایی جذاب */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* سایه تیره برای خوانایی بیشتر */
     display: inline-block;
     transition: all 0.4s ease-in-out;
-    animation: fadeInText 1.5s ease-out forwards;
-    opacity: 0;
-    animation-delay: 0.5s; /* نیم‌ثانیه تأخیر برای جلوه بهتر */
 }
 
-/* انیمیشن متن برای ظاهر شدن */
+/* اضافه کردن افکت پس‌زمینه نیمه‌شفاف برای کمک به خوانایی متن */
+#hero, #hero2, #hero3, #hero4, #hero5 {
+    position: relative;
+}
+
+#hero:before, #hero2:before, #hero3:before, #hero4:before, #hero5:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* نیمه‌شفاف برای برجسته کردن متن */
+    z-index: -1; /* این لایه پایین‌تر از متن قرار می‌گیرد */
+}
+
+/* انیمیشن ظاهر شدن برای متن */
 @keyframes fadeInText {
     0% {
         opacity: 0;
@@ -248,6 +257,10 @@ nav ul li a.active {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.hero-text.animate {
+    animation: fadeInText 1.5s ease-out forwards;
 }
 
 /* افکت نوری متحرک (فقط در صورت تمایل) */
