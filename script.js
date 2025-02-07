@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
-                console.error(`❌ بخش با ID ${targetId} پیدا نشد!`);
+                console.error(`❌ بخش ${targetId} پیدا نشد!`);
                 return;
             }
 
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
-            // اسکرول نرم به بخش با استفاده از scrollIntoView
+            // اسکرول نرم با استفاده از scrollIntoView
             targetSection.scrollIntoView({
                 behavior: "smooth", // انیمیشن اسکرول
                 block: "start" // شروع اسکرول از بالای بخش
