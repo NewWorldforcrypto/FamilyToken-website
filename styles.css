@@ -220,43 +220,48 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل برای متن سه‌بعدی و نئون */
+/* استایل بهبود یافته برای نوشته‌های روی تصاویر */
 .hero-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
-    text-align: center;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    background: linear-gradient(45deg, #ff66b2, #ff3385, #ff0066, #e6005c); /* تقویت رنگ صورتی متالیک */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.8), 
-                 0px 0px 60px rgba(255, 20, 147, 1);
+    text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8),  
+                 0px 0px 30px rgba(255, 20, 147, 0.5); /* درخشش قوی‌تر */
+    display: inline-block;
+    transition: all 0.4s ease-in-out;
     animation: neonGlow 2s infinite alternate;
-    transition: all 0.3s ease-in-out;
+
+    /* انیمیشن ظاهر شدن */
+    opacity: 0;
+    animation: fadeInText 1.5s ease-out forwards;
+    animation-delay: 0.5s; /* نیم‌ثانیه تأخیر برای جلوه بهتر */
 }
 
-/* انیمیشن نور برای متن */
+/* انیمیشن متن برای ظاهر شدن */
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* افکت نوری متحرک */
 @keyframes neonGlow {
     0% {
-        text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8), 
+        text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8),  
                      0px 0px 30px rgba(255, 20, 147, 0.5);
     }
     100% {
-        text-shadow: 0px 0px 30px rgba(255, 20, 147, 1), 
-                     0px 0px 60px rgba(255, 20, 147, 0.9);
+        text-shadow: 0px 0px 20px rgba(255, 20, 147, 1),  
+                     0px 0px 50px rgba(255, 20, 147, 0.9);
     }
-}
-
-/* انیمیشن محو شدن برای قسمت‌های دیگر */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s ease-out;
-}
-
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
@@ -312,118 +317,67 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
- شیشه‌ای برای بخش‌های متنی ===================== */
+/* ========== 1. پس‌زمینه شیک و مدرن ========== */
 .info-section {
-    padding: 50px 30px;
-    max-width: 850px;
-    margin: 60px auto;
-    background: rgba(255, 255, 255, 0.12); /* پس‌زمینه شفاف و شیشه‌ای */
-    backdrop-filter: blur(12px); /* افکت مات شیشه‌ای */
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.2)); /* گرادیانت ملایم */
+    border-radius: 20px; /* گرد کردن گوشه‌ها */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* سایه ملایم برای عمق */
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن برای هاور */
 }
 
-/* افکت‌های هاور شیشه‌ای */
+/* ========== 2. تغییرات هنگام هاور برای جذابیت بیشتر ========== */
 .info-section:hover {
-    backdrop-filter: blur(15px);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transform: translateY(-10px); /* حرکت نرم به سمت بالا */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر در هاور */
 }
 
-/* ===================== 2. بهبود استایل متن و جلوه‌های متنی ===================== */
+/* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
 .info-section h3 {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff; /* رنگ سفید برای زیبایی و خوانایی */
+    margin-bottom: 20px;
     text-transform: uppercase;
-    color: #ffdf70; /* طلایی جذاب */
-    text-shadow: 3px 3px 8px rgba(255, 223, 112, 0.8);
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
 /* متن پاراگراف */
 .info-section p {
     font-size: 1.2rem;
     color: #ddd;
-    line-height: 1.8;
-    font-weight: 300;
-    margin-top: 15px;
-    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.2);
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
-/* ===================== 3. استایل دکمه‌ها و افکت‌های آنها ===================== */
+/* ========== 4. دکمه‌ها ========== */
 .btn {
-    font-size: 1.2rem;
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
 }
 
-/* تغییرات هاور برای دکمه‌ها */
+/* تغییرات هاور دکمه */
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 10px 25px rgba(255, 65, 108, 0.8);
+    transform: scale(1.05); /* بزرگ‌تر شدن دکمه */
+    box-shadow: 0 0 15px rgba(255, 65, 108, 0.8); /* سایه جذاب و مدرن */
 }
 
-/* انیمیشن نرم برای دکمه‌ها */
-@keyframes buttonEffect {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+/* دکمه آبی */
+.blue-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
 }
 
-/* ===================== 4. انیمیشن و نمایش تدریجی بخش‌ها ===================== */
-#hero2, #hero3, #hero4, #hero5, .info-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-
-/* زمانی که کلاس visible اضافه می‌شود */
-.fade-in.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-/* ===================== 5. تنظیمات واکنش‌گرایی برای موبایل ===================== */
-@media (max-width: 768px) {
-    .info-section {
-        padding: 40px 20px;
-        margin: 40px auto;
-    }
-    .info-section h3 {
-        font-size: 2.2rem;
-    }
-    .info-section p {
-        font-size: 1.1rem;
-    }
-    .btn {
-        font-size: 1rem;
-        padding: 12px 25px;
-    }
-}
-
-@media (max-width: 480px) {
-    .info-section h3 {
-        font-size: 1.8rem;
-    }
-    .info-section p {
-        font-size: 1rem;
-    }
+.blue-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
