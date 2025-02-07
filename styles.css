@@ -317,28 +317,22 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* استایل شیشه‌ای بدون هیچ تیرگی */
+/* استایل کاملاً شیشه‌ای، بدون رنگ اضافی */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.02); /* تقریباً نامرئی، فقط کمی روشنایی */
+    background: rgba(255, 255, 255, 0.05); /* کاملاً شفاف، بدون تیرگی */
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); /* سایه ملایم برای عمق */
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* سایه ملایم برای برجستگی */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: saturate(200%) blur(2px); /* جلوه شیشه‌ای واقعی */
-    -webkit-backdrop-filter: saturate(200%) blur(2px);
+    backdrop-filter: blur(8px) brightness(1.2); /* شفافیت واقعی بدون تغییر رنگ */
+    -webkit-backdrop-filter: blur(8px) brightness(1.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* افکت نور ملایم در هاور */
-.info-section:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
-}
-
-/* افکت هاور حرفه‌ای */
+/* افکت بالا آمدن در هاور */
 .info-section:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15);
