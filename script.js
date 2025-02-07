@@ -11,14 +11,15 @@ const toggleMenu = () => {
 let isScrolling = false;
 
 document.addEventListener("DOMContentLoaded", function () {
+    // گرفتن تمام لینک‌های منو
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault();
+            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
 
-            // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
-            if (isScrolling) return;
+            // جلوگیری از تداخل اسکرول‌ها
+            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
 
-            let targetId = this.getAttribute("href").substring(1);
+            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
@@ -42,16 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // اسکرول به وسط صفحه
+            // اسکرول دقیق‌تر به وسط صفحه
             const targetPosition = targetSection.offsetTop;
-            const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2;
+            const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2; // فاصله برای وسط صفحه
 
             window.scrollTo({
-                top: targetPosition - offset,
-                behavior: "smooth"
+                top: targetPosition - offset, // اسکرول به وسط صفحه
+                behavior: "smooth" // انیمیشن اسکرول
             });
 
-            // بستن منو بعد از اسکرول
+            // بستن منو پس از اسکرول
             const menu = document.querySelector('nav ul');
             const menuIcon = document.querySelector('.menu-icon');
             if (menu.classList.contains('show')) {
@@ -62,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // خاتمه دادن اسکرول پس از انجام
             setTimeout(() => {
                 isScrolling = false;
-            }, 1000);
+            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
         });
     });
 });
