@@ -220,31 +220,55 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل برای نوشته‌های روی تصاویر */
+/* استایل متن با رنگ‌های نئونی و افکت سه‌بعدی */
 .hero-text {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     font-weight: bold;
-    color: #FFD700; /* رنگ طلایی جذاب */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* سایه تیره برای خوانایی بیشتر */
+    color: #FF00FF; /* نئون صورتی */
+    text-shadow: 
+        0px 0px 5px rgba(255, 0, 255, 0.8),  /* سایه نئون */
+        0px 0px 15px rgba(255, 0, 255, 0.6), 
+        0px 0px 30px rgba(255, 0, 255, 0.4); /* درخشش بیشتر */
     display: inline-block;
+    animation: glow 1.5s infinite alternate; /* افکت درخشش متناوب */
     transition: all 0.4s ease-in-out;
 }
 
-/* اضافه کردن افکت پس‌زمینه نیمه‌شفاف برای کمک به خوانایی متن */
-#hero, #hero2, #hero3, #hero4, #hero5 {
-    position: relative;
+/* انیمیشن درخشش سه‌بعدی */
+@keyframes glow {
+    0% {
+        text-shadow: 
+            0px 0px 5px rgba(255, 0, 255, 0.8), 
+            0px 0px 15px rgba(255, 0, 255, 0.6),
+            0px 0px 30px rgba(255, 0, 255, 0.4);
+    }
+    100% {
+        text-shadow: 
+            0px 0px 15px rgba(255, 0, 255, 1), 
+            0px 0px 30px rgba(255, 0, 255, 0.8),
+            0px 0px 50px rgba(255, 0, 255, 0.6);
+    }
 }
 
-#hero:before, #hero2:before, #hero3:before, #hero4:before, #hero5:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* نیمه‌شفاف برای برجسته کردن متن */
-    z-index: -1; /* این لایه پایین‌تر از متن قرار می‌گیرد */
+/* استایل برای متنی که جلوه سه‌بعدی دارد */
+.hero-text {
+    color: #FFD700; /* طلایی متالیک */
+    text-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.7), 
+        0px 0px 10px rgba(255, 215, 0, 0.8),
+        0px 0px 15px rgba(255, 215, 0, 0.5);
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+/* افکت متن در هنگام هاور */
+.hero-text:hover {
+    color: #FF6347; /* رنگ نارنجی روشن */
+    text-shadow: 
+        1px 1px 5px rgba(255, 99, 71, 0.8),
+        0px 0px 15px rgba(255, 99, 71, 0.6),
+        0px 0px 30px rgba(255, 99, 71, 0.4); 
 }
 
 /* انیمیشن ظاهر شدن برای متن */
