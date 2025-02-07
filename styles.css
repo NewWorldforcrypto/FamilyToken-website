@@ -317,20 +317,6 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
-#hero2, #hero3, #hero4, #hero5, 
-.info-section {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
-}
-
-/* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
-.fade-in.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
 /* ========== 1. پس‌زمینه شیک و مدرن ========== */
 .info-section {
     padding: 50px 20px;
@@ -349,46 +335,49 @@ nav ul li a.active {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر در هاور */
 }
 
-/* استایل برای متن در داخل بخش‌ها (info-section) */
+/* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
 .info-section h3 {
     font-size: 2.5rem;
     font-weight: bold;
-    background: linear-gradient(45deg, #80d0ff, #ffffff); /* آبی کمرنگ در بالای متن و سفید در پایین */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; /* رنگ متن از گرادیانت می‌آید */
-    text-shadow: 0px 0px 10px rgba(255, 20, 147, 0.6),  
-                 0px 0px 15px rgba(255, 20, 147, 0.4); /* درخشش کم برای متن */
-    display: inline-block;
+    color: #fff; /* رنگ سفید برای زیبایی و خوانایی */
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
-/* متن پاراگراف در بخش‌ها */
+/* متن پاراگراف */
 .info-section p {
     font-size: 1.2rem;
-    color: #ddd; /* رنگ خاکی یا خاکی روشن برای خوانایی بهتر */
+    color: #ddd;
     line-height: 1.6;
     margin-top: 10px;
 }
 
-/* تنظیم برای دکمه‌ها در داخل بخش‌ها */
+/* ========== 4. دکمه‌ها ========== */
 .btn {
-    font-size: 1.2rem;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* گرادیانت برای دکمه‌ها */
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 30px;
     font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* سایه جذاب */
-    cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
     margin-top: 20px;
 }
 
-/* تغییرات هاور دکمه‌ها */
+/* تغییرات هاور دکمه */
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 10px 20px rgba(255, 65, 108, 0.8); /* تغییر سایه در هاور */
+    transform: scale(1.05); /* بزرگ‌تر شدن دکمه */
+    box-shadow: 0 0 15px rgba(255, 65, 108, 0.8); /* سایه جذاب و مدرن */
+}
+
+/* دکمه آبی */
+.blue-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+}
+
+.blue-btn:hover {
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
