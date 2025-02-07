@@ -317,25 +317,25 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* استایل برای پس‌زمینه کاملاً شیشه‌ای */
+/* استایل برای پس‌زمینه کاملاً شفاف و شیشه‌ای */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.08); /* کاهش مقدار شفافیت برای وضوح بیشتر */
-    border-radius: 20px; /* گوشه‌های گرد */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* سایه ملایم‌تر برای طبیعی‌تر شدن */
+    background: rgba(255, 255, 255, 0.05); /* کمترین مقدار رنگ پس‌زمینه برای شفافیت بالا */
+    border-radius: 15px; /* گرد کردن لبه‌ها */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* سایه بسیار نرم برای زیبایی */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: blur(4px) saturate(180%); /* بلور کمتر و اشباع رنگ برای شفافیت بیشتر */
-    -webkit-backdrop-filter: blur(4px) saturate(180%); /* پشتیبانی از مرورگرهای WebKit */
+    backdrop-filter: blur(2px) brightness(1.4); /* بلور کمتر و روشن‌تر کردن پس‌زمینه */
+    -webkit-backdrop-filter: blur(2px) brightness(1.4); /* پشتیبانی از WebKit */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* تنظیمات هاور برای زیبایی بیشتر */
+/* استایل زیباتر در هاور */
 .info-section:hover {
-    transform: translateY(-8px); /* حرکت نرم به سمت بالا */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* سایه زیباتر */
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
