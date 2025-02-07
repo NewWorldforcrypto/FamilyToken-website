@@ -13,11 +13,12 @@ let isScrolling = false;
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
+            event.preventDefault();
 
-            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
+            // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
+            if (isScrolling) return;
 
-            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
+            let targetId = this.getAttribute("href").substring(1);
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
@@ -41,16 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // اسکرول دقیق‌تر به وسط صفحه
+            // اسکرول به وسط صفحه
             const targetPosition = targetSection.offsetTop;
-            const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2; // فاصله برای وسط صفحه
+            const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2;
 
             window.scrollTo({
-                top: targetPosition - offset, // اسکرول به وسط صفحه
-                behavior: "smooth" // انیمیشن اسکرول
+                top: targetPosition - offset,
+                behavior: "smooth"
             });
 
-            // بستن منو پس از اسکرول
+            // بستن منو بعد از اسکرول
             const menu = document.querySelector('nav ul');
             const menuIcon = document.querySelector('.menu-icon');
             if (menu.classList.contains('show')) {
@@ -61,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // خاتمه دادن اسکرول پس از انجام
             setTimeout(() => {
                 isScrolling = false;
-            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
+            }, 1000);
         });
     });
 });
