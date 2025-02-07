@@ -225,13 +225,13 @@ nav ul li a.active {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem;
     font-weight: bold;
-    background: linear-gradient(45deg, #ff66b2, #ff3385, #ff0066, #e6005c); /* تقویت رنگ صورتی متالیک */
+    background: linear-gradient(45deg, #3b82f6, #9333ea, #10b981); /* ترکیب رنگ‌های سرد نئون */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: white; /* نسخه پشتیبان برای مرورگرهایی که از gradient روی متن پشتیبانی نمی‌کنند */
-    text-shadow: 0px 0px 12px rgba(255, 20, 147, 0.8),  
-                 0px 0px 25px rgba(255, 20, 147, 0.6),  
-                 0px 0px 35px rgba(255, 20, 147, 0.4); /* درخشش قوی‌تر */
+    text-shadow: 0px 0px 12px rgba(59, 130, 246, 0.8),  
+                 0px 0px 25px rgba(147, 51, 234, 0.6),  
+                 0px 0px 35px rgba(16, 185, 129, 0.4); /* درخشش ملایم‌تر */
     display: inline-block;
     transition: all 0.4s ease-in-out;
     animation: neonGlow 2s infinite alternate;
@@ -257,12 +257,12 @@ nav ul li a.active {
 /* افکت نوری متحرک */
 @keyframes neonGlow {
     0% {
-        text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8),  
-                     0px 0px 30px rgba(255, 20, 147, 0.5);
+        text-shadow: 0px 0px 15px rgba(59, 130, 246, 0.8),  
+                     0px 0px 30px rgba(147, 51, 234, 0.5);
     }
     100% {
-        text-shadow: 0px 0px 20px rgba(255, 20, 147, 1),  
-                     0px 0px 50px rgba(255, 20, 147, 0.9);
+        text-shadow: 0px 0px 20px rgba(59, 130, 246, 1),  
+                     0px 0px 50px rgba(147, 51, 234, 0.8);
     }
 }
 
