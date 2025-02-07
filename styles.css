@@ -356,22 +356,25 @@ nav ul li a.active {
     margin-top: 10px;
 }
 
-/* استایل کلی بخش Contact Us */
+/* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
 #contact {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.1); /* پس‌زمینه شیشه‌ای */
-    backdrop-filter: blur(15px); /* افکت شیشه‌ای */
+    background: rgba(255, 255, 255, 0.03); /* فوق‌العاده شفاف، بدون تیرگی */
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* سایه ظریف */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* سایه‌ی ملایم برای برجستگی */
     text-align: center;
     margin: 50px auto;
-    max-width: 900px;
-    transition: all 0.3s ease;
+    max-width: 800px;
+    position: relative;
+    backdrop-filter: brightness(1.6); /* افزایش روشنایی بدون بلور */
+    -webkit-backdrop-filter: brightness(1.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* تغییرات هنگام هاور شدن برای بهبود زیبایی */
+/* افکت هاور برای زیبایی بیشتر */
 #contact:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
 }
 
 /* عنوان بخش */
