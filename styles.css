@@ -171,7 +171,7 @@ nav ul li a.active {
 }
 
 /* استایل کلی پس‌زمینه‌ها */
-#hero, #hero2, #hero3, #hero4, #hero5 {
+#hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -217,6 +217,11 @@ nav ul li a.active {
 
 #hero5 {
     background: url('images/background5.webp') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
+}
+
+#hero6 {
+    background: url('images/background6.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
 }
 
@@ -278,7 +283,7 @@ nav ul li a.active {
 }
 
 /* استایل برای هر بخش hero */
-#hero, #hero2, #hero3, #hero4, #hero5 {
+#hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -304,7 +309,7 @@ nav ul li a.active {
 }
 
 /* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
-#hero2, #hero3, #hero4, #hero5, 
+#hero2, #hero3, #hero4, #hero5, #hero6,  
 .info-section {
     opacity: 0;
     transform: translateY(30px);
@@ -556,7 +561,7 @@ footer {
         margin: 0 20px;
     }
 
-    #hero, #hero2, #hero3, #hero4, #hero5 {
+    #hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
         height: 100vh;
         background-size: cover;
         background-position: center;
