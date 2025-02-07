@@ -13,11 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
 
-            let targetId = this.getAttribute("href").substring(1); // مقدار گرفتن صحیح
+            let targetId = this.getAttribute("href"); // مقدار href دریافت شود
+
+            if (!targetId || !targetId.startsWith("#")) {
+                console.error("❌ خطا: مقدار href نامعتبر است!");
+                return;
+            }
+
+            targetId = targetId.substring(1); // حذف کاراکتر `#`
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
-                console.error(`❌ بخش ${targetId} پیدا نشد!`);
+                console.error(`❌ بخش با ID ${targetId} پیدا نشد!`);
                 return;
             }
 
@@ -36,24 +43,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // اسکرول نرم با `requestAnimationFrame`
             smoothScroll(targetSection);
-
-            // بستن منو بعد از کلیک روی گزینه
-            const menu = document.querySelector("nav ul");
-            const menuIcon = document.querySelector(".menu-icon");
-            if (menu.classList.contains("show")) {
-                menu.classList.remove("show");
-                menuIcon.innerHTML = "&#9776;";
-            }
         });
     });
 });
 
-// 🚀 تابع پیشرفته برای اسکرول نرم با `requestAnimationFrame`
+// 🚀 تابع پیشرفته برای اسکرول نرم
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 800; // مدت زمان اسکرول (به میلی‌ثانیه)
+    const duration = 800; // مدت زمان اسکرول
     let startTime = null;
 
     function animationScroll(currentTime) {
