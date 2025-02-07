@@ -302,7 +302,7 @@ nav ul li a.active {
 #hero2, #hero3, #hero4, #hero5, 
 .info-section {
     opacity: 0;
-    transform: translateY(40px); /* افزایش عمق حرکت */
+    transform: translateY(30px);
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
@@ -310,75 +310,92 @@ nav ul li a.active {
 .fade-in.visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
-    transition: opacity 1.5s ease-out, transform 1s ease-out;
 }
 
 /* ========== 1. پس‌زمینه شیک و مدرن ========== */
 .info-section {
-    padding: 60px 30px; /* افزایش فضای داخلی */
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)); /* گرادیانت بسیار ملایم و نرم */
-    border-radius: 25px; /* گرد کردن گوشه‌ها بیشتر */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* سایه‌ای با عمق بیشتر */
+    padding: 50px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.2)); /* گرادیانت ملایم */
+    border-radius: 20px; /* گرد کردن گوشه‌ها */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* سایه ملایم برای عمق */
     text-align: center;
     margin: 50px auto;
-    max-width: 900px; /* بزرگ‌تر کردن اندازه بخش */
+    max-width: 800px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* انیمیشن برای هاور */
     position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(15px); /* اضافه کردن مات‌شدن پس‌زمینه */
-    transition: all 0.4s ease-in-out;
 }
 
-/* تغییرات هنگام هاور برای جذابیت بیشتر */
+/* پارالاکس برای پس‌زمینه */
+.info-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('background-image.jpg') no-repeat center center/cover;
+    transform: translateZ(0);
+    z-index: -1;
+    transition: transform 0.3s ease-out;
+}
+
+/* ========== 2. تغییرات هنگام هاور برای جذابیت بیشتر ========== */
 .info-section:hover {
-    transform: translateY(-12px); /* حرکت نرم به سمت بالا و یک حرکت زیبا */
-    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3); /* سایه بیشتر */
-    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.6)); /* تغییر گرادیانت در هاور */
+    transform: translateY(-10px); /* حرکت نرم به سمت بالا */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر در هاور */
+    animation: zoomIn 1s ease-out forwards;
 }
 
-/* ================== 2. تنظیمات متن داخل بخش‌ها ================== */
+/* انیمیشن بزرگ شدن پس‌زمینه */
+@keyframes zoomIn {
+    0% {
+        transform: scale(0.98);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
 .info-section h3 {
-    font-size: 3rem; /* اندازه بزرگتر */
+    font-size: 2.5rem;
     font-weight: bold;
     color: #fff; /* رنگ سفید برای زیبایی و خوانایی */
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-family: 'Poppins', sans-serif;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* ایجاد افکت سایه برای جذابیت بیشتر */
+    letter-spacing: 1.5px;
 }
 
-/* تنظیمات متن پاراگراف */
+/* متن پاراگراف */
 .info-section p {
-    font-size: 1.3rem; /* افزایش سایز متن */
+    font-size: 1.2rem;
     color: #ddd;
-    line-height: 1.8;
-    margin-top: 15px;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3); /* سایه متن برای بهتر دیده شدن */
+    line-height: 1.6;
+    margin-top: 10px;
 }
 
-/* ================== 3. دکمه‌ها ================== */
+/* استایل دکمه‌ها */
 .btn {
-    font-size: 1.3rem;
-    background: linear-gradient(45deg, #ff6500, #ff4b2b); /* رنگ جذاب‌تر و گرم‌تر */
+    font-size: 1.2rem;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
-    padding: 15px 35px; /* افزایش فاصله داخلی */
+    padding: 15px 30px;
     border-radius: 50px;
     font-weight: bold;
     text-transform: uppercase;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: all 0.4s ease;
-    margin-top: 30px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
 }
 
 /* تغییرات در هاور برای دکمه‌ها */
 .btn:hover {
-    transform: scale(1.1); /* افزایش سایز دکمه هنگام هاور */
-    box-shadow: 0px 10px 25px rgba(255, 65, 108, 0.8); /* سایه جذاب‌تر */
-    background: linear-gradient(45deg, #ff4500, #ff6500); /* تغییر رنگ در هاور */
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(255, 65, 108, 0.8);
 }
 
-/* ================== 4. انیمیشن دکمه‌ها ================== */
+/* انیمیشن برای حرکت دکمه‌ها */
 @keyframes buttonEffect {
     0% {
         transform: translateY(0);
@@ -389,34 +406,6 @@ nav ul li a.active {
     100% {
         transform: translateY(0);
     }
-}
-
-/* انیمیشن برای دکمه‌ها */
-.btn:hover {
-    animation: buttonEffect 1s ease-out infinite alternate;
-}
-
-/* ================== 5. دکمه‌های آبی ================== */
-.blue-btn {
-    background: linear-gradient(45deg, #007bff, #0056b3); /* تغییر رنگ دکمه آبی */
-}
-
-.blue-btn:hover {
-    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8); /* سایه جذاب‌تر */
-}
-
-/* ================== 6. اضافه کردن انیمیشن نور برای دکمه‌ها ================== */
-@keyframes buttonGlow {
-    0% {
-        box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 30px rgba(255, 20, 147, 1);
-    }
-}
-
-.btn:hover {
-    animation: buttonGlow 1s ease-out infinite alternate;
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
