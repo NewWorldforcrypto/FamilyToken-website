@@ -11,12 +11,10 @@ const toggleMenu = () => {
 let isScrolling = false;
 
 document.addEventListener("DOMContentLoaded", function () {
-    // گرفتن تمام لینک‌های منو
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
 
-            // جلوگیری از تداخل اسکرول‌ها
             if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
 
             let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
@@ -43,11 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // محاسبه موقعیت اسکرول برای نمایش در وسط صفحه
+            // اسکرول دقیق‌تر به وسط صفحه
             const targetPosition = targetSection.offsetTop;
             const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2; // فاصله برای وسط صفحه
 
-            // اسکرول به وسط صفحه
             window.scrollTo({
                 top: targetPosition - offset, // اسکرول به وسط صفحه
                 behavior: "smooth" // انیمیشن اسکرول
