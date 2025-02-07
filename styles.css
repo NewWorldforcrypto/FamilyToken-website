@@ -317,32 +317,25 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* پس‌زمینه شفاف، بدون تیرگی و مات‌شدگی */
+/* استایل شیشه‌ای بدون هیچ تیرگی */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.05); /* کمترین میزان رنگ پس‌زمینه */
+    background: rgba(255, 255, 255, 0.02); /* تقریباً نامرئی، فقط کمی روشنایی */
     border-radius: 15px;
-    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.1); /* سایه ظریف */
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); /* سایه ملایم برای عمق */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: brightness(1.8) contrast(1.2); /* افزایش وضوح */
-    -webkit-backdrop-filter: brightness(1.8) contrast(1.2);
+    backdrop-filter: saturate(200%) blur(2px); /* جلوه شیشه‌ای واقعی */
+    -webkit-backdrop-filter: saturate(200%) blur(2px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* افکت پترن کاملاً نامحسوس، فقط برای زیبایی */
-.info-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://www.transparenttextures.com/patterns/diagmonds-light.png'); /* پترن خیلی ظریف */
-    opacity: 0.08; /* شفافیت خیلی زیاد */
-    border-radius: 15px;
+/* افکت نور ملایم در هاور */
+.info-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
 }
 
 /* افکت هاور حرفه‌ای */
