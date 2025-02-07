@@ -320,15 +320,15 @@ nav ul li a.active {
 /* استایل برای پس‌زمینه شیشه‌ای */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.1); /* رنگ سفید با شفافیت */
+    background: rgba(255, 255, 255, 0.2); /* رنگ سفید با شفافیت بیشتر */
     border-radius: 20px; /* گرد کردن گوشه‌ها */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* سایه ملایم */
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
     position: relative;
-    backdrop-filter: blur(10px); /* افکت مات‌کردن پس‌زمینه */
-    -webkit-backdrop-filter: blur(10px); /* برای پشتیبانی از Safari */
+    backdrop-filter: blur(8px); /* افکت مات‌کردن پس‌زمینه با شدت کم */
+    -webkit-backdrop-filter: blur(8px); /* برای پشتیبانی از Safari */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
