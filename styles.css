@@ -220,45 +220,43 @@ nav ul li a.active {
     animation: moveRight 20s infinite linear;
 }
 
-/* استایل متن سه‌بعدی با افکت‌های نورانی */
+/* استایل برای متن سه‌بعدی و نئون */
 .hero-text {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem; /* اندازه بزرگ برای جذابیت */
-    font-weight: 700; /* وزن سنگین برای جلب توجه */
-    color: #fff; /* رنگ سفید برای خوانایی */
-    text-transform: uppercase;
-    letter-spacing: 5px; /* فاصله بیشتر بین حروف */
+    font-size: 4rem;
+    font-weight: bold;
     text-align: center;
-    position: relative;
-    display: inline-block;
-    z-index: 10;
-    animation: neonGlow 3s ease-in-out infinite, moveEffect 5s ease-in-out infinite;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.8), 
+                 0px 0px 60px rgba(255, 20, 147, 1);
+    animation: neonGlow 2s infinite alternate;
+    transition: all 0.3s ease-in-out;
 }
 
-/* انیمیشن برای درخشش متن */
+/* انیمیشن نور برای متن */
 @keyframes neonGlow {
     0% {
-        text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8), 0px 0px 40px rgba(255, 20, 147, 1), 0px 0px 60px rgba(0, 255, 255, 1), 0px 0px 80px rgba(255, 0, 255, 0.8);
-    }
-    50% {
-        text-shadow: 0px 0px 20px rgba(255, 255, 255, 1), 0px 0px 50px rgba(255, 20, 147, 1), 0px 0px 80px rgba(0, 255, 255, 1), 0px 0px 100px rgba(255, 0, 255, 0.9);
+        text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8), 
+                     0px 0px 30px rgba(255, 20, 147, 0.5);
     }
     100% {
-        text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.8), 0px 0px 70px rgba(255, 20, 147, 1), 0px 0px 100px rgba(0, 255, 255, 1), 0px 0px 120px rgba(255, 0, 255, 1);
+        text-shadow: 0px 0px 30px rgba(255, 20, 147, 1), 
+                     0px 0px 60px rgba(255, 20, 147, 0.9);
     }
 }
 
-/* انیمیشن حرکت متن */
-@keyframes moveEffect {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+/* انیمیشن محو شدن برای قسمت‌های دیگر */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
