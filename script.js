@@ -42,10 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // اسکرول دقیق‌تر با scrollIntoView
-            targetSection.scrollIntoView({
-                behavior: "smooth", // انیمیشن روان
-                block: "start" // شروع اسکرول از بالای بخش
+            // اسکرول دقیق‌تر با تنظیم موقعیت اسکرول به وسط صفحه
+            const targetPosition = targetSection.offsetTop;
+            const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2; // فاصله برای وسط صفحه
+            window.scrollTo({
+                top: targetPosition - offset, // اسکرول به وسط صفحه
+                behavior: "smooth" // انیمیشن اسکرول
             });
 
             // بستن منو پس از اسکرول
