@@ -1,71 +1,78 @@
 // ================== 1. مدیریت منوی همبرگری با افکت‌های حرفه‌ای ==================
 const toggleMenu = () => {
-    const menu = document.querySelector('nav ul');
-    const menuIcon = document.querySelector('.menu-icon');
+    const menu = document.querySelector("nav ul");
+    const menuIcon = document.querySelector(".menu-icon");
 
-    menu.classList.toggle('show');
-    menuIcon.innerHTML = menu.classList.contains('show') ? "✖" : "&#9776;";
-};
-
-// تابع برای انیمیشن ورود گزینه‌های منو
-const animateMenuItems = () => {
-    const menuItems = document.querySelectorAll("nav ul li");
-    menuItems.forEach((item, index) => {
-        item.style.animation = `slideIn 0.5s ease-in-out ${index * 0.1 + 0.2}s forwards`;
-    });
+    menu.classList.toggle("show");
+    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
 };
 
 // بستن منو هنگام کلیک روی گزینه‌های داخلی
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault();  // جلوگیری از بارگذاری مجدد صفحه
+            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
 
-            const targetId = link.getAttribute("href").substring(1); // گرفتن id از href
-            const targetSection = document.getElementById(targetId);
+            let targetId = this.getAttribute("href").substring(1); // مقدار گرفتن صحیح
+            let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
-                console.error(`بخش با ID ${targetId} پیدا نشد!`);
+                console.error(`❌ بخش ${targetId} پیدا نشد!`);
                 return;
             }
 
-            console.log(`در حال اسکرول به بخش: ${targetId}`);
+            console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
 
             // حذف کلاس active از تمام لینک‌ها
             document.querySelectorAll("nav ul li a").forEach(item => {
-                item.classList.remove('active');
+                item.classList.remove("active");
             });
 
             // افزودن کلاس active به لینک کلیک شده
-            link.classList.add('active');
+            this.classList.add("active");
 
-            // پیمایش نرم به بخش مورد نظر
-            window.scrollTo({
-                top: targetSection.offsetTop - 50,
-                behavior: "smooth"
-            });
+            // تنظیم آدرس URL بدون تغییر صفحه
+            history.pushState({}, "", `#${targetId}`);
+
+            // اسکرول نرم با `requestAnimationFrame`
+            smoothScroll(targetSection);
 
             // بستن منو بعد از کلیک روی گزینه
-            const menu = document.querySelector('nav ul');
-            const menuIcon = document.querySelector('.menu-icon');
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
+            const menu = document.querySelector("nav ul");
+            const menuIcon = document.querySelector(".menu-icon");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
                 menuIcon.innerHTML = "&#9776;";
             }
         });
     });
 });
 
-// بستن منو هنگام کلیک خارج از آن
-document.addEventListener("click", (event) => {
-    const menu = document.querySelector('nav ul');
-    const menuIcon = document.querySelector('.menu-icon');
+// 🚀 تابع پیشرفته برای اسکرول نرم با `requestAnimationFrame`
+function smoothScroll(target) {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 800; // مدت زمان اسکرول (به میلی‌ثانیه)
+    let startTime = null;
 
-    if (!menu.contains(event.target) && !menuIcon.contains(event.target) && menu.classList.contains('show')) {
-        menu.classList.remove('show');
-        menuIcon.innerHTML = "&#9776;";
+    function animationScroll(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, scrollAmount);
+        if (timeElapsed < duration) requestAnimationFrame(animationScroll);
     }
-});
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animationScroll);
+}
 
 // ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
@@ -97,64 +104,16 @@ document.querySelectorAll(".btn").forEach(button => {
     });
 });
 
-// ================== 4. اسکرول نرم هنگام کلیک روی گزینه‌های منو ==================
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll("nav ul li a").forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault(); // جلوگیری از تغییر مستقیم آدرس و بارگذاری مجدد صفحه
+// ================== 4. بستن منو هنگام کلیک خارج از آن ==================
+document.addEventListener("click", (event) => {
+    const menu = document.querySelector("nav ul");
+    const menuIcon = document.querySelector(".menu-icon");
 
-            const targetId = link.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
-
-            if (!targetSection) {
-                console.error(`❌ بخش با ID ${targetId} پیدا نشد!`);
-                return;
-            }
-
-            console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
-
-            // حذف کلاس active از تمام لینک‌ها
-            document.querySelectorAll("nav ul li a").forEach(item => {
-                item.classList.remove("active");
-            });
-
-            // افزودن کلاس active به لینک کلیک شده
-            link.classList.add("active");
-
-            // تنظیم آدرس URL بدون تغییر صفحه
-            history.pushState(null, null, `#${targetId}`);
-
-            // اسکرول نرم با `requestAnimationFrame`
-            smoothScroll(targetSection);
-        });
-    });
+    if (!menu.contains(event.target) && !menuIcon.contains(event.target) && menu.classList.contains("show")) {
+        menu.classList.remove("show");
+        menuIcon.innerHTML = "&#9776;";
+    }
 });
-
-// 🚀 تابع پیشرفته برای اسکرول نرم با `requestAnimationFrame`
-function smoothScroll(target) {
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 800; // مدت زمان اسکرول (به میلی‌ثانیه)
-    let startTime = null;
-
-    function animationScroll(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, scrollAmount);
-        if (timeElapsed < duration) requestAnimationFrame(animationScroll);
-    }
-
-    function easeInOutQuad(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animationScroll);
-}
 
 // ================== 5. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
 document.addEventListener("DOMContentLoaded", () => {
