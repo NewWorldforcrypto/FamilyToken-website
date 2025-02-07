@@ -11,16 +11,9 @@ const toggleMenu = () => {
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
+            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
 
-            let hrefValue = this.getAttribute("href");
-
-            if (!hrefValue || hrefValue === "#" || !hrefValue.startsWith("#")) {
-                console.error("❌ خطا: مقدار href نامعتبر است!", hrefValue);
-                return;
-            }
-
-            let targetId = hrefValue.substring(1); // حذف کاراکتر `#`
+            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
@@ -41,8 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
-            // اجرای اسکرول نرم
-            smoothScroll(targetSection);
+            // اسکرول نرم به بخش با استفاده از scrollIntoView
+            targetSection.scrollIntoView({
+                behavior: "smooth", // انیمیشن اسکرول
+                block: "start" // شروع اسکرول از بالای بخش
+            });
         });
     });
 });
