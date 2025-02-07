@@ -7,7 +7,7 @@ const toggleMenu = () => {
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
 };
 
-// بستن منو هنگام کلیک روی گزینه‌های داخلی
+// متغیر برای کنترل وضعیت اسکرول
 let isScrolling = false;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -41,9 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // اسکرول دقیق‌تر به وسط صفحه
+            // محاسبه فاصله اسکرول به طوری که بخش هدف در وسط صفحه قرار بگیرد
             const targetPosition = targetSection.offsetTop;
             const offset = window.innerHeight / 2 - targetSection.offsetHeight / 2; // فاصله برای وسط صفحه
+
+            // اسکرول به وسط صفحه
             window.scrollTo({
                 top: targetPosition - offset, // اسکرول به وسط صفحه
                 behavior: "smooth" // انیمیشن اسکرول
