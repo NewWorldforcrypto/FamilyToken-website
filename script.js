@@ -16,26 +16,43 @@ const animateMenuItems = () => {
 };
 
 // بستن منو هنگام کلیک روی گزینه‌های داخلی
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", (event) => {
-        const menu = document.querySelector('nav ul');
-        const menuIcon = document.querySelector('.menu-icon');
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();  // جلوگیری از بارگذاری مجدد صفحه
 
-        // پیمایش به بخش مورد نظر
-        const targetId = link.getAttribute("href").substring(1);  // بخش هدف را پیدا می‌کند
-        const targetSection = document.getElementById(targetId);
+            const targetId = link.getAttribute("href").substring(1); // گرفتن id از href
+            const targetSection = document.getElementById(targetId);
 
-        // پیمایش به بخش مورد نظر با انیمیشن
-        window.scrollTo({
-            top: targetSection.offsetTop - 50,  // کمی فاصله از بالا
-            behavior: "smooth"  // انیمیشن روان برای اسکرول
+            if (!targetSection) {
+                console.error(`بخش با ID ${targetId} پیدا نشد!`);
+                return;
+            }
+
+            console.log(`در حال اسکرول به بخش: ${targetId}`);
+
+            // حذف کلاس active از تمام لینک‌ها
+            document.querySelectorAll("nav ul li a").forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // افزودن کلاس active به لینک کلیک شده
+            link.classList.add('active');
+
+            // پیمایش نرم به بخش مورد نظر
+            window.scrollTo({
+                top: targetSection.offsetTop - 50,
+                behavior: "smooth"
+            });
+
+            // بستن منو بعد از کلیک روی گزینه
+            const menu = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuIcon.innerHTML = "&#9776;";
+            }
         });
-
-        // بستن منو بعد از کلیک
-        if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-            menuIcon.innerHTML = "&#9776;";
-        }
     });
 });
 
