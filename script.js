@@ -13,14 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
 
-            let targetId = this.getAttribute("href"); // مقدار href دریافت شود
+            let hrefValue = this.getAttribute("href");
 
-            if (!targetId || !targetId.startsWith("#")) {
-                console.error("❌ خطا: مقدار href نامعتبر است!");
+            if (!hrefValue || hrefValue === "#" || !hrefValue.startsWith("#")) {
+                console.error("❌ خطا: مقدار href نامعتبر است!", hrefValue);
                 return;
             }
 
-            targetId = targetId.substring(1); // حذف کاراکتر `#`
+            let targetId = hrefValue.substring(1); // حذف کاراکتر `#`
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
-            // اسکرول نرم با `requestAnimationFrame`
+            // اجرای اسکرول نرم
             smoothScroll(targetSection);
         });
     });
