@@ -228,8 +228,10 @@ nav ul li a.active {
     background: linear-gradient(45deg, #ff66b2, #ff3385, #ff0066, #e6005c); /* تقویت رنگ صورتی متالیک */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 0px 15px rgba(255, 20, 147, 0.8),  
-                 0px 0px 30px rgba(255, 20, 147, 0.5); /* درخشش قوی‌تر */
+    color: white; /* نسخه پشتیبان برای مرورگرهایی که از gradient روی متن پشتیبانی نمی‌کنند */
+    text-shadow: 0px 0px 12px rgba(255, 20, 147, 0.8),  
+                 0px 0px 25px rgba(255, 20, 147, 0.6),  
+                 0px 0px 35px rgba(255, 20, 147, 0.4); /* درخشش قوی‌تر */
     display: inline-block;
     transition: all 0.4s ease-in-out;
     animation: neonGlow 2s infinite alternate;
