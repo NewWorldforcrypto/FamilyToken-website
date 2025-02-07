@@ -353,6 +353,123 @@ nav ul li a.active {
     margin-top: 10px;
 }
 
+/* استایل کلی بخش Contact Us */
+#contact {
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.1); /* پس‌زمینه شیشه‌ای */
+    backdrop-filter: blur(15px); /* افکت شیشه‌ای */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* سایه ظریف */
+    text-align: center;
+    margin: 50px auto;
+    max-width: 900px;
+    transition: all 0.3s ease;
+}
+
+/* تغییرات هنگام هاور شدن برای بهبود زیبایی */
+#contact:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* سایه قوی‌تر */
+}
+
+/* عنوان بخش */
+#contact h2 {
+    font-size: 2.8rem;
+    color: #ff8c00; /* رنگ نارنجی برای جذابیت بیشتر */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* پاراگراف بخش */
+#contact p {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* آیکون‌های شبکه‌های اجتماعی */
+.social-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 15px;
+    color: #ffffff;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* تغییرات رنگ و سایه هنگام هاور */
+.social-links a:hover {
+    color: #ff8c00; /* تغییر رنگ به نارنجی */
+    transform: scale(1.2); /* بزرگ شدن آیکون */
+    box-shadow: 0 0 15px rgba(255, 140, 0, 0.6); /* اضافه کردن سایه جذاب */
+}
+
+/* استایل فرم تماس */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+/* ورودی‌های فرم */
+.contact-form input, .contact-form textarea {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2); /* پس‌زمینه نیمه‌شفاف */
+    color: #fff;
+    font-size: 1rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* سایه برای ورودی‌ها */
+    transition: background-color 0.3s ease;
+}
+
+/* تغییر رنگ ورودی‌ها هنگام تمرکز */
+.contact-form input:focus, .contact-form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.4); /* پس‌زمینه روشن‌تر هنگام تمرکز */
+    outline: none;
+}
+
+/* دکمه ارسال */
+.contact-form button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* گرادیانت جذاب */
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+/* تغییرات در هاور دکمه */
+.contact-form button:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: scale(1.1); /* بزرگ شدن دکمه */
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.6); /* سایه جذاب */
+}
+
+/* موبایل و تبلت */
+@media (max-width: 768px) {
+    #contact h2 {
+        font-size: 2.4rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+        width: 80%; /* کاهش اندازه برای صفحات کوچک */
+    }
+}
+
 /* ========== 4. دکمه‌ها ========== */
 .btn {
     background: linear-gradient(45deg, #ff416c, #ff4b2b);
