@@ -41,10 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
 
-            // اسکرول دقیق‌تر با scrollIntoView
+            // اسکرول به بخش با استفاده از scrollIntoView برای اسکرول نرم
             targetSection.scrollIntoView({
                 behavior: "smooth", // انیمیشن روان
-                block: "start" // شروع اسکرول از بالای بخش
+                block: "center" // این باعث می‌شود که بخش در وسط صفحه قرار گیرد
             });
 
             // بستن منو پس از اسکرول
