@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 entry.target.classList.add("visible");
             }
         });
-    }, { threshold: 0.2 }); // مقدار آستانه کمی بالاتر رفت تا افکت بهتر اجرا بشه
+    }, { threshold: 0.3 }); // مقدار آستانه کمی بالاتر رفت تا افکت بهتر اجرا بشه
 
     sections.forEach(section => observer.observe(section));
 });
