@@ -316,10 +316,17 @@ nav ul li a.active {
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-/* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
+/* حالت اولیه: بخش‌ها نامرئی باشند */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* وقتی بخش داخل صفحه میاد */
 .fade-in.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* استایل کاملاً شیشه‌ای و تمیز */
