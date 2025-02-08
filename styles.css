@@ -316,13 +316,6 @@ nav ul li a.active {
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-/* حالت اولیه: بخش‌ها نامرئی باشند */
-.fade-in {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
 /* وقتی بخش داخل صفحه میاد */
 .fade-in.visible {
     opacity: 1;
