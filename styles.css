@@ -319,7 +319,7 @@ nav ul li a.active {
 /* حالت اولیه: بخش‌ها نامرئی باشند */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(10px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
