@@ -30,7 +30,7 @@ section {
     padding: 0 20px;
 }
 
-/* ========= 2. نوار بالای سایت (هدر) ========= */
+/* ========== 2. نوار بالای سایت (هدر) ========== */
 header {
     display: flex;
     justify-content: space-between;
@@ -316,7 +316,8 @@ nav ul li a.active {
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
 }
 
-fade-in.visible {
+/* وقتی این کلاس اضافه شود، بخش‌ها نمایان می‌شوند */
+.fade-in.visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
