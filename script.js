@@ -61,6 +61,30 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
         });
     });
+
+    // ================== 1.1 اسکرول وسط صفحه برای دکمه Learn More ==================
+    const learnMoreBtn = document.getElementById("learnMoreBtn");
+
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener("click", function (event) {
+            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
+
+            let targetSection = document.getElementById("about"); // بخش موردنظر
+
+            if (!targetSection) {
+                console.error("❌ بخش 'about' پیدا نشد!");
+                return;
+            }
+
+            console.log("✅ اسکرول به بخش 'about'");
+
+            // اسکرول به وسط صفحه
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
+    }
 });
 
 // 🚀 تابع پیشرفته برای اسکرول نرم
