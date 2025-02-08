@@ -317,10 +317,17 @@ nav ul li a.active {
 }
 
 
+/* حالت اولیه: بخش‌ها نامرئی باشند */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
 /* وقتی بخش داخل صفحه میاد */
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
+fade-in.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 /* استایل کاملاً شیشه‌ای و تمیز */
