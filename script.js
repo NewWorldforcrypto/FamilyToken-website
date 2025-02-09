@@ -1,4 +1,4 @@
-// ================== مدیریت منوی همبرگری ==================
+// ================= مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
 
