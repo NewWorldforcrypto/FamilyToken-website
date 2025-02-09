@@ -550,23 +550,32 @@ footer {
     width: 100%;
 }
 
-/* ========== 10. تنظیمات برای تبلت و دسکتاپ ========== */
+/* تنظیمات برای تبلت و دسکتاپ */
 @media (min-width: 1024px) {
+    /* مخفی کردن آیکون منو در دستگاه‌های بزرگتر از تبلت */
     .menu-icon {
         display: none;
     }
 
+    /* نمایش منو به‌صورت افقی در دسکتاپ */
     nav ul {
         display: flex;
-        position: static;
-        background: none;
-        width: auto;
-        box-shadow: none;
+        flex-direction: row; /* منو به صورت افقی نمایش داده می‌شود */
+        justify-content: center; /* تراز کردن منو در وسط */
+        background: rgba(0, 0, 0, 0.8); /* پس‌زمینه منو */
+        padding: 15px 50px; /* فاصله داخلی منو */
+        border-radius: 10px; /* گوشه‌های گرد */
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* سایه برای عمق منو */
     }
 
     nav ul li {
-        margin: 0 20px;
+        margin: 0 20px; /* فاصله بین گزینه‌ها */
     }
+
+    nav ul li a {
+        font-size: 18px; /* تنظیم اندازه فونت برای دسکتاپ */
+    }
+}
 
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
         height: 100vh;
