@@ -86,9 +86,9 @@ nav ul {
     margin: 0;
     display: flex;
     flex-direction: column; /* منو به صورت عمودی */
-    position: absolute; /* استفاده از absolute به جای fixed */
+    position: absolute; /* تغییر از fixed به absolute */
     top: 70px; /* فاصله منو از بالای صفحه */
-    right: 0; /* منو باید در سمت راست باشد */
+    right: 10px; /* منو باید در سمت راست باشد */
     width: 90%; /* عرض منو */
     max-width: 250px;
     background: rgba(0, 0, 0, 0.95); /* رنگ پس‌زمینه منو */
@@ -97,7 +97,7 @@ nav ul {
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transform: translateX(100px); /* منو به سمت راست شروع می‌شود */
+    transform: translateX(100px); /* شروع از سمت راست */
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     pointer-events: none; /* منو در حالت بسته غیرقابل کلیک است */
 }
