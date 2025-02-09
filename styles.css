@@ -237,6 +237,7 @@ nav ul li a.active {
         opacity: 1;
         transform: translateX(0);
         pointer-events: auto;
+        display: flex; /* نمایش منو هنگام کلیک *
     }
 
     nav ul li {
