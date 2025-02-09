@@ -496,11 +496,18 @@ nav ul li a.active {
 /* موبایل و تبلت */
 @media (max-width: 768px) {
     #contact h2 {
-        font-size: 2.4rem;
+        font-size: 2.4rem; /* تغییر اندازه فونت برای عنوان */
+        text-align: center; /* متن عنوان را در وسط قرار دهیم */
     }
 
     .contact-form input, .contact-form textarea {
-        width: 80%; /* کاهش اندازه برای صفحات کوچک */
+        width: 80%; /* کاهش اندازه ورودی‌ها و تکست اریا برای صفحه‌های کوچک */
+        padding: 10px; /* اضافه کردن پدینگ برای ورودی‌ها */
+        font-size: 1rem; /* اندازه فونت ورودی‌ها */
+    }
+
+    .contact-form {
+        padding: 15px; /* بهبود فاصله داخلی فرم */
     }
 }
 
