@@ -1,11 +1,31 @@
-// ================== 1. مدیریت منوی همبرگری با افکت‌های حرفه‌ای ==================
+// ================== مدیریت منوی همبرگری ==================
 const toggleMenu = () => {
     const menu = document.querySelector("nav ul");
     const menuIcon = document.querySelector(".menu-icon");
 
-    menu.classList.toggle("show");
-    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
+    if (menu.classList.contains("show")) {
+        menu.classList.remove("show");
+        menuIcon.innerHTML = "&#9776;"; // آیکون همبرگری
+    } else {
+        menu.classList.add("show");
+        menuIcon.innerHTML = "✖"; // آیکون ضربدر
+    }
 };
+
+// بستن منو هنگام کلیک روی آیکون منو (هم در موبایل و هم دسکتاپ)
+document.querySelector(".menu-icon").addEventListener("click", toggleMenu);
+
+// بستن منو هنگام کلیک خارج از آن **فقط در دسکتاپ**
+document.addEventListener("click", (event) => {
+    const menu = document.querySelector("nav ul");
+    const menuIcon = document.querySelector(".menu-icon");
+
+    // اطمینان از اینکه کلیک خارج از منو و آیکون انجام شده است
+    if (!menu.contains(event.target) && !menuIcon.contains(event.target) && menu.classList.contains("show")) {
+        menu.classList.remove("show");
+        menuIcon.innerHTML = "&#9776;"; // تغییر به آیکون همبرگری
+    }
+});
 
 // متغیر برای کنترل وضعیت اسکرول
 let isScrolling = false;
