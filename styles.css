@@ -176,7 +176,7 @@ nav ul li a.active {
 
     nav ul {
         display: flex;
-        flex-direction: column; /* منو به صورت عمودی */
+        flex-direction: column; /* تغییر به ستون برای نمایش عمودی مانند موبایل */
         justify-content: flex-start;
         background: rgba(0, 0, 0, 0.8);
         padding: 15px;
@@ -184,18 +184,20 @@ nav ul li a.active {
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         position: fixed;
         top: 10px;
-        right: 15px; /* اینجا رو به right تغییر دادیم تا منو سمت راست باشد */
+        right: 15px;
         width: 90%;
         pointer-events: auto;
         animation: fadeIn 0.5s ease-out forwards;
     }
 
     nav ul li {
-        margin: 0 20px;
+        margin: 12px 0; /* فاصله بیشتر بین گزینه‌ها */
     }
 
     nav ul li a {
         font-size: 18px;
+        padding: 12px 15px; /* کمی فضای بیشتر برای هر گزینه */
+        text-align: center;
     }
 }
 
@@ -210,7 +212,7 @@ nav ul li a.active {
         flex-direction: column; /* منو به صورت عمودی */
         position: fixed;
         top: 70px;
-        right: 0; /* در موبایل هم باید سمت راست نمایش داده بشه */
+        right: 0;
         width: 90%;
         max-width: 250px;
         background: rgba(0, 0, 0, 0.95);
@@ -218,7 +220,7 @@ nav ul li a.active {
         padding: 15px;
         opacity: 0;
         transform: translateX(100px);
-        pointer-events: none; /* منو مخفی است */
+        pointer-events: none;
         transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     }
 
@@ -226,6 +228,16 @@ nav ul li a.active {
         opacity: 1;
         transform: translateX(0);
         pointer-events: auto;
+    }
+
+    nav ul li {
+        margin: 12px 0;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+        padding: 12px 15px;
+        text-align: center;
     }
 }
 
