@@ -33,9 +33,10 @@ document.addEventListener("click", (event) => {
 // بستن منو هنگام کلیک روی یکی از گزینه‌های منو
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", () => {
-        menu.classList.remove("show");
-        menu.classList.remove("desktop-show");
-        menuIcon.innerHTML = "&#9776;";
+        if (!isDesktop()) { // فقط برای موبایل منو بسته می‌شود
+            menu.classList.remove("show");
+            menuIcon.innerHTML = "&#9776;";
+        }
     });
 });
 
