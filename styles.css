@@ -175,21 +175,23 @@ nav ul li a.active {
     }
 
     nav ul {
-        display: flex;
-        flex-direction: column; /* نمایش منو به صورت عمودی */
-        justify-content: flex-start;
-        background: rgba(0, 0, 0, 0.9);
-        padding: 20px; /* افزایش فاصله داخلی منو */
-        border-radius: 10px;
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-        position: fixed;
-        top: 60px; /* تنظیم فاصله از بالای صفحه */
-        right: 15px;
-        width: 90%;
-        max-width: 250px;
-        pointer-events: auto;
-        animation: fadeIn 0.5s ease-out forwards;
-    }
+    display: none; /* پیش‌فرض مخفی کردن منو */
+    flex-direction: column; /* نمایش منو به صورت عمودی */
+    justify-content: flex-start;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px; /* افزایش فاصله داخلی منو */
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 60px; /* تنظیم فاصله از بالای صفحه */
+    right: 15px;
+    width: 90%;
+    max-width: 250px;
+    pointer-events: none; /* جلوگیری از کلیک در حالت بسته */
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
     nav ul li {
         margin: 18px 0; /* افزایش فاصله بین گزینه‌ها */
