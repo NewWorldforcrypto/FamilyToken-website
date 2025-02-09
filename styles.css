@@ -51,6 +51,18 @@ header {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
+/* انیمیشن ظاهر شدن تدریجی منو */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* انیمیشن اسلاید برای گزینه‌های منو */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 /* ========== 1. آیکون منو (همیشه نمایش داده شود) ========== */
 .menu-icon {
     display: flex;
@@ -190,17 +202,6 @@ nav ul li a.active {
     }
 }
 
-/* انیمیشن ظاهر شدن تدریجی منو */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* انیمیشن اسلاید برای گزینه‌های منو */
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
 
 /* استایل کلی پس‌زمینه‌ها */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
