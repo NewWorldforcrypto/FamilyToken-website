@@ -51,19 +51,19 @@ header {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* ========== 3. منوی همبرگری ========== */
+/* ========== 1. آیکون منو (همیشه نمایش داده شود) ========== */
 .menu-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;  /* تغییر مقدار برای قرارگیری دقیق‌تر در نوار */
+    top: 10px;
     right: 15px;
-    width: 40px;  /* کاهش اندازه آیکون */
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background-color: #ff8c00;
     color: white;
-    font-size: 24px; /* کاهش اندازه آیکون */
+    font-size: 24px;
     font-weight: bold;
     text-align: center;
     border-radius: 8px;
@@ -78,44 +78,46 @@ header {
     box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* تنظیمات اولیه برای منو */
+/* ========== 2. تنظیمات عمومی برای منو ========== */
 nav ul {
-    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: none; /* در ابتدا مخفی است */
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.95);
     position: fixed;
     top: 70px;
     right: 10px;
     width: 90%;
     max-width: 250px;
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     padding: 15px;
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    list-style: none; /* حذف نقطه‌های اضافی */
-
-    opacity: 0;
-    transform: translateX(100px); /* شروع از سمت راست */
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0;
+    transform: translateX(100px); /* مخفی بودن منو در حالت اولیه */
     pointer-events: none; /* جلوگیری از کلیک در حالت بسته */
 }
 
 /* وقتی منو باز می‌شود */
 nav ul.show {
+    display: flex;
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
 }
 
-/* تنظیم انیمیشن برای گزینه‌های منو */
+/* تنظیمات برای گزینه‌های منو */
 nav ul li {
+    text-align: center;
     opacity: 0;
     transform: translateX(30px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    margin: 12px 0; /* افزایش فاصله بین گزینه‌ها */
+    margin: 12px 0;
 }
 
-/* وقتی منو باز شد، گزینه‌ها یکی‌یکی ظاهر شوند */
 nav ul.show li {
     opacity: 1;
     transform: translateX(0);
@@ -132,30 +134,60 @@ nav ul.show li:nth-child(7) { transition-delay: 0.7s; }
 
 /* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
-    color: #ffffff;  /* تغییر رنگ به سفید برای خوانایی بهتر */
-    background: rgba(255, 140, 0, 0.8); /* کاهش شدت رنگ نارنجی */
+    display: block;
+    color: #ffffff;
+    background: rgba(255, 140, 0, 0.8);
     padding: 10px 15px;
     font-size: 18px;
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
-    display: block;
     transition: 0.3s ease-in-out;
-    text-align: center;
 }
 
-/* تغییرات هنگام هاور */
 nav ul li a:hover {
-    background-color: rgba(255, 100, 0, 0.9); /* تغییر رنگ هنگام هاور */
+    background-color: rgba(255, 100, 0, 0.9);
     transform: scale(1.05);
-    box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5); /* سایه جذاب */
+    box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5);
 }
 
 /* حالت فعال لینک */
 nav ul li a.active {
-    background-color: rgba(255, 100, 0, 0.9); /* رنگ پس‌زمینه فعال */
-    transform: scale(1.05); /* کمی بزرگ‌تر شدن */
-    box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5); /* سایه جذاب */
+    background-color: rgba(255, 100, 0, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5);
+}
+
+/* ========== 3. تنظیمات ویژه برای دسکتاپ ========== */
+@media (min-width: 1024px) {
+    /* نمایش منو به‌صورت افقی */
+    nav ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 15px 50px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 10px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+
+    .menu-icon {
+        display: flex; /* آیکون همچنان نمایش داده شود */
+    }
+
+    nav ul li {
+        margin: 0 20px;
+    }
+
+    nav ul li a {
+        font-size: 18px;
+    }
 }
 
 /* انیمیشن ظاهر شدن تدریجی منو */
@@ -557,32 +589,7 @@ footer {
     width: 100%;
 }
 
-/* تنظیمات برای تبلت و دسکتاپ */
-@media (min-width: 1024px) {
-    /* مخفی کردن آیکون منو در دستگاه‌های بزرگتر از تبلت */
-    .menu-icon {
-        display: none;
-    }
 
-    /* نمایش منو به‌صورت افقی در دسکتاپ */
-    nav ul {
-        display: flex;
-        flex-direction: row; /* منو به صورت افقی نمایش داده می‌شود */
-        justify-content: center; /* تراز کردن منو در وسط */
-        background: rgba(0, 0, 0, 0.8); /* پس‌زمینه منو */
-        padding: 15px 50px; /* فاصله داخلی منو */
-        border-radius: 10px; /* گوشه‌های گرد */
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* سایه برای عمق منو */
-    }
-
-    nav ul li {
-        margin: 0 20px; /* فاصله بین گزینه‌ها */
-    }
-
-    nav ul li a {
-        font-size: 18px; /* تنظیم اندازه فونت برای دسکتاپ */
-    }
-}
 
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
         height: 100vh;
