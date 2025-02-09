@@ -51,16 +51,14 @@ header {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* ================== 1. تنظیمات عمومی منو ================== */
-
-/* استایل برای آیکون منو */
+/* تنظیمات برای آیکون منو */
 .menu-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
     top: 10px;  /* تنظیم مکان آیکون منو */
-    left: 15px;  /* تنظیم فاصله آیکون از چپ */
+    left: 15px;  /* آیکون در سمت چپ قرار می‌گیرد */
     width: 45px;
     height: 45px;
     background-color: #ff8c00;
@@ -90,7 +88,7 @@ nav ul {
     flex-direction: column; /* منو به صورت همبرگری */
     position: fixed;
     top: 70px; /* فاصله از بالای صفحه */
-    right: 10px;
+    left: 10px; /* منو به سمت چپ قرار می‌گیرد */
     width: 90%;
     max-width: 250px;
     background: rgba(0, 0, 0, 0.95);
@@ -136,7 +134,7 @@ nav ul.show li:nth-child(5) { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) { transition-delay: 0.7s; }
 
-/* تنظیمات لینک‌های منو */
+/* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
     color: #ffffff;
     background: rgba(255, 140, 0, 0.8);
@@ -178,12 +176,10 @@ nav ul li a.active {
 
 /* تنظیمات برای دسکتاپ */
 @media (min-width: 1024px) {
-    /* آیکون منو در دسکتاپ باید همیشه نمایش داده شود */
     .menu-icon {
         display: flex;
     }
 
-    /* تنظیمات منو برای دسکتاپ */
     nav ul {
         display: flex;
         flex-direction: row; /* نمایش افقی منو */
