@@ -269,6 +269,13 @@ nav ul li a.active {
     }
 }
 
+/* تنظیم اندازه فونت در دسکتاپ */
+@media (min-width: 1024px) {
+    .hero-text {
+        font-size: 3rem; /* بزرگ‌تر برای نمایش بهتر در صفحه‌های بزرگ */
+    }
+}
+
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
 @media (max-width: 768px) {
     .hero-text {
