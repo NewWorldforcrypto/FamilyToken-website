@@ -2,12 +2,20 @@
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
 
+// بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
+const isDesktop = () => window.innerWidth >= 1024;
+
 // تابع باز و بسته کردن منو
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
-    menu.classList.toggle("show");
-    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
+    if (isDesktop()) {
+        menu.classList.toggle("desktop-show"); // کلاس مخصوص دسکتاپ
+    } else {
+        menu.classList.toggle("show"); // کلاس مخصوص موبایل
+    }
+
+    menuIcon.innerHTML = menu.classList.contains("show") || menu.classList.contains("desktop-show") ? "✖" : "&#9776;";
 };
 
 // رویداد کلیک روی آیکون منو
@@ -17,6 +25,7 @@ menuIcon.addEventListener("click", toggleMenu);
 document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
+        menu.classList.remove("desktop-show");
         menuIcon.innerHTML = "&#9776;";
     }
 });
@@ -25,6 +34,7 @@ document.addEventListener("click", (event) => {
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", () => {
         menu.classList.remove("show");
+        menu.classList.remove("desktop-show");
         menuIcon.innerHTML = "&#9776;";
     });
 });
