@@ -51,26 +51,16 @@ header {
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
 }
 
-/* انیمیشن ظاهر شدن تدریجی منو */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* ================== 1. تنظیمات عمومی منو ================== */
 
-/* انیمیشن اسلاید برای گزینه‌های منو */
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* ========== 1. آیکون منو (همیشه نمایش داده شود) ========== */
+/* استایل برای آیکون منو */
 .menu-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;
-    right: 15px;
+    top: 10px;  /* تنظیم مکان آیکون منو */
+    left: 15px;  /* تنظیم فاصله آیکون از چپ */
     width: 45px;
     height: 45px;
     background-color: #ff8c00;
@@ -85,20 +75,21 @@ header {
     transition: 0.3s ease-in-out;
 }
 
+/* تغییر رنگ آیکون هنگام هاور */
 .menu-icon:hover {
     background-color: #ff6500;
     box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* ========== 2. تنظیمات عمومی برای منو ========== */
+/* تنظیمات برای منو */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: none; /* در ابتدا مخفی است */
-    flex-direction: column;
+    display: flex;
+    flex-direction: column; /* منو به صورت همبرگری */
     position: fixed;
-    top: 70px;
+    top: 70px; /* فاصله از بالای صفحه */
     right: 10px;
     width: 90%;
     max-width: 250px;
@@ -107,35 +98,36 @@ nav ul {
     padding: 15px;
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     opacity: 0;
-    transform: translateX(100px); /* مخفی بودن منو در حالت اولیه */
-    pointer-events: none; /* جلوگیری از کلیک در حالت بسته */
+    transform: translateX(100px); /* شروع از سمت راست */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    pointer-events: none; /* منو مخفی است */
 }
 
-/* وقتی منو باز می‌شود */
+/* وقتی منو فعال می‌شود */
 nav ul.show {
-    display: flex;
     opacity: 1;
     transform: translateX(0);
     pointer-events: auto;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* تنظیمات برای گزینه‌های منو */
+/* تنظیم انیمیشن برای گزینه‌های منو */
 nav ul li {
-    text-align: center;
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateY(20px); /* انیمیشن اسلاید از پایین */
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     margin: 12px 0;
+    animation: slideIn 0.5s ease-out forwards;
 }
 
+/* وقتی منو باز می‌شود، گزینه‌ها یکی‌یکی ظاهر می‌شوند */
 nav ul.show li {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
 }
 
-/* تنظیم تاخیر برای نمایش یکی‌یکی گزینه‌ها */
+/* تنظیم تاخیر برای نمایش گزینه‌ها */
 nav ul.show li:nth-child(1) { transition-delay: 0.1s; }
 nav ul.show li:nth-child(2) { transition-delay: 0.2s; }
 nav ul.show li:nth-child(3) { transition-delay: 0.3s; }
@@ -144,9 +136,8 @@ nav ul.show li:nth-child(5) { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) { transition-delay: 0.7s; }
 
-/* تنظیمات اولیه برای لینک‌های منو */
+/* تنظیمات لینک‌های منو */
 nav ul li a {
-    display: block;
     color: #ffffff;
     background: rgba(255, 140, 0, 0.8);
     padding: 10px 15px;
@@ -154,9 +145,12 @@ nav ul li a {
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
+    display: block;
     transition: 0.3s ease-in-out;
+    text-align: center;
 }
 
+/* تغییرات هنگام هاور */
 nav ul li a:hover {
     background-color: rgba(255, 100, 0, 0.9);
     transform: scale(1.05);
@@ -170,12 +164,29 @@ nav ul li a.active {
     box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5);
 }
 
-/* ========== 3. تنظیمات ویژه برای دسکتاپ ========== */
+/* انیمیشن برای ظاهر شدن منو */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* انیمیشن اسلاید برای گزینه‌های منو */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* تنظیمات برای دسکتاپ */
 @media (min-width: 1024px) {
-    /* نمایش منو به‌صورت افقی */
+    /* آیکون منو در دسکتاپ باید همیشه نمایش داده شود */
+    .menu-icon {
+        display: flex;
+    }
+
+    /* تنظیمات منو برای دسکتاپ */
     nav ul {
         display: flex;
-        flex-direction: row;
+        flex-direction: row; /* نمایش افقی منو */
         justify-content: center;
         background: rgba(0, 0, 0, 0.8);
         padding: 15px 50px;
@@ -183,14 +194,10 @@ nav ul li a.active {
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
         position: fixed;
         top: 10px;
-        right: auto;
         left: 50%;
         transform: translateX(-50%);
         width: auto;
-    }
-
-    .menu-icon {
-        display: flex; /* آیکون همچنان نمایش داده شود */
+        pointer-events: auto;
     }
 
     nav ul li {
@@ -199,6 +206,36 @@ nav ul li a.active {
 
     nav ul li a {
         font-size: 18px;
+    }
+}
+
+/* تنظیمات برای موبایل و تبلت */
+@media (max-width: 1024px) {
+    .menu-icon {
+        display: flex; /* همیشه نمایش آیکون منو */
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column; /* منو به صورت عمودی */
+        position: fixed;
+        top: 70px;
+        left: 10px;
+        width: 90%;
+        max-width: 250px;
+        background: rgba(0, 0, 0, 0.95);
+        border-radius: 10px;
+        padding: 15px;
+        opacity: 0;
+        transform: translateX(100px);
+        pointer-events: none; /* منو مخفی است */
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    nav ul.show {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
     }
 }
 
