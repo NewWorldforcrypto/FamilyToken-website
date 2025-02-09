@@ -1,30 +1,32 @@
 // ================== مدیریت منوی همبرگری ==================
-const toggleMenu = () => {
-    const menu = document.querySelector("nav ul");
-    const menuIcon = document.querySelector(".menu-icon");
+const menu = document.querySelector("nav ul");
+const menuIcon = document.querySelector(".menu-icon");
 
-    if (menu.classList.contains("show")) {
-        menu.classList.remove("show");
-        menuIcon.innerHTML = "&#9776;"; // آیکون همبرگری
-    } else {
-        menu.classList.add("show");
-        menuIcon.innerHTML = "✖"; // آیکون ضربدر
-    }
+// تابع باز و بسته کردن منو
+const toggleMenu = (event) => {
+    event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
+
+    menu.classList.toggle("show");
+    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
 };
 
-// بستن منو هنگام کلیک روی آیکون منو (هم در موبایل و هم دسکتاپ)
-document.querySelector(".menu-icon").addEventListener("click", toggleMenu);
+// رویداد کلیک روی آیکون منو
+menuIcon.addEventListener("click", toggleMenu);
 
-// بستن منو هنگام کلیک خارج از آن **فقط در دسکتاپ**
+// بستن منو هنگام کلیک خارج از آن
 document.addEventListener("click", (event) => {
-    const menu = document.querySelector("nav ul");
-    const menuIcon = document.querySelector(".menu-icon");
-
-    // اطمینان از اینکه کلیک خارج از منو و آیکون انجام شده است
-    if (!menu.contains(event.target) && !menuIcon.contains(event.target) && menu.classList.contains("show")) {
+    if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
-        menuIcon.innerHTML = "&#9776;"; // تغییر به آیکون همبرگری
+        menuIcon.innerHTML = "&#9776;";
     }
+});
+
+// بستن منو هنگام کلیک روی یکی از گزینه‌های منو
+document.querySelectorAll("nav ul li a").forEach(link => {
+    link.addEventListener("click", () => {
+        menu.classList.remove("show");
+        menuIcon.innerHTML = "&#9776;";
+    });
 });
 
 // متغیر برای کنترل وضعیت اسکرول
