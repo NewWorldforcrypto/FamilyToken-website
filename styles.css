@@ -57,10 +57,10 @@ header {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;  /* قرار دادن آیکون در نوار */
-    right: 15px;  /* قرار دادن آیکون در سمت راست */
-    width: 45px;
-    height: 45px;
+    top: 10px;  /* تنظیم فاصله از بالای صفحه */
+    right: 10px;  /* آیکون منو در سمت راست قرار می‌گیرد */
+    width: 40px;
+    height: 40px;
     background-color: #ff8c00;
     color: white;
     font-size: 24px;
@@ -73,19 +73,13 @@ header {
     transition: 0.3s ease-in-out;
 }
 
-/* تغییر رنگ آیکون هنگام هاور */
-.menu-icon:hover {
-    background-color: #ff6500;
-    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.5);
-}
-
 /* تنظیمات برای منو */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column; /* منو به صورت عمودی قرار می‌گیرد */
+    flex-direction: column; /* منو به صورت عمودی */
     position: fixed;
     top: 70px; /* فاصله منو از بالای صفحه */
     right: 10px; /* منو در سمت راست قرار می‌گیرد */
@@ -99,7 +93,7 @@ nav ul {
     opacity: 0; /* منو مخفی است */
     transform: translateX(100px); /* شروع از سمت راست */
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    pointer-events: none; /* غیرقابل کلیک تا زمانی که منو باز شود */
+    pointer-events: none; /* منو مخفی است */
 }
 
 /* وقتی منو فعال می‌شود */
