@@ -104,16 +104,13 @@ nav ul.show {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* تنظیمات برای گزینه‌های منو */
 nav ul li {
     opacity: 0;
-    transform: translateY(20px); /* انیمیشن اسلاید از پایین */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    margin: 12px 0;
-    animation: slideIn 0.5s ease-out forwards;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* وقتی منو باز می‌شود، گزینه‌ها یکی‌یکی ظاهر می‌شوند */
+/* وقتی منو باز شد */
 nav ul.show li {
     opacity: 1;
     transform: translateY(0);
