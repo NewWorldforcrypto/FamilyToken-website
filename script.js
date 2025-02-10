@@ -1,6 +1,7 @@
 // ================== مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
+const menuItems = document.querySelectorAll("nav ul li");
 
 // بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
 const isDesktop = () => window.innerWidth >= 1024;
@@ -10,12 +11,24 @@ const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
     if (isDesktop()) {
-        menu.classList.toggle("show"); // کلاس مخصوص دسکتاپ
+        menu.classList.toggle("show");
     } else {
-        menu.classList.toggle("show"); // کلاس مخصوص موبایل
+        menu.classList.toggle("show");
     }
 
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
+
+    // اگر منو باز شد، گزینه‌ها یکی‌یکی ظاهر شوند
+    if (menu.classList.contains("show")) {
+        menuItems.forEach((item, index) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(20px)";
+            setTimeout(() => {
+                item.style.opacity = "1";
+                item.style.transform = "translateY(0)";
+            }, index * 100); // تأخیر 100 میلی‌ثانیه بین هر گزینه
+        });
+    }
 };
 
 // رویداد کلیک روی آیکون منو
@@ -25,16 +38,16 @@ menuIcon.addEventListener("click", toggleMenu);
 document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
-        menuIcon.innerHTML = "&#9776;"; // برگرداندن آیکون به حالت اولیه
+        menuIcon.innerHTML = "&#9776;";
     }
 });
 
 // بستن منو هنگام کلیک روی یکی از گزینه‌های منو
 document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", () => {
-        if (!isDesktop()) { // فقط برای موبایل منو بسته می‌شود
+        if (!isDesktop()) { 
             menu.classList.remove("show");
-            menuIcon.innerHTML = "&#9776;"; // برگرداندن آیکون به حالت اولیه
+            menuIcon.innerHTML = "&#9776;";
         }
     });
 });
