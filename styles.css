@@ -220,11 +220,11 @@ nav ul li a.active {
         position: fixed;
         top: 70px;
         right: 15px;
-        width: 270px; /* افزایش اندازه در دسکتاپ */
-        background: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        padding: 18px; /* افزایش فاصله داخلی */
-        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        width: 300px; /* افزایش اندازه منو */
+        background: rgba(0, 0, 0, 0.95);
+        border-radius: 12px; /* گرد شدن بیشتر */
+        padding: 20px; /* افزایش فاصله داخلی */
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
         opacity: 0;
         transform: translateX(100px);
         pointer-events: none;
@@ -238,13 +238,23 @@ nav ul li a.active {
     }
 
     nav ul li {
-        margin: 14px 0; /* افزایش فاصله گزینه‌ها در دسکتاپ */
+        margin: 18px 0; /* افزایش فاصله بین گزینه‌ها */
     }
 
     nav ul li a {
-        font-size: 20px; /* افزایش اندازه فونت در دسکتاپ */
-        padding: 14px 18px;
+        font-size: 22px; /* افزایش اندازه فونت */
+        padding: 16px 22px; /* افزایش فضای گزینه‌ها */
         text-align: center;
+        border-radius: 10px;
+        background: rgba(255, 140, 0, 0.85);
+        transition: all 0.3s ease;
+    }
+
+    /* تغییرات هنگام هاور */
+    nav ul li a:hover {
+        background-color: rgba(255, 100, 0, 0.9);
+        transform: scale(1.08);
+        box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5);
     }
 }
 
