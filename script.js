@@ -1,92 +1,106 @@
-// ================== مدیریت منوی همبرگری ==================
-const menu = document.querySelector("nav ul");
-const menuIcon = document.querySelector(".menu-icon");
-const menuItems = document.querySelectorAll("nav ul li a");
+// ================== 1. مدیریت منوی همبرگری با افکت‌های حرفه‌ای ==================
+const toggleMenu = () => {
+    const menu = document.querySelector("nav ul");
+    const menuIcon = document.querySelector(".menu-icon");
 
-// بررسی اندازه صفحه برای تشخیص دسکتاپ
-const isDesktop = () => window.innerWidth >= 1024;
-
-// تابع باز و بسته کردن منو
-const toggleMenu = (event) => {
-    event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
-
-    menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
-    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
-
-    if (menu.classList.contains("show")) {
-        showMenuItems(); // نمایش تدریجی گزینه‌های منو
-    } else {
-        resetMenuItems(); // مخفی کردن گزینه‌ها هنگام بسته شدن منو
-    }
+    menu.classList.toggle("show");
+    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
 };
 
-// رویداد کلیک روی آیکون منو
-menuIcon.addEventListener("click", toggleMenu);
+// متغیر برای کنترل وضعیت اسکرول
+let isScrolling = false;
 
-// بستن منو هنگام کلیک خارج از آن
-document.addEventListener("click", (event) => {
-    if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-        closeMenu();
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("nav ul li a").forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
+
+            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
+
+            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
+            let targetSection = document.getElementById(targetId);
+
+            if (!targetSection) {
+                console.error(`❌ بخش ${targetId} پیدا نشد!`);
+                return;
+            }
+
+            console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
+
+            // حذف کلاس active از تمام لینک‌ها
+            document.querySelectorAll("nav ul li a").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // افزودن کلاس active به لینک کلیک شده
+            this.classList.add("active");
+
+            // تنظیم آدرس URL بدون تغییر صفحه
+            history.pushState({}, "", `#${targetId}`);
+
+            // نشان دادن اینکه اسکرول در حال انجام است
+            isScrolling = true;
+
+            // اسکرول به بخش با استفاده از scrollIntoView برای اسکرول نرم
+            targetSection.scrollIntoView({
+                behavior: "smooth", // انیمیشن روان
+                block: "center" // این باعث می‌شود که بخش در وسط صفحه قرار گیرد
+            });
+
+            // بستن منو پس از اسکرول
+            const menu = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuIcon.innerHTML = "&#9776;";
+            }
+
+            // خاتمه دادن اسکرول پس از انجام
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
+        });
+    });
+
+    // ================== 1.1 اسکرول وسط صفحه برای دکمه Learn More ==================
+    const learnMoreBtn = document.getElementById("learnMoreBtn");
+
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener("click", function (event) {
+            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
+
+            let targetSection = document.getElementById("about"); // بخش موردنظر
+
+            if (!targetSection) {
+                console.error("❌ بخش 'about' پیدا نشد!");
+                return;
+            }
+
+            console.log("✅ اسکرول به بخش 'about'");
+
+            // اسکرول به وسط صفحه
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        });
     }
 });
 
-// بستن منو هنگام کلیک روی یکی از گزینه‌های منو و اسکرول نرم به بخش مربوطه
-document.querySelectorAll("nav ul li a").forEach(link => {
-    link.addEventListener("click", (event) => {
-        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض
-
-        let targetId = link.getAttribute("href").substring(1);
-        let targetSection = document.getElementById(targetId);
-
-        if (targetSection) {
-            // اسکرول نرم به بخش مربوطه
-            smoothScroll(targetSection.offsetTop - 50, () => {
-                closeMenu(); // بستن منو بعد از رسیدن به هدف
-            });
-        }
-    });
-});
-
-// تابع نمایش تدریجی گزینه‌های منو
-function showMenuItems() {
-    menuItems.forEach((item, index) => {
-        item.style.opacity = "0";
-        item.style.transform = "translateY(20px)";
-        item.style.transition = `opacity 0.4s ease-out ${index * 100}ms, transform 0.4s ease-out ${index * 100}ms`;
-        setTimeout(() => {
-            item.style.opacity = "1";
-            item.style.transform = "translateY(0)";
-        }, index * 100);
-    });
-}
-
-// تابع ریست گزینه‌های منو هنگام بسته شدن
-function resetMenuItems() {
-    menuItems.forEach((item) => {
-        item.style.opacity = "0";
-        item.style.transform = "translateY(20px)";
-        item.style.transition = "none"; // جلوگیری از تأخیر هنگام باز شدن بعدی
-    });
-}
-
-// تابع اسکرول نرم
-function smoothScroll(targetPosition, callback) {
+// 🚀 تابع پیشرفته برای اسکرول نرم
+function smoothScroll(target) {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 600;
+    const duration = 800; // مدت زمان اسکرول
     let startTime = null;
 
     function animationScroll(currentTime) {
         if (!startTime) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
-        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animationScroll);
-        } else {
-            callback(); // اطمینان از بسته شدن منو بعد از اتمام اسکرول
-        }
+        const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, scrollAmount);
+        if (timeElapsed < duration) requestAnimationFrame(animationScroll);
     }
 
     function easeInOutQuad(t, b, c, d) {
@@ -97,13 +111,6 @@ function smoothScroll(targetPosition, callback) {
     }
 
     requestAnimationFrame(animationScroll);
-}
-
-// تابع بستن منو
-function closeMenu() {
-    menu.classList.remove("show");
-    menuIcon.innerHTML = "&#9776;";
-    resetMenuItems();
 }
 
 // ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
