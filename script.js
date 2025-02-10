@@ -1,7 +1,7 @@
 // ================== مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
-const menuItems = document.querySelectorAll("nav ul li a");
+const menuItems = document.querySelectorAll("nav ul li");
 
 // بررسی اندازه صفحه برای تشخیص دسکتاپ
 const isDesktop = () => window.innerWidth >= 1024;
@@ -31,7 +31,7 @@ document.addEventListener("click", (event) => {
 });
 
 // بستن منو هنگام کلیک روی یکی از گزینه‌های منو و اسکرول نرم به بخش مربوطه
-menuItems.forEach(link => {
+document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", (event) => {
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض
 
@@ -52,11 +52,11 @@ function showMenuItems() {
     menuItems.forEach((item, index) => {
         item.style.opacity = "0";
         item.style.transform = "translateY(20px)";
-        item.style.transition = `opacity 0.3s ease-out ${index * 50}ms, transform 0.3s ease-out ${index * 50}ms`;
+        item.style.transition = `opacity 0.4s ease-out ${index * 100}ms, transform 0.4s ease-out ${index * 100}ms`;
         setTimeout(() => {
             item.style.opacity = "1";
             item.style.transform = "translateY(0)";
-        }, index * 50);
+        }, index * 100);
     });
 }
 
