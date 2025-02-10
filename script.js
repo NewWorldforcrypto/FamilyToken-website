@@ -6,7 +6,7 @@ const menuItems = document.querySelectorAll("nav ul li");
 // بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
 const isDesktop = () => window.innerWidth >= 1024;
 
-// تابع باز و بسته کردن منو
+// تابع باز و بسته کردن منو با انیمیشن تدریجی گزینه‌ها
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
@@ -18,15 +18,21 @@ const toggleMenu = (event) => {
 
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
-    // اگر منو باز شد، گزینه‌ها یکی‌یکی ظاهر شوند
+    // تنظیم انیمیشن برای گزینه‌های منو
     if (menu.classList.contains("show")) {
         menuItems.forEach((item, index) => {
             item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
+            item.style.transform = "translateY(15px)";
+            item.style.transition = `opacity 0.3s ease-out ${index * 100}ms, transform 0.3s ease-out ${index * 100}ms`;
             setTimeout(() => {
                 item.style.opacity = "1";
                 item.style.transform = "translateY(0)";
-            }, index * 100); // تأخیر 100 میلی‌ثانیه بین هر گزینه
+            }, 50); // شروع تغییر بعد از باز شدن منو
+        });
+    } else {
+        menuItems.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(15px)";
         });
     }
 };
@@ -39,6 +45,10 @@ document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
         menuIcon.innerHTML = "&#9776;";
+        menuItems.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(15px)";
+        });
     }
 });
 
@@ -48,6 +58,10 @@ document.querySelectorAll("nav ul li a").forEach(link => {
         if (!isDesktop()) { 
             menu.classList.remove("show");
             menuIcon.innerHTML = "&#9776;";
+            menuItems.forEach((item) => {
+                item.style.opacity = "0";
+                item.style.transform = "translateY(15px)";
+            });
         }
     });
 });
