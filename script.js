@@ -48,19 +48,46 @@ menuItems.forEach(link => {
         let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            // اسکرول نرم و دقیق به بخش موردنظر
-            window.scrollTo({
-                top: targetSection.offsetTop - 50, // کمی بالا‌تر از بخش هدف
-                behavior: "smooth"
-            });
+            // محاسبه دقیق موقعیت هدف
+            const targetPosition = targetSection.offsetTop - 50; // کمی بالاتر از بخش
 
-            // صبر کنید تا اسکرول تمام شود، سپس منو بسته شود
-            setTimeout(() => {
-                closeMenu();
-            }, 800); // افزایش زمان برای جلوگیری از گیر کردن
+            // اجرای اسکرول نرم
+            smoothScroll(targetPosition, () => {
+                closeMenu(); // بستن منو بعد از رسیدن به هدف
+            });
         }
     });
 });
+
+// تابع اسکرول نرم و پایدار
+function smoothScroll(targetPosition, callback) {
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 600; // زمان اسکرول (میلی‌ثانیه)
+    let startTime = null;
+
+    function animationScroll(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animationScroll);
+        } else {
+            callback(); // اطمینان از بسته شدن منو بعد از اتمام اسکرول
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animationScroll);
+}
 
 // تابع بستن منو به‌صورت استاندارد
 function closeMenu() {
