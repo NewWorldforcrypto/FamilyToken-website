@@ -106,6 +106,7 @@ function closeMenu() {
     resetMenuItems();
 }
 
+
 // 🚀 تابع پیشرفته برای اسکرول نرم
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
