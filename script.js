@@ -13,9 +13,8 @@ const toggleMenu = (event) => {
     menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
-    // نمایش تدریجی گزینه‌های منو
     if (menu.classList.contains("show")) {
-        showMenuItems(); // نمایش تدریجی گزینه‌ها
+        showMenuItems(); // نمایش تدریجی گزینه‌های منو
     } else {
         resetMenuItems(); // مخفی کردن گزینه‌ها هنگام بسته شدن منو
     }
@@ -33,16 +32,16 @@ document.addEventListener("click", (event) => {
 
 // بستن منو هنگام کلیک روی یکی از گزینه‌های منو و اسکرول نرم به بخش مربوطه
 menuItems.forEach(link => {
-    link.addEventListener("click", function (event) {
-        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض لینک‌ها
+    link.addEventListener("click", (event) => {
+        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض
 
-        const targetId = this.getAttribute("href").substring(1); // گرفتن id از href
-        const targetSection = document.getElementById(targetId); // پیدا کردن بخش هدف
+        let targetId = link.getAttribute("href").substring(1);
+        let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            const targetPosition = targetSection.offsetTop - 50; // موقعیت دقیق هدف
-            smoothScroll(targetPosition, () => {
-                closeMenu(); // بستن منو پس از رسیدن به هدف
+            // اسکرول نرم به بخش مربوطه
+            smoothScroll(targetSection.offsetTop - 50, () => {
+                closeMenu(); // بستن منو بعد از رسیدن به هدف
             });
         }
     });
@@ -53,11 +52,11 @@ function showMenuItems() {
     menuItems.forEach((item, index) => {
         item.style.opacity = "0";
         item.style.transform = "translateY(20px)";
-        item.style.transition = `opacity 0.4s ease-out ${index * 100}ms, transform 0.4s ease-out ${index * 100}ms`;
+        item.style.transition = `opacity 0.3s ease-out ${index * 50}ms, transform 0.3s ease-out ${index * 50}ms`;
         setTimeout(() => {
             item.style.opacity = "1";
             item.style.transform = "translateY(0)";
-        }, index * 100);
+        }, index * 50);
     });
 }
 
@@ -70,14 +69,34 @@ function resetMenuItems() {
     });
 }
 
-// تابع اسکرول نرم (حل مشکل نرفتن به بخش مربوطه)
+// تابع اسکرول نرم
 function smoothScroll(targetPosition, callback) {
-    window.scrollTo({
-        top: targetPosition,
-        behavior: "smooth"
-    });
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 600;
+    let startTime = null;
 
-    setTimeout(callback, 700); // اطمینان از اجرای کامل اسکرول قبل از بستن منو
+    function animationScroll(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animationScroll);
+        } else {
+            callback(); // اطمینان از بسته شدن منو بعد از اتمام اسکرول
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animationScroll);
 }
 
 // تابع بستن منو
