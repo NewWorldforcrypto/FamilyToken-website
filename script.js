@@ -39,7 +39,7 @@ menuItems.forEach(link => {
         const targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            const targetPosition = targetSection.offsetTop - 50; // موقعیت دقیق هدف
+            const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - 50; // موقعیت دقیق هدف
             smoothScroll(targetPosition, () => {
                 closeMenu(); // بستن منو بعد از رسیدن به هدف
             });
@@ -71,32 +71,12 @@ function resetMenuItems() {
 
 // تابع اسکرول نرم (حل مشکل نرفتن به بخش مربوطه)
 function smoothScroll(targetPosition, callback) {
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 600;
-    let startTime = null;
+    window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+    });
 
-    function animationScroll(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-
-        if (timeElapsed < duration) {
-            requestAnimationFrame(animationScroll);
-        } else {
-            setTimeout(callback, 200); // اطمینان از اجرای کامل اسکرول
-        }
-    }
-
-    function easeInOutQuad(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animationScroll);
+    setTimeout(callback, 700); // اطمینان از اجرای کامل اسکرول قبل از بستن منو
 }
 
 // تابع بستن منو
