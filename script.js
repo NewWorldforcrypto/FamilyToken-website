@@ -10,11 +10,12 @@ const isDesktop = () => window.innerWidth >= 1024;
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
-    menu.classList.toggle("show");
-    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
+    menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
+    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
+    // نمایش تدریجی گزینه‌های منو
     if (menu.classList.contains("show")) {
-        showMenuItems(); // نمایش تدریجی گزینه‌های منو
+        showMenuItems(); // نمایش تدریجی گزینه‌ها
     } else {
         resetMenuItems(); // مخفی کردن گزینه‌ها هنگام بسته شدن منو
     }
@@ -35,13 +36,13 @@ menuItems.forEach(link => {
     link.addEventListener("click", function (event) {
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض لینک‌ها
 
-        const targetId = this.getAttribute("href").substring(1);
-        const targetSection = document.getElementById(targetId);
+        const targetId = this.getAttribute("href").substring(1); // گرفتن id از href
+        const targetSection = document.getElementById(targetId); // پیدا کردن بخش هدف
 
         if (targetSection) {
-            const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - 50; // موقعیت دقیق هدف
+            const targetPosition = targetSection.offsetTop - 50; // موقعیت دقیق هدف
             smoothScroll(targetPosition, () => {
-                closeMenu(); // بستن منو بعد از رسیدن به هدف
+                closeMenu(); // بستن منو پس از رسیدن به هدف
             });
         }
     });
