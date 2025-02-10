@@ -104,26 +104,27 @@ nav ul.show {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
-nav ul li {
+/* گزینه‌های منو به‌صورت پیش‌فرض مخفی هستند */
+nav ul li a {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
 
-/* وقتی منو باز شد */
-nav ul.show li {
+/* وقتی منو باز شود، گزینه‌ها یکی‌یکی ظاهر می‌شوند */
+nav ul.show li a {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* تنظیم تاخیر برای نمایش گزینه‌ها */
-nav ul.show li:nth-child(1) { transition-delay: 0.1s; }
-nav ul.show li:nth-child(2) { transition-delay: 0.2s; }
-nav ul.show li:nth-child(3) { transition-delay: 0.3s; }
-nav ul.show li:nth-child(4) { transition-delay: 0.4s; }
-nav ul.show li:nth-child(5) { transition-delay: 0.5s; }
-nav ul.show li:nth-child(6) { transition-delay: 0.6s; }
-nav ul.show li:nth-child(7) { transition-delay: 0.7s; }
+/* تاخیر برای نمایش گزینه‌های منو */
+nav ul.show li:nth-child(1) a { transition-delay: 0.1s; }
+nav ul.show li:nth-child(2) a { transition-delay: 0.2s; }
+nav ul.show li:nth-child(3) a { transition-delay: 0.3s; }
+nav ul.show li:nth-child(4) a { transition-delay: 0.4s; }
+nav ul.show li:nth-child(5) a { transition-delay: 0.5s; }
+nav ul.show li:nth-child(6) a { transition-delay: 0.6s; }
+nav ul.show li:nth-child(7) a { transition-delay: 0.7s; }
 
 /* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
