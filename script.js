@@ -1,8 +1,7 @@
 // ================== مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
-const menuItems = document.querySelectorAll("nav ul li");
-const menuLinks = document.querySelectorAll("nav ul li a");
+const menuItems = document.querySelectorAll("nav ul li a");
 
 // بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
 const isDesktop = () => window.innerWidth >= 1024;
@@ -10,8 +9,9 @@ const isDesktop = () => window.innerWidth >= 1024;
 // تابع باز و بسته کردن منو
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
-    menu.classList.toggle("show");
-    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
+
+    menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
+    menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
     // نمایش تدریجی گزینه‌های منو
     if (menu.classList.contains("show")) {
@@ -22,47 +22,51 @@ const toggleMenu = (event) => {
             setTimeout(() => {
                 item.style.opacity = "1";
                 item.style.transform = "translateY(0)";
-            }, index * 100);
+            }, index * 100); // نمایش تدریجی گزینه‌ها
         });
     } else {
-        resetMenuItems();
+        menuItems.forEach((item) => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(20px)";
+            item.style.transition = "none"; // غیرفعال کردن ترنزیشن هنگام بسته شدن
+        });
     }
 };
+
+// رویداد کلیک روی آیکون منو
+menuIcon.addEventListener("click", toggleMenu);
 
 // بستن منو هنگام کلیک خارج از آن
 document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
         menuIcon.innerHTML = "&#9776;";
-        resetMenuItems();
+        resetMenuItems(); // ریست گزینه‌های منو هنگام بسته شدن
     }
 });
 
-// هدایت به بخش مورد نظر و بستن منو هنگام کلیک روی گزینه‌ها
-menuLinks.forEach(link => {
+// بستن منو هنگام کلیک روی یکی از گزینه‌های منو و هدایت به بخش مربوطه
+menuItems.forEach(link => {
     link.addEventListener("click", (event) => {
-        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض لینک
+        event.preventDefault(); // جلوگیری از رفتار پیش‌فرض
 
         let targetId = link.getAttribute("href").substring(1);
         let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            // تأخیر برای بستن منو قبل از اجرای اسکرول
-            setTimeout(() => {
-                targetSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "center" // نمایش بخش در وسط صفحه
-                });
-            }, 300); // این تأخیر باعث جلوگیری از تداخل بسته شدن منو و اسکرول می‌شود
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center" // نمایش بخش در وسط صفحه
+            });
 
             menu.classList.remove("show"); // بستن منو
-            menuIcon.innerHTML = "&#9776;";
-            resetMenuItems();
+            menuIcon.innerHTML = "&#9776;"; // بازگرداندن آیکون منو
+            resetMenuItems(); // ریست گزینه‌های منو پس از بستن
         }
     });
 });
 
-// تابع ریست کردن گزینه‌های منو هنگام بسته شدن
+// تابع ریست گزینه‌های منو هنگام بسته شدن
 function resetMenuItems() {
     menuItems.forEach((item) => {
         item.style.opacity = "0";
