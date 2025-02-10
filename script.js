@@ -3,7 +3,7 @@ const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
 const menuItems = document.querySelectorAll("nav ul li a");
 
-// بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
+// بررسی اندازه صفحه برای تشخیص دسکتاپ
 const isDesktop = () => window.innerWidth >= 1024;
 
 // تابع باز و بسته کردن منو
@@ -35,9 +35,7 @@ menuIcon.addEventListener("click", toggleMenu);
 // بستن منو هنگام کلیک خارج از آن
 document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
-        menu.classList.remove("show");
-        menuIcon.innerHTML = "&#9776;";
-        resetMenuItems();
+        closeMenu();
     }
 });
 
@@ -50,21 +48,26 @@ menuItems.forEach(link => {
         let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            // اسکرول ابتدا اجرا شود و بعد منو بسته شود
-            targetSection.scrollIntoView({
-                behavior: "smooth",
-                block: "center" // نمایش بخش در وسط صفحه
+            // اسکرول نرم و دقیق به بخش موردنظر
+            window.scrollTo({
+                top: targetSection.offsetTop - 50, // کمی بالا‌تر از بخش هدف
+                behavior: "smooth"
             });
 
-            // تأخیر در بسته شدن منو تا اطمینان حاصل شود که اسکرول کامل انجام شده
+            // صبر کنید تا اسکرول تمام شود، سپس منو بسته شود
             setTimeout(() => {
-                menu.classList.remove("show"); // بستن منو بعد از اسکرول
-                menuIcon.innerHTML = "&#9776;";
-                resetMenuItems();
-            }, 600); // تأخیر 600 میلی‌ثانیه برای پایداری بهتر
+                closeMenu();
+            }, 800); // افزایش زمان برای جلوگیری از گیر کردن
         }
     });
 });
+
+// تابع بستن منو به‌صورت استاندارد
+function closeMenu() {
+    menu.classList.remove("show");
+    menuIcon.innerHTML = "&#9776;";
+    resetMenuItems();
+}
 
 // تابع ریست گزینه‌های منو هنگام بسته شدن
 function resetMenuItems() {
