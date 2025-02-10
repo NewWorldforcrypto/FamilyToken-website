@@ -1,7 +1,7 @@
 // ================== مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
-const menuItems = document.querySelectorAll("nav ul li a");
+const menuItems = document.querySelectorAll("nav ul li");
 
 // بررسی اندازه صفحه برای تشخیص دسکتاپ
 const isDesktop = () => window.innerWidth >= 1024;
@@ -13,19 +13,10 @@ const toggleMenu = (event) => {
     menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
-    // نمایش تدریجی گزینه‌های منو
     if (menu.classList.contains("show")) {
-        menuItems.forEach((item, index) => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
-            item.style.transition = `opacity 0.5s ease-out ${index * 100}ms, transform 0.5s ease-out ${index * 100}ms`;
-            setTimeout(() => {
-                item.style.opacity = "1";
-                item.style.transform = "translateY(0)";
-            }, index * 100);
-        });
+        showMenuItems(); // نمایش تدریجی گزینه‌های منو
     } else {
-        resetMenuItems();
+        resetMenuItems(); // مخفی کردن گزینه‌ها هنگام بسته شدن منو
     }
 };
 
@@ -39,8 +30,8 @@ document.addEventListener("click", (event) => {
     }
 });
 
-// بستن منو هنگام کلیک روی یکی از گزینه‌های منو و هدایت به بخش مربوطه
-menuItems.forEach(link => {
+// بستن منو هنگام کلیک روی یکی از گزینه‌های منو و اسکرول نرم به بخش مربوطه
+document.querySelectorAll("nav ul li a").forEach(link => {
     link.addEventListener("click", (event) => {
         event.preventDefault(); // جلوگیری از رفتار پیش‌فرض
 
@@ -48,16 +39,72 @@ menuItems.forEach(link => {
         let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
-            // محاسبه دقیق موقعیت هدف
-            const targetPosition = targetSection.offsetTop - 50; // کمی بالاتر از بخش
-
-            // اجرای اسکرول نرم
-            smoothScroll(targetPosition, () => {
+            // اسکرول نرم به بخش مربوطه
+            smoothScroll(targetSection.offsetTop - 50, () => {
                 closeMenu(); // بستن منو بعد از رسیدن به هدف
             });
         }
     });
 });
+
+// تابع نمایش تدریجی گزینه‌های منو
+function showMenuItems() {
+    menuItems.forEach((item, index) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(20px)";
+        item.style.transition = `opacity 0.4s ease-out ${index * 100}ms, transform 0.4s ease-out ${index * 100}ms`;
+        setTimeout(() => {
+            item.style.opacity = "1";
+            item.style.transform = "translateY(0)";
+        }, index * 100);
+    });
+}
+
+// تابع ریست گزینه‌های منو هنگام بسته شدن
+function resetMenuItems() {
+    menuItems.forEach((item) => {
+        item.style.opacity = "0";
+        item.style.transform = "translateY(20px)";
+        item.style.transition = "none"; // جلوگیری از تأخیر هنگام باز شدن بعدی
+    });
+}
+
+// تابع اسکرول نرم
+function smoothScroll(targetPosition, callback) {
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    const duration = 600;
+    let startTime = null;
+
+    function animationScroll(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = easeInOutQuad(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+
+        if (timeElapsed < duration) {
+            requestAnimationFrame(animationScroll);
+        } else {
+            callback(); // اطمینان از بسته شدن منو بعد از اتمام اسکرول
+        }
+    }
+
+    function easeInOutQuad(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return (c / 2) * t * t + b;
+        t--;
+        return (-c / 2) * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animationScroll);
+}
+
+// تابع بستن منو
+function closeMenu() {
+    menu.classList.remove("show");
+    menuIcon.innerHTML = "&#9776;";
+    resetMenuItems();
+}
 
 // تابع اسکرول نرم و پایدار
 function smoothScroll(targetPosition, callback) {
