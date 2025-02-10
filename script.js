@@ -10,29 +10,16 @@ const isDesktop = () => window.innerWidth >= 1024;
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
-    if (isDesktop()) {
-        menu.classList.toggle("show"); // کلاس مخصوص دسکتاپ
-    } else {
-        menu.classList.toggle("show"); // کلاس مخصوص موبایل
-    }
-
+    menu.classList.toggle("show"); // افزودن یا حذف کلاس show برای نمایش منو
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
 
-    // تنظیم انیمیشن برای گزینه‌های منو
     if (menu.classList.contains("show")) {
         menuItems.forEach((item, index) => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
-            item.style.transition = `opacity 0.5s ease-out ${index * 100}ms, transform 0.5s ease-out ${index * 100}ms`;
-            setTimeout(() => {
-                item.style.opacity = "1";
-                item.style.transform = "translateY(0)";
-            }, 50); // شروع تغییر بعد از باز شدن منو
+            item.style.transitionDelay = `${index * 100}ms`;
         });
     } else {
         menuItems.forEach((item) => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
+            item.style.transitionDelay = "0ms";
         });
     }
 };
@@ -45,10 +32,6 @@ document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
         menuIcon.innerHTML = "&#9776;";
-        menuItems.forEach((item) => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
-        });
     }
 });
 
