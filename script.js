@@ -6,14 +6,14 @@ const menuItems = document.querySelectorAll("nav ul li");
 // بررسی اندازه صفحه برای اطمینان از عملکرد صحیح در دسکتاپ و موبایل
 const isDesktop = () => window.innerWidth >= 1024;
 
-// تابع باز و بسته کردن منو با انیمیشن تدریجی گزینه‌ها
+// تابع باز و بسته کردن منو
 const toggleMenu = (event) => {
     event.stopPropagation(); // جلوگیری از بسته شدن منو هنگام کلیک روی آیکون
 
     if (isDesktop()) {
-        menu.classList.toggle("show");
+        menu.classList.toggle("show"); // کلاس مخصوص دسکتاپ
     } else {
-        menu.classList.toggle("show");
+        menu.classList.toggle("show"); // کلاس مخصوص موبایل
     }
 
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;"; // تغییر آیکون
@@ -22,8 +22,8 @@ const toggleMenu = (event) => {
     if (menu.classList.contains("show")) {
         menuItems.forEach((item, index) => {
             item.style.opacity = "0";
-            item.style.transform = "translateY(15px)";
-            item.style.transition = `opacity 0.3s ease-out ${index * 100}ms, transform 0.3s ease-out ${index * 100}ms`;
+            item.style.transform = "translateY(20px)";
+            item.style.transition = `opacity 0.5s ease-out ${index * 100}ms, transform 0.5s ease-out ${index * 100}ms`;
             setTimeout(() => {
                 item.style.opacity = "1";
                 item.style.transform = "translateY(0)";
@@ -32,7 +32,7 @@ const toggleMenu = (event) => {
     } else {
         menuItems.forEach((item) => {
             item.style.opacity = "0";
-            item.style.transform = "translateY(15px)";
+            item.style.transform = "translateY(20px)";
         });
     }
 };
@@ -47,7 +47,7 @@ document.addEventListener("click", (event) => {
         menuIcon.innerHTML = "&#9776;";
         menuItems.forEach((item) => {
             item.style.opacity = "0";
-            item.style.transform = "translateY(15px)";
+            item.style.transform = "translateY(20px)";
         });
     }
 });
@@ -60,7 +60,7 @@ document.querySelectorAll("nav ul li a").forEach(link => {
             menuIcon.innerHTML = "&#9776;";
             menuItems.forEach((item) => {
                 item.style.opacity = "0";
-                item.style.transform = "translateY(15px)";
+                item.style.transform = "translateY(20px)";
             });
         }
     });
