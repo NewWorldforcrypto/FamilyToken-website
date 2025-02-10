@@ -1,7 +1,7 @@
 // ================== مدیریت منوی همبرگری ==================
 const menu = document.querySelector("nav ul");
 const menuIcon = document.querySelector(".menu-icon");
-const menuItems = document.querySelectorAll("nav ul li");
+const menuItems = document.querySelectorAll("nav ul li a");
 
 // بررسی اندازه صفحه برای تشخیص دسکتاپ
 const isDesktop = () => window.innerWidth >= 1024;
@@ -104,33 +104,6 @@ function closeMenu() {
     menu.classList.remove("show");
     menuIcon.innerHTML = "&#9776;";
     resetMenuItems();
-}
-
-
-// 🚀 تابع پیشرفته برای اسکرول نرم
-function smoothScroll(target) {
-    const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
-    const startPosition = window.scrollY;
-    const distance = targetPosition - startPosition;
-    const duration = 800; // مدت زمان اسکرول
-    let startTime = null;
-
-    function animationScroll(currentTime) {
-        if (!startTime) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, scrollAmount);
-        if (timeElapsed < duration) requestAnimationFrame(animationScroll);
-    }
-
-    function easeInOutQuad(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return (c / 2) * t * t + b;
-        t--;
-        return (-c / 2) * (t * (t - 2) - 1) + b;
-    }
-
-    requestAnimationFrame(animationScroll);
 }
 
 // ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
