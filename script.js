@@ -22,14 +22,10 @@ const toggleMenu = (event) => {
             setTimeout(() => {
                 item.style.opacity = "1";
                 item.style.transform = "translateY(0)";
-            }, index * 100); // نمایش تدریجی گزینه‌ها
+            }, index * 100);
         });
     } else {
-        menuItems.forEach((item) => {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(20px)";
-            item.style.transition = "none"; // غیرفعال کردن ترنزیشن هنگام بسته شدن
-        });
+        resetMenuItems();
     }
 };
 
@@ -41,7 +37,7 @@ document.addEventListener("click", (event) => {
     if (!menu.contains(event.target) && !menuIcon.contains(event.target)) {
         menu.classList.remove("show");
         menuIcon.innerHTML = "&#9776;";
-        resetMenuItems(); // ریست گزینه‌های منو هنگام بسته شدن
+        resetMenuItems();
     }
 });
 
@@ -54,14 +50,18 @@ menuItems.forEach(link => {
         let targetSection = document.getElementById(targetId);
 
         if (targetSection) {
+            // اسکرول ابتدا اجرا شود و بعد منو بسته شود
             targetSection.scrollIntoView({
                 behavior: "smooth",
                 block: "center" // نمایش بخش در وسط صفحه
             });
 
-            menu.classList.remove("show"); // بستن منو
-            menuIcon.innerHTML = "&#9776;"; // بازگرداندن آیکون منو
-            resetMenuItems(); // ریست گزینه‌های منو پس از بستن
+            // تأخیر در بسته شدن منو تا اطمینان حاصل شود که اسکرول کامل انجام شده
+            setTimeout(() => {
+                menu.classList.remove("show"); // بستن منو بعد از اسکرول
+                menuIcon.innerHTML = "&#9776;";
+                resetMenuItems();
+            }, 600); // تأخیر 600 میلی‌ثانیه برای پایداری بهتر
         }
     });
 });
