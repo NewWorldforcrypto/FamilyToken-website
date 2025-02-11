@@ -409,7 +409,7 @@ nav ul li a.active {
 }
 
 /* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
-#hero2, #hero3, #hero4, #hero5, #hero6, #hero7
+#hero2, #hero3, #hero4, #hero5, #hero6, #hero7 
 .info-section {
     opacity: 0;
     transform: translateY(30px);
