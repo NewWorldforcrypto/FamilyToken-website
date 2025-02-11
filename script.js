@@ -154,6 +154,10 @@ document.addEventListener("click", (event) => {
     }
 });
 
+function refreshPage() {
+    location.reload(); // رفرش صفحه
+}
+
 // ================== 5. تنظیم سرعت و جهت حرکت پس‌زمینه‌ها ==================
 document.addEventListener("DOMContentLoaded", () => {
     const backgrounds = [
