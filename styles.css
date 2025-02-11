@@ -303,7 +303,7 @@ nav ul li a.active {
 }
 
 #hero5 {
-    background: url('images/background5.webp') no-repeat center center/cover;
+    background: url('images/background11.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
 }
 
