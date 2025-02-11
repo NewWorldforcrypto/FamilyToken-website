@@ -125,7 +125,7 @@ nav ul.show li:nth-child(4) a { transition-delay: 0.4s; }
 nav ul.show li:nth-child(5) a { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) a { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) a { transition-delay: 0.7s; }
-nav ul.show li:nth-child(7) a { transition-delay: 0.8s; }
+nav ul.show li:nth-child(8) a { transition-delay: 0.8s; }
 
 /* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
