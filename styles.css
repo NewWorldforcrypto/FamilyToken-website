@@ -30,7 +30,7 @@ section {
     padding: 0 20px;
 }
 
-/* ========== 2. نوار بالای سایت (هدر) ========== */
+/* ========== 2. نوار بالای سایت (هدر) ========= */
 header {
     display: flex;
     justify-content: space-between;
