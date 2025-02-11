@@ -125,6 +125,7 @@ nav ul.show li:nth-child(4) a { transition-delay: 0.4s; }
 nav ul.show li:nth-child(5) a { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) a { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) a { transition-delay: 0.7s; }
+nav ul.show li:nth-child(7) a { transition-delay: 0.8s; }
 
 /* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
@@ -258,7 +259,7 @@ nav ul li a.active {
 
 
 /* استایل کلی پس‌زمینه‌ها */
-#hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
+#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -310,6 +311,11 @@ nav ul li a.active {
 #hero6 {
     background: url('images/background12.webp') no-repeat center center/cover;
     animation: moveLeft 20s infinite linear;
+}
+
+#hero7 {
+    background: url('images/background13.webp') no-repeat center center/cover;
+    animation: moveRight 20s infinite linear;
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
@@ -377,7 +383,7 @@ nav ul li a.active {
 }
 
 /* استایل برای هر بخش hero */
-#hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
+#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -403,7 +409,7 @@ nav ul li a.active {
 }
 
 /* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
-#hero2, #hero3, #hero4, #hero5, #hero6,  
+#hero2, #hero3, #hero4, #hero5, #hero6, #hero7
 .info-section {
     opacity: 0;
     transform: translateY(30px);
@@ -646,7 +652,7 @@ footer {
 
 
 
-    #hero, #hero2, #hero3, #hero4, #hero5, #hero6 {
+    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
         height: 100vh;
         background-size: cover;
         background-position: center;
