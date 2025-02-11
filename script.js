@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { element: document.getElementById("hero4"), speed: 0.02, direction: -1 },
         { element: document.getElementById("hero5"), speed: 0.02, direction: 1 },
         { element: document.getElementById("hero6"), speed: 0.02, direction: -1 },
+        { element: document.getElementById("hero7"), speed: 0.02, direction: 1 },
     ];
 
     let position = 0;
