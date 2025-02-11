@@ -293,12 +293,12 @@ nav ul li a.active {
 }
 
 #hero3 {
-    background: url('images/background3.webp') no-repeat center center/cover;
+    background: url('images/background9.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
 }
 
 #hero4 {
-    background: url('images/background4.webp') no-repeat center center/cover;
+    background: url('images/background10.webp') no-repeat center center/cover;
     animation: moveLeft 20s infinite linear;
 }
 
