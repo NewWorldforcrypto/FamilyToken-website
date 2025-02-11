@@ -288,7 +288,7 @@ nav ul li a.active {
 }
 
 #hero2 {
-    background: url('images/background2.webp') no-repeat center center/cover;
+    background: url('images/background8.webp') no-repeat center center/cover;
     animation: moveLeft 20s infinite linear;
 }
 
