@@ -258,79 +258,47 @@ nav ul li a.active {
 }
 
 
-/* استایل کلی پس‌زمینه‌ها */
+/* استایل کلی برای همه‌ی heroها */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
+    position: relative;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* جلوگیری از خارج شدن محتوای متحرک */
+}
+
+/* افزودن پس‌زمینه‌ی متحرک با استفاده از ::before */
+#hero::before, #hero2::before, #hero3::before, #hero4::before,
+#hero5::before, #hero6::before, #hero7::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; /* افزایش عرض برای حرکت نرم‌تر */
+    height: 200%; /* افزایش ارتفاع برای حرکت در همه‌ی ابعاد */
     background-size: cover;
     background-position: center;
-    position: relative;
-    background-attachment: scroll; /* حرکت طبیعی در موبایل */
-    animation: moveBackground 20s infinite linear; /* انیمیشن حرکت پس‌زمینه */
+    background-repeat: no-repeat;
+    z-index: -1; /* پس‌زمینه را پشت محتوای اصلی قرار می‌دهد */
+    animation: moveBg 20s linear infinite alternate;
 }
+
+/* تصاویر پس‌زمینه برای هر بخش */
+#hero::before { background-image: url('images/background7.webp'); }
+#hero2::before { background-image: url('images/background8.webp'); }
+#hero3::before { background-image: url('images/background9.webp'); }
+#hero4::before { background-image: url('images/background10.webp'); }
+#hero5::before { background-image: url('images/background11.webp'); }
+#hero6::before { background-image: url('images/background12.webp'); }
+#hero7::before { background-image: url('images/background13.webp'); }
 
 /* انیمیشن حرکت پس‌زمینه */
-@keyframes moveBackground {
-    0% { background-position: 0 0; }
-    50% { background-position: 50% 0; }
-    100% { background-position: 100% 0; }
-}
-
-/* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
-#hero {
-    background: url('images/background7.webp') no-repeat center center/cover;
-}
-
-#hero2 {
-    background: url('images/background8.webp') no-repeat center center/cover;
-}
-
-#hero3 {
-    background: url('images/background9.webp') no-repeat center center/cover;
-}
-
-#hero4 {
-    background: url('images/background10.webp') no-repeat center center/cover;
-}
-
-#hero5 {
-    background: url('images/background11.webp') no-repeat center center/cover;
-}
-
-#hero6 {
-    background: url('images/background12.webp') no-repeat center center/cover;
-}
-
-#hero7 {
-    background: url('images/background13.webp') no-repeat center center/cover;
-}
-
-/* به‌روز رسانی برای حالت‌های بزرگتر صفحه */
-@media (min-width: 1024px) {
-    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundLarge 30s infinite linear; /* تغییر انیمیشن برای صفحه‌های بزرگتر */
-    }
-}
-
-/* انیمیشن ویژه برای صفحات بزرگتر */
-@keyframes moveBackgroundLarge {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-/* انیمیشن برای صفحه‌های کوچکتر */
-@media (max-width: 1024px) {
-    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmall 15s infinite linear; /* انیمیشن سریعتر برای صفحه‌های کوچکتر */
-    }
-}
-
-@keyframes moveBackgroundSmall {
-    0% { background-position: 0 0; }
-    100% { background-position: 50% 0; }
+@keyframes moveBg {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-10%) translateY(-10%); }
+    100% { transform: translateX(10%) translateY(10%); }
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
