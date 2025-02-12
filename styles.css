@@ -429,7 +429,7 @@ nav ul li a.active {
     box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* سایه ملایم برای برجستگی */
     text-align: center;
     margin: 50px auto;
-    max-width: 800px;
+    max-width: 1000px;  /* حداکثر عرض بیشتر برای دسکتاپ */
     position: relative;
     backdrop-filter: brightness(1.5); /* افزایش روشنایی بدون بلور */
     -webkit-backdrop-filter: brightness(1.5);
@@ -444,7 +444,7 @@ nav ul li a.active {
 
 /* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
 .info-section h2 {
-    font-size: 2.5rem;
+    font-size: 3vw;  /* استفاده از واحد vw برای اندازه پویا */
     font-weight: bold;
     color: #ff8c00 !important; /* تضمین اعمال رنگ */
     -webkit-text-fill-color: #ff8c00;
@@ -478,7 +478,7 @@ nav ul li a.active {
     }
 
     .info-section h2 {
-        font-size: 2rem; /* تغییر اندازه فونت عنوان */
+        font-size: 2.2rem; /* تغییر اندازه فونت عنوان */
     }
 
     .info-section p {
@@ -495,7 +495,7 @@ nav ul li a.active {
     }
 
     .info-section h2 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
 
     .info-section p {
@@ -507,15 +507,15 @@ nav ul li a.active {
 @media (min-width: 1025px) {
     .info-section {
         padding: 50px 20px;
-        max-width: 800px;
+        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
     }
 
     .info-section h2 {
-        font-size: 2.5rem;
+        font-size: 3vw;  /* استفاده از واحد vw برای سایز پویا */
     }
 
     .info-section p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 }
 
