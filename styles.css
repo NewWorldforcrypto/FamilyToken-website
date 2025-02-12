@@ -155,3 +155,39 @@ footer {
         font-size: 1.2rem;
     }
 }
+
+/* انیمیشن ورود */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* افکت پارالاکس */
+.parallax {
+    position: absolute;
+    transition: transform 0.2s ease-out;
+}
+
+/* انیمیشن هنگام اسکرول */
+.animate {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
