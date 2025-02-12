@@ -409,8 +409,7 @@ nav ul li a.active {
 }
 
 /* پیش‌فرض: همه‌ی بخش‌ها (به جز hero1) نامرئی هستند */
-#hero2, #hero3, #hero4, #hero5, #hero6, #hero7 
-.info-section {
+#hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 1.5s ease-out, transform 1.5s ease-out;
@@ -466,6 +465,58 @@ nav ul li a.active {
     word-spacing: normal; /* فاصله استاندارد بین کلمات */
     letter-spacing: 0.5px; /* فاصله مناسب بین حروف برای خوانایی بهتر */
     font-family: 'Roboto', sans-serif; /* تغییر فونت به Roboto (استاندارد و شیک) */
+}
+
+/* تنظیمات برای بخش‌های ریسپانسیو */
+
+/* برای موبایل */
+@media (max-width: 767px) {
+    .info-section {
+        padding: 25px 15px;
+        max-width: 100%;
+        margin: 30px 15px;
+    }
+
+    .info-section h2 {
+        font-size: 2rem; /* تغییر اندازه فونت عنوان */
+    }
+
+    .info-section p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}
+
+/* برای تبلت */
+@media (max-width: 1024px) {
+    .info-section {
+        padding: 30px 20px;
+        max-width: 90%;
+    }
+
+    .info-section h2 {
+        font-size: 2.2rem;
+    }
+
+    .info-section p {
+        font-size: 1.1rem;
+    }
+}
+
+/* برای دسکتاپ */
+@media (min-width: 1025px) {
+    .info-section {
+        padding: 50px 20px;
+        max-width: 800px;
+    }
+
+    .info-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .info-section p {
+        font-size: 1.2rem;
+    }
 }
 
 /* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
