@@ -268,7 +268,6 @@ nav ul li a.active {
     background-size: cover;
     background-position: center;
     position: relative;
-    background-attachment: fixed; /* اضافه کردن پارالاکس */
     transition: background-position 0.5s ease; /* اضافه کردن انتقال صاف برای پس‌زمینه */
 }
 
@@ -283,6 +282,7 @@ nav ul li a.active {
     100% { background-position: 0 0; }
 }
 
+/* تنظیم پس‌زمینه‌ها برای صفحه موبایل و تبلت */
 #hero {
     background: url('images/background7.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
@@ -316,6 +316,13 @@ nav ul li a.active {
 #hero7 {
     background: url('images/background13.webp') no-repeat center center/cover;
     animation: moveRight 20s infinite linear;
+}
+
+/* برای دسکتاپ و اندازه‌های بزرگتر، پس‌زمینه ثابت باشد */
+@media (min-width: 1024px) {
+    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
+        background-attachment: scroll; /* غیرفعال کردن پارالاکس */
+    }
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
