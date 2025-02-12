@@ -556,6 +556,10 @@ nav ul li a.active {
     color: #ddd;
     margin-bottom: 30px;
     line-height: 1.6;
+    text-align: center; /* تنظیم چینش متن به مرکز */
+    margin-left: auto; /* اعمال خودکار فاصله سمت چپ */
+    margin-right: auto; /* اعمال خودکار فاصله سمت راست */
+    max-width: 80%; /* تعیین حداکثر عرض برای جلوگیری از پراکندگی */
 }
 
 /* آیکون‌های شبکه‌های اجتماعی */
