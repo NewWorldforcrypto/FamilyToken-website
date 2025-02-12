@@ -455,17 +455,17 @@ nav ul li a.active {
     letter-spacing: 1.5px;
 }
 
-/* متن پاراگراف */
+/* متن پاراگراف در info-section */
 .info-section p {
     font-size: 1.2rem;
     color: #ddd;
-    line-height: 1.8; /* افزایش فاصله خطوط برای خوانایی بهتر */
-    margin-top: 10px;
-    text-align: justify; /* تراز کردن متن برای هماهنگی بیشتر */
-    max-width: 80%; /* محدود کردن عرض متن برای جلوگیری از پراکندگی */
-    margin-left: auto;
-    margin-right: auto;
-    word-spacing: 0.1rem; /* افزایش فاصله بین کلمات برای نظم بیشتر */
+    line-height: 1.8; /* فاصله استاندارد بین خطوط */
+    text-align: justify; /* چینش منظم متن */
+    max-width: 80%; /* تنظیم عرض برای جلوگیری از پراکندگی */
+    margin: 10px auto; /* تنظیم فاصله یکنواخت از بالا و پایین و مرکز قرار دادن متن */
+    word-spacing: normal; /* فاصله استاندارد بین کلمات */
+    letter-spacing: 0.5px; /* فاصله مناسب بین حروف برای خوانایی بهتر */
+    font-family: 'Roboto', sans-serif; /* تغییر فونت به Roboto (استاندارد و شیک) */
 }
 
 /* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
