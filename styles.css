@@ -365,14 +365,14 @@ nav ul li a.active {
 /* تنظیم اندازه فونت در دسکتاپ */
 @media (min-width: 1024px) {
     .hero-text {
-        font-size: 5rem; /* بزرگ‌تر برای نمایش بهتر در صفحه‌های بزرگ */
+        font-size: 8rem; /* بزرگ‌تر برای نمایش بهتر در صفحه‌های بزرگ */
     }
 }
 
 /* تنظیم اندازه در نمایشگرهای کوچک‌تر */
 @media (max-width: 768px) {
     .hero-text {
-        font-size: 2.5rem;
+        font-size: 4rem;
     }
 }
 
@@ -680,6 +680,10 @@ nav ul li a.active {
 }
 
 /* تغییرات هاور دکمه */
+.btn {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .btn:hover {
     transform: scale(1.05); /* بزرگ‌تر شدن دکمه */
     box-shadow: 0 0 15px rgba(255, 65, 108, 0.8); /* سایه جذاب و مدرن */
@@ -692,6 +696,59 @@ nav ul li a.active {
 
 .blue-btn:hover {
     box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
+}
+
+/* تنظیمات برای بخش‌های ریسپانسیو */
+
+/* برای موبایل */
+@media (max-width: 767px) {
+    .btn {
+        font-size: 1rem; /* اندازه فونت دکمه‌ها در موبایل */
+        padding: 12px 25px; /* تنظیم حاشیه برای دکمه‌ها */
+    }
+
+    .blue-btn {
+        background: linear-gradient(45deg, #0056b3, #007bff);
+    }
+
+    .btn:hover {
+        transform: scale(1.1); /* بزرگ‌تر شدن دکمه در موبایل */
+        box-shadow: 0 0 12px rgba(255, 65, 108, 0.6);
+    }
+}
+
+/* برای تبلت */
+@media (max-width: 1024px) {
+    .btn {
+        font-size: 1.2rem; /* اندازه فونت دکمه‌ها در تبلت */
+        padding: 15px 30px; /* تنظیم حاشیه برای دکمه‌ها */
+    }
+
+    .blue-btn {
+        background: linear-gradient(45deg, #0056b3, #007bff);
+    }
+
+    .btn:hover {
+        transform: scale(1.08); /* کمی بزرگ‌تر شدن دکمه */
+        box-shadow: 0 0 14px rgba(255, 65, 108, 0.7);
+    }
+}
+
+/* برای دسکتاپ */
+@media (min-width: 1025px) {
+    .btn {
+        font-size: 1.5rem; /* اندازه فونت دکمه‌ها در دسکتاپ */
+        padding: 18px 35px; /* تنظیم حاشیه برای دکمه‌ها */
+    }
+
+    .blue-btn {
+        background: linear-gradient(45deg, #007bff, #0056b3);
+    }
+
+    .btn:hover {
+        transform: scale(1.05); /* بزرگ‌تر شدن دکمه در دسکتاپ */
+        box-shadow: 0 0 15px rgba(255, 65, 108, 0.8);
+    }
 }
 
 /* ========== 9. تنظیمات فوتر ========== */
