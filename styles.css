@@ -268,55 +268,69 @@ nav ul li a.active {
     background-size: cover;
     background-position: center;
     position: relative;
-    transition: background-position 0.5s ease; /* اضافه کردن انتقال صاف برای پس‌زمینه */
-    background-attachment: scroll; /* غیرفعال کردن پارالاکس در تمام اندازه‌ها */
+    background-attachment: scroll; /* حرکت طبیعی در موبایل */
+    animation: moveBackground 20s infinite linear; /* انیمیشن حرکت پس‌زمینه */
 }
 
-/* تنظیم جهت حرکت پس‌زمینه‌ها */
-@keyframes moveRight {
+/* انیمیشن حرکت پس‌زمینه */
+@keyframes moveBackground {
     0% { background-position: 0 0; }
+    50% { background-position: 50% 0; }
     100% { background-position: 100% 0; }
 }
 
-@keyframes moveLeft {
-    0% { background-position: 100% 0; }
-    100% { background-position: 0 0; }
-}
-
-/* تنظیم پس‌زمینه‌ها برای تمامی اندازه‌ها */
+/* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
 #hero {
     background: url('images/background7.webp') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
 }
 
 #hero2 {
     background: url('images/background8.webp') no-repeat center center/cover;
-    animation: moveLeft 20s infinite linear;
 }
 
 #hero3 {
     background: url('images/background9.webp') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
 }
 
 #hero4 {
     background: url('images/background10.webp') no-repeat center center/cover;
-    animation: moveLeft 20s infinite linear;
 }
 
 #hero5 {
     background: url('images/background11.webp') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
 }
 
 #hero6 {
     background: url('images/background12.webp') no-repeat center center/cover;
-    animation: moveLeft 20s infinite linear;
 }
 
 #hero7 {
     background: url('images/background13.webp') no-repeat center center/cover;
-    animation: moveRight 20s infinite linear;
+}
+
+/* به‌روز رسانی برای حالت‌های بزرگتر صفحه */
+@media (min-width: 1024px) {
+    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
+        animation: moveBackgroundLarge 30s infinite linear; /* تغییر انیمیشن برای صفحه‌های بزرگتر */
+    }
+}
+
+/* انیمیشن ویژه برای صفحات بزرگتر */
+@keyframes moveBackgroundLarge {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* انیمیشن برای صفحه‌های کوچکتر */
+@media (max-width: 1024px) {
+    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
+        animation: moveBackgroundSmall 15s infinite linear; /* انیمیشن سریعتر برای صفحه‌های کوچکتر */
+    }
+}
+
+@keyframes moveBackgroundSmall {
+    0% { background-position: 0 0; }
+    100% { background-position: 50% 0; }
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
