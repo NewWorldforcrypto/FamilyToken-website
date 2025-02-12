@@ -1,193 +1,253 @@
-/* عمومی */
-body {
+/* تنظیمات کلی */
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: #000;
-    color: #fff;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #ffffff;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /* استایل هدر */
 header {
     position: fixed;
     width: 100%;
-    top: 0;
-    left: 0;
     background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 50px;
+    padding: 15px 0;
     z-index: 1000;
+    transition: 0.3s;
 }
 
 .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #ffcc00;
+    color: #ff416c;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
+    justify-content: center;
 }
 
 nav ul li {
-    margin-left: 20px;
+    margin: 0 15px;
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-nav ul li a:hover {
-    color: #ffcc00;
-}
-
-/* استایل بخش Hero */
-#hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    animation: moveBackground 20s linear infinite;
-}
-
-@keyframes moveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
-}
-
-#hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.3);
-}
-
-#hero p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.btn {
-    padding: 10px 25px;
-    font-size: 1.2rem;
-    color: #000;
-    background: #ffcc00;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn:hover {
-    background: #ffaa00;
-}
-
-/* سایر بخش‌ها */
-section {
-    padding: 80px 20px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.token-details p {
-    font-size: 1.2rem;
-}
-
-/* تیم */
-.team-container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.team-member img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-}
-
-/* سوشال مدیا */
-.social-icons a {
-    color: #fff;
-    font-size: 2rem;
-    margin: 10px;
+    font-size: 1rem;
     transition: 0.3s;
 }
 
-.social-icons a:hover {
-    color: #ffcc00;
+nav ul li a:hover {
+    color: #ff416c;
 }
 
-/* فوتر */
-footer {
+/* استایل سکشن hero */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("assets/background.svg") no-repeat center center/cover;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+}
+
+.hero-content {
+    max-width: 700px;
     padding: 20px;
-    background: #111;
 }
 
-/* ریسپانسیو */
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff416c;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    line-height: 1.6;
+}
+
+/* دکمه‌های اکشن */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #ff416c;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background: #e63956;
+}
+
+/* بخش درباره */
+#about {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    color: #ff416c;
+}
+
+#about p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* استایل نقشه راه */
+#roadmap {
+    padding: 80px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+#roadmap h2 {
+    font-size: 2.5rem;
+    color: #ff416c;
+}
+
+.roadmap-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.roadmap-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    margin: 15px;
+    width: 250px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.roadmap-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.roadmap-item h3 {
+    font-size: 1.5rem;
+    color: #ff416c;
+}
+
+.roadmap-item p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* استایل بخش خرید توکن */
+#buy {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#buy h2 {
+    font-size: 2.5rem;
+    color: #ff416c;
+}
+
+#buy p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+.buy-buttons {
+    margin-top: 20px;
+}
+
+.buy-buttons a {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-buy {
+    background: #ff416c;
+    color: #ffffff;
+}
+
+.btn-buy:hover {
+    background: #e63956;
+}
+
+/* استایل فوتر */
+footer {
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+footer p {
+    font-size: 1rem;
+    color: #ddd;
+}
+
+/* استایل ریسپانسیو */
 @media (max-width: 768px) {
-    header {
-        padding: 10px 20px;
+    .hero-content h1 {
+        font-size: 2.2rem;
     }
 
-    nav ul {
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .btn {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+
+    .roadmap-container {
         flex-direction: column;
         align-items: center;
     }
 
-    #hero h1 {
-        font-size: 2.5rem;
+    .roadmap-item {
+        width: 90%;
     }
-
-    #hero p {
-        font-size: 1.2rem;
-    }
-}
-
-/* انیمیشن ورود */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 1s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* افکت پارالاکس */
-.parallax {
-    position: absolute;
-    transition: transform 0.2s ease-out;
-}
-
-/* انیمیشن هنگام اسکرول */
-.animate {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.animate.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
