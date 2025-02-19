@@ -436,77 +436,76 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* ========== Enhanced Info Section Styles with Stunning Circular Background ========== */
+/* ========== Enhanced Info Section with Transparent Aesthetic ========== */
 .info-section {
     padding: 50px 20px;
     margin: 50px auto;
     max-width: 900px;
     text-align: center;
-    border-radius: 50%;
-    background: radial-gradient(circle at center, rgba(255, 165, 0, 0.9) 10%, rgba(255, 69, 0, 0.95) 60%, rgba(139, 0, 0, 0.9) 100%);
-    box-shadow: 0 0 50px rgba(255, 140, 0, 0.8), 0 0 100px rgba(255, 69, 0, 0.6);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent glass effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px) brightness(1.1);
+    -webkit-backdrop-filter: blur(15px) brightness(1.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(20px) brightness(1.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Glowing Particle Effect */
+/* Decorative Circular Pattern */
 .info-section::before {
     content: '';
     position: absolute;
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 50%);
-    top: -10%;
-    left: -10%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 200, 50, 0.8), transparent);
+    top: -50px;
+    left: -50px;
     border-radius: 50%;
-    animation: glowEffect 6s infinite alternate ease-in-out;
+    opacity: 0.5;
+    animation: floatPattern 6s infinite alternate ease-in-out;
 }
 
-@keyframes glowEffect {
-    0% { transform: scale(1); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 0.5; }
+@keyframes floatPattern {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(20px) rotate(20deg); }
 }
 
-/* Hover effect for a more interactive feel */
+/* Hover effect for depth */
 .info-section:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 80px rgba(255, 140, 0, 1), 0 0 150px rgba(255, 69, 0, 0.8);
+    transform: scale(1.03);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Info Section Heading */
+/* Heading with Modern Typography */
 .info-section h2 {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 
-/* Info Section Paragraph */
+/* Styled Paragraph */
 .info-section p {
     font-size: 1.2rem;
-    color: #f8f8f8;
+    color: #eeeeee;
     line-height: 1.8;
     text-align: center;
-    max-width: 80%;
+    max-width: 85%;
     margin: 20px auto;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Responsive Design Adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .info-section {
         padding: 30px 15px;
         max-width: 95%;
-        border-radius: 30px;
+        border-radius: 15px;
     }
     .info-section h2 {
         font-size: 2rem;
