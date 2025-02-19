@@ -290,3 +290,27 @@ function filterArticles() {
 }
 
 loadArticles();
+
+async function getFileSize() {
+    try {
+        const response = await fetch("docs/whitepaper.pdf", { method: "HEAD" });
+        const size = response.headers.get("content-length");
+        if (size) {
+            document.getElementById("fileSize").innerText = (size / (1024 * 1024)).toFixed(2);
+        }
+    } catch (error) {
+        console.error("Error fetching file size:", error);
+    }
+}
+
+function trackDownload() {
+    let count = localStorage.getItem("whitepaperDownloads") || 0;
+    count = parseInt(count) + 1;
+    localStorage.setItem("whitepaperDownloads", count);
+    document.getElementById("downloadCount").innerText = count;
+}
+
+document.getElementById("whitepaperLink").addEventListener("click", trackDownload);
+
+document.getElementById("downloadCount").innerText = localStorage.getItem("whitepaperDownloads") || 0;
+getFileSize();
