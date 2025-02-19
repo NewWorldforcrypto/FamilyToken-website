@@ -561,23 +561,19 @@ nav ul li a.active {
 
 /* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
 #contact {
-    padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.03); /* فوق‌العاده شفاف، بدون تیرگی */
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* سایه‌ی ملایم برای برجستگی */
+    padding: 60px 40px;
+    margin: 80px auto;
+    max-width: 1100px;
     text-align: center;
-    margin: 50px auto;
-    max-width: 800px;
+    border-radius: 20px;
+    background: transparent;
     position: relative;
-    backdrop-filter: brightness(1.6); /* افزایش روشنایی بدون بلور */
-    -webkit-backdrop-filter: brightness(1.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: visible;
+    transition: transform 0.4s ease;
 }
 
-/* افکت هاور برای زیبایی بیشتر */
-#contact:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+.info-section:hover {
+    transform: scale(1.05);
 }
 
 /* عنوان بخش */
