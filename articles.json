@@ -1,0 +1,20 @@
+[
+    {
+        "title": "How DeFi is Changing Families Financially",
+        "date": "2025-02-15",
+        "summary": "Decentralized Finance (DeFi) is helping families take control of their finances without relying on traditional banks.",
+        "link": "articles/defi-families.html"
+    },
+    {
+        "title": "Crypto Security Tips for Beginners",
+        "date": "2025-02-10",
+        "summary": "Essential tips for keeping your digital assets safe from hackers and scams.",
+        "link": "articles/security-tips.html"
+    },
+    {
+        "title": "IronFamily Tokenomics Explained",
+        "date": "2025-02-05",
+        "summary": "A deep dive into the economic model behind IFA and how it benefits holders.",
+        "link": "articles/tokenomics.html"
+    }
+]
