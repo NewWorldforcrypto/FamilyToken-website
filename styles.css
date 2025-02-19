@@ -446,32 +446,31 @@ nav ul li a.active {
     background: transparent;
     position: relative;
     overflow: hidden;
-    box-shadow: none;
-    backdrop-filter: none;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .info-section:hover {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
-/* افکت نورپردازی پویا دور بخش */
+/* افکت نورپردازی پیشرفته با پالس‌های متحرک */
 .info-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 22px;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 30px;
     padding: 4px;
     background: linear-gradient(270deg, #ff5500, #ff9900, #ffdd00, #47ff00, #00ffcc, #0051ff, #7a00ff, #ff00e1);
     background-size: 400% 400%;
-    animation: neonGlow 6s infinite linear;
+    animation: neonGlow 6s infinite linear, pulseGlow 2s infinite alternate;
     mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
     -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: exclude;
+    filter: blur(10px);
 }
 
 @keyframes neonGlow {
@@ -480,17 +479,22 @@ nav ul li a.active {
     100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
 }
 
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 20px rgba(255, 165, 0, 0.5); }
+    100% { box-shadow: 0 0 40px rgba(255, 165, 0, 0.8); }
+}
+
 /* متن درون Info Section */
 .info-section h2 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #ff9900;
     font-family: 'Poppins', sans-serif;
-    text-shadow: 0 0 10px rgba(255, 153, 0, 0.7), 0 0 20px rgba(255, 153, 0, 0.5);
+    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8), 0 0 30px rgba(255, 153, 0, 0.6);
 }
 
 .info-section p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: #e0e0e0;
     line-height: 1.8;
     max-width: 85%;
@@ -521,7 +525,7 @@ nav ul li a.active {
         font-size: 2.4rem;
     }
     .info-section p {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         line-height: 1.7;
     }
 }
