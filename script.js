@@ -259,3 +259,34 @@ function animateParticles() {
 
 // اجرای انیمیشن
 animateParticles();
+
+async function loadArticles() {
+    try {
+        const response = await fetch("articles.json");
+        const articles = await response.json();
+        const articlesList = document.getElementById("articlesList");
+
+        articles.forEach(article => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${article.link}" target="_blank"><strong>${article.title}</strong></a> - ${article.date}<br><small>${article.summary}</small>`;
+            articlesList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error loading articles:", error);
+    }
+}
+
+function filterArticles() {
+    const query = document.getElementById("searchArticles").value.toLowerCase();
+    const articles = document.querySelectorAll("#articlesList li");
+
+    articles.forEach(article => {
+        if (article.innerText.toLowerCase().includes(query)) {
+            article.style.display = "block";
+        } else {
+            article.style.display = "none";
+        }
+    });
+}
+
+loadArticles();
