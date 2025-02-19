@@ -454,7 +454,7 @@ nav ul li a.active {
 }
 
 /* افکت نورانی دور بخش */
-.info-section::before {
+.info-section::before, #contact::before {
     content: '';
     position: absolute;
     top: -10px;
@@ -477,7 +477,7 @@ nav ul li a.active {
 }
 
 /* متن درون Info Section */
-.info-section h2 {
+.info-section h2, #contact h2 {
     font-size: 3rem;
     font-weight: bold;
     color: #ff9900;
@@ -485,7 +485,7 @@ nav ul li a.active {
     text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
 }
 
-.info-section p {
+.info-section p, #contact p {
     font-size: 1.4rem;
     color: #e0e0e0;
     line-height: 1.8;
@@ -508,15 +508,20 @@ nav ul li a.active {
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
-    .info-section {
-        padding: 50px 25px;
-        max-width: 95%;
-        border-radius: 15px;
-    }
-    .info-section h2 {
+    .info-section, #contact {
+    padding: 50px 20px;
+    background: transparent;
+    border-radius: 15px;
+    text-align: center;
+    margin: 50px auto;
+    max-width: 800px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+    .info-section h2, #contact h2 {
         font-size: 2.4rem;
     }
-    .info-section p {
+    .info-section p, #contact p {
         font-size: 1.2rem;
         line-height: 1.7;
     }
