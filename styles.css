@@ -436,66 +436,61 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* استایل کاملاً شیشه‌ای و تمیز */
+/* ========== Enhanced Info Section Styles ========== */
 .info-section {
     padding: 50px 20px;
-    background: rgba(255, 255, 255, 0.02); /* تقریباً نامرئی، بدون تیرگی */
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); /* سایه ملایم برای برجستگی */
-    text-align: center;
     margin: 50px auto;
-    max-width: 1000px;  /* حداکثر عرض بیشتر برای دسکتاپ */
-    position: relative;
-    backdrop-filter: brightness(1.5); /* افزایش روشنایی بدون بلور */
-    -webkit-backdrop-filter: brightness(1.5);
+    max-width: 900px;
+    text-align: center;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30, 30, 60, 0.9), rgba(10, 40, 80, 0.95));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px) brightness(1.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-/* افکت نور در هاور */
+/* Hover effect for a more interactive feel */
 .info-section:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* ========== 3. تنظیمات متن در داخل بخش‌ها ========== */
+/* Info Section Heading */
 .info-section h2 {
-    font-size: 3vw;  /* استفاده از واحد vw برای اندازه پویا */
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #ff8c00 !important; /* تضمین اعمال رنگ */
-    -webkit-text-fill-color: #ff8c00;
-    text-shadow: 0 0 10px rgba(255, 140, 0, 0.5); /* اضافه کردن درخشش ملایم */
-    margin-bottom: 20px;
+    color: #ffcc00;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    font-family: 'Playfair Display', serif;
 }
 
-/* متن پاراگراف در info-section */
+/* Info Section Paragraph */
 .info-section p {
     font-size: 1.2rem;
-    color: #ddd;
-    line-height: 1.8; /* فاصله استاندارد بین خطوط */
-    text-align: justify; /* چینش منظم متن */
-    max-width: 80%; /* تنظیم عرض برای جلوگیری از پراکندگی */
-    margin: 10px auto; /* تنظیم فاصله یکنواخت از بالا و پایین و مرکز قرار دادن متن */
-    word-spacing: normal; /* فاصله استاندارد بین کلمات */
-    letter-spacing: 0.5px; /* فاصله مناسب بین حروف برای خوانایی بهتر */
-    font-family: 'Roboto', sans-serif; /* تغییر فونت به Roboto (استاندارد و شیک) */
+    color: #f0f0f0;
+    line-height: 1.8;
+    text-align: justify;
+    max-width: 80%;
+    margin: 20px auto;
+    font-family: 'Playfair Display', serif;
 }
 
-/* تنظیمات برای بخش‌های ریسپانسیو */
-
-/* برای موبایل */
-@media (max-width: 767px) {
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
     .info-section {
-        padding: 25px 15px;
-        max-width: 100%;
-        margin: 30px 15px;
+        padding: 30px 15px;
+        max-width: 95%;
+        border-radius: 30px;
     }
-
     .info-section h2 {
-        font-size: 2.2rem; /* تغییر اندازه فونت عنوان */
+        font-size: 2rem;
     }
-
     .info-section p {
         font-size: 1rem;
         line-height: 1.6;
