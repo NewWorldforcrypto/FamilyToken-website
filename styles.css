@@ -443,32 +443,35 @@ nav ul li a.active {
     max-width: 1100px;
     text-align: center;
     border-radius: 20px;
-    background: rgba(20, 20, 20, 0.85);
+    background: transparent;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
+    box-shadow: none;
+    backdrop-filter: none;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .info-section:hover {
     transform: scale(1.02);
-    box-shadow: 0 15px 40px rgba(255, 165, 0, 0.4);
 }
 
-/* افکت نورپردازی پویا */
+/* افکت نورپردازی پویا دور بخش */
 .info-section::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 22px;
+    padding: 4px;
     background: linear-gradient(270deg, #ff5500, #ff9900, #ffdd00, #47ff00, #00ffcc, #0051ff, #7a00ff, #ff00e1);
     background-size: 400% 400%;
-    animation: neonGlow 8s infinite linear;
-    z-index: -1;
+    animation: neonGlow 6s infinite linear;
+    mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: exclude;
 }
 
 @keyframes neonGlow {
