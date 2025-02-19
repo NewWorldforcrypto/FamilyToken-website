@@ -436,92 +436,83 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* ========== Ultra-Premium Info Section with Futuristic Design ========== */
+/* ========== Ultimate Luxury Info Section with 3D Glass Effect ========== */
 .info-section {
-    padding: 60px 30px;
-    margin: 60px auto;
-    max-width: 1000px;
+    padding: 60px 40px;
+    margin: 80px auto;
+    max-width: 1100px;
     text-align: center;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.07); /* Glassmorphic effect */
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(20px) brightness(1.2);
-    -webkit-backdrop-filter: blur(20px) brightness(1.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(20, 20, 50, 0.9), rgba(10, 40, 80, 0.95));
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(25px) brightness(1.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Luxury Circular Design Elements */
-.info-section::before, .info-section::after {
+/* Glowing Orb Effect for a Premium Look */
+.info-section::before {
     content: '';
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
     background: radial-gradient(circle, rgba(255, 215, 0, 0.6), transparent);
     border-radius: 50%;
-    opacity: 0.7;
-    filter: blur(20px);
-    animation: floatOrbs 8s infinite alternate ease-in-out;
+    opacity: 0.8;
+    filter: blur(30px);
+    top: -70px;
+    left: -70px;
+    animation: floatGlow 10s infinite alternate ease-in-out;
 }
 
-.info-section::before {
-    top: -50px;
-    left: -50px;
-}
-
-.info-section::after {
-    bottom: -50px;
-    right: -50px;
-}
-
-@keyframes floatOrbs {
+@keyframes floatGlow {
     0% { transform: scale(1) translateY(0px); }
-    100% { transform: scale(1.2) translateY(30px); }
+    100% { transform: scale(1.2) translateY(20px); }
 }
 
-/* Hover effect for exclusive depth */
+/* Hover effect for Elegant Depth */
 .info-section:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(1.06);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), inset 0 0 50px rgba(255, 255, 255, 0.15);
 }
 
-/* Royal Heading with Stunning Glow */
+/* Majestic Heading Typography */
 .info-section h2 {
     font-size: 3rem;
     font-weight: bold;
     color: #ffffff;
     text-transform: uppercase;
-    letter-spacing: 1.8px;
-    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    font-family: 'Gilda Display', serif;
     text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
 }
 
-/* Elegant Paragraph Styling */
+/* Sophisticated Paragraph Styling */
 .info-section p {
-    font-size: 1.3rem;
-    color: #f5f5f5;
+    font-size: 1.4rem;
+    color: #e0e0e0;
     line-height: 2;
     text-align: center;
     max-width: 85%;
-    margin: 25px auto;
-    font-family: 'Lora', serif;
+    margin: 30px auto;
+    font-family: 'Merriweather', serif;
 }
 
 /* Responsive Adjustments for Mobile and Tablet */
 @media (max-width: 768px) {
     .info-section {
-        padding: 40px 20px;
+        padding: 50px 25px;
         max-width: 95%;
         border-radius: 20px;
     }
     .info-section h2 {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
     }
     .info-section p {
-        font-size: 1.1rem;
-        line-height: 1.7;
+        font-size: 1.2rem;
+        line-height: 1.8;
     }
 }
 
