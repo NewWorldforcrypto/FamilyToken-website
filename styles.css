@@ -436,7 +436,7 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* ========== Info Section with Dynamic Neon Border ========== */
+/* ========== Info Section with Dynamic Neon Border & Advanced Effects ========== */
 .info-section {
     padding: 60px 40px;
     margin: 80px auto;
@@ -448,7 +448,7 @@ nav ul li a.active {
     overflow: hidden;
 }
 
-/* Neon Border Animation */
+/* Neon Border Animation with Glow Effect */
 .info-section::before {
     content: '';
     position: absolute;
@@ -460,17 +460,25 @@ nav ul li a.active {
     padding: 5px;
     background: linear-gradient(270deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffcc, #0051ff, #7a00ff, #ff00e1);
     background-size: 300% 300%;
-    animation: neonBorderAnimation 5s infinite linear;
+    animation: neonBorderAnimation 8s infinite linear, neonWave 6s infinite alternate ease-in-out;
     mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
     -webkit-mask: linear-gradient(white 0 0) content-box, linear-gradient(white 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: exclude;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.6), 0 0 40px rgba(255, 165, 0, 0.6), 0 0 60px rgba(0, 255, 255, 0.6);
+    clip-path: polygon(0% 10%, 10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%);
 }
 
 @keyframes neonBorderAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+    50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
+    100% { background-position: 0% 50%; filter: hue-rotate(360deg); }
+}
+
+@keyframes neonWave {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
 }
 
 /* Heading Style */
