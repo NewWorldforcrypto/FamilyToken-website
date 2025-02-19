@@ -436,7 +436,7 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* ========== بهبود Info Section با طراحی مدرن و حرفه‌ای ========== */
+/* ========== بهبود Info Section: داخل شفاف، دور آن نورپردازی ========== */
 .info-section {
     padding: 60px 40px;
     margin: 80px auto;
@@ -453,27 +453,27 @@ nav ul li a.active {
     transform: scale(1.05);
 }
 
-/* افکت نورپردازی اطراف بدون پس‌زمینه */
+/* افکت نورانی دور بخش */
 .info-section::before {
     content: '';
     position: absolute;
-    top: -15px;
-    left: -15px;
-    right: -15px;
-    bottom: -15px;
-    border-radius: 35px;
-    border: 5px solid transparent;
-    background: conic-gradient(from 0deg, #ff5500, #ff9900, #ffdd00, #47ff00, #00ffcc, #0051ff, #7a00ff, #ff00e1, #ff5500);
-    background-size: 300% 300%;
-    animation: neonGlow 4s infinite linear;
-    filter: blur(12px);
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 30px;
+    border: 4px solid transparent;
+    background: transparent;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8),
+                0 0 30px rgba(255, 165, 0, 0.6),
+                0 0 45px rgba(255, 165, 0, 0.4);
+    animation: glowEffect 3s infinite alternate;
     z-index: -1;
 }
 
-@keyframes neonGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.6); }
+    100% { box-shadow: 0 0 35px rgba(255, 165, 0, 0.9); }
 }
 
 /* متن درون Info Section */
@@ -482,7 +482,7 @@ nav ul li a.active {
     font-weight: bold;
     color: #ff9900;
     font-family: 'Poppins', sans-serif;
-    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8), 0 0 30px rgba(255, 153, 0, 0.6);
+    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
 }
 
 .info-section p {
