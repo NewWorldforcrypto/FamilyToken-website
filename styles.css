@@ -622,13 +622,13 @@ nav ul li a.active {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7), -5px -5px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم */
-.tokenomics-item.item1 { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
-.tokenomics-item.item2 { background: linear-gradient(135deg, #1e3c72, #2a5298); }
-.tokenomics-item.item3 { background: linear-gradient(135deg, #ffcc00, #ff9900); }
-.tokenomics-item.item4 { background: linear-gradient(135deg, #00b09b, #96c93d); }
-.tokenomics-item.item5 { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
-.tokenomics-item.item6 { background: linear-gradient(135deg, #fc4a1a, #f7b733); }
+/* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم با طرح فیروزه‌ای */
+.tokenomics-item.item1 { background: linear-gradient(135deg, #00e5ff 20%, #0099cc 80%); }
+.tokenomics-item.item2 { background: linear-gradient(135deg, #0099cc 20%, #00cccc 80%); }
+.tokenomics-item.item3 { background: linear-gradient(135deg, #00cccc 20%, #00b3b3 80%); }
+.tokenomics-item.item4 { background: linear-gradient(135deg, #00b3b3 20%, #009999 80%); }
+.tokenomics-item.item5 { background: linear-gradient(135deg, #009999 20%, #008080 80%); }
+.tokenomics-item.item6 { background: linear-gradient(135deg, #008080 20%, #006666 80%); }
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
