@@ -190,33 +190,21 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // تغییر اندازه‌ی خودکار
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+canvas.addEventListener("mousemove", (e) => {
+    particles.forEach(particle => {
+        const dx = e.x - particle.x;
+        const dy = e.y - particle.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+            particle.x += dx * 0.02;
+            particle.y += dy * 0.02;
+        }
+    });
 });
 
-// ایجاد ذرات نوری با افکت‌های جذاب‌تر
-const particles = [];
-const numParticles = 120;
-
-for (let i = 0; i < numParticles; i++) {
-    particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2.5 + 1,
-        speedX: (Math.random() - 0.5) * 0.7,
-        speedY: (Math.random() - 0.5) * 0.7,
-        opacity: Math.random() * 0.5 + 0.4,
-        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
-        glow: Math.random() > 0.7 ? true : false
-    });
-}
-
-// انیمیشن ذرات
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // گرادینت متحرک پس‌زمینه
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "#14142a");
     gradient.addColorStop(0.5, "#0d284b");
@@ -225,7 +213,6 @@ function animateParticles() {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // طراحی ذرات
     particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
@@ -234,26 +221,34 @@ function animateParticles() {
         ctx.shadowColor = particle.glow ? particle.color : "transparent";
         ctx.fill();
 
-        // حرکت سینوسی نرم برای حس شناوری
         particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.3;
         particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.3;
-
-        // تغییر رنگ برای زیبایی بیشتر
         particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 75%)`;
-
-        // تنظیم شفافیت برای حس زنده‌تر
         particle.opacity += (Math.random() - 0.5) * 0.015;
         particle.opacity = Math.max(0.4, Math.min(0.9, particle.opacity));
 
-        // بازگرداندن ذرات در صورت خروج از صفحه
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+
+        // اتصال ذرات نزدیک
+        particles.forEach(otherParticle => {
+            const dx = particle.x - otherParticle.x;
+            const dy = particle.y - otherParticle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 50) {
+                ctx.beginPath();
+                ctx.moveTo(particle.x, particle.y);
+                ctx.lineTo(otherParticle.x, otherParticle.y);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 50})`;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+            }
+        });
     });
 
     requestAnimationFrame(animateParticles);
 }
 
-// اجرای انیمیشن
 animateParticles();
 
 async function loadArticles() {
