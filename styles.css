@@ -560,7 +560,7 @@ nav ul li a.active {
 }
 
 /* تنظیمات کلی برای Tokenomics */
-#tokenomics-container {
+.info-section#tokenomics {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -572,14 +572,18 @@ nav ul li a.active {
     width: 100%;
     max-width: 1100px;
     margin: 0 auto;
+    background: linear-gradient(135deg, #ffcc70, #ff6699);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 102, 153, 0.3);
+    padding: 40px;
 }
 
-#tokenomics-title {
+.info-section#tokenomics h2 {
     font-size: 3rem;
     font-weight: bold;
-    color: #ff9900;
+    color: #fff;
     font-family: 'Playfair Display', serif;
-    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 30px;
@@ -587,78 +591,125 @@ nav ul li a.active {
     text-align: center;
 }
 
-#tokenomics {
+.tokenomics-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.tokenomics-content {
     display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
     gap: 20px;
     width: 100%;
-    padding: 40px;
     justify-content: center;
     align-items: start;
     max-width: 900px;
 }
 
-#tokenomics p {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
+.tokenomics-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
     border-radius: 10px;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     color: #fff;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
-    min-width: 150px;
+    min-width: 200px;
 }
 
-#tokenomics p:hover {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
+.tokenomics-item:hover {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
 }
 
-/* رفع مشکل افکت نوری */
-#tokenomics-container::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    right: -20px;
-    bottom: -20px;
-    border-radius: 30px;
-    border: 4px solid transparent;
-    background: transparent;
-    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8),
-                0 0 30px rgba(255, 165, 0, 0.6),
-                0 0 45px rgba(255, 165, 0, 0.4);
-    animation: glowEffect 3s infinite alternate;
-    z-index: -1;
+.tokenomics-description {
+    font-size: 1.2rem;
+    color: #fff;
+    line-height: 1.8;
+    max-width: 85%;
+    margin: 25px auto;
+    font-family: 'Lora', serif;
+    text-align: justify;
 }
 
-@keyframes glowEffect {
-    0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.6); }
-    100% { box-shadow: 0 0 35px rgba(255, 165, 0, 0.9); }
+.tokenomics-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.tokenomics-list p {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tokenomics-list p:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.4);
 }
 
 /* تنظیمات ریسپانسیو */
-@media (max-width: 768px) {
-    #tokenomics {
+@media (max-width: 1024px) {
+    .tokenomics-content, .tokenomics-list {
         grid-template-columns: 1fr 1fr;
-        padding: 20px;
+        gap: 15px;
+    }
+    .info-section#tokenomics h2 {
+        font-size: 2.8rem;
+    }
+    .tokenomics-item, .tokenomics-list p {
+        font-size: 1.3rem;
+    }
+    .tokenomics-description {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tokenomics-content, .tokenomics-list {
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
-    #tokenomics-title {
-        font-size: 2.4rem;
+    .info-section#tokenomics h2 {
+        font-size: 2.5rem;
     }
-    #tokenomics p {
+    .tokenomics-item, .tokenomics-list p {
+        font-size: 1.2rem;
+    }
+    .tokenomics-description {
         font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    #tokenomics {
-        grid-template-columns: 1fr;
-        padding: 20px;
-        gap: 10px;
+    .tokenomics-content, .tokenomics-list {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    .info-section#tokenomics h2 {
+        font-size: 2rem;
+    }
+    .tokenomics-item, .tokenomics-list p {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    .tokenomics-description {
+        font-size: 0.9rem;
     }
 }
 
