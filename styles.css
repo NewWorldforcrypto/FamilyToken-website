@@ -559,11 +559,11 @@ nav ul li a.active {
     }
 }
 
-/* ========== بهبود Tokenomics: نمایش دو ستونه با بک‌گراند منظم ========== */
+/* ========== بهبود Tokenomics: نمایش متقارن دو ستونه در همه صفحات ========== */
 
 #tokenomics {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     justify-content: center;
     align-items: center;
@@ -582,6 +582,7 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
     transition: all 0.3s ease;
+    min-width: 150px;
 }
 
 #tokenomics p:hover {
@@ -589,10 +590,10 @@ nav ul li a.active {
     box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
 }
 
-/* ریسپانسیو برای موبایل */
+/* اطمینان از دو ستونه بودن در همه‌ی صفحات */
 @media (max-width: 768px) {
     #tokenomics {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
 
