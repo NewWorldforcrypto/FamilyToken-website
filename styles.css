@@ -591,21 +591,29 @@ nav ul li a.active {
 
 /* استایل کلی آیتم‌ها */
 .tokenomics-item {
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* افزایش اندازه فونت */
     font-weight: bold;
-    color: #fff;
+    color: #fff; /* رنگ سفید برای تضاد بالا */
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: linear-gradient(145deg, #1e1e1e, #292929);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* افکت سه‌بعدی هنگام هاور */
+/* تغییر رنگ و سایه فونت */
+.tokenomics-item p {
+    font-size: 1.8rem; /* افزایش سایز فونت */
+    color: #ffffff;
+    font-family: 'Trade Winds', cursive;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* سایه برای خوانایی بهتر */
+}
+
+/* افکت هاور برای برجسته‌تر شدن */
 .tokenomics-item:hover {
     transform: translateY(-5px);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7), -5px -5px 15px rgba(255, 255, 255, 0.2);
