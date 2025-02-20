@@ -589,7 +589,7 @@ nav ul li a.active {
     justify-content: center;
 }
 
-/* استایل اصلی هر آیتم */
+/* استایل کلی آیتم‌ها */
 .tokenomics-item {
     padding: 20px;
     border-radius: 15px;
@@ -599,44 +599,45 @@ nav ul li a.active {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(145deg, #1e1e1e, #292929);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* افکت نئونی هنگام هاور */
+/* افکت سه‌بعدی هنگام هاور */
 .tokenomics-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7), -5px -5px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* افکت درخشان دور هر آیتم */
+/* افکت درخشان دور آیتم‌ها */
 .tokenomics-item::before {
     content: "";
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 15px;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 20px;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.6), rgba(0, 255, 255, 0.6));
     z-index: -1;
+    filter: blur(10px);
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
 
 .tokenomics-item:hover::before {
     opacity: 1;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 /* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم */
-.tokenomics-item.item1 { background: repeating-linear-gradient(45deg, #ff4b5c, #ff99ac 10%, #ff4b5c 20%); }
-.tokenomics-item.item2 { background: repeating-linear-gradient(45deg, #4286f4, #42e9f4 10%, #4286f4 20%); }
-.tokenomics-item.item3 { background: repeating-linear-gradient(45deg, #ffd700, #ffa500 10%, #ffd700 20%); }
-.tokenomics-item.item4 { background: repeating-linear-gradient(45deg, #4caf50, #a8e063 10%, #4caf50 20%); }
-.tokenomics-item.item5 { background: repeating-linear-gradient(45deg, #8a2be2, #d8b4ff 10%, #8a2be2 20%); }
-.tokenomics-item.item6 { background: repeating-linear-gradient(45deg, #ff7f50, #ffcc70 10%, #ff7f50 20%); }
+.tokenomics-item.item1 { background: linear-gradient(135deg, #ff416c, #ff4b2b); }
+.tokenomics-item.item2 { background: linear-gradient(135deg, #1e3c72, #2a5298); }
+.tokenomics-item.item3 { background: linear-gradient(135deg, #ffcc00, #ff9900); }
+.tokenomics-item.item4 { background: linear-gradient(135deg, #00b09b, #96c93d); }
+.tokenomics-item.item5 { background: linear-gradient(135deg, #8e2de2, #4a00e0); }
+.tokenomics-item.item6 { background: linear-gradient(135deg, #fc4a1a, #f7b733); }
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
