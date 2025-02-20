@@ -19,76 +19,57 @@ let isScrolling = false;
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
+            event.preventDefault();
 
-            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
+            if (isScrolling) return;
 
-            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
+            let targetId = this.getAttribute("href").substring(1);
             let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
+                alert(`بخش "${targetId}" پیدا نشد! یه نگاه به کد بندازید.`);
                 console.error(`❌ بخش ${targetId} پیدا نشد!`);
                 return;
             }
 
             console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
 
-            // حذف کلاس active از تمام لینک‌ها
-            document.querySelectorAll("nav ul li a").forEach(item => {
-                item.classList.remove("active");
-            });
-
-            // افزودن کلاس active به لینک کلیک شده
+            document.querySelectorAll("nav ul li a").forEach(item => item.classList.remove("active"));
             this.classList.add("active");
 
-            // تنظیم آدرس URL بدون تغییر صفحه
             history.pushState({}, "", `#${targetId}`);
 
-            // نشان دادن اینکه اسکرول در حال انجام است
             isScrolling = true;
+            smoothScroll(targetSection); // استفاده از تابع پیشرفته
 
-            // اسکرول به بخش با استفاده از scrollIntoView برای اسکرول نرم
-            targetSection.scrollIntoView({
-                behavior: "smooth", // انیمیشن روان
-                block: "center" // این باعث می‌شود که بخش در وسط صفحه قرار گیرد
-            });
-
-            // بستن منو پس از اسکرول
-            const menu = document.querySelector('nav ul');
-            const menuIcon = document.querySelector('.menu-icon');
-            if (menu.classList.contains('show')) {
-                menu.classList.remove('show');
+            const menu = document.querySelector("nav ul");
+            const menuIcon = document.querySelector(".menu-icon");
+            if (menu.classList.contains("show")) {
+                menu.classList.remove("show");
                 menuIcon.innerHTML = "&#9776;";
+                menuIcon.style.transform = "rotate(0deg)";
             }
 
-            // خاتمه دادن اسکرول پس از انجام
             setTimeout(() => {
                 isScrolling = false;
-            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
+            }, 800); // هماهنگ با مدت زمان اسکرول
         });
     });
 
-    // ================== 1.1 اسکرول وسط صفحه برای دکمه Learn More ==================
     const learnMoreBtn = document.getElementById("learnMoreBtn");
-
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener("click", function (event) {
-            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
+            event.preventDefault();
 
-            let targetSection = document.getElementById("about"); // بخش موردنظر
-
+            let targetSection = document.getElementById("about");
             if (!targetSection) {
+                alert("بخش 'درباره ما' پیدا نشد!");
                 console.error("❌ بخش 'about' پیدا نشد!");
                 return;
             }
 
             console.log("✅ اسکرول به بخش 'about'");
-
-            // اسکرول به وسط صفحه
-            targetSection.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
+            smoothScroll(targetSection); // استفاده از تابع پیشرفته
         });
     }
 });
