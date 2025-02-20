@@ -119,14 +119,23 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
         button.style.transform = "scale(0.95)";
+        button.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.2)"; // سایه موقع کلیک
     });
 
     button.addEventListener("mouseup", () => {
         button.style.transform = "scale(1)";
+        button.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)"; // سایه معمولی
     });
 
     button.addEventListener("mouseleave", () => {
         button.style.transform = "scale(1)";
+        button.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
+    });
+
+    // افکت هاور برای جذابیت بیشتر
+    button.addEventListener("mouseenter", () => {
+        button.style.transform = "scale(1.05)";
+        button.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.15)";
     });
 });
 
