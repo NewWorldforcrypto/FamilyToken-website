@@ -559,6 +559,43 @@ nav ul li a.active {
     }
 }
 
+/* ========== بهبود Tokenomics: نمایش دو ستونه با بک‌گراند منظم ========== */
+
+#tokenomics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+}
+
+#tokenomics p {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#tokenomics p:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+    #tokenomics {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
 #contact {
     padding: 60px 40px;
