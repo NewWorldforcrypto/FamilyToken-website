@@ -1,4 +1,4 @@
-/* تنظیمات عمومی سایت */
+/* تنظیمات عمومی */
 html, body {
     width: 100%;
     height: 100%;
@@ -6,115 +6,126 @@ html, body {
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
-    font-family: 'Inter', 'Roboto', 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background-color: #121212;
     color: white;
-    text-align: center;
 }
 
-/* تضمین اینکه محتوای سایتم روی پس‌زمینه باقی بمونه */
-body {
-    position: relative;
-    z-index: 1;
-}
-section {
-    position: relative;
-    z-index: 2;
-}
-
-/* تنظیم برای اطمینان از اینکه محتوا در مرکز صفحه قرار بگیرد */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ========== 2. نوار بالای سایت (هدر) ======== */
+/* هدر */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 20px;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.9);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* استایل لوگو */
+/* لوگو */
 .logo {
     font-size: 26px;
     font-weight: bold;
     color: #ff8c00;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* تنظیمات برای آیکون منو */
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* آیکون منو */
 .menu-icon {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;  /* تنظیم فاصله از بالای صفحه */
-    right: 10px;  /* آیکون منو در سمت راست قرار می‌گیرد */
+    top: 10px;
+    right: 10px;
     width: 40px;
     height: 40px;
-    background-color: #ff8c00;
+    background: #ff8c00;
     color: white;
     font-size: 24px;
     font-weight: bold;
-    text-align: center;
     border-radius: 8px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     z-index: 200;
-    transition: 0.3s ease-in-out;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* تنظیمات برای منو */
+.menu-icon:hover {
+    transform: rotate(90deg);
+    background: #ff6200;
+}
+
+/* منو */
 nav ul {
     list-style: none;
-    padding: 0;
+    padding: 15px;
     margin: 0;
     display: flex;
-    flex-direction: column; /* منو به صورت عمودی */
+    flex-direction: column;
     position: fixed;
-    top: 70px; /* فاصله منو از بالای صفحه */
-    right: 10px; /* منو در سمت راست قرار می‌گیرد */
+    top: 60px;
+    right: 10px;
     width: 90%;
     max-width: 250px;
-    background: rgba(0, 0, 0, 0.95); /* پس‌زمینه منو */
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
-    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
     z-index: 150;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* منو مخفی است */
-    transform: translateX(100px); /* شروع از سمت راست */
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    pointer-events: none; /* منو مخفی است */
 }
 
-/* وقتی منو فعال می‌شود */
 nav ul.show {
     opacity: 1;
-    transform: translateX(0); /* منو به موقعیت خود منتقل می‌شود */
-    pointer-events: auto; /* منو قابل کلیک می‌شود */
-    animation: fadeIn 0.5s ease-out forwards;
+    transform: translateX(0);
+    pointer-events: auto;
 }
 
-/* گزینه‌های منو به‌صورت پیش‌فرض مخفی هستند */
 nav ul li a {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    color: #ffffff;
+    background: rgba(255, 140, 0, 0.8);
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease, transform 0.3s ease;
+    text-align: center;
 }
 
-/* وقتی منو باز شود، گزینه‌ها یکی‌یکی ظاهر می‌شوند */
-nav ul.show li a {
-    opacity: 1;
-    transform: translateY(0);
+nav ul li a:hover {
+    background: rgba(255, 100, 0, 0.9);
+    transform: scale(1.05);
+}
+
+nav ul li a.active {
+    background: rgba(255, 100, 0, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 100, 0, 0.5);
+}
+
+/* ریسپانسیو */
+@media (max-width: 1024px) {
+    nav ul {
+        width: 85%;
+        max-width: 220px;
+    }
+    nav ul li a {
+        font-size: 16px;
+    }
 }
 
 /* تاخیر برای نمایش گزینه‌های منو */
