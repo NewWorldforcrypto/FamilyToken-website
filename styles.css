@@ -583,11 +583,13 @@ nav ul li a.active {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
 }
 
 #tokenomics {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
     gap: 20px;
     width: 100%;
     padding: 40px;
@@ -606,6 +608,7 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
     transition: all 0.3s ease;
+    min-width: 150px;
 }
 
 #tokenomics p:hover {
@@ -639,14 +642,23 @@ nav ul li a.active {
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
     #tokenomics {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         padding: 20px;
+        gap: 10px;
     }
     #tokenomics-title {
         font-size: 2.4rem;
     }
     #tokenomics p {
         font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #tokenomics {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 10px;
     }
 }
 
