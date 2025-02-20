@@ -18,18 +18,19 @@
     <header>
     <div class="logo" onclick="location.reload();" style="cursor: pointer;">IronFamily</div>
     <nav>
-        <ul>
-            <li><a href="#hero" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tokenomics">Tokenomics</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
-            <li><a href="#buy-sell">Buy/Sell</a></li>
-            <li><a href="#articles">Articles</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#whitepaper">Whitepaper</a></li>
-        </ul>
-    </nav>
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul>
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tokenomics">Tokenomics</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#buy-sell">Buy/Sell</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#whitepaper">Whitepaper</a></li>
+<!-- لینک به بخش Whitepaper -->
+    </ul>
+</nav>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 </header>
 
     <!-- تصاویر پس‌زمینه + توضیحات -->
@@ -145,15 +146,21 @@ Our vision is to create a lasting impact by blending blockchain technology with 
     </section>
 
     <section id="articles" class="info-section fade-in">
-    <h2>Family & Finance Articles</h2>
-    <p>Stay informed with our latest articles, covering topics such as:</p>
+        <h2>Family & Finance Articles</h2>
+        <p>Educational & Market Insights
+Stay informed with our latest articles, covering topics such as:
 
-    <!-- فیلد جستجو برای پیدا کردن سریع مقالات -->
-    <input type="text" id="searchArticles" placeholder="Search articles..." onkeyup="filterArticles()">
+Blockchain & Family Finance: How decentralized finance (DeFi) can empower families.
 
-    <!-- لیست مقالات داینامیک -->
-    <ul id="articlesList"></ul>
-</section>
+Crypto Security Tips: Best practices for keeping your tokens safe.
+
+Tokenomics Explained: Understanding supply, demand, and token utility.
+
+Market Analysis: Expert insights on crypto trends and investment strategies.
+
+
+Check out our latest posts here and stay ahead in the crypto world.</p>
+    </section>
 
     <!-- 🔥 بخش جدید hero6 -->
     <section id="hero6" class="fade-in">
@@ -162,31 +169,13 @@ Our vision is to create a lasting impact by blending blockchain technology with 
     </section>
 
     <section id="contact" class="info-section fade-in">
-    <h2>Contact Us</h2>
-    <p>Email: support@IronFamily.com</p>
-
-    <!-- فرم تماس -->
-    <form id="contactForm">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Send Message</button>
-    </form>
-
-    <!-- پیام تأیید ارسال -->
-    <p id="formResponse" style="display:none; color: green;">Your message has been sent!</p>
-
-    <div class="social-links">
-        <a href="https://twitter.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="https://t.me/IronFamily" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
-    </div>
+        <h2>Contact Us</h2>
+        <p>Email: support@IronFamily.com</p>
+        <div class="social-links">
+            <a href="https://twitter.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/IronFamily" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        </div>
     </section>
 
     <section id="hero7" class="fade-in">
@@ -197,15 +186,10 @@ Our vision is to create a lasting impact by blending blockchain technology with 
     <section id="whitepaper" class="info-section fade-in">
     <h2>Whitepaper</h2>
     <p>Explore our detailed whitepaper to understand the mission, vision, and technical details of IronFamily.</p>
-
-    <!-- لینک دانلود و نمایش حجم فایل -->
-    <a id="whitepaperLink" href="docs/whitepaper.pdf" download class="download-btn">
-        <i class="fas fa-file-pdf"></i> Download Whitepaper (<span id="fileSize">Loading...</span> MB)
+    <a href="docs/whitepaper.PDF" target="_blank" class="download-btn">
+        <i class="fas fa-file-pdf"></i> Download Whitepaper
     </a>
-
-    <!-- نمایش تعداد دانلودها (اختیاری) -->
-    <p><strong>Downloads:</strong> <span id="downloadCount">0</span></p>
-</section>
+    </section>
 
     <!-- فوتر -->
     <footer>
