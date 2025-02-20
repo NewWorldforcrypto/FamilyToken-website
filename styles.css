@@ -6,7 +6,8 @@ html, body {
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
-    font-family: 'Inter', 'Roboto', 'Poppins', sans-serif;
+    font-family: 'Trade Winds', cursive;
+}
     background-color: #121212;
     color: white;
     text-align: center;
@@ -335,7 +336,7 @@ nav ul li a.active {
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
 .hero-text {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Trade Winds', cursive;
     font-size: 3rem;
     font-weight: bold;
     background: linear-gradient(45deg, #ff66b2, #ff3385, #ff0066, #e6005c); /* تقویت رنگ صورتی متالیک */
@@ -482,7 +483,7 @@ nav ul li a.active {
     font-size: 3rem;
     font-weight: bold;
     color: #ff9900;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Trade Winds', cursive;
     text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -495,7 +496,7 @@ nav ul li a.active {
     line-height: 1.8;
     max-width: 85%;
     margin: 25px auto;
-    font-family: 'Lora', serif;
+    font-family: 'Trade Winds', cursive;
     text-align: justify;
 }
 
@@ -568,7 +569,7 @@ nav ul li a.active {
     margin: 0 auto;
     text-align: center;
     color: #fff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Trade Winds', cursive;
 }
 
 /* استایل برای عنوان Tokenomics */
