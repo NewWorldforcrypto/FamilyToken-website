@@ -5,97 +5,84 @@ const toggleMenu = () => {
 
     menu.classList.toggle("show");
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
-    menuIcon.style.transition = "transform 0.3s ease"; // انیمیشن نرم
-    menuIcon.style.transform = menu.classList.contains("show") ? "rotate(90deg)" : "rotate(0deg)"; // چرخش آیکون
-    menu.style.transition = "transform 0.5s ease, opacity 0.5s ease"; // انیمیشن برای منو
-    menu.style.transform = menu.classList.contains("show") ? "translateX(0)" : "translateX(-100%)";
-    menu.style.opacity = menu.classList.contains("show") ? "1" : "0";
-    menu.style.boxShadow = menu.classList.contains("show") ? "0 4px 15px rgba(0, 0, 0, 0.3)" : "none"; // سایه
 };
 
 // متغیر برای کنترل وضعیت اسکرول
 let isScrolling = false;
 
-function toggleMenu() {
-    const menu = document.querySelector("nav ul");
-    const menuIcon = document.querySelector(".menu-icon");
-    const isOpen = menu.classList.contains("show");
-
-    if (isOpen) {
-        menu.classList.remove("show");
-        menuIcon.innerHTML = "☰";
-    } else {
-        menu.classList.add("show");
-        menuIcon.innerHTML = "✖";
-    }
-}
-
-function smoothScroll(target) {
-    const start = window.pageYOffset;
-    const distance = target.getBoundingClientRect().top;
-    const duration = 800;
-    let startTime = null;
-
-    function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, start, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-        else isScrolling = false;
-    }
-
-    function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-
-    isScrolling = true;
-    requestAnimationFrame(animation);
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-    // مدیریت کلیک روی لینک‌های منو
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
-            event.preventDefault();
+            event.preventDefault(); // جلوگیری از بارگذاری مجدد صفحه
 
-            if (isScrolling) return;
+            if (isScrolling) return; // اگر اسکرول در حال انجام است، هیچ کاری انجام نشود
 
-            const targetId = this.getAttribute("href").substring(1);
-            const targetSection = document.getElementById(targetId);
+            let targetId = this.getAttribute("href").substring(1); // گرفتن id از href
+            let targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
                 console.error(`❌ بخش ${targetId} پیدا نشد!`);
                 return;
             }
 
-            // به‌روزرسانی کلاس active
-            document.querySelectorAll("nav ul li a").forEach(item => item.classList.remove("active"));
+            console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
+
+            // حذف کلاس active از تمام لینک‌ها
+            document.querySelectorAll("nav ul li a").forEach(item => {
+                item.classList.remove("active");
+            });
+
+            // افزودن کلاس active به لینک کلیک شده
             this.classList.add("active");
 
-            // اسکرول به بخش
-            smoothScroll(targetSection);
+            // تنظیم آدرس URL بدون تغییر صفحه
+            history.pushState({}, "", `#${targetId}`);
 
-            // بستن منو بعد از کلیک
-            const menu = document.querySelector("nav ul");
-            const menuIcon = document.querySelector(".menu-icon");
-            if (menu.classList.contains("show")) {
-                menu.classList.remove("show");
-                menuIcon.innerHTML = "☰";
+            // نشان دادن اینکه اسکرول در حال انجام است
+            isScrolling = true;
+
+            // اسکرول به بخش با استفاده از scrollIntoView برای اسکرول نرم
+            targetSection.scrollIntoView({
+                behavior: "smooth", // انیمیشن روان
+                block: "center" // این باعث می‌شود که بخش در وسط صفحه قرار گیرد
+            });
+
+            // بستن منو پس از اسکرول
+            const menu = document.querySelector('nav ul');
+            const menuIcon = document.querySelector('.menu-icon');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                menuIcon.innerHTML = "&#9776;";
             }
+
+            // خاتمه دادن اسکرول پس از انجام
+            setTimeout(() => {
+                isScrolling = false;
+            }, 1000); // مدت زمانی که اسکرول تمام می‌شود، می‌توانید آن را تنظیم کنید
         });
     });
 
-    // دکمه Learn More
+    // ================== 1.1 اسکرول وسط صفحه برای دکمه Learn More ==================
     const learnMoreBtn = document.getElementById("learnMoreBtn");
+
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener("click", function (event) {
-            event.preventDefault();
-            const targetSection = document.getElementById("about");
-            if (targetSection) smoothScroll(targetSection);
+            event.preventDefault(); // جلوگیری از پرش ناگهانی صفحه
+
+            let targetSection = document.getElementById("about"); // بخش موردنظر
+
+            if (!targetSection) {
+                console.error("❌ بخش 'about' پیدا نشد!");
+                return;
+            }
+
+            console.log("✅ اسکرول به بخش 'about'");
+
+            // اسکرول به وسط صفحه
+            targetSection.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
         });
     }
 });
@@ -145,23 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
         button.style.transform = "scale(0.95)";
-        button.style.boxShadow = "0 2px 10px rgba(0, 0, 0, 0.2)"; // سایه موقع کلیک
     });
 
     button.addEventListener("mouseup", () => {
         button.style.transform = "scale(1)";
-        button.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)"; // سایه معمولی
     });
 
     button.addEventListener("mouseleave", () => {
         button.style.transform = "scale(1)";
-        button.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.1)";
-    });
-
-    // افکت هاور برای جذابیت بیشتر
-    button.addEventListener("mouseenter", () => {
-        button.style.transform = "scale(1.05)";
-        button.style.boxShadow = "0 6px 20px rgba(0, 0, 0, 0.15)";
     });
 });
 
@@ -216,21 +194,33 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 // تغییر اندازه‌ی خودکار
-canvas.addEventListener("mousemove", (e) => {
-    particles.forEach(particle => {
-        const dx = e.x - particle.x;
-        const dy = e.y - particle.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 100) {
-            particle.x += dx * 0.02;
-            particle.y += dy * 0.02;
-        }
-    });
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
 
+// ایجاد ذرات نوری با افکت‌های جذاب‌تر
+const particles = [];
+const numParticles = 120;
+
+for (let i = 0; i < numParticles; i++) {
+    particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2.5 + 1,
+        speedX: (Math.random() - 0.5) * 0.7,
+        speedY: (Math.random() - 0.5) * 0.7,
+        opacity: Math.random() * 0.5 + 0.4,
+        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
+        glow: Math.random() > 0.7 ? true : false
+    });
+}
+
+// انیمیشن ذرات
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // گرادینت متحرک پس‌زمینه
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "#14142a");
     gradient.addColorStop(0.5, "#0d284b");
@@ -239,6 +229,7 @@ function animateParticles() {
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // طراحی ذرات
     particles.forEach(particle => {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
@@ -247,34 +238,26 @@ function animateParticles() {
         ctx.shadowColor = particle.glow ? particle.color : "transparent";
         ctx.fill();
 
+        // حرکت سینوسی نرم برای حس شناوری
         particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.3;
         particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.3;
+
+        // تغییر رنگ برای زیبایی بیشتر
         particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 75%)`;
+
+        // تنظیم شفافیت برای حس زنده‌تر
         particle.opacity += (Math.random() - 0.5) * 0.015;
         particle.opacity = Math.max(0.4, Math.min(0.9, particle.opacity));
 
+        // بازگرداندن ذرات در صورت خروج از صفحه
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
-
-        // اتصال ذرات نزدیک
-        particles.forEach(otherParticle => {
-            const dx = particle.x - otherParticle.x;
-            const dy = particle.y - otherParticle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 50) {
-                ctx.beginPath();
-                ctx.moveTo(particle.x, particle.y);
-                ctx.lineTo(otherParticle.x, otherParticle.y);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${1 - distance / 50})`;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-            }
-        });
     });
 
     requestAnimationFrame(animateParticles);
 }
 
+// اجرای انیمیشن
 animateParticles();
 
 async function loadArticles() {
