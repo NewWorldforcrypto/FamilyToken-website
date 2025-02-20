@@ -560,18 +560,38 @@ nav ul li a.active {
 }
 
 /* تنظیمات کلی برای Tokenomics */
+#tokenomics-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    z-index: 2;
+}
+
+#tokenomics-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff9900;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 30px;
+}
+
 #tokenomics {
     display: grid;
-    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* دو ستون مساوی با حداقل عرض 250px */
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     max-width: 900px;
     margin: auto;
     padding: 40px;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
 }
 
-/* استایل پاراگراف‌ها */
 #tokenomics p {
     background: rgba(255, 255, 255, 0.1);
     padding: 15px;
@@ -582,25 +602,47 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
     transition: all 0.3s ease;
-    min-width: 250px;
 }
 
-/* افکت هاور */
 #tokenomics p:hover {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 15px rgba(255, 165, 0, 0.4);
 }
 
-/* تنظیمات برای صفحه‌های کوچک */
+/* رفع مشکل افکت نوری */
+#tokenomics-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 30px;
+    border: 4px solid transparent;
+    background: transparent;
+    box-shadow: 0 0 15px rgba(255, 165, 0, 0.8),
+                0 0 30px rgba(255, 165, 0, 0.6),
+                0 0 45px rgba(255, 165, 0, 0.4);
+    animation: glowEffect 3s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 10px rgba(255, 165, 0, 0.6); }
+    100% { box-shadow: 0 0 35px rgba(255, 165, 0, 0.9); }
+}
+
+/* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
     #tokenomics {
-        grid-template-columns: repeat(2, minmax(150px, 1fr)); /* در موبایل هم دو ستونه بماند */
+        grid-template-columns: 1fr;
         padding: 20px;
     }
-
+    #tokenomics-title {
+        font-size: 2.4rem;
+    }
     #tokenomics p {
         font-size: 1rem;
-        min-width: 150px;
     }
 }
 
