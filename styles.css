@@ -561,7 +561,6 @@ nav ul li a.active {
 
 /* استایل کلی برای بخش Tokenomics */
 #tokenomics {
-    background: linear-gradient(135deg, #ffcc70, #ff6699);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(255, 102, 153, 0.3);
     padding: 40px;
