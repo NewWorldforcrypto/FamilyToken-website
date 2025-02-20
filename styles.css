@@ -593,50 +593,33 @@ nav ul li a.active {
 .tokenomics-item {
     padding: 25px;
     border-radius: 15px;
-    font-size: 1.8rem; /* افزایش اندازه فونت */
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #fff; /* رنگ سفید برای تضاد بالا */
+    color: #fff;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: linear-gradient(145deg, #1e1e1e, #292929);
+    min-height: 150px; /* ارتفاع ثابت برای همه آیتم‌ها */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
 }
 
 /* تغییر رنگ و سایه فونت */
 .tokenomics-item p {
-    font-size: 1.8rem; /* افزایش سایز فونت */
+    font-size: 1.8rem;
     color: #ffffff;
     font-family: 'Trade Winds', cursive;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* سایه برای خوانایی بهتر */
+    margin: 0;
 }
 
 /* افکت هاور برای برجسته‌تر شدن */
 .tokenomics-item:hover {
     transform: translateY(-5px);
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7), -5px -5px 15px rgba(255, 255, 255, 0.2);
-}
-
-/* افکت درخشان دور آیتم‌ها */
-.tokenomics-item::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: 20px;
-    background: linear-gradient(45deg, rgba(255, 0, 150, 0.6), rgba(0, 255, 255, 0.6));
-    z-index: -1;
-    filter: blur(10px);
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.tokenomics-item:hover::before {
-    opacity: 1;
 }
 
 /* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم */
@@ -649,22 +632,49 @@ nav ul li a.active {
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
-    #tokenomics h2 {
-        font-size: 2.5rem;
+    #tokenomics {
+        padding: 50px 25px;
+        max-width: 95%;
+        border-radius: 15px;
     }
-    .tokenomics-item {
+    #tokenomics h2 {
+        font-size: 2.4rem;
+    }
+    #tokenomics p {
         font-size: 1.2rem;
-        padding: 15px;
+        line-height: 1.7;
     }
 }
 
-@media (max-width: 480px) {
-    #tokenomics h2 {
-        font-size: 2rem;
+/* برای تبلت */
+@media (max-width: 1024px) {
+    #tokenomics {
+        padding: 30px 20px;
+        max-width: 90%;
     }
-    .tokenomics-item {
-        font-size: 1rem;
-        padding: 10px;
+
+    #tokenomics h2 {
+        font-size: 2.4rem;
+    }
+
+    #tokenomics p {
+        font-size: 1.1rem;
+    }
+}
+
+/* برای دسکتاپ */
+@media (min-width: 1025px) {
+    #tokenomics {
+        padding: 50px 20px;
+        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
+    }
+
+    #tokenomics h2 {
+        font-size: 3vw;  /* استفاده از واحد vw برای سایز پویا */
+    }
+
+    #tokenomics p {
+        font-size: 1.3rem;
     }
 }
 
