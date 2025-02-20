@@ -16,60 +16,86 @@ const toggleMenu = () => {
 // متغیر برای کنترل وضعیت اسکرول
 let isScrolling = false;
 
+function toggleMenu() {
+    const menu = document.querySelector("nav ul");
+    const menuIcon = document.querySelector(".menu-icon");
+    const isOpen = menu.classList.contains("show");
+
+    if (isOpen) {
+        menu.classList.remove("show");
+        menuIcon.innerHTML = "☰";
+    } else {
+        menu.classList.add("show");
+        menuIcon.innerHTML = "✖";
+    }
+}
+
+function smoothScroll(target) {
+    const start = window.pageYOffset;
+    const distance = target.getBoundingClientRect().top;
+    const duration = 800;
+    let startTime = null;
+
+    function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, start, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+        else isScrolling = false;
+    }
+
+    function ease(t, b, c, d) {
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    isScrolling = true;
+    requestAnimationFrame(animation);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+    // مدیریت کلیک روی لینک‌های منو
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault();
 
             if (isScrolling) return;
 
-            let targetId = this.getAttribute("href").substring(1);
-            let targetSection = document.getElementById(targetId);
+            const targetId = this.getAttribute("href").substring(1);
+            const targetSection = document.getElementById(targetId);
 
             if (!targetSection) {
-                alert(`بخش "${targetId}" پیدا نشد! یه نگاه به کد بندازید.`);
                 console.error(`❌ بخش ${targetId} پیدا نشد!`);
                 return;
             }
 
-            console.log(`✅ در حال اسکرول به بخش: ${targetId}`);
-
+            // به‌روزرسانی کلاس active
             document.querySelectorAll("nav ul li a").forEach(item => item.classList.remove("active"));
             this.classList.add("active");
 
-            history.pushState({}, "", `#${targetId}`);
+            // اسکرول به بخش
+            smoothScroll(targetSection);
 
-            isScrolling = true;
-            smoothScroll(targetSection); // استفاده از تابع پیشرفته
-
+            // بستن منو بعد از کلیک
             const menu = document.querySelector("nav ul");
             const menuIcon = document.querySelector(".menu-icon");
             if (menu.classList.contains("show")) {
                 menu.classList.remove("show");
-                menuIcon.innerHTML = "&#9776;";
-                menuIcon.style.transform = "rotate(0deg)";
+                menuIcon.innerHTML = "☰";
             }
-
-            setTimeout(() => {
-                isScrolling = false;
-            }, 800); // هماهنگ با مدت زمان اسکرول
         });
     });
 
+    // دکمه Learn More
     const learnMoreBtn = document.getElementById("learnMoreBtn");
     if (learnMoreBtn) {
         learnMoreBtn.addEventListener("click", function (event) {
             event.preventDefault();
-
-            let targetSection = document.getElementById("about");
-            if (!targetSection) {
-                alert("بخش 'درباره ما' پیدا نشد!");
-                console.error("❌ بخش 'about' پیدا نشد!");
-                return;
-            }
-
-            console.log("✅ اسکرول به بخش 'about'");
-            smoothScroll(targetSection); // استفاده از تابع پیشرفته
+            const targetSection = document.getElementById("about");
+            if (targetSection) smoothScroll(targetSection);
         });
     }
 });
