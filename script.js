@@ -5,6 +5,12 @@ const toggleMenu = () => {
 
     menu.classList.toggle("show");
     menuIcon.innerHTML = menu.classList.contains("show") ? "✖" : "&#9776;";
+    menuIcon.style.transition = "transform 0.3s ease"; // انیمیشن نرم
+    menuIcon.style.transform = menu.classList.contains("show") ? "rotate(90deg)" : "rotate(0deg)"; // چرخش آیکون
+    menu.style.transition = "transform 0.5s ease, opacity 0.5s ease"; // انیمیشن برای منو
+    menu.style.transform = menu.classList.contains("show") ? "translateX(0)" : "translateX(-100%)";
+    menu.style.opacity = menu.classList.contains("show") ? "1" : "0";
+    menu.style.boxShadow = menu.classList.contains("show") ? "0 4px 15px rgba(0, 0, 0, 0.3)" : "none"; // سایه
 };
 
 // متغیر برای کنترل وضعیت اسکرول
