@@ -562,11 +562,13 @@ nav ul li a.active {
 /* تنظیمات کلی برای Tokenomics */
 #tokenomics {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* همیشه دو ستون با عرض برابر */
+    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* دو ستون مساوی با حداقل عرض 250px */
     gap: 20px;
     max-width: 900px;
     margin: auto;
     padding: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 /* استایل پاراگراف‌ها */
@@ -580,6 +582,7 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 4px 10px rgba(255, 165, 0, 0.2);
     transition: all 0.3s ease;
+    min-width: 250px;
 }
 
 /* افکت هاور */
@@ -591,12 +594,13 @@ nav ul li a.active {
 /* تنظیمات برای صفحه‌های کوچک */
 @media (max-width: 768px) {
     #tokenomics {
-        grid-template-columns: 1fr; /* توی صفحه‌های کوچک‌تر، تک‌ستونی می‌شه */
-        padding: 20px; /* پدینگ کمتر برای موبایل */
+        grid-template-columns: repeat(2, minmax(150px, 1fr)); /* در موبایل هم دو ستونه بماند */
+        padding: 20px;
     }
-    
+
     #tokenomics p {
-        font-size: 1rem; /* فونت کمی کوچک‌تر برای موبایل */
+        font-size: 1rem;
+        min-width: 150px;
     }
 }
 
