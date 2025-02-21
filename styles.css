@@ -591,9 +591,9 @@ nav ul li a.active {
 
 /* استایل کلی آیتم‌ها */
 .tokenomics-item {
-    padding: 15px; /* کاهش اندازه padding */
+    padding: 10px; /* کاهش بیشتر padding */
     border-radius: 15px;
-    font-size: 1.8rem;
+    font-size: 1.6rem; /* کمی کوچک‌تر برای تناسب بهتر */
     font-weight: bold;
     color: #fff;
     text-align: center;
@@ -601,7 +601,7 @@ nav ul li a.active {
     letter-spacing: 1.5px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 120px; /* کاهش ارتفاع آیتم‌ها */
+    min-height: 100px; /* کاهش بیشتر ارتفاع آیتم‌ها */
     display: flex;
     align-items: center;
     justify-content: center;
