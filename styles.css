@@ -606,6 +606,13 @@ nav ul li a.active {
     align-items: center;
     justify-content: center;
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    
+    /* افکت سه‌بعدی */
+    background: linear-gradient(145deg, #00bcd4, #008ba3); /* گرادینت فیروزه‌ای */
+    box-shadow: 
+        inset 4px 4px 8px rgba(255, 255, 255, 0.2), /* هایلایت داخلی */
+        inset -4px -4px 8px rgba(0, 0, 0, 0.2), /* سایه داخلی */
+        6px 6px 15px rgba(0, 0, 0, 0.5); /* سایه خارجی */
 }
 
 /* تغییر رنگ و سایه فونت */
@@ -618,8 +625,11 @@ nav ul li a.active {
 
 /* افکت هاور برای برجسته‌تر شدن */
 .tokenomics-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.7), -5px -5px 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 
+        inset 4px 4px 8px rgba(255, 255, 255, 0.2),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.2),
+        10px 10px 20px rgba(0, 0, 0, 0.6);
 }
 
 /* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم با طرح فیروزه‌ای */
