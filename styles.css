@@ -447,9 +447,8 @@ nav ul li a.active {
     position: relative;
     overflow: visible;
     transition: transform 0.4s ease;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Trade Winds', cursive;
 }
-
 .info-section:hover, #contact:hover {
     transform: scale(1.05);
 }
@@ -568,7 +567,22 @@ nav ul li a.active {
     margin: 0 auto;
     text-align: center;
     color: #fff;
+    position: relative;
     font-family: 'Trade Winds', cursive;
+    z-index: 1;
+}
+
+#tokenomics::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    border-radius: 25px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+    filter: blur(20px);
+    z-index: -1;
 }
 
 /* استایل برای عنوان Tokenomics */
