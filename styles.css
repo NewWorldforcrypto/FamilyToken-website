@@ -595,19 +595,6 @@ nav ul li a.active {
     100% { background-position: 0% 50%; }
 }
 
-/* ایجاد فضای خالی داخل بخش و جلوگیری از تأثیر نور روی محتوا */
-#tokenomics::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 16px;
-    background: #000d1a; /* یا هر رنگ پس‌زمینه‌ای که داری */
-    z-index: 0;
-}
-
 /* استایل برای عنوان Tokenomics */
 #tokenomics h2 {
     font-size: 3rem;
