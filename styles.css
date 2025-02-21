@@ -572,20 +572,22 @@ nav ul li a.active {
     background: transparent; /* حذف پس‌زمینه داخلی */
 }
 
-/* اضافه کردن خط نئونی متحرک */
+/* ایجاد یک قاب دور اینفو سکشن با افکت نوری */
 #tokenomics::before {
     content: "";
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
+    inset: -4px; /* باعث میشه خط بیرونی باشه ولی نزدیک کادر */
     border-radius: 25px;
+    padding: 4px;
     background: linear-gradient(45deg, 
         #ff0000, #ff7300, #ffeb00, #47ff00, #00ffe5, #003bff, #7a00ff, #ff00c3, #ff0000);
     background-size: 300% 300%;
     animation: neon-border 6s linear infinite;
-    z-index: -1;
+    z-index: -1; /* پشت محتوای داخلی */
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
 }
 
 /* افکت متحرک برای خط نئونی */
@@ -595,11 +597,11 @@ nav ul li a.active {
     100% { background-position: 0% 50%; }
 }
 
-/* حذف هر گونه بک‌گراند داخلی */
+/* محتوای داخلی اینفو سکشن رو جلوتر از افکت میاره */
 #tokenomics > * {
     position: relative;
-    z-index: 1;
-    background: transparent; /* مطمئن شدن از حذف پس‌زمینه داخلی */
+    z-index: 2;
+    background: transparent;
 }
 
 /* استایل برای عنوان Tokenomics */
