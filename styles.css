@@ -438,8 +438,8 @@ nav ul li a.active {
 
 /* ========== بهبود Info Section: فونت خاص و چینش بهینه ========== */
 .info-section, #contact {
-    padding: 5vh 5vw; /* فاصله داخلی بر اساس درصدی از ارتفاع و عرض ویوپورت */
-    margin: 5vh auto; /* فاصله خارجی بالا و پایین بر اساس ارتفاع ویوپورت */
+    padding: 60px 40px;
+    margin: 80px auto;
     max-width: 1100px;
     text-align: center;
     border-radius: 20px;
@@ -448,6 +448,9 @@ nav ul li a.active {
     overflow: visible;
     transition: transform 0.4s ease;
     font-family: 'Trade Winds', cursive;
+}
+.info-section:hover, #contact:hover {
+    transform: scale(1.05);
 }
 
 
@@ -461,18 +464,13 @@ nav ul li a.active {
     text-shadow: 0 0 15px rgba(255, 153, 0, 0.8);
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    margin-bottom: 20px; /* افزودن فاصله پایین برای جداسازی از پاراگراف‌ها */
-}
-
-.info-section p + p, #contact p + p {
-    margin-top: 15px; /* فاصله بین پاراگراف‌ها */
 }
 
 /* تنظیم چینش و خوانایی متن */
 .info-section p, #contact p {
-    font-size: 1.6rem; /* افزایش اندازه فونت */
+    font-size: 1.4rem;
     color: #e0e0e0;
-    line-height: 1.8; /* فاصله مناسب بین خطوط */
+    line-height: 1.8;
     max-width: 85%;
     margin: 25px auto;
     font-family: 'Trade Winds', cursive;
@@ -494,15 +492,16 @@ nav ul li a.active {
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
     .info-section, #contact {
-        padding: 4vh 4vw;
+        padding: 50px 25px;
+        max-width: 95%;
+        border-radius: 15px;
     }
-
     .info-section h2, #contact h2 {
-        font-size: 2.5rem;
+        font-size: 2.4rem;
     }
-
     .info-section p, #contact p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
+        line-height: 1.7;
     }
 }
 
