@@ -591,9 +591,9 @@ nav ul li a.active {
 
 /* استایل کلی آیتم‌ها */
 .tokenomics-item {
-    padding: 10px; /* کاهش بیشتر padding */
+    padding: 10px;
     border-radius: 15px;
-    font-size: 1.6rem; /* کمی کوچک‌تر برای تناسب بهتر */
+    font-size: 1.6rem;
     font-weight: bold;
     color: #fff;
     text-align: center;
@@ -601,18 +601,24 @@ nav ul li a.active {
     letter-spacing: 1.5px;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 100px; /* کاهش بیشتر ارتفاع آیتم‌ها */
+    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5), -5px -5px 15px rgba(255, 255, 255, 0.1);
-    
-    /* افکت سه‌بعدی */
-    background: linear-gradient(145deg, #00bcd4, #008ba3); /* گرادینت فیروزه‌ای */
-    box-shadow: 
-        inset 4px 4px 8px rgba(255, 255, 255, 0.2), /* هایلایت داخلی */
-        inset -4px -4px 8px rgba(0, 0, 0, 0.2), /* سایه داخلی */
-        6px 6px 15px rgba(0, 0, 0, 0.5); /* سایه خارجی */
+    background: linear-gradient(135deg, #00e5ff 20%, #0099cc 80%);
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+                8px 8px 15px rgba(0, 0, 0, 0.5), 
+                -8px -8px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* افکت هاور برای افزایش سه‌بعدی بودن */
+.tokenomics-item:hover {
+    transform: translateY(-8px);
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+                12px 12px 20px rgba(0, 0, 0, 0.7), 
+                -8px -8px 15px rgba(255, 255, 255, 0.2);
 }
 
 /* تغییر رنگ و سایه فونت */
@@ -621,15 +627,7 @@ nav ul li a.active {
     color: #ffffff;
     font-family: 'Trade Winds', cursive;
     margin: 0;
-}
-
-/* افکت هاور برای برجسته‌تر شدن */
-.tokenomics-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        inset 4px 4px 8px rgba(255, 255, 255, 0.2),
-        inset -4px -4px 8px rgba(0, 0, 0, 0.2),
-        10px 10px 20px rgba(0, 0, 0, 0.6);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
 /* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم با طرح فیروزه‌ای */
