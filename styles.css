@@ -558,7 +558,7 @@ nav ul li a.active {
     }
 }
 
-/* ایجاد حاشیه نئونی متحرک رنگارنگ فقط برای بخش Tokenomics */
+/* استایل کلی برای بخش Tokenomics */
 #tokenomics {
     position: relative;
     border-radius: 20px;
@@ -569,18 +569,18 @@ nav ul li a.active {
     color: #fff;
     font-family: 'Trade Winds', cursive;
     overflow: hidden; /* جلوگیری از بیرون زدن افکت */
+    background: transparent; /* حذف پس‌زمینه داخلی */
 }
 
 /* اضافه کردن خط نئونی متحرک */
 #tokenomics::before {
     content: "";
     position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    bottom: -4px;
-    border-radius: 20px;
-    padding: 4px;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 25px;
     background: linear-gradient(45deg, 
         #ff0000, #ff7300, #ffeb00, #47ff00, #00ffe5, #003bff, #7a00ff, #ff00c3, #ff0000);
     background-size: 300% 300%;
@@ -593,6 +593,13 @@ nav ul li a.active {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* حذف هر گونه بک‌گراند داخلی */
+#tokenomics > * {
+    position: relative;
+    z-index: 1;
+    background: transparent; /* مطمئن شدن از حذف پس‌زمینه داخلی */
 }
 
 /* استایل برای عنوان Tokenomics */
