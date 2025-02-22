@@ -113,24 +113,21 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 اسکرول نرم و نمایش تدریجی بخش‌ها با تنظیم هوشمند تأخیر
+// 🚀 نمایش مرحله‌ای مثل چرخ‌و‌فلک برای Hero و Info Section
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
+    const sections = document.querySelectorAll(".hero, .info-section");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-                
-                // تنظیم تأخیر داینامیک بر اساس جایگاه بخش در صفحه
-                const delay = Math.min(0.2 + (index * 0.1), 0.5); 
-                entry.target.style.transitionDelay = `${delay}s`;
+                setTimeout(() => {
+                    entry.target.classList.add("visible");
+                }, index * 400); // ⏳ هر بخش با تأخیر 400ms ظاهر بشه
             } else {
                 entry.target.classList.remove("visible");
-                entry.target.style.transitionDelay = "0s";
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
 });
