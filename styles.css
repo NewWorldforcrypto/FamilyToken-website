@@ -282,6 +282,7 @@ nav ul li a.active {
     background-repeat: no-repeat;
     position: relative;
     z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); /* این اضافه شد تا دیده بشه */
 }
 
 /* افکت ظریف برای حرکت Hero */
