@@ -113,16 +113,19 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 نمایش چرخ‌و‌فلکی برای Hero و Info Section
+// 🚀 نمایش چرخ‌و‌فلکی واقعی و حرفه‌ای
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = [...document.querySelectorAll("#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section")];
+    const sections = document.querySelectorAll("#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section");
+
+    let delay = 0; // مقدار تأخیر برای هر بخش
 
     const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add("visible");
-                }, index * 600); // ⏳ هر بخش با تأخیر 600ms نمایش داده بشه
+                }, delay);
+                delay += 500; // هر بخش 500 میلی‌ثانیه تأخیر بگیره
             } else {
                 entry.target.classList.remove("visible");
             }
