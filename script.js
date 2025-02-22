@@ -113,7 +113,7 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 نمایش مرحله‌ای مثل چرخ‌و‌فلک برای Hero و Info Section
+// 🚀 نمایش چرخ‌و‌فلکی حرفه‌ای برای Hero و Info Section
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".hero, .info-section");
 
@@ -122,12 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add("visible");
-                }, index * 400); // ⏳ هر بخش با تأخیر 400ms ظاهر بشه
+                }, index * 600); // ⏳ تأخیر 600ms برای نمایش چرخ‌و‌فلکی
             } else {
                 entry.target.classList.remove("visible");
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
     sections.forEach(section => observer.observe(section));
 });
