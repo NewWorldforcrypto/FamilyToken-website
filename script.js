@@ -128,6 +128,63 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach(section => observer.observe(section));
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll(".carousel-slide");
+    let currentIndex = 0;
+
+    function updateSlides() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove("active", "prev", "next");
+            if (index === currentIndex) {
+                slide.classList.add("active");
+            } else if (index === currentIndex - 1) {
+                slide.classList.add("prev");
+            } else if (index === currentIndex + 1) {
+                slide.classList.add("next");
+            }
+        });
+    }
+
+    function nextSlide() {
+        if (currentIndex < slides.length - 1) {
+            currentIndex++;
+            updateSlides();
+        }
+    }
+
+    function prevSlide() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateSlides();
+        }
+    }
+
+    // کنترل حرکت با اسکرول
+    document.addEventListener("wheel", (event) => {
+        if (event.deltaY > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
+        }
+    });
+
+    // کنترل حرکت با تاچ در موبایل
+    let startY;
+    document.addEventListener("touchstart", (event) => {
+        startY = event.touches[0].clientY;
+    });
+
+    document.addEventListener("touchend", (event) => {
+        let endY = event.changedTouches[0].clientY;
+        if (startY - endY > 50) {
+            nextSlide();
+        } else if (endY - startY > 50) {
+            prevSlide();
+        }
+    });
+
+    updateSlides(); // نمایش اسلاید اول
+});
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
