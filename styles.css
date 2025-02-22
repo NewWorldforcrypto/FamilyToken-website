@@ -257,6 +257,44 @@ nav ul li a.active {
     }
 }
 
+/* تنظیمات کلی برای چرخ‌وفلک */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1200px;
+}
+
+/* استایل اسلایدها */
+.carousel-slide {
+    position: absolute;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8) rotateX(30deg);
+    opacity: 0.3;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+/* اسلاید فعال */
+.carousel-slide.active {
+    transform: translate(-50%, -50%) scale(1) rotateX(0deg);
+    opacity: 1;
+    z-index: 10;
+}
+
+/* اسلاید قبلی */
+.carousel-slide.prev {
+    transform: translate(-50%, -100%) scale(0.6) rotateX(-25deg);
+    opacity: 0.2;
+}
+
+/* اسلاید بعدی */
+.carousel-slide.next {
+    transform: translate(-50%, 0%) scale(0.6) rotateX(25deg);
+    opacity: 0.2;
+}
 
 /* استایل کلی پس‌زمینه‌ها */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
