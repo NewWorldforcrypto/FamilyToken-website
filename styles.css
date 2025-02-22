@@ -257,18 +257,30 @@ nav ul li a.active {
     }
 }
 
-/* ================== افکت حرکت نرم‌تر و طبیعی‌تر ================== */
+/* ================== افکت حرکت نرم‌تر و مدرن‌تر ================== */
 .hero, .info-section {
     opacity: 0;
-    transform: translateY(30px) rotateY(-5deg); /* حرکت کمتر برای طبیعی‌تر شدن */
+    transform: translateY(40px) rotateY(-5deg) scale(0.95); /* حرکت کمی بیشتر و کوچک‌تر شدن جزئی */
     transition: opacity 1s ease-out, transform 1s ease-out;
-    will-change: opacity, transform; /* بهینه‌سازی عملکرد */
+    will-change: opacity, transform;
 }
 
 /* وقتی بخش‌ها وارد صفحه میشن */
 .visible {
     opacity: 1 !important;
-    transform: translateY(0) rotateY(0) !important;
+    transform: translateY(0) rotateY(0) scale(1) !important;
+}
+
+/* 🔥 اضافه کردن افکت شناور ملایم برای Hero و Info Section */
+@keyframes floating {
+    0% { transform: translateY(0) rotateY(0); }
+    50% { transform: translateY(-5px) rotateY(1deg); }
+    100% { transform: translateY(0) rotateY(0); }
+}
+
+/* وقتی دیده شدن، به آرومی شناور بشن */
+.hero.visible, .info-section.visible {
+    animation: floating 3s ease-in-out infinite;
 }
 
 /* استایل کلی پس‌زمینه‌ها */
