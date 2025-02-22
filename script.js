@@ -92,7 +92,7 @@ function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 800; // مدت زمان اسکرول
+    const duration = 800;
     let startTime = null;
 
     function animationScroll(currentTime) {
@@ -113,17 +113,19 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+// ================== 2. افکت نمایش تدریجی و چرخش بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".fade-in");
+    const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
+            } else {
+                entry.target.classList.remove("visible"); // حذف افکت هنگام خروج از صفحه
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
     sections.forEach(section => observer.observe(section));
 });
