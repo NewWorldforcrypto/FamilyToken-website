@@ -113,7 +113,7 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// ================== 2. افکت نمایش تدریجی و چرخش نرم‌تر بخش‌ها هنگام اسکرول ==================
+// 🚀 اسکرول نرم و نمایش تدریجی بخش‌ها با افکت لرزشی حرفه‌ای
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
 
@@ -121,12 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                entry.target.style.transitionDelay = "0.1s"; // تأخیر کوچیک برای نمایش نرم‌تر
+                entry.target.style.transitionDelay = "0.2s"; // تأخیر ملایم برای نمایش طبیعی‌تر
             } else {
                 entry.target.classList.remove("visible");
             }
         });
-    }, { threshold: 0.15 }); // مقدار کمتر تا المان زودتر نمایان بشه
+    }, { threshold: 0.1 });
 
     sections.forEach(section => observer.observe(section));
 });
