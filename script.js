@@ -87,19 +87,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🚀 تابع پیشرفته برای اسکرول نرم
+// 🚀 تابع پیشرفته برای اسکرول نرم (بهینه‌شده)
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 800; // مدت زمان اسکرول
+    const duration = 800;
     let startTime = null;
 
     function animationScroll(currentTime) {
         if (!startTime) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
         const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, scrollAmount);
+        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
         if (timeElapsed < duration) requestAnimationFrame(animationScroll);
     }
 
@@ -113,9 +113,10 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
+// ================== 2. افکت نمایش تدریجی و روان‌تر بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in");
+    let scrolling = false; // جلوگیری از اجرای چندباره
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -126,6 +127,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
+
+    // جلوگیری از گیر کردن در اسکرول
+    window.addEventListener("scroll", () => {
+        if (!scrolling) {
+            scrolling = true;
+            setTimeout(() => {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        section.classList.add("visible");
+                    }
+                });
+                scrolling = false;
+            }, 100);
+        }
+    });
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
