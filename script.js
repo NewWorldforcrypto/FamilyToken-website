@@ -113,33 +113,20 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 اصلاح نمایش Hero و Info Sections
+// 🚀 اسکرول نرم و نمایش تدریجی بخش‌ها با افکت لرزشی حرفه‌ای
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".hero, .info-section");
+    const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-
-                // نمایش محتوای داخل Hero
-                const content = entry.target.querySelector(".content");
-                if (content) {
-                    content.classList.add("visible");
-                }
-
-                entry.target.style.transitionDelay = "0.1s"; // تأخیر ملایم برای طبیعی‌تر شدن
+                entry.target.style.transitionDelay = "0.2s"; // تأخیر ملایم برای نمایش طبیعی‌تر
             } else {
                 entry.target.classList.remove("visible");
-
-                // مخفی کردن مجدد محتوای Hero
-                const content = entry.target.querySelector(".content");
-                if (content) {
-                    content.classList.remove("visible");
-                }
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
     sections.forEach(section => observer.observe(section));
 });
