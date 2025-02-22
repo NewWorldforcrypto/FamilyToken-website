@@ -87,12 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🚀 تابع اسکرول نرم بهینه‌شده
+// 🚀 تابع پیشرفته برای اسکرول نرم
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 700; // کمی سریع‌تر شده
+    const duration = 800; // مدت زمان اسکرول
     let startTime = null;
 
     function animationScroll(currentTime) {
@@ -113,66 +113,19 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 نمایش چرخ‌و‌فلکی واقعی و حرفه‌ای
+// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".carousel-slide");
-    let currentIndex = 0;
+    const sections = document.querySelectorAll(".fade-in");
 
-    function updateSlides() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove("active", "prev", "next");
-        });
-
-        slides[currentIndex].classList.add("active");
-
-        if (currentIndex > 0) {
-            slides[currentIndex - 1].classList.add("prev");
-        }
-
-        if (currentIndex < slides.length - 1) {
-            slides[currentIndex + 1].classList.add("next");
-        }
-    }
-
-    function nextSlide() {
-        if (currentIndex < slides.length - 1) {
-            currentIndex++;
-            updateSlides();
-        }
-    }
-
-    function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlides();
-        }
-    }
-
-    // کنترل حرکت با اسکرول (محدودیت جلوگیری از پرش‌های سریع)
-    let scrollTimeout;
-    document.addEventListener("wheel", (event) => {
-        if (!scrollTimeout) {
-            if (event.deltaY > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
             }
-            scrollTimeout = setTimeout(() => {
-                scrollTimeout = null;
-            }, 500);
-        }
-    });
+        });
+    }, { threshold: 0.2 });
 
-    // کنترل حرکت با کلیدهای کیبورد
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowDown") {
-            nextSlide();
-        } else if (event.key === "ArrowUp") {
-            prevSlide();
-        }
-    });
-
-    updateSlides(); // نمایش اسلاید اول
+    sections.forEach(section => observer.observe(section));
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
