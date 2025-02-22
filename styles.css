@@ -257,30 +257,64 @@ nav ul li a.active {
     }
 }
 
-/* ================== افکت حرکت نرم‌تر و مدرن‌تر ================== */
-.hero, .info-section {
+/* ================== افکت‌های فوق حرفه‌ای برای Hero و Info Section ================== */
+
+/* افکت شناور برای Hero */
+.hero {
     opacity: 0;
-    transform: translateY(40px) rotateY(-5deg) scale(0.95); /* حرکت کمی بیشتر و کوچک‌تر شدن جزئی */
+    transform: translateY(50px) scale(0.95) rotateX(-10deg);
     transition: opacity 1s ease-out, transform 1s ease-out;
     will-change: opacity, transform;
+    animation: floatingHero 5s infinite ease-in-out;
 }
 
-/* وقتی بخش‌ها وارد صفحه میشن */
+/* افکت پارالاکس سبک */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.3), rgba(0, 255, 255, 0.3));
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0.6;
+    animation: glowEffect 3s infinite alternate;
+}
+
+/* Info Section با افکت زوم و چرخش */
+.info-section {
+    opacity: 0;
+    transform: translateY(40px) rotateY(-10deg) scale(0.9);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform;
+    animation: floatingInfo 4s infinite ease-in-out;
+}
+
+/* وقتی دیده شدن، نمایش داده بشن */
 .visible {
     opacity: 1 !important;
     transform: translateY(0) rotateY(0) scale(1) !important;
 }
 
-/* 🔥 اضافه کردن افکت شناور ملایم برای Hero و Info Section */
-@keyframes floating {
-    0% { transform: translateY(0) rotateY(0); }
-    50% { transform: translateY(-5px) rotateY(1deg); }
-    100% { transform: translateY(0) rotateY(0); }
+/* 🔥 اضافه کردن افکت لرزش سبک برای Hero و Info Section */
+@keyframes floatingHero {
+    0% { transform: translateY(0) rotateX(0) scale(1); }
+    50% { transform: translateY(-8px) rotateX(3deg) scale(1.02); }
+    100% { transform: translateY(0) rotateX(0) scale(1); }
 }
 
-/* وقتی دیده شدن، به آرومی شناور بشن */
-.hero.visible, .info-section.visible {
-    animation: floating 3s ease-in-out infinite;
+@keyframes floatingInfo {
+    0% { transform: translateY(0) rotateY(0) scale(1); }
+    50% { transform: translateY(-5px) rotateY(2deg) scale(1.01); }
+    100% { transform: translateY(0) rotateY(0) scale(1); }
+}
+
+/* 🔥 اضافه کردن افکت نورانی درخشان به Hero */
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 150, 0.4); }
+    100% { box-shadow: 0 0 35px rgba(0, 255, 255, 0.6); }
 }
 
 /* استایل کلی پس‌زمینه‌ها */
