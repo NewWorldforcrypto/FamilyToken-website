@@ -87,19 +87,19 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🚀 تابع پیشرفته برای اسکرول نرم (بهینه‌شده)
+// 🚀 تابع پیشرفته برای اسکرول نرم
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 800;
+    const duration = 800; // مدت زمان اسکرول
     let startTime = null;
 
     function animationScroll(currentTime) {
         if (!startTime) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
         const scrollAmount = easeInOutQuad(timeElapsed, startPosition, distance, duration);
-        window.scrollTo({ top: scrollAmount, behavior: "smooth" });
+        window.scrollTo(0, scrollAmount);
         if (timeElapsed < duration) requestAnimationFrame(animationScroll);
     }
 
@@ -113,10 +113,9 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// ================== 2. افکت نمایش تدریجی و روان‌تر بخش‌ها هنگام اسکرول ==================
+// ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in");
-    let scrolling = false; // جلوگیری از اجرای چندباره
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -127,22 +126,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
-
-    // جلوگیری از گیر کردن در اسکرول
-    window.addEventListener("scroll", () => {
-        if (!scrolling) {
-            scrolling = true;
-            setTimeout(() => {
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    if (rect.top < window.innerHeight * 0.8) {
-                        section.classList.add("visible");
-                    }
-                });
-                scrolling = false;
-            }, 100);
-        }
-    });
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
@@ -273,3 +256,61 @@ function animateParticles() {
 
     requestAnimationFrame(animateParticles);
 }
+
+// اجرای انیمیشن
+animateParticles();
+
+async function loadArticles() {
+    try {
+        const response = await fetch("articles.json");
+        const articles = await response.json();
+        const articlesList = document.getElementById("articlesList");
+
+        articles.forEach(article => {
+            const li = document.createElement("li");
+            li.innerHTML = `<a href="${article.link}" target="_blank"><strong>${article.title}</strong></a> - ${article.date}<br><small>${article.summary}</small>`;
+            articlesList.appendChild(li);
+        });
+    } catch (error) {
+        console.error("Error loading articles:", error);
+    }
+}
+
+function filterArticles() {
+    const query = document.getElementById("searchArticles").value.toLowerCase();
+    const articles = document.querySelectorAll("#articlesList li");
+
+    articles.forEach(article => {
+        if (article.innerText.toLowerCase().includes(query)) {
+            article.style.display = "block";
+        } else {
+            article.style.display = "none";
+        }
+    });
+}
+
+loadArticles();
+
+async function getFileSize() {
+    try {
+        const response = await fetch("docs/whitepaper.pdf", { method: "HEAD" });
+        const size = response.headers.get("content-length");
+        if (size) {
+            document.getElementById("fileSize").innerText = (size / (1024 * 1024)).toFixed(2);
+        }
+    } catch (error) {
+        console.error("Error fetching file size:", error);
+    }
+}
+
+function trackDownload() {
+    let count = localStorage.getItem("whitepaperDownloads") || 0;
+    count = parseInt(count) + 1;
+    localStorage.setItem("whitepaperDownloads", count);
+    document.getElementById("downloadCount").innerText = count;
+}
+
+document.getElementById("whitepaperLink").addEventListener("click", trackDownload);
+
+document.getElementById("downloadCount").innerText = localStorage.getItem("whitepaperDownloads") || 0;
+getFileSize();
