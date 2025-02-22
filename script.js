@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🚀 تابع پیشرفته برای اسکرول نرم
+// 🚀 تابع پیشرفته برای اسکرول نرم (روون‌تر و بهینه‌تر)
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
@@ -113,7 +113,7 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// ================== 2. افکت نمایش تدریجی و چرخش بخش‌ها هنگام اسکرول ==================
+// ================== 2. افکت نمایش تدریجی و چرخش نرم‌تر بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
 
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 entry.target.classList.remove("visible"); // حذف افکت هنگام خروج از صفحه
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
 });
