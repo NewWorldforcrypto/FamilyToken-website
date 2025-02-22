@@ -273,7 +273,7 @@ nav ul li a.active {
     transform: translateY(0) scale(1) rotateX(0) !important;
 }
 
-/* ================== افکت پارالاکس پیشرفته برای Hero ================== */
+/* ================== افکت پارالاکس بهینه‌شده برای Hero ================== */
 .hero {
     position: relative;
     height: 100vh;
@@ -284,19 +284,29 @@ nav ul li a.active {
     background-size: cover;
     background-position: center;
     perspective: 1000px;
+    overflow: hidden;
 }
 
+/* محتوای داخل Hero باید مشخص باشه */
 .hero .content {
-    transform: translateZ(50px);
-    transition: transform 0.6s ease-out;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* ================== افکت Reveal پیشرفته برای Info Section ================== */
+/* وقتی Hero دیده بشه */
+.hero.visible .content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================== افکت Reveal حرفه‌ای برای Info Section ================== */
 .info-section {
     position: relative;
     overflow: hidden;
 }
 
+/* خط محو شونده از وسط */
 .info-section::before {
     content: "";
     position: absolute;
@@ -309,11 +319,12 @@ nav ul li a.active {
     transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
+/* وقتی دیده شد */
 .visible .info-section::before {
     transform: translateX(-50%) scaleX(0);
 }
 
-/* ================== افکت حرفه‌ای برای نمایش بهتر ================== */
+/* ================== افکت حرکت نرم برای Hero و Info Section ================== */
 @keyframes subtleFloating {
     0% { transform: translateY(0); }
     50% { transform: translateY(-3px); }
