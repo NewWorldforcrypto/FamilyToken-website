@@ -134,47 +134,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateSlides() {
         slides.forEach((slide, index) => {
-            slide.classList.remove("active", "prev", "next");
+            slide.classList.remove("active");
             if (index === currentIndex) {
                 slide.classList.add("active");
-            } else if (index === currentIndex - 1) {
-                slide.classList.add("prev");
-            } else if (index === currentIndex + 1) {
-                slide.classList.add("next");
             }
         });
     }
 
     function nextSlide() {
-        if (currentIndex < slides.length - 1) {
-            currentIndex++;
-            updateSlides();
-        }
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlides();
     }
 
     function prevSlide() {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateSlides();
-        }
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlides();
     }
 
-    // کنترل حرکت با اسکرول (محدودیت جلوگیری از پرش‌های سریع)
-    let scrollTimeout;
+    // اسکرول موس برای تغییر اسلاید
     document.addEventListener("wheel", (event) => {
-        if (!scrollTimeout) {
-            if (event.deltaY > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-            scrollTimeout = setTimeout(() => {
-                scrollTimeout = null;
-            }, 500);
+        if (event.deltaY > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
         }
     });
 
-    // کنترل حرکت با تاچ در موبایل
+    // حرکت لمسی برای موبایل
     let startY;
     document.addEventListener("touchstart", (event) => {
         startY = event.touches[0].clientY;
@@ -189,7 +175,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    updateSlides(); // نمایش اسلاید اول
+    updateSlides();
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
