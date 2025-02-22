@@ -87,12 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// 🚀 تابع پیشرفته برای اسکرول نرم (روون‌تر و بهینه‌تر)
+// 🚀 تابع اسکرول نرم بهینه‌شده
 function smoothScroll(target) {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY - 50;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 800;
+    const duration = 700; // کمی سریع‌تر شده
     let startTime = null;
 
     function animationScroll(currentTime) {
@@ -121,11 +121,12 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
+                entry.target.style.transitionDelay = "0.1s"; // تأخیر کوچیک برای نمایش نرم‌تر
             } else {
-                entry.target.classList.remove("visible"); // حذف افکت هنگام خروج از صفحه
+                entry.target.classList.remove("visible");
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 }); // مقدار کمتر تا المان زودتر نمایان بشه
 
     sections.forEach(section => observer.observe(section));
 });
