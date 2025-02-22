@@ -113,21 +113,21 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 نمایش چرخ‌و‌فلکی حرفه‌ای برای Hero و Info Section
+// 🚀 نمایش چرخ‌و‌فلکی برای Hero و Info Section
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".hero, .info-section");
+    const sections = [...document.querySelectorAll("#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section")];
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add("visible");
-                }, index * 600); // ⏳ تأخیر 600ms برای نمایش چرخ‌و‌فلکی
+                }, index * 600); // ⏳ هر بخش با تأخیر 600ms نمایش داده بشه
             } else {
                 entry.target.classList.remove("visible");
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
 });
