@@ -257,16 +257,17 @@ nav ul li a.active {
     }
 }
 
-/* ================== افکت چرخش و نمایش تدریجی برای بخش‌های Hero و Info Section ================== */
+/* ================== افکت چرخش نرم‌تر + حرکت طبیعی‌تر ================== */
 .hero, .info-section {
     opacity: 0;
-    transform: rotateY(-90deg);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    transform: translateY(50px) rotateY(-10deg) scale(0.9);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
+/* وقتی بخش‌ها وارد صفحه میشن، نرم‌تر و جذاب‌تر ظاهر بشن */
 .visible {
     opacity: 1 !important;
-    transform: rotateY(0deg) !important;
+    transform: translateY(0) rotateY(0) scale(1) !important;
 }
 
 /* استایل کلی پس‌زمینه‌ها */
