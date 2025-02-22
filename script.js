@@ -128,56 +128,6 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach(section => observer.observe(section));
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const slides = document.querySelectorAll(".carousel-slide");
-    let currentIndex = 0;
-
-    function updateSlides() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove("active");
-            if (index === currentIndex) {
-                slide.classList.add("active");
-            }
-        });
-    }
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlides();
-    }
-
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlides();
-    }
-
-    // اسکرول موس برای تغییر اسلاید
-    document.addEventListener("wheel", (event) => {
-        if (event.deltaY > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
-        }
-    });
-
-    // حرکت لمسی برای موبایل
-    let startY;
-    document.addEventListener("touchstart", (event) => {
-        startY = event.touches[0].clientY;
-    });
-
-    document.addEventListener("touchend", (event) => {
-        let endY = event.changedTouches[0].clientY;
-        if (startY - endY > 50) {
-            nextSlide();
-        } else if (endY - startY > 50) {
-            prevSlide();
-        }
-    });
-
-    updateSlides();
-});
-
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
