@@ -261,7 +261,7 @@ nav ul li a.active {
 
 /* استایل کلی پس‌زمینه‌ها */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-    height: 80vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
