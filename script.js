@@ -115,24 +115,21 @@ function smoothScroll(target) {
 
 // 🚀 نمایش چرخ‌و‌فلکی واقعی و حرفه‌ای
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section");
+    const sections = document.querySelectorAll(".carousel-section");
 
-    let delay = 0; // مقدار تأخیر برای هر بخش
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
                 setTimeout(() => {
                     entry.target.classList.add("visible");
-                }, delay);
-                delay += 500; // هر بخش 500 میلی‌ثانیه تأخیر بگیره
+                }, index * 400); // هر بخش با تأخیر 400 میلی‌ثانیه نمایش داده می‌شود
             } else {
                 entry.target.classList.remove("visible");
             }
         });
     }, { threshold: 0.2 });
 
-    sections.forEach(section => observer.observe(section));
+    sections.forEach((section) => observer.observe(section));
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
