@@ -257,32 +257,32 @@ nav ul li a.active {
     }
 }
 
-/* ================== نمایش چرخ‌و‌فلک حرفه‌ای برای Hero و Info Section ================== */
+/* ================== نمایش چرخ‌و‌فلک برای Hero و Info Section ================== */
 
-/* تنظیمات اولیه: همه بخش‌ها مخفی و چرخیده */
-.hero, .info-section {
+/* تنظیمات اولیه: همه Hero ها مخفی و چرخیده */
+#hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7, .info-section {
     opacity: 0;
-    transform: rotateY(90deg) translateY(50px) scale(0.9);
-    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-    will-change: opacity, transform;
+    transform: rotateY(90deg) translateY(100px) scale(0.85);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* نمایش با چرخش حرفه‌ای */
+/* 🚀 وقتی نمایش داده بشن */
 .visible {
     opacity: 1 !important;
     transform: rotateY(0deg) translateY(0) scale(1) !important;
 }
 
-/* 🚀 انیمیشن چرخشی برای Hero و Info Section */
+/* 🚀 انیمیشن چرخش نرم */
 @keyframes carouselEffect {
-    0% { transform: rotateY(90deg) translateY(50px) scale(0.9); opacity: 0; }
-    50% { transform: rotateY(20deg) translateY(10px) scale(1); opacity: 0.5; }
+    0% { transform: rotateY(90deg) translateY(100px) scale(0.85); opacity: 0; }
+    50% { transform: rotateY(30deg) translateY(30px) scale(0.95); opacity: 0.5; }
     100% { transform: rotateY(0deg) translateY(0) scale(1); opacity: 1; }
 }
 
-/* هر بخش به نوبت این انیمیشن رو بگیره */
-.hero.visible, .info-section.visible {
-    animation: carouselEffect 1.2s ease-out;
+/* هر بخش که نمایش داده می‌شه، انیمیشن بگیره */
+#hero.visible, #hero2.visible, #hero3.visible, #hero4.visible, #hero5.visible, #hero6.visible, #hero7.visible, 
+.info-section.visible {
+    animation: carouselEffect 1.5s ease-out;
 }
 
 /* استایل کلی پس‌زمینه‌ها */
