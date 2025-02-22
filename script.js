@@ -121,14 +121,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateSlides() {
         slides.forEach((slide, index) => {
             slide.classList.remove("active", "prev", "next");
-            if (index === currentIndex) {
-                slide.classList.add("active");
-            } else if (index === currentIndex - 1) {
-                slide.classList.add("prev");
-            } else if (index === currentIndex + 1) {
-                slide.classList.add("next");
-            }
         });
+
+        slides[currentIndex].classList.add("active");
+
+        if (currentIndex > 0) {
+            slides[currentIndex - 1].classList.add("prev");
+        }
+
+        if (currentIndex < slides.length - 1) {
+            slides[currentIndex + 1].classList.add("next");
+        }
     }
 
     function nextSlide() {
@@ -145,20 +148,26 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // کنترل حرکت با اسکرول
+    // کنترل حرکت با اسکرول (محدودیت جلوگیری از پرش‌های سریع)
+    let scrollTimeout;
     document.addEventListener("wheel", (event) => {
-        if (event.deltaY > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
+        if (!scrollTimeout) {
+            if (event.deltaY > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            scrollTimeout = setTimeout(() => {
+                scrollTimeout = null;
+            }, 500);
         }
     });
 
     // کنترل حرکت با کلیدهای کیبورد
     document.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowRight") {
+        if (event.key === "ArrowDown") {
             nextSlide();
-        } else if (event.key === "ArrowLeft") {
+        } else if (event.key === "ArrowUp") {
             prevSlide();
         }
     });
