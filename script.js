@@ -113,20 +113,20 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 اسکرول نرم و نمایش تدریجی بخش‌ها با افکت لرزشی حرفه‌ای
+// 🚀 افکت‌های Reveal و پارالاکس حرفه‌ای
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll(".fade-in, .hero, .info-section");
+    const sections = document.querySelectorAll(".hero, .info-section");
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                entry.target.style.transitionDelay = "0.2s"; // تأخیر ملایم برای نمایش طبیعی‌تر
+                entry.target.style.transitionDelay = "0.1s";
             } else {
                 entry.target.classList.remove("visible");
             }
         });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.15 });
 
     sections.forEach(section => observer.observe(section));
 });
