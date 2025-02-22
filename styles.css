@@ -257,82 +257,42 @@ nav ul li a.active {
     }
 }
 
-/* ================== افکت‌های حرفه‌ای برای Hero و Info Section ================== */
-
-/* تنظیمات پایه */
+/* 🚀 Hero و Info Section با افکت نرم و مطمئن */
 .hero, .info-section {
     opacity: 0;
-    transform: translateY(50px) scale(0.98) rotateX(-5deg);
-    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1), transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-    will-change: opacity, transform;
+    transform: translateY(30px) scale(0.98);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
-/* وقتی دیده بشن */
-.visible {
+/* وقتی نمایش داده بشن */
+.hero.visible, .info-section.visible {
     opacity: 1 !important;
-    transform: translateY(0) scale(1) rotateX(0) !important;
+    transform: translateY(0) scale(1) !important;
 }
 
-/* ================== افکت پارالاکس بهینه‌شده برای Hero ================== */
+/* 🚀 جلوگیری از ناپدید شدن ناگهانی Hero */
 .hero {
-    position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     background-size: cover;
     background-position: center;
-    perspective: 1000px;
-    overflow: hidden;
-}
-
-/* محتوای داخل Hero باید مشخص باشه */
-.hero .content {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-
-/* وقتی Hero دیده بشه */
-.hero.visible .content {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ================== افکت Reveal حرفه‌ای برای Info Section ================== */
-.info-section {
+    background-repeat: no-repeat;
     position: relative;
-    overflow: hidden;
+    z-index: 10;
 }
 
-/* خط محو شونده از وسط */
-.info-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateX(-50%) scaleX(1.5);
-    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-/* وقتی دیده شد */
-.visible .info-section::before {
-    transform: translateX(-50%) scaleX(0);
-}
-
-/* ================== افکت حرکت نرم برای Hero و Info Section ================== */
-@keyframes subtleFloating {
+/* افکت ظریف برای حرکت Hero */
+@keyframes floating {
     0% { transform: translateY(0); }
     50% { transform: translateY(-3px); }
     100% { transform: translateY(0); }
 }
 
-.hero.visible, .info-section.visible {
-    animation: subtleFloating 5s ease-in-out infinite;
+.hero.visible {
+    animation: floating 5s ease-in-out infinite;
 }
 
 /* استایل کلی پس‌زمینه‌ها */
