@@ -257,42 +257,47 @@ nav ul li a.active {
     }
 }
 
-/* 🚀 تنظیمات اصلی برای چرخ‌و‌فلک سه‌بعدی */
+/* 🚀 تنظیمات کلی برای چرخ‌وفلک عمودی */
 .carousel-container {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+/* 🚀 تنظیمات برای اسلایدها */
 .carousel-slide {
     position: absolute;
     width: 80%;
+    height: 100%;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) scale(0.8) rotateY(30deg);
-    opacity: 0.3;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    transform: translate(-50%, -50%) scale(0.9) translateY(50px);
+    opacity: 0;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
 }
 
 /* 🚀 وقتی اسلاید فعال شد */
 .carousel-slide.active {
-    transform: translate(-50%, -50%) scale(1) rotateY(0deg);
+    transform: translate(-50%, -50%) scale(1) translateY(0);
     opacity: 1;
     z-index: 10;
 }
 
-/* 🚀 اسلاید قبلی */
+/* 🚀 اسلاید قبلی (میره بالا و کوچیک می‌شه) */
 .carousel-slide.prev {
-    transform: translate(-80%, -50%) scale(0.6) rotateY(-25deg);
-    opacity: 0.2;
+    transform: translate(-50%, -100%) scale(0.7);
+    opacity: 0.3;
 }
 
-/* 🚀 اسلاید بعدی */
+/* 🚀 اسلاید بعدی (از پایین وارد می‌شه) */
 .carousel-slide.next {
-    transform: translate(0%, -50%) scale(0.6) rotateY(25deg);
-    opacity: 0.2;
+    transform: translate(-50%, 50%) scale(0.7);
+    opacity: 0.3;
 }
 
 /* استایل کلی پس‌زمینه‌ها */
