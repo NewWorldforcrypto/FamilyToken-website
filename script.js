@@ -116,7 +116,7 @@ function smoothScroll(target) {
 // ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in");
-    let scrolling = false;
+    let isScrolling = false;
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -128,13 +128,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => observer.observe(section));
 
-    // 🚀 جلوگیری از گیر کردن در اسکرول هنگام برگشت به بالا
-    let lastScrollY = window.scrollY;
+    // 🚀 جلوگیری از گیر کردن اسکرول هنگام برگشت به بالا
+    let lastScrollTop = window.scrollY;
     window.addEventListener("scroll", () => {
-        let currentScrollY = window.scrollY;
-        if (!scrolling) {
-            scrolling = true;
-            setTimeout(() => {
+        if (!isScrolling) {
+            isScrolling = true;
+            requestAnimationFrame(() => {
+                let scrollTop = window.scrollY;
+
                 sections.forEach(section => {
                     const rect = section.getBoundingClientRect();
                     if (rect.top < window.innerHeight * 0.8) {
@@ -142,14 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // 🔥 رفع مشکل گیر کردن هنگام اسکرول
-                if (currentScrollY < lastScrollY) {
-                    document.body.style.overflow = "auto"; // فعال‌سازی مجدد اسکرول
+                // 🔥 جلوگیری از قفل شدن اسکرول
+                if (scrollTop < lastScrollTop) {
+                    document.body.style.overflowY = "auto"; // اسکرول همیشه فعال باشد
                 }
-                lastScrollY = currentScrollY;
 
-                scrolling = false;
-            }, 100);
+                lastScrollTop = scrollTop;
+                isScrolling = false;
+            });
         }
     });
 });
