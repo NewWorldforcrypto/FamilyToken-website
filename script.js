@@ -159,12 +159,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // کنترل حرکت با اسکرول
+    // کنترل حرکت با اسکرول (محدودیت جلوگیری از پرش‌های سریع)
+    let scrollTimeout;
     document.addEventListener("wheel", (event) => {
-        if (event.deltaY > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
+        if (!scrollTimeout) {
+            if (event.deltaY > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+            scrollTimeout = setTimeout(() => {
+                scrollTimeout = null;
+            }, 500);
         }
     });
 
@@ -185,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateSlides(); // نمایش اسلاید اول
 });
+
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("mousedown", () => {
