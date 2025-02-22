@@ -17,113 +17,199 @@
 
     <!-- نوار بالای صفحه و منوی همبرگری -->
     <header>
-        <div class="logo" onclick="location.reload();" style="cursor: pointer;">IronFamily</div>
-        <nav>
-            <ul>
-                <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#roadmap">Roadmap</a></li>
-                <li><a href="#buy-sell">Buy/Sell</a></li>
-                <li><a href="#articles">Articles</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#whitepaper">Whitepaper</a></li>
-            </ul>
-        </nav>
-        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
-    </header>
+    <div class="logo" onclick="location.reload();" style="cursor: pointer;">IronFamily</div>
+    <nav>
+    <ul>
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tokenomics">Tokenomics</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="#buy-sell">Buy/Sell</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#whitepaper">Whitepaper</a></li>
+<!-- لینک به بخش Whitepaper -->
+    </ul>
+</nav>
+    <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+</header>
 
-    <!-- 🚀 ایجاد کانتینر مخصوص چرخ‌وفلک -->
-    <div class="carousel-container">
-        <section id="hero" class="carousel-slide active">
-            <h1 class="hero-text">Welcome to IronFamily</h1>
-            <p>Your future starts here</p>
-            <a href="#about" class="btn">Learn More</a>
-        </section>
+    <!-- تصاویر پس‌زمینه + توضیحات -->
+    <section id="hero" class="fade-in">
+        <h1 class="hero-text">Welcome to IronFamily</h1>
+        <p>Your future starts here</p>
+        <a href="#about" id="learnMoreBtn" class="btn">Learn More</a>
+    </section>
 
-        <section id="about" class="carousel-slide info-section">
-            <h2>Why Choose IronFamily?</h2>
-            <p>Welcome to IronFamily, a revolutionary project designed to strengthen family values...</p>
-        </section>
+    <section id="about" class="info-section fade-in">
+        <h2>Why Choose IronFamily?</h2>
+        <p>Welcome to IronFamily, a revolutionary project designed to strengthen family values through the power of blockchain. Our mission is to create a decentralized and secure ecosystem where families can stay connected, share resources, and build financial independence.
 
-        <section id="hero2" class="carousel-slide">
-            <h1 class="hero-text">Empowering Families Worldwide</h1>
-            <p>Join us today and be part of the change</p>
-        </section>
+With the rise of digital assets and decentralized finance (DeFi), IronFamily introduces a unique token-based system that encourages unity, trust, and financial empowerment. Whether you're looking to invest, trade, or simply be part of a community-driven project, IronFamily provides a secure and transparent environment to do so.
 
-        <section id="tokenomics" class="carousel-slide info-section">
-            <h2>Tokenomics</h2>
-            <div class="tokenomics-content">
-                <div class="tokenomics-item item1"><p>Symbol: IFA</p></div>
-                <div class="tokenomics-item item2"><p>Total: 1,000,000</p></div>
-                <div class="tokenomics-item item3"><p>Burned: 100,000</p></div>
-                <div class="tokenomics-item item4"><p>Price: $0.50</p></div>
-                <div class="tokenomics-item item5"><p>24h Volume: $10,000</p></div>
-                <div class="tokenomics-item item6"><p>Liquidity: $50,000</p></div>
-            </div>
-        </section>
+Join us in redefining family bonds in the digital age!.</p>
+    </section>
 
-        <section id="hero3" class="carousel-slide">
-            <h1 class="hero-text">Building a Stronger Future</h1>
-            <p>Be part of our growing community.</p>
-        </section>
+    <section id="hero2" class="fade-in">
+        <h1 class="hero-text">Empowering Families Worldwide</h1>
+        <p>Join us today and be part of the change</p>
+    </section>
 
-        <section id="roadmap" class="carousel-slide info-section">
-            <h2>Our Roadmap</h2>
-            <p>We are committed to delivering a world-class decentralized family network...</p>
-        </section>
-
-        <section id="hero4" class="carousel-slide">
-            <h1 class="hero-text">The Future Starts Today</h1>
-            <p>Secure, fast, and built for everyone.</p>
-        </section>
-
-        <section id="buy-sell" class="carousel-slide info-section">
-            <h2>Buy & Sell IronFamily</h2>
-            <p>You can buy and sell $IFA tokens directly on Uniswap...</p>
-        </section>
-
-        <section id="hero5" class="carousel-slide">
-            <h1 class="hero-text">Stronger Together</h1>
-            <p>Building a secure future for families.</p>
-        </section>
-
-        <section id="articles" class="carousel-slide info-section">
-            <h2>Family & Finance Articles</h2>
-            <p>Educational & Market Insights...</p>
-        </section>
-
-        <section id="hero6" class="carousel-slide">
-            <h1 class="hero-text">A New Vision for IronFamily</h1>
-            <p>Innovating the future with transparency and trust.</p>
-        </section>
-
-        <section id="contact" class="carousel-slide info-section">
-            <h2>Contact Us</h2>
-            <p>Email: support@IronFamily.com</p>
-            <div class="social-links">
-                <a href="https://twitter.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="https://instagram.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="https://t.me/IronFamily" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
-            </div>
-        </section>
-
-        <section id="hero7" class="carousel-slide">
-            <h1 class="hero-text">Empowering Communities with IronFamily</h1>
-        </section>
-
-        <section id="whitepaper" class="carousel-slide info-section">
-            <h2>Whitepaper</h2>
-            <p>Explore our detailed whitepaper to understand the mission, vision, and technical details of IronFamily.</p>
-            <a href="docs/whitepaper.PDF" target="_blank" class="download-btn">
-                <i class="fas fa-file-pdf"></i> Download Whitepaper
-            </a>
-        </section>
+    <section id="tokenomics"
+class="info-section fade-in">
+    <h2>Tokenomics</h2>
+    <div class="tokenomics-content">
+        <div class="tokenomics-item item1">
+            <p>Symbol: IFA</p>
+        </div>
+        <div class="tokenomics-item item2">
+            <p>Total: 1,000,000</p>
+        </div>
+        <div class="tokenomics-item item3">
+            <p>Burned: 100,000</p>
+        </div>
+        <div class="tokenomics-item item4">
+            <p>Price: $0.50</p>
+        </div>
+        <div class="tokenomics-item item5">
+            <p>24h Volume: $10,000</p>
+        </div>
+        <div class="tokenomics-item item6">
+            <p>Liquidity: $50,000</p>
+        </div>
     </div>
+    </section>
+
+    <section id="hero3" class="fade-in">
+        <h1 class="hero-text">Building a Stronger Future</h1>
+        <p>Be part of our growing community.</p>
+    </section>
+
+    <section id="roadmap" class="info-section fade-in">
+        <h2>Our Roadmap</h2>
+        <p>We are committed to delivering a world-class decentralized family network. Here’s our roadmap:
+
+Q1 2025 – Project Launch:
+
+Website & Whitepaper Release
+
+Initial Token Distribution
+
+Community Building & Social Media Expansion
+
+
+Q2 2025 – Token Listing & Staking:
+
+Listing on Major DEXs (Decentralized Exchanges)
+
+Staking & Rewards System Integration
+
+First Partnerships with Family-Oriented Organizations
+
+
+Q3 2025 – Mobile App & Smart Contracts:
+
+Development of IronFamily Mobile Wallet
+
+Introduction of Family-Based Smart Contracts
+
+More Exchange Listings
+
+
+Q4 2025 – Expansion & Governance:
+
+Governance System Implementation
+
+Expansion into Global Markets
+
+Major Marketing Campaigns & Sponsorships
+
+
+
+Our vision is to create a lasting impact by blending blockchain technology with the essence of family values.</p>
+    </section>
+
+    <section id="hero4" class="fade-in">
+        <h1 class="hero-text">The Future Starts Today</h1>
+        <p>Secure, fast, and built for everyone.</p>
+    </section>
+
+    <section id="buy-sell" class="info-section fade-in">
+        <h2>Buy & Sell IronFamily</h2>
+        <p>You can buy and sell $IFA tokens directly on Uniswap. Follow the link below to swap ETH/USDT for IFA:</p>
+
+<!-- لینک خرید مستقیم در یونی‌سواپ -->
+<a href="https://app.uniswap.org/#/swap?outputCurrency=YOUR_CONTRACT_ADDRESS" target="_blank" class="buy-btn">Buy IFA on Uniswap</a>
+
+<h3>How to Buy:</h3>
+<ol>
+    <li>Install a crypto wallet like MetaMask.</li>
+    <li>Fund your wallet with Ethereum (ETH) or USDT.</li>
+    <li>Click the "Buy IFA on Uniswap" button above.</li>
+    <li>Enter the amount of ETH/USDT you want to swap.</li>
+    <li>Approve the transaction and confirm the swap.</li>
+</ol>
+
+<button id="connectWallet" class="wallet-btn">Connect Wallet</button>
+
+<!-- نمایش آدرس کیف پول بعد از اتصال -->
+<p><strong>Wallet Address:</strong> <span id="walletAddress">Not connected</span></p>
+    </section>
+
+    <section id="hero5" class="fade-in">
+        <h1 class="hero-text">Stronger Together</h1>
+        <p>Building a secure future for families.</p>
+    </section>
+
+    <section id="articles" class="info-section fade-in">
+        <h2>Family & Finance Articles</h2>
+        <p>Educational & Market Insights
+Stay informed with our latest articles, covering topics such as:
+
+Blockchain & Family Finance: How decentralized finance (DeFi) can empower families.
+
+Crypto Security Tips: Best practices for keeping your tokens safe.
+
+Tokenomics Explained: Understanding supply, demand, and token utility.
+
+Market Analysis: Expert insights on crypto trends and investment strategies.
+
+
+Check out our latest posts here and stay ahead in the crypto world.</p>
+    </section>
+
+    <!-- 🔥 بخش جدید hero6 -->
+    <section id="hero6" class="fade-in">
+        <h1 class="hero-text">A New Vision for IronFamily</h1>
+        <p>Innovating the future with transparency and trust.</p>
+    </section>
+
+    <section id="contact" class="info-section fade-in">
+        <h2>Contact Us</h2>
+        <p>Email: support@IronFamily.com</p>
+        <div class="social-links">
+            <a href="https://twitter.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/IronFamily" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/IronFamily" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+        </div>
+    </section>
+
+    <section id="hero7" class="fade-in">
+        <h1 class="hero-text">Empowering Communities with IronFamily</h1>
+    </section>
+
+    <!-- 🔥 بخش Whitepaper -->
+    <section id="whitepaper" class="info-section fade-in">
+    <h2>Whitepaper</h2>
+    <p>Explore our detailed whitepaper to understand the mission, vision, and technical details of IronFamily.</p>
+    <a href="docs/whitepaper.PDF" target="_blank" class="download-btn">
+        <i class="fas fa-file-pdf"></i> Download Whitepaper
+    </a>
+    </section>
 
     <!-- فوتر -->
     <footer>
-        <p>&copy; 2025 IronFamily. All Rights Reserved.</p>
+    <p>&copy; 2025 IronFamily.All Rights Reserved.</p>
     </footer>
 
     <!-- پس‌زمینه مینیمال و مودرن -->
