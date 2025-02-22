@@ -113,7 +113,7 @@ function smoothScroll(target) {
     requestAnimationFrame(animationScroll);
 }
 
-// 🚀 افکت‌های Reveal و پارالاکس حرفه‌ای
+// 🚀 اصلاح نمایش Hero و Info Sections
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".hero, .info-section");
 
@@ -121,9 +121,22 @@ document.addEventListener("DOMContentLoaded", () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                entry.target.style.transitionDelay = "0.1s";
+
+                // نمایش محتوای داخل Hero
+                const content = entry.target.querySelector(".content");
+                if (content) {
+                    content.classList.add("visible");
+                }
+
+                entry.target.style.transitionDelay = "0.1s"; // تأخیر ملایم برای طبیعی‌تر شدن
             } else {
                 entry.target.classList.remove("visible");
+
+                // مخفی کردن مجدد محتوای Hero
+                const content = entry.target.querySelector(".content");
+                if (content) {
+                    content.classList.remove("visible");
+                }
             }
         });
     }, { threshold: 0.15 });
