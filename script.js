@@ -116,6 +116,7 @@ function smoothScroll(target) {
 // ================== 2. افکت نمایش تدریجی بخش‌ها هنگام اسکرول ==================
 document.addEventListener("DOMContentLoaded", () => {
     const sections = document.querySelectorAll(".fade-in");
+    let scrolling = false;
 
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -126,6 +127,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { threshold: 0.2 });
 
     sections.forEach(section => observer.observe(section));
+
+    // 🚀 جلوگیری از گیر کردن در اسکرول هنگام برگشت به بالا
+    let lastScrollY = window.scrollY;
+    window.addEventListener("scroll", () => {
+        let currentScrollY = window.scrollY;
+        if (!scrolling) {
+            scrolling = true;
+            setTimeout(() => {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        section.classList.add("visible");
+                    }
+                });
+
+                // 🔥 رفع مشکل گیر کردن هنگام اسکرول
+                if (currentScrollY < lastScrollY) {
+                    document.body.style.overflow = "auto"; // فعال‌سازی مجدد اسکرول
+                }
+                lastScrollY = currentScrollY;
+
+                scrolling = false;
+            }, 100);
+        }
+    });
 });
 
 // ================== 3. افکت فشرده‌سازی دکمه‌ها ==================
