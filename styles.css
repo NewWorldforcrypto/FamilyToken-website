@@ -257,41 +257,40 @@ nav ul li a.active {
     }
 }
 
-/* 🚀 تنظیمات کلی برای چرخ‌وفلک عمودی */
+/* تنظیمات برای نمایش بهتر چرخ‌وفلک */
 .carousel-container {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    perspective: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-/* 🚀 تنظیمات برای اسلایدها */
+/* تنظیم هر اسلاید */
 .carousel-slide {
     position: absolute;
-    width: 90%; /* جلوگیری از خروج محتوا از صفحه */
-    max-width: 1100px; /* محدود کردن عرض در دسکتاپ */
-    height: 100vh; /* نمایش کامل در ارتفاع صفحه */
-    left: 50%;
+    width: 100%;
+    height: 100vh;
+    left: 0;
     top: 0;
-    transform: translate(-50%, 100%) scale(0.9);
     opacity: 0;
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    transform: translateY(50px) scale(0.8);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
 }
 
-/* 🚀 تنظیمات برای بخش‌های فعال و قابل مشاهده */
+/* تنظیم اسلاید فعال */
 .carousel-slide.active {
-    transform: translate(-50%, 0) scale(1);
     opacity: 1;
-    z-index: 10;
+    transform: translateY(0) scale(1);
+}
+
+/* تنظیمات برای جلوگیری از خروج محتوا */
+body, html {
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 /* 🚀 اسلاید قبلی (بالا میره) */
@@ -304,18 +303,6 @@ nav ul li a.active {
 .carousel-slide.next {
     transform: translate(-50%, 100%) scale(0.7);
     opacity: 0.3;
-}
-
-/* 🚀 تنظیم فوتر در انتهای صفحه */
-footer {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    font-size: 1rem;
-    bottom: 0;
 }
 
 /* 🚀 فیکس کردن نمایش در موبایل */
@@ -974,16 +961,14 @@ footer {
     }
 }
 
-/* ========== 9. تنظیمات فوتر ========== */
 footer {
-    padding: 20px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
-    text-align: center;
-    font-size: 1rem;
-    color: white;
     position: relative;
-    bottom: 0;
     width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: white;
+    bottom: 0;
 }
 
 
