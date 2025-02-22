@@ -257,43 +257,79 @@ nav ul li a.active {
     }
 }
 
-/* تنظیمات کلی برای چرخ‌وفلک */
+/* 🚀 تنظیمات کلی برای چرخ‌وفلک عمودی */
 .carousel-container {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
     perspective: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/* استایل اسلایدها */
+/* 🚀 تنظیمات برای اسلایدها */
 .carousel-slide {
     position: absolute;
-    width: 80%;
+    width: 90%; /* جلوگیری از خروج محتوا از صفحه */
+    max-width: 1100px; /* محدود کردن عرض در دسکتاپ */
+    height: 100vh; /* نمایش کامل در ارتفاع صفحه */
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) scale(0.8) rotateX(30deg);
-    opacity: 0.3;
-    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    top: 0;
+    transform: translate(-50%, 100%) scale(0.9);
+    opacity: 0;
+    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-/* اسلاید فعال */
+/* 🚀 تنظیمات برای بخش‌های فعال و قابل مشاهده */
 .carousel-slide.active {
-    transform: translate(-50%, -50%) scale(1) rotateX(0deg);
+    transform: translate(-50%, 0) scale(1);
     opacity: 1;
     z-index: 10;
 }
 
-/* اسلاید قبلی */
+/* 🚀 اسلاید قبلی (بالا میره) */
 .carousel-slide.prev {
-    transform: translate(-50%, -100%) scale(0.6) rotateX(-25deg);
-    opacity: 0.2;
+    transform: translate(-50%, -100%) scale(0.7);
+    opacity: 0.3;
 }
 
-/* اسلاید بعدی */
+/* 🚀 اسلاید بعدی (پایین میاد) */
 .carousel-slide.next {
-    transform: translate(-50%, 0%) scale(0.6) rotateX(25deg);
-    opacity: 0.2;
+    transform: translate(-50%, 100%) scale(0.7);
+    opacity: 0.3;
+}
+
+/* 🚀 تنظیم فوتر در انتهای صفحه */
+footer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 1rem;
+    bottom: 0;
+}
+
+/* 🚀 فیکس کردن نمایش در موبایل */
+@media (max-width: 768px) {
+    .carousel-slide {
+        width: 95%; /* تنظیم عرض در موبایل */
+        height: 100vh; /* تنظیم ارتفاع برای صفحه موبایل */
+        padding: 20px;
+    }
+    
+    footer {
+        font-size: 0.9rem;
+        padding: 15px;
+    }
 }
 
 /* استایل کلی پس‌زمینه‌ها */
