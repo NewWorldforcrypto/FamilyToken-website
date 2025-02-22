@@ -257,43 +257,64 @@ nav ul li a.active {
     }
 }
 
-/* 🚀 Hero و Info Section با افکت نرم و مطمئن */
-.hero, .info-section {
-    opacity: 0;
-    transform: translateY(30px) scale(0.98);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
+/* ================== افکت‌های فوق حرفه‌ای برای Hero و Info Section ================== */
 
-/* وقتی نمایش داده بشن */
-.hero.visible, .info-section.visible {
-    opacity: 1 !important;
-    transform: translateY(0) scale(1) !important;
-}
-
-/* 🚀 جلوگیری از ناپدید شدن ناگهانی Hero */
+/* افکت شناور برای Hero */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-    z-index: 10;
-    background-color: rgba(0, 0, 0, 0.5); /* این اضافه شد تا دیده بشه */
+    opacity: 0;
+    transform: translateY(50px) scale(0.95) rotateX(-10deg);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+    will-change: opacity, transform;
+    animation: floatingHero 5s infinite ease-in-out;
 }
 
-/* افکت ظریف برای حرکت Hero */
-@keyframes floating {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-3px); }
-    100% { transform: translateY(0); }
+/* افکت پارالاکس سبک */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.3), rgba(0, 255, 255, 0.3));
+    z-index: -1;
+    filter: blur(20px);
+    opacity: 0.6;
+    animation: glowEffect 3s infinite alternate;
 }
 
-.hero.visible {
-    animation: floating 5s ease-in-out infinite;
+/* Info Section با افکت زوم و چرخش */
+.info-section {
+    opacity: 0;
+    transform: translateY(40px) rotateY(-10deg) scale(0.9);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+    will-change: opacity, transform;
+    animation: floatingInfo 4s infinite ease-in-out;
+}
+
+/* وقتی دیده شدن، نمایش داده بشن */
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) rotateY(0) scale(1) !important;
+}
+
+/* 🔥 اضافه کردن افکت لرزش سبک برای Hero و Info Section */
+@keyframes floatingHero {
+    0% { transform: translateY(0) rotateX(0) scale(1); }
+    50% { transform: translateY(-8px) rotateX(3deg) scale(1.02); }
+    100% { transform: translateY(0) rotateX(0) scale(1); }
+}
+
+@keyframes floatingInfo {
+    0% { transform: translateY(0) rotateY(0) scale(1); }
+    50% { transform: translateY(-5px) rotateY(2deg) scale(1.01); }
+    100% { transform: translateY(0) rotateY(0) scale(1); }
+}
+
+/* 🔥 اضافه کردن افکت نورانی درخشان به Hero */
+@keyframes glowEffect {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 150, 0.4); }
+    100% { box-shadow: 0 0 35px rgba(0, 255, 255, 0.6); }
 }
 
 /* استایل کلی پس‌زمینه‌ها */
