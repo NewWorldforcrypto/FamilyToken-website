@@ -257,67 +257,6 @@ nav ul li a.active {
     }
 }
 
-/* تنظیمات برای نمایش بهتر چرخ‌وفلک */
-.carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* تنظیم هر اسلاید */
-.carousel-slide {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transform: translateY(50px) scale(0.8);
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
-}
-
-/* تنظیم اسلاید فعال */
-.carousel-slide.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* تنظیمات برای جلوگیری از خروج محتوا */
-body, html {
-    overflow-x: hidden;
-    min-height: 100vh;
-}
-
-/* 🚀 اسلاید قبلی (بالا میره) */
-.carousel-slide.prev {
-    transform: translate(-50%, -100%) scale(0.7);
-    opacity: 0.3;
-}
-
-/* 🚀 اسلاید بعدی (پایین میاد) */
-.carousel-slide.next {
-    transform: translate(-50%, 100%) scale(0.7);
-    opacity: 0.3;
-}
-
-/* 🚀 فیکس کردن نمایش در موبایل */
-@media (max-width: 768px) {
-    .carousel-slide {
-        width: 95%; /* تنظیم عرض در موبایل */
-        height: 100vh; /* تنظیم ارتفاع برای صفحه موبایل */
-        padding: 20px;
-    }
-    
-    footer {
-        font-size: 0.9rem;
-        padding: 15px;
-    }
-}
 
 /* استایل کلی پس‌زمینه‌ها */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
@@ -961,14 +900,16 @@ body, html {
     }
 }
 
+/* ========== 9. تنظیمات فوتر ========== */
 footer {
-    position: relative;
-    width: 100%;
-    text-align: center;
     padding: 20px;
-    background: #111;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+    text-align: center;
+    font-size: 1rem;
     color: white;
+    position: relative;
     bottom: 0;
+    width: 100%;
 }
 
 
