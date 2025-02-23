@@ -339,7 +339,7 @@ nav ul li a.active {
     font-family: 'Trade Winds', cursive;
     font-size: 3rem;
     font-weight: bold;
-    color: #FF00FF; /* استفاده از رنگ صورتی روشن */
+    color: #FF1493; /* صورتی پررنگ و روشن */
     display: inline-block;
     transition: all 0.4s ease-in-out;
     animation: neonGlow 2s infinite alternate;
@@ -362,13 +362,13 @@ nav ul li a.active {
     }
 }
 
-/* افکت نوری متحرک (می‌توانید آن را حذف کنید اگر نیازی به درخشش ندارید) */
+/* افکت نوری متحرک (هاله ندارد) */
 @keyframes neonGlow {
     0% {
-        text-shadow: none; /* حذف سایه */
+        text-shadow: none; /* هیچ سایه‌ای نداشته باشد */
     }
     100% {
-        text-shadow: none; /* حذف سایه */
+        text-shadow: none; /* هیچ سایه‌ای نداشته باشد */
     }
 }
 
