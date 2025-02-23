@@ -611,6 +611,12 @@ nav ul li a.active {
 }
 
 /* ========== هماهنگی اندازه آیتم‌های Tokenomics در دسکتاپ ========== */
+@media (max-width: 768px) {
+    .tokenomics-item {
+        height: 100px; /* ثابت کردن ارتفاع آیتم‌ها */
+    }
+}
+
 @media (min-width: 1025px) {
     .tokenomics-item {
         height: 120px; /* ثابت کردن ارتفاع آیتم‌ها */
