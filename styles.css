@@ -528,15 +528,16 @@ nav ul li a.active {
 @media (min-width: 1025px) {
     .info-section {
         padding: 50px 20px;
-        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
+        max-width: 1400px;  /* افزایش عرض برای دسکتاپ */
     }
 
     .info-section h2 {
-        font-size: 7vw;  /* استفاده از واحد vw برای سایز پویا */
+        font-size: 3.5rem;  /* استفاده از واحد vw برای سایز پویا */
     }
 
     .info-section p {
         font-size: 3rem;
+        line-height: 2;
     }
 }
 
