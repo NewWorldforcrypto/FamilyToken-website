@@ -439,11 +439,11 @@ nav ul li a.active {
 
 /* ========== بهبود Info Section: فونت خاص و چینش بهینه ========== */
 .info-section, #contact {
-    padding: 80px 50px;
-    margin: 100px auto;
-    max-width: 1200px;
+    padding: 60px 40px;
+    margin: 80px auto;
+    max-width: 1100px;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 20px;
     background: transparent;
     position: relative;
     overflow: visible !important;
@@ -494,12 +494,11 @@ nav ul li a.active {
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
-    .info-section {
-        width: 95%; /* در موبایل عرض را بیشتر کنیم */
-        padding: 60px 30px; /* کاهش فاصله داخلی در موبایل */
-        margin: 80px auto; /* کمی کاهش فاصله بین بخش‌ها */
+    .info-section, #contact {
+        padding: 50px 25px;
+        max-width: 95%;
+        border-radius: 15px;
     }
-
     .info-section h2, #contact h2 {
         font-size: 2.4rem;
     }
@@ -512,9 +511,8 @@ nav ul li a.active {
 /* برای تبلت */
 @media (max-width: 1024px) {
     .info-section {
-        width: 92%;
-        padding: 70px 40px;
-        margin: 100px auto;
+        padding: 30px 20px;
+        max-width: 90%;
     }
 
     .info-section h2 {
@@ -527,11 +525,10 @@ nav ul li a.active {
 }
 
 /* برای دسکتاپ */
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
     .info-section {
-        width: 85%;
-        padding: 100px 60px;
-        margin: 140px auto;
+        padding: 50px 20px;
+        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
     }
 
     .info-section h2 {
@@ -630,10 +627,10 @@ nav ul li a.active {
 
 /* تنظیمات ریسپانسیو */
 @media (max-width: 768px) {
-    .info-section {
-        width: 95%; /* در موبایل عرض را بیشتر کنیم */
-        padding: 60px 30px; /* کاهش فاصله داخلی در موبایل */
-        margin: 80px auto; /* کمی کاهش فاصله بین بخش‌ها */
+    #tokenomics {
+        padding: 50px 25px;
+        max-width: 95%;
+        border-radius: 15px;
     }
     #tokenomics h2 {
         font-size: 2.4rem;
@@ -646,10 +643,9 @@ nav ul li a.active {
 
 /* برای تبلت */
 @media (max-width: 1024px) {
-    .info-section {
-        width: 92%;
-        padding: 70px 40px;
-        margin: 100px auto;
+    #tokenomics {
+        padding: 30px 20px;
+        max-width: 90%;
     }
 
     #tokenomics h2 {
@@ -662,11 +658,10 @@ nav ul li a.active {
 }
 
 /* برای دسکتاپ */
-@media (min-width: 1200px) {
-    .info-section {
-        width: 85%;
-        padding: 100px 60px;
-        margin: 140px auto;
+@media (min-width: 1025px) {
+    #tokenomics {
+        padding: 50px 20px;
+        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
     }
 
     #tokenomics h2 {
