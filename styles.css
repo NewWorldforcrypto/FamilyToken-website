@@ -550,6 +550,25 @@ nav ul li a.active {
     -webkit-overflow-scrolling: touch;
 }
 
+/* ========== فاصله مناسب بین عنوان و متن در Tokenomics ========== */
+#tokenomics h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 40px; /* افزایش فاصله بین H2 و P */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+#tokenomics p {
+    font-size: 1.6rem;
+    color: #e0e0e0;
+    line-height: 1.8;
+    max-width: 85%;
+    margin: 10px auto; /* تنظیم فاصله مناسب از H2 */
+    text-align: justify;
+}
+
 /* ========== تنظیمات گرید برای محتوای Tokenomics ========== */
 .tokenomics-content {
     display: grid;
@@ -570,7 +589,6 @@ nav ul li a.active {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -590,6 +608,13 @@ nav ul li a.active {
         inset -5px -5px 10px rgba(255, 255, 255, 0.2),
         12px 12px 20px rgba(0, 0, 0, 0.7), 
         -8px -8px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ========== هماهنگی اندازه آیتم‌های Tokenomics در دسکتاپ ========== */
+@media (min-width: 1025px) {
+    .tokenomics-item {
+        height: 120px; /* ثابت کردن ارتفاع آیتم‌ها */
+    }
 }
 
 /* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم */
