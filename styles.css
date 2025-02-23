@@ -849,16 +849,37 @@ button, a {
     box-shadow: 0 0 15px rgba(0, 123, 255, 0.8); /* سایه جذاب */
 }
 
+/* ========== دکمه آبی اختصاصی برای خرید IFA (Buy IFA on Uniswap) ========== */
+.buy-btn {
+    background: linear-gradient(45deg, #007bff, #0056b3); /* رنگ آبی روشن */
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px; /* گوشه‌های گرد */
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none; /* حذف خط زیر لینک */
+    margin-top: 20px; /* فاصله از سایر بخش‌ها */
+}
+
+/* تغییرات هاور دکمه خرید */
+.buy-btn:hover {
+    background: linear-gradient(45deg, #0056b3, #007bff); /* تغییر رنگ دکمه در هاور */
+    transform: scale(1.05); /* بزرگ‌تر شدن دکمه */
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.8); /* سایه جذاب */
+}
+
 /* تنظیمات برای بخش‌های ریسپانسیو */
 
 /* برای موبایل */
 @media (max-width: 767px) {
-    .download-btn {
+    .download-btn, .buy-btn {
         font-size: 1rem; /* اندازه فونت دکمه‌ها در موبایل */
         padding: 12px 25px; /* تنظیم حاشیه برای دکمه‌ها */
     }
 
-    .download-btn:hover {
+    .download-btn:hover, .buy-btn:hover {
         transform: scale(1.1); /* بزرگ‌تر شدن دکمه در موبایل */
         box-shadow: 0 0 12px rgba(0, 123, 255, 0.6);
     }
@@ -866,12 +887,12 @@ button, a {
 
 /* برای تبلت */
 @media (max-width: 1024px) {
-    .download-btn {
+    .download-btn, .buy-btn {
         font-size: 1.2rem; /* اندازه فونت دکمه‌ها در تبلت */
         padding: 15px 30px; /* تنظیم حاشیه برای دکمه‌ها */
     }
 
-    .download-btn:hover {
+    .download-btn:hover, .buy-btn:hover {
         transform: scale(1.08); /* کمی بزرگ‌تر شدن دکمه */
         box-shadow: 0 0 14px rgba(0, 123, 255, 0.7);
     }
@@ -879,12 +900,12 @@ button, a {
 
 /* برای دسکتاپ */
 @media (min-width: 1025px) {
-    .download-btn {
+    .download-btn, .buy-btn {
         font-size: 1.5rem; /* اندازه فونت دکمه‌ها در دسکتاپ */
         padding: 18px 35px; /* تنظیم حاشیه برای دکمه‌ها */
     }
 
-    .download-btn:hover {
+    .download-btn:hover, .buy-btn:hover {
         transform: scale(1.05); /* بزرگ‌تر شدن دکمه در دسکتاپ */
         box-shadow: 0 0 15px rgba(0, 123, 255, 0.8);
     }
