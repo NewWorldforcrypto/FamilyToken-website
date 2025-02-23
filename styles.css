@@ -400,7 +400,7 @@ nav ul li a.active {
 
 /* استایل برای هر بخش hero */
 #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-    height: 100vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
