@@ -437,8 +437,8 @@ nav ul li a.active {
     transform: translateY(0) !important;
 }
 
-/* ========== بهبود Info Section: فونت خاص و چینش بهینه ========== */
-.info-section, #contact {
+/* ========== استایل پایه برای همه Info Sections ========== */
+.info-section, #contact, #tokenomics {
     padding: 40px 30px;
     margin: 80px auto;
     max-width: 1100px;
@@ -446,21 +446,19 @@ nav ul li a.active {
     border-radius: 20px;
     background: transparent;
     position: relative;
-    overflow: visible !important;
+    overflow: visible;
     transition: transform 0.4s ease;
     font-family: 'Trade Winds', cursive;
-    touch-action: auto !important; /* حل مشکل لمس در موبایل */
+    touch-action: auto; /* حل مشکل لمس در موبایل */
     -webkit-overflow-scrolling: touch; /* برای iOS */
 }
-.info-section:hover, #contact:hover {
+.info-section:hover, #contact:hover, #tokenomics:hover {
     transform: scale(1.05);
 }
 
-
-
-/* فونت و استایل جدید برای عنوان‌ها */
-.info-section h2, #contact h2 {
-    font-size: 3rem;
+/* ========== فونت و استایل عنوان‌ها ========== */
+.info-section h2, #contact h2, #tokenomics h2 {
+    font-size: clamp(2.5rem, 5vw, 3rem);
     font-weight: bold;
     color: #ff9900;
     font-family: 'Trade Winds', cursive;
@@ -469,9 +467,9 @@ nav ul li a.active {
     letter-spacing: 1.5px;
 }
 
-/* تنظیم چینش و خوانایی متن */
-.info-section p, #contact p {
-    font-size: 1.4rem;
+/* ========== تنظیم چینش و خوانایی متن ========== */
+.info-section p, #contact p, #tokenomics p {
+    font-size: clamp(1.2rem, 2vw, 1.4rem);
     color: #e0e0e0;
     line-height: 1.8;
     max-width: 85%;
@@ -480,29 +478,28 @@ nav ul li a.active {
     text-align: justify;
 }
 
-/* افکت نمایش تدریجی */
+/* ========== افکت نمایش تدریجی ========== */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
 }
-
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* تنظیمات ریسپانسیو */
+/* ========== تنظیمات ریسپانسیو برای Info Sections ========== */
 @media (max-width: 768px) {
-    .info-section, #contact {
+    .info-section, #contact, #tokenomics {
         padding: 50px 25px;
         max-width: 95%;
         border-radius: 15px;
     }
-    .info-section h2, #contact h2 {
+    .info-section h2, #contact h2, #tokenomics h2 {
         font-size: 2.4rem;
     }
-    .info-section p, #contact p {
+    .info-section p, #contact p, #tokenomics p {
         font-size: 1.2rem;
         line-height: 1.7;
     }
@@ -510,38 +507,34 @@ nav ul li a.active {
 
 /* برای تبلت */
 @media (max-width: 1024px) {
-    .info-section {
+    .info-section, #contact, #tokenomics {
         padding: 30px 20px;
         max-width: 90%;
     }
-
-    .info-section h2 {
+    .info-section h2, #contact h2, #tokenomics h2 {
         font-size: 2.4rem;
     }
-
-    .info-section p {
+    .info-section p, #contact p, #tokenomics p {
         font-size: 1.1rem;
     }
 }
 
 /* برای دسکتاپ */
 @media (min-width: 1025px) {
-    .info-section {
+    .info-section, #contact, #tokenomics {
         padding: 50px 20px;
-        max-width: 1400px;  /* افزایش عرض برای دسکتاپ */
+        max-width: 1400px;
     }
-
-    .info-section h2 {
-        font-size: 3.5rem;  /* استفاده از واحد vw برای سایز پویا */
+    .info-section h2, #contact h2, #tokenomics h2 {
+        font-size: 3.5rem;
     }
-
-    .info-section p {
-        font-size: 3rem;
+    .info-section p, #contact p, #tokenomics p {
+        font-size: 1.6rem;
         line-height: 2;
     }
 }
 
-/* استایل کلی برای بخش Tokenomics */
+/* ========== استایل کلی بخش Tokenomics ========== */
 #tokenomics {
     position: relative;
     border-radius: 20px;
@@ -551,33 +544,22 @@ nav ul li a.active {
     text-align: center;
     color: #fff;
     font-family: 'Trade Winds', cursive;
-    overflow-y: auto !important; /* حالا در موبایل و دسکتاپ اسکرول می‌شه */
+    overflow-y: auto;
     background: transparent;
     touch-action: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-
-
-/* استایل برای عنوان Tokenomics */
-#tokenomics h2 {
-    font-size: 3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 30px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-}
-
-/* استایل برای محتوای Tokenomics */
+/* ========== تنظیمات گرید برای محتوای Tokenomics ========== */
 .tokenomics-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     justify-content: center;
+    align-items: center;
 }
 
-/* استایل کلی آیتم‌ها */
+/* ========== استایل آیتم‌های Tokenomics ========== */
 .tokenomics-item {
     padding: 10px;
     border-radius: 15px;
@@ -587,94 +569,39 @@ nav ul li a.active {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     min-height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #00e5ff 20%, #0099cc 80%);
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
-                inset -5px -5px 10px rgba(255, 255, 255, 0.2),
-                8px 8px 15px rgba(0, 0, 0, 0.5), 
-                -8px -8px 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+        8px 8px 15px rgba(0, 0, 0, 0.5), 
+        -8px -8px 15px rgba(255, 255, 255, 0.1);
 }
 
-/* افکت هاور برای افزایش سه‌بعدی بودن */
+/* افکت هاور برای آیتم‌های Tokenomics */
 .tokenomics-item:hover {
     transform: translateY(-8px);
-    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3),
-                inset -5px -5px 10px rgba(255, 255, 255, 0.2),
-                12px 12px 20px rgba(0, 0, 0, 0.7), 
-                -8px -8px 15px rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        inset 5px 5px 10px rgba(0, 0, 0, 0.3),
+        inset -5px -5px 10px rgba(255, 255, 255, 0.2),
+        12px 12px 20px rgba(0, 0, 0, 0.7), 
+        -8px -8px 15px rgba(255, 255, 255, 0.2);
 }
 
-/* تغییر رنگ و سایه فونت */
-.tokenomics-item p {
-    font-size: 1.8rem;
-    color: #ffffff;
-    font-family: 'Trade Winds', cursive;
-    margin: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-}
+/* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم */
+.tokenomics-item:nth-child(1) { background: linear-gradient(135deg, #00e5ff 20%, #0099cc 80%); }
+.tokenomics-item:nth-child(2) { background: linear-gradient(135deg, #0099cc 20%, #00cccc 80%); }
+.tokenomics-item:nth-child(3) { background: linear-gradient(135deg, #00cccc 20%, #00b3b3 80%); }
+.tokenomics-item:nth-child(4) { background: linear-gradient(135deg, #00b3b3 20%, #009999 80%); }
+.tokenomics-item:nth-child(5) { background: linear-gradient(135deg, #009999 20%, #008080 80%); }
+.tokenomics-item:nth-child(6) { background: linear-gradient(135deg, #008080 20%, #006666 80%); }
 
-/* پس‌زمینه‌های منحصربه‌فرد برای هر آیتم با طرح فیروزه‌ای */
-.tokenomics-item.item1 { background: linear-gradient(135deg, #00e5ff 20%, #0099cc 80%); }
-.tokenomics-item.item2 { background: linear-gradient(135deg, #0099cc 20%, #00cccc 80%); }
-.tokenomics-item.item3 { background: linear-gradient(135deg, #00cccc 20%, #00b3b3 80%); }
-.tokenomics-item.item4 { background: linear-gradient(135deg, #00b3b3 20%, #009999 80%); }
-.tokenomics-item.item5 { background: linear-gradient(135deg, #009999 20%, #008080 80%); }
-.tokenomics-item.item6 { background: linear-gradient(135deg, #008080 20%, #006666 80%); }
 
-/* تنظیمات ریسپانسیو */
-@media (max-width: 768px) {
-    #tokenomics {
-        padding: 50px 25px;
-        max-width: 95%;
-        border-radius: 15px;
-    }
-    #tokenomics h2 {
-        font-size: 2.4rem;
-    }
-    #tokenomics p {
-        font-size: 1.2rem;
-        line-height: 1.7;
-    }
-}
-
-/* برای تبلت */
-@media (max-width: 1024px) {
-    #tokenomics {
-        padding: 30px 20px;
-        max-width: 90%;
-    }
-
-    #tokenomics h2 {
-        font-size: 2.4rem;
-    }
-
-    #tokenomics p {
-        font-size: 1.1rem;
-    }
-}
-
-/* برای دسکتاپ */
-@media (min-width: 1025px) {
-    #tokenomics {
-        padding: 50px 20px;
-        max-width: 1000px;  /* افزایش عرض برای دسکتاپ */
-    }
-
-    #tokenomics h2 {
-        font-size: 3vw;  /* استفاده از واحد vw برای سایز پویا */
-    }
-
-    #tokenomics p {
-        font-size: 1.3rem;
-    }
-}
-
-/* استایل هماهنگ‌شده‌ی Contact Us برای پس‌زمینه‌ی کاملاً شفاف */
+/* ========== استایل کلی بخش Contact ========== */
 #contact {
     padding: 60px 40px;
     margin: 80px auto;
@@ -683,38 +610,38 @@ nav ul li a.active {
     border-radius: 20px;
     background: transparent;
     position: relative;
-    overflow: visible !important;
+    overflow: visible;
     transition: transform 0.4s ease;
-    touch-action: auto;
 }
 
-.info-section:hover {
+/* افکت هاور برای Contact */
+#contact:hover {
     transform: scale(1.05);
 }
 
-/* عنوان بخش */
+/* ========== استایل عنوان بخش Contact ========== */
 #contact h2 {
     font-size: 2.8rem;
-    color: #ff8c00; /* رنگ نارنجی برای جذابیت بیشتر */
+    color: #ff8c00;
     font-weight: bold;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
-/* پاراگراف بخش */
+/* ========== استایل پاراگراف‌های Contact ========== */
 #contact p {
     font-size: 1.2rem;
     color: #ddd;
     margin-bottom: 30px;
     line-height: 1.6;
-    text-align: center; /* تنظیم چینش متن به مرکز */
-    margin-left: auto; /* اعمال خودکار فاصله سمت چپ */
-    margin-right: auto; /* اعمال خودکار فاصله سمت راست */
-    max-width: 80%; /* تعیین حداکثر عرض برای جلوگیری از پراکندگی */
+    text-align: center;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* آیکون‌های شبکه‌های اجتماعی */
+/* ========== استایل لینک‌های شبکه‌های اجتماعی ========== */
 .social-links {
     display: flex;
     justify-content: center;
@@ -724,39 +651,23 @@ nav ul li a.active {
 .social-links a {
     margin: 15px;
     color: #ffffff;
-    font-size: 2rem;  /* تنظیم اندازه آیکون */
-    transition: all 0.3s ease;  /* انیمیشن برای تغییرات */
+    font-size: 2rem;
+    transition: all 0.3s ease;
 }
 
-/* تغییرات رنگ و سایه هنگام هاور */
+/* افکت هاور برای شبکه‌های اجتماعی */
 .social-links a:hover {
-    color: #ff8c00;  /* تغییر رنگ به نارنجی */
-    transform: scale(1.3); /* کمی بزرگ‌تر شدن آیکون */
-    box-shadow: 0 0 20px rgba(255, 140, 0, 0.6); /* اضافه کردن سایه جذاب */
+    color: #ff8c00;
+    transform: scale(1.3);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.6);
 }
 
-/* استایل آیکون‌های شبکه‌های اجتماعی برای تمیزتر کردن نمایش */
-.social-links a i {
-    display: inline-block;
-    font-size: 2rem; /* اندازه آیکون‌ها */
-    text-align: center;
-    transition: color 0.3s ease-in-out;
-}
+/* تغییر رنگ آیکون‌های شبکه‌های اجتماعی */
+.social-links a i.fa-twitter { color: #1da1f2; }
+.social-links a i.fa-instagram { color: #e4405f; }
+.social-links a i.fa-telegram { color: #0088cc; }
 
-/* تنظیمات اضافی برای رنگ‌آمیزی بهتر */
-.social-links a i.fa-twitter {
-    color: #1da1f2;  /* رنگ آبی مخصوص توییتر */
-}
-
-.social-links a i.fa-instagram {
-    color: #e4405f;  /* رنگ صورتی مخصوص اینستاگرام */
-}
-
-.social-links a i.fa-telegram {
-    color: #0088cc;  /* رنگ آبی مخصوص تلگرام */
-}
-
-/* استایل فرم تماس */
+/* ========== استایل فرم تماس ========== */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -764,32 +675,34 @@ nav ul li a.active {
     margin-bottom: 30px;
 }
 
-/* ورودی‌های فرم */
-.contact-form input, .contact-form textarea {
+/* استایل ورودی‌ها و تکست‌اریا */
+.contact-form input, 
+.contact-form textarea {
     width: 80%;
     padding: 12px 20px;
     margin: 10px 0;
     border: none;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2); /* پس‌زمینه نیمه‌شفاف */
+    background-color: rgba(255, 255, 255, 0.2);
     color: #fff;
     font-size: 1rem;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* سایه برای ورودی‌ها */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-/* تغییر رنگ ورودی‌ها هنگام تمرکز */
-.contact-form input:focus, .contact-form textarea:focus {
-    background-color: rgba(255, 255, 255, 0.4); /* پس‌زمینه روشن‌تر هنگام تمرکز */
+/* تغییر رنگ ورودی‌ها هنگام فوکوس */
+.contact-form input:focus, 
+.contact-form textarea:focus {
+    background-color: rgba(255, 255, 255, 0.4);
     outline: none;
 }
 
-/* دکمه ارسال */
+/* استایل دکمه ارسال */
 .contact-form button {
     padding: 12px 25px;
     border: none;
     border-radius: 30px;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b); /* گرادیانت جذاب */
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
     color: white;
     font-weight: bold;
     font-size: 1rem;
@@ -798,29 +711,78 @@ nav ul li a.active {
     margin-top: 20px;
 }
 
-/* تغییرات در هاور دکمه */
+/* افکت هاور برای دکمه */
 .contact-form button:hover {
     background: linear-gradient(45deg, #ff4b2b, #ff416c);
-    transform: scale(1.1); /* بزرگ شدن دکمه */
-    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.6); /* سایه جذاب */
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(255, 65, 108, 0.6);
 }
 
-/* موبایل و تبلت */
+/* ========== تنظیمات ریسپانسیو برای Contact ========== */
 @media (max-width: 768px) {
     #contact h2 {
-        font-size: 2.4rem; /* تغییر اندازه فونت برای عنوان */
-        text-align: center; /* متن عنوان را در وسط قرار دهیم */
+        font-size: 2.4rem;
     }
-
-    .contact-form input, .contact-form textarea {
-        width: 80%; /* کاهش اندازه ورودی‌ها و تکست اریا برای صفحه‌های کوچک */
-        padding: 10px; /* اضافه کردن پدینگ برای ورودی‌ها */
-        font-size: 1rem; /* اندازه فونت ورودی‌ها */
+    .contact-form input, 
+    .contact-form textarea {
+        width: 90%;
+        padding: 10px;
+        font-size: 1rem;
     }
-
     .contact-form {
-        padding: 15px; /* بهبود فاصله داخلی فرم */
+        padding: 15px;
     }
+}
+
+/* ========== استایل هماهنگ شده برای همه بخش‌ها ========== */
+.info-section, #contact, #tokenomics {
+    animation: fadeInUp 1s ease-out;
+}
+
+/* ========== انیمیشن ورود زیبا برای بخش‌ها ========== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== تنظیمات تکمیلی برای رفع مشکلات مرورگرها ========== */
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* تنظیمات پیش‌فرض برای حذف مارجین و پدینگ اضافی */
+body, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== بهینه‌سازی اسکرول در صفحات لمسی ========== */
+html {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* ========== جلوگیری از اسکرول افقی ناخواسته ========== */
+body {
+    overflow-x: hidden;
+}
+
+/* ========== بهبود کلی نمایش متون در بخش‌های مختلف ========== */
+p {
+    word-break: break-word;
+    hyphens: auto;
+}
+
+/* ========== تنظیمات اضافی برای دکمه‌ها جهت کاهش تأخیر در لمس در موبایل ========== */
+button, a {
+    touch-action: manipulation;
 }
 
 /* ========== 4. دکمه‌ها ========== */
