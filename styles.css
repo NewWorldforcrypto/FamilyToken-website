@@ -532,11 +532,11 @@ nav ul li a.active {
     }
 
     .info-section h2 {
-        font-size: 3vw;  /* استفاده از واحد vw برای سایز پویا */
+        font-size: 7vw;  /* استفاده از واحد vw برای سایز پویا */
     }
 
     .info-section p {
-        font-size: 1.3rem;
+        font-size: 3rem;
     }
 }
 
