@@ -236,7 +236,7 @@ for (let i = 0; i < numParticles; i++) {
         radius: Math.random() * 3 + 1,
         speedX: (Math.random() - 0.5) * 1.2,
         speedY: (Math.random() - 0.5) * 1.2,
-        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        color: `hsl(${Math.random() * 60 + 270}, 100%, 70%)`,  // تغییر رنگ به طیف بنفش-صورتی
         glow: Math.random() > 0.6 ? true : false
     });
 }
@@ -245,11 +245,11 @@ for (let i = 0; i < numParticles; i++) {
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // گرادینت پس‌زمینه متحرک
+    // گرادینت پس‌زمینه جدید (بنفش و صورتی)
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    gradient.addColorStop(0, "#14142a");
-    gradient.addColorStop(0.5, "#0d284b");
-    gradient.addColorStop(1, "#081c33");
+    gradient.addColorStop(0, "#1e0f32");
+    gradient.addColorStop(0.5, "#500a3c");
+    gradient.addColorStop(1, "#80104b");
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -267,7 +267,7 @@ function animateParticles() {
         particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.5;
         particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.5;
 
-        // تغییر رنگ برای جذابیت بیشتر  
+        // تغییر رنگ به طیف بنفش-صورتی  
         particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 70%)`;
 
         // بازگرداندن ذرات در صورت خروج از صفحه  
