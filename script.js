@@ -213,7 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
     moveBackgrounds();
 });
 
-// تنظیمات اولیه
 const canvas = document.getElementById("minimalBackground");
 const ctx = canvas.getContext("2d");
 
@@ -226,20 +225,19 @@ window.addEventListener("resize", () => {
     canvas.height = window.innerHeight;
 });
 
-// ایجاد ذرات نوری با افکت‌های جذاب‌تر
+// ایجاد ذرات نوری نئونی  
 const particles = [];
-const numParticles = 120;
+const numParticles = 150;
 
 for (let i = 0; i < numParticles; i++) {
     particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        radius: Math.random() * 2.5 + 1,
-        speedX: (Math.random() - 0.5) * 0.7,
-        speedY: (Math.random() - 0.5) * 0.7,
-        opacity: Math.random() * 0.5 + 0.4,
-        color: `hsl(${Math.random() * 360}, 100%, 75%)`,
-        glow: Math.random() > 0.7 ? true : false
+        radius: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 1.2,
+        speedY: (Math.random() - 0.5) * 1.2,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        glow: Math.random() > 0.6 ? true : false
     });
 }
 
@@ -247,7 +245,7 @@ for (let i = 0; i < numParticles; i++) {
 function animateParticles() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // گرادینت متحرک پس‌زمینه
+    // گرادینت پس‌زمینه متحرک
     const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
     gradient.addColorStop(0, "#14142a");
     gradient.addColorStop(0.5, "#0d284b");
@@ -261,22 +259,18 @@ function animateParticles() {
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
-        ctx.shadowBlur = particle.glow ? 12 : 0;
+        ctx.shadowBlur = particle.glow ? 15 : 0;
         ctx.shadowColor = particle.glow ? particle.color : "transparent";
         ctx.fill();
 
-        // حرکت سینوسی نرم برای حس شناوری
-        particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.3;
-        particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.3;
+        // حرکت سینوسی نرم  
+        particle.x += particle.speedX + Math.sin(Date.now() / 10000) * 0.5;
+        particle.y += particle.speedY + Math.cos(Date.now() / 10000) * 0.5;
 
-        // تغییر رنگ برای زیبایی بیشتر
-        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 75%)`;
+        // تغییر رنگ برای جذابیت بیشتر  
+        particle.color = `hsl(${(parseInt(particle.color.match(/\d+/)[0]) + 1) % 360}, 100%, 70%)`;
 
-        // تنظیم شفافیت برای حس زنده‌تر
-        particle.opacity += (Math.random() - 0.5) * 0.015;
-        particle.opacity = Math.max(0.4, Math.min(0.9, particle.opacity));
-
-        // بازگرداندن ذرات در صورت خروج از صفحه
+        // بازگرداندن ذرات در صورت خروج از صفحه  
         if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
         if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
     });
@@ -286,32 +280,3 @@ function animateParticles() {
 
 // اجرای انیمیشن
 animateParticles();
-
-async function loadArticles() {
-    try {
-        const response = await fetch("articles.json");
-        const articles = await response.json();
-        const articlesList = document.getElementById("articlesList");
-
-        articles.forEach(article => {
-            const li = document.createElement("li");
-            li.innerHTML = `<a href="${article.link}" target="_blank"><strong>${article.title}</strong></a> - ${article.date}<br><small>${article.summary}</small>`;
-            articlesList.appendChild(li);
-        });
-    } catch (error) {
-        console.error("Error loading articles:", error);
-    }
-}
-
-function filterArticles() {
-    const query = document.getElementById("searchArticles").value.toLowerCase();
-    const articles = document.querySelectorAll("#articlesList li");
-
-    articles.forEach(article => {
-        if (article.innerText.toLowerCase().includes(query)) {
-            article.style.display = "block";
-        } else {
-            article.style.display = "none";
-        }
-    });
-}
