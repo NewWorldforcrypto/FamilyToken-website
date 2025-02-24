@@ -951,9 +951,9 @@ footer {
     transform: translateY(0);
 }
 
-/* پس‌زمینه گرادیان متحرک */
+/* پس‌زمینه ثابت */
 #minimalBackground {
-    position: fixed;
+    position: fixed; /* باعث می‌شود پس‌زمینه ثابت بماند */
     top: 0;
     left: 0;
     width: 100vw;
@@ -963,6 +963,7 @@ footer {
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     overflow: hidden;
+    pointer-events: none; /* از تأثیرگذاری روی سایر عناصر جلوگیری می‌کند */
 }
 
 @keyframes gradientAnimation {
