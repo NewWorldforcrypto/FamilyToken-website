@@ -93,7 +93,7 @@ nav ul {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
     opacity: 0;
     transform: translateX(100px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     pointer-events: none;
 }
 
@@ -107,14 +107,21 @@ nav ul.show {
 /* گزینه‌های منو به‌صورت پیش‌فرض مخفی هستند */
 nav ul li a {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: opacity 0.3s ease-out;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: #ffffff;
+    background: rgba(255, 140, 0, 0.8);
+    border-radius: 8px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    transition: 0.3s ease-in-out;
 }
 
-/* وقتی منو باز شود، گزینه‌ها یکی‌یکی ظاهر می‌شوند */
+/* وقتی منو باز شود، گزینه‌ها یکی‌یکی به آرامی ظاهر می‌شوند */
 nav ul.show li a {
     opacity: 1;
-    transform: translateY(0);
 }
 
 /* تاخیر برای نمایش گزینه‌های منو */
@@ -126,20 +133,6 @@ nav ul.show li:nth-child(5) a { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) a { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) a { transition-delay: 0.7s; }
 nav ul.show li:nth-child(8) a { transition-delay: 0.8s; }
-
-/* تنظیمات اولیه برای لینک‌های منو */
-nav ul li a {
-    color: #ffffff;
-    background: rgba(255, 140, 0, 0.8);
-    padding: 10px 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-    text-decoration: none;
-    display: block;
-    transition: 0.3s ease-in-out;
-    text-align: center;
-}
 
 /* تغییرات هنگام هاور */
 nav ul li a:hover {
@@ -187,7 +180,7 @@ nav ul li a.active {
         opacity: 0;
         transform: translateX(100px);
         pointer-events: none;
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     nav ul.show {
@@ -227,7 +220,7 @@ nav ul li a.active {
         opacity: 0;
         transform: translateX(100px);
         pointer-events: none;
-        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     nav ul.show {
