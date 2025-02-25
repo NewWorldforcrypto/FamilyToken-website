@@ -266,16 +266,19 @@ nav ul li a.active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: 100% auto; /* جلوگیری از کشیدگی تصاویر */
+    background-size: cover;
     background-position: center;
     position: relative;
     background-attachment: scroll; /* حرکت طبیعی در موبایل */
     animation: moveBackground 20s infinite linear;
+    will-change: background-position; /* بهینه‌سازی برای انیمیشن */
+    transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out; /* برای حرکت صاف */
 }
 
 /* انیمیشن حرکت پس‌زمینه */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
+    50% { background-position: 50% 0; }
     100% { background-position: 100% 0; }
 }
 
@@ -298,6 +301,7 @@ nav ul li a.active {
 /* انیمیشن ویژه برای صفحات بزرگتر */
 @keyframes moveBackgroundLarge {
     0% { background-position: 0 0; }
+    50% { background-position: 50% 0; }
     100% { background-position: 100% 0; }
 }
 
@@ -310,32 +314,33 @@ nav ul li a.active {
 
 @keyframes moveBackgroundSmall {
     0% { background-position: 0 0; }
-    100% { background-position: 50% 0; }
+    50% { background-position: 50% 0; }
+    100% { background-position: 100% 0; }
 }
 
-/* افزودن hover effect برای جذابیت بیشتر */
+/* افزودن hover effect با انیمیشن روان‌تر */
 #hero:hover, #hero2:hover, #hero3:hover, #hero4:hover, #hero5:hover, #hero6:hover, #hero7:hover {
-    filter: brightness(1.2); /* افزایش روشنایی پس‌زمینه در hover */
-    transform: scale(1.05); /* بزرگ‌تر شدن بخش hero */
-    transition: all 0.3s ease-in-out;
+    filter: brightness(1.2) saturate(1.2); /* اضافه کردن تغییر در اشباع رنگ */
+    transform: scale(1.05) rotate(1deg); /* حرکت نرم با چرخش جزئی */
 }
 
 /* استفاده از cubic-bezier برای انیمیشن روان‌تر */
 @keyframes moveBackgroundSmooth {
     0% { background-position: 0 0; }
+    50% { background-position: 50% 0; }
     100% { background-position: 100% 0; }
 }
 
 /* تغییرات سرعت انیمیشن در اندازه‌های مختلف صفحه */
 @media (min-width: 1200px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmooth 40s infinite linear;
+        animation: moveBackgroundSmooth 40s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 }
 
 @media (max-width: 600px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmooth 10s infinite linear;
+        animation: moveBackgroundSmooth 10s infinite cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 }
 
