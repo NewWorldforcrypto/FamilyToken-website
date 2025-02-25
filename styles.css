@@ -266,72 +266,53 @@ nav ul li a.active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: cover;
-    background-position: center;
+    background-size: auto; /* حفظ نسبت تصویر */
+    background-repeat: repeat-x; /* تکرار افقی بدون مرز */
+    background-position: 0 0;
     position: relative;
     background-attachment: scroll; /* حرکت طبیعی در موبایل */
-    animation: moveBackground 20s infinite linear; /* انیمیشن حرکت پس‌زمینه */
+    animation: moveBackground 20s linear infinite; /* انیمیشن حرکت */
 }
 
-/* انیمیشن حرکت پس‌زمینه */
+/* انیمیشن حرکت پس‌زمینه بدون پرش */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
-    50% { background-position: 50% 0; }
-    100% { background-position: 100% 0; }
+    100% { background-position: -100% 0; } /* حرکت بدون قطع شدن */
 }
 
-/* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
-#hero {
-    background: url('images/background7.webp') no-repeat center center/cover;
-}
+/* پس‌زمینه‌ها */
+#hero { background-image: url('images/background7.webp'); }
+#hero2 { background-image: url('images/background8.webp'); }
+#hero3 { background-image: url('images/background9.webp'); }
+#hero4 { background-image: url('images/background10.webp'); }
+#hero5 { background-image: url('images/background11.webp'); }
+#hero6 { background-image: url('images/background12.webp'); }
+#hero7 { background-image: url('images/background13.webp'); }
 
-#hero2 {
-    background: url('images/background8.webp') no-repeat center center/cover;
-}
-
-#hero3 {
-    background: url('images/background9.webp') no-repeat center center/cover;
-}
-
-#hero4 {
-    background: url('images/background10.webp') no-repeat center center/cover;
-}
-
-#hero5 {
-    background: url('images/background11.webp') no-repeat center center/cover;
-}
-
-#hero6 {
-    background: url('images/background12.webp') no-repeat center center/cover;
-}
-
-#hero7 {
-    background: url('images/background13.webp') no-repeat center center/cover;
-}
-
-/* به‌روز رسانی برای حالت‌های بزرگتر صفحه */
+/* حالت‌های صفحه بزرگتر */
 @media (min-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundLarge 30s infinite linear; /* تغییر انیمیشن برای صفحه‌های بزرگتر */
+        animation: moveBackgroundLarge 30s linear infinite;
     }
 }
 
 /* انیمیشن ویژه برای صفحات بزرگتر */
 @keyframes moveBackgroundLarge {
     0% { background-position: 0 0; }
-    100% { background-position: 100% 0; }
+    100% { background-position: -100% 0; } /* حرکت روان */
 }
 
-/* انیمیشن برای صفحه‌های کوچکتر */
+/* حالت‌های صفحه کوچک‌تر */
 @media (max-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmall 15s infinite linear; /* انیمیشن سریعتر برای صفحه‌های کوچکتر */
+        animation: moveBackgroundSmall 15s linear infinite;
     }
 }
 
+/* انیمیشن برای صفحه‌های کوچکتر */
 @keyframes moveBackgroundSmall {
     0% { background-position: 0 0; }
-    100% { background-position: 50% 0; }
+    100% { background-position: -100% 0; }
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
