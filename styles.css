@@ -58,8 +58,8 @@ header {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;  /* تنظیم فاصله از بالای صفحه */
-    right: 10px;  /* آیکون منو در سمت راست قرار می‌گیرد */
+    top: 10px;
+    right: 10px;
     width: 40px;
     height: 40px;
     background-color: #ff8c00;
@@ -80,29 +80,28 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    flex-direction: column; /* منو به صورت عمودی */
+    flex-direction: column;
     position: fixed;
-    top: 70px; /* فاصله منو از بالای صفحه */
-    right: 10px; /* منو در سمت راست قرار می‌گیرد */
+    top: 70px;
+    right: 10px;
     width: 90%;
     max-width: 250px;
-    background: rgba(0, 0, 0, 0.95); /* پس‌زمینه منو */
+    background: rgba(0, 0, 0, 0.95);
     border-radius: 10px;
     padding: 15px;
     z-index: 150;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
-    opacity: 0; /* منو مخفی است */
-    transform: translateX(100px); /* شروع از سمت راست */
+    opacity: 0;
+    transform: translateX(100px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    pointer-events: none; /* منو مخفی است */
+    pointer-events: none;
 }
 
 /* وقتی منو فعال می‌شود */
 nav ul.show {
     opacity: 1;
-    transform: translateX(0); /* منو به موقعیت خود منتقل می‌شود */
-    pointer-events: auto; /* منو قابل کلیک می‌شود */
-    animation: fadeIn 0.5s ease-out forwards;
+    transform: translateX(0);
+    pointer-events: auto;
 }
 
 /* گزینه‌های منو به‌صورت پیش‌فرض مخفی هستند */
@@ -181,10 +180,10 @@ nav ul li a.active {
         top: 70px;
         right: 0;
         width: 85%;
-        max-width: 220px; /* کمی کوچک‌تر از قبل */
+        max-width: 220px;
         background: rgba(0, 0, 0, 0.95);
         border-radius: 10px;
-        padding: 12px; /* کاهش فاصله داخلی */
+        padding: 12px;
         opacity: 0;
         transform: translateX(100px);
         pointer-events: none;
@@ -198,11 +197,11 @@ nav ul li a.active {
     }
 
     nav ul li {
-        margin: 10px 0; /* فاصله کمتر بین گزینه‌ها در موبایل */
+        margin: 10px 0;
     }
 
     nav ul li a {
-        font-size: 16px; /* کوچک‌تر شدن فونت در موبایل */
+        font-size: 16px;
         padding: 10px 12px;
         text-align: center;
     }
@@ -211,7 +210,7 @@ nav ul li a.active {
 /* تنظیمات برای دسکتاپ */
 @media (min-width: 1024px) {
     .menu-icon {
-        display: flex; /* نمایش آیکون منو در دسکتاپ */
+        display: flex;
     }
 
     nav ul {
@@ -220,10 +219,10 @@ nav ul li a.active {
         position: fixed;
         top: 70px;
         right: 15px;
-        width: 300px; /* افزایش اندازه منو */
+        width: 300px;
         background: rgba(0, 0, 0, 0.95);
-        border-radius: 12px; /* گرد شدن بیشتر */
-        padding: 20px; /* افزایش فاصله داخلی */
+        border-radius: 12px;
+        padding: 20px;
         box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
         opacity: 0;
         transform: translateX(100px);
@@ -238,19 +237,18 @@ nav ul li a.active {
     }
 
     nav ul li {
-        margin: 18px 0; /* افزایش فاصله بین گزینه‌ها */
+        margin: 18px 0;
     }
 
     nav ul li a {
-        font-size: 22px; /* افزایش اندازه فونت */
-        padding: 16px 22px; /* افزایش فضای گزینه‌ها */
+        font-size: 22px;
+        padding: 16px 22px;
         text-align: center;
         border-radius: 10px;
         background: rgba(255, 140, 0, 0.85);
         transition: all 0.3s ease;
     }
 
-    /* تغییرات هنگام هاور */
     nav ul li a:hover {
         background-color: rgba(255, 100, 0, 0.9);
         transform: scale(1.08);
