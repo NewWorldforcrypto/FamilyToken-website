@@ -270,16 +270,14 @@ nav ul li a.active {
     background-position: center;
     position: relative;
     background-attachment: scroll;
-    animation: moveBackground 30s infinite ease-in-out; /* حرکت با تغییرات عمودی */
-    transition: transform 0.4s ease, filter 0.4s ease; /* حرکت روان‌تر در hover */
-    will-change: transform, filter, background-position;
+    animation: moveBackground 30s linear infinite; /* انیمیشن روان و بی‌وقفه */
+    will-change: background-position; /* بهینه‌سازی انیمیشن */
 }
 
-/* انیمیشن حرکت پس‌زمینه */
+/* انیمیشن حرکت پس‌زمینه به صورت افقی */
 @keyframes moveBackground {
-    0% { background-position: 0 0; transform: scale(1); }
-    50% { background-position: 0 20%; transform: scale(1.05); }
-    100% { background-position: 0 0; transform: scale(1); }
+    0% { background-position: 0 0; }
+    100% { background-position: -100% 0; } /* حرکت به صورت کامل از راست به چپ */
 }
 
 /* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
@@ -291,56 +289,17 @@ nav ul li a.active {
 #hero6 { background: url('images/background12.webp') no-repeat center center/cover; }
 #hero7 { background: url('images/background13.webp') no-repeat center center/cover; }
 
-/* تغییر انیمیشن برای صفحات بزرگتر */
+/* انیمیشن برای صفحات بزرگتر */
 @media (min-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundLarge 35s infinite ease-in-out; /* انیمیشن طولانی‌تر */
+        animation: moveBackground 35s linear infinite; /* زمان انیمیشن بیشتر برای صفحه‌های بزرگتر */
     }
 }
 
-/* انیمیشن برای صفحات بزرگتر */
-@keyframes moveBackgroundLarge {
-    0% { background-position: 0 0; transform: scale(1); }
-    50% { background-position: 0 30%; transform: scale(1.1); }
-    100% { background-position: 0 0; transform: scale(1); }
-}
-
-/* انیمیشن برای صفحه‌های کوچکتر */
+/* انیمیشن برای صفحات کوچکتر */
 @media (max-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmall 25s infinite ease-in-out;
-    }
-}
-
-@keyframes moveBackgroundSmall {
-    0% { background-position: 0 0; transform: scale(1); }
-    50% { background-position: 0 10%; transform: scale(1.03); }
-    100% { background-position: 0 0; transform: scale(1); }
-}
-
-/* افزودن hover effect با حرکت نرم‌تر */
-#hero:hover, #hero2:hover, #hero3:hover, #hero4:hover, #hero5:hover, #hero6:hover, #hero7:hover {
-    filter: brightness(1.2) saturate(1.2); /* تنظیم روشنایی و اشباع */
-    transform: scale(1.05) translateY(-5px); /* حرکت به سمت بالا و بزرگ شدن */
-}
-
-/* بهبود انیمیشن‌ها برای صفحه‌های بزرگ */
-@media (min-width: 1200px) {
-    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmooth 45s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-}
-
-/* انیمیشن سینوسی جدید برای حرکت پس‌زمینه */
-@keyframes moveBackgroundSmooth {
-    0% { background-position: 0 0; transform: scale(1); }
-    50% { background-position: 0 50%; transform: scale(1.05); }
-    100% { background-position: 0 100%; transform: scale(1); }
-}
-
-@media (max-width: 600px) {
-    #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
-        animation: moveBackgroundSmooth 20s infinite cubic-bezier(0.25, 0.1, 0.25, 1);
+        animation: moveBackground 25s linear infinite; /* زمان انیمیشن سریع‌تر برای صفحه‌های کوچکتر */
     }
 }
 
