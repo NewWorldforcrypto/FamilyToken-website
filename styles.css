@@ -266,21 +266,21 @@ nav ul li a.active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: auto; /* حفظ نسبت تصویر */
-    background-repeat: repeat-x; /* تکرار افقی بدون مرز */
+    background-size: auto 100%; /* حفظ نسبت تصویر و جلوگیری از بریدگی */
+    background-repeat: repeat-x; /* تکرار افقی برای جلوگیری از پرش */
     background-position: 0 0;
     position: relative;
     background-attachment: scroll; /* حرکت طبیعی در موبایل */
-    animation: moveBackground 20s linear infinite; /* انیمیشن حرکت */
+    animation: moveBackground 20s linear infinite; /* انیمیشن حرکت پس‌زمینه */
 }
 
 /* انیمیشن حرکت پس‌زمینه بدون پرش */
 @keyframes moveBackground {
     0% { background-position: 0 0; }
-    100% { background-position: -100% 0; } /* حرکت بدون قطع شدن */
+    100% { background-position: -100% 0; } /* حرکت روان و بی‌نهایت */
 }
 
-/* پس‌زمینه‌ها */
+/* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
 #hero { background-image: url('images/background7.webp'); }
 #hero2 { background-image: url('images/background8.webp'); }
 #hero3 { background-image: url('images/background9.webp'); }
@@ -289,7 +289,7 @@ nav ul li a.active {
 #hero6 { background-image: url('images/background12.webp'); }
 #hero7 { background-image: url('images/background13.webp'); }
 
-/* حالت‌های صفحه بزرگتر */
+/* به‌روز رسانی برای حالت‌های بزرگتر صفحه */
 @media (min-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
         animation: moveBackgroundLarge 30s linear infinite;
@@ -299,17 +299,16 @@ nav ul li a.active {
 /* انیمیشن ویژه برای صفحات بزرگتر */
 @keyframes moveBackgroundLarge {
     0% { background-position: 0 0; }
-    100% { background-position: -100% 0; } /* حرکت روان */
+    100% { background-position: -100% 0; } /* حرکت بدون پرش */
 }
 
-/* حالت‌های صفحه کوچک‌تر */
+/* انیمیشن برای صفحه‌های کوچکتر */
 @media (max-width: 1024px) {
     #hero, #hero2, #hero3, #hero4, #hero5, #hero6, #hero7 {
         animation: moveBackgroundSmall 15s linear infinite;
     }
 }
 
-/* انیمیشن برای صفحه‌های کوچکتر */
 @keyframes moveBackgroundSmall {
     0% { background-position: 0 0; }
     100% { background-position: -100% 0; }
