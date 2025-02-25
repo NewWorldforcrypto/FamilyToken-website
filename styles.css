@@ -331,7 +331,7 @@ nav ul li a.active {
 
 @keyframes moveBackgroundSmall {
     0% { background-position: 0 0; }
-    100% { background-position: 50% 0; }
+    100% { background-position: 100% 0; }
 }
 
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
