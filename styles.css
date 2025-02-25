@@ -58,11 +58,11 @@ header {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 20px;  /* تنظیم فاصله از بالا */
-    right: 20px;  /* آیکون منو در سمت راست قرار می‌گیرد */
+    top: 20px;
+    right: 20px;
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #ff7f50, #ff6347); /* رنگ گرادیان زیبا */
+    background-color: #ff8c00; /* رنگ قبلی */
     color: white;
     font-size: 28px;
     font-weight: bold;
@@ -91,21 +91,21 @@ nav ul {
     right: 20px;
     width: 80%;
     max-width: 300px;
-    background: rgba(0, 0, 0, 0.85); /* پس‌زمینه تیره */
+    background: rgba(0, 0, 0, 0.95); /* پس‌زمینه تیره */
     border-radius: 12px;
     padding: 20px;
     z-index: 150;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transform: translateX(100px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
 }
 
 /* وقتی منو فعال می‌شود */
 nav ul.show {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0); /* منو از سمت راست وارد می‌شود */
     pointer-events: auto;
 }
 
@@ -117,7 +117,7 @@ nav ul li a {
     font-size: 18px;
     padding: 12px 20px;
     color: #ffffff;
-    background: linear-gradient(135deg, #ff6347, #ff7f50); /* رنگ گرادیان برای گزینه‌ها */
+    background: rgba(255, 140, 0, 0.8); /* رنگ نارنجی قبلی */
     border-radius: 10px;
     text-decoration: none;
     display: block;
@@ -143,16 +143,16 @@ nav ul.show li:nth-child(8) a { transition-delay: 0.8s; }
 
 /* تغییرات هنگام هاور */
 nav ul li a:hover {
-    background-color: #ff4500; /* رنگ روشن‌تر هنگام هاور */
-    transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(255, 69, 0, 0.5);
+    background-color: rgba(255, 100, 0, 0.9); /* رنگ روشن‌تر هنگام هاور */
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 100, 0, 0.5);
 }
 
 /* حالت فعال لینک */
 nav ul li a.active {
-    background-color: #ff4500;
-    transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(255, 69, 0, 0.5);
+    background-color: rgba(255, 100, 0, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 100, 0, 0.5);
 }
 
 /* انیمیشن ظاهر شدن تدریجی منو */
@@ -247,14 +247,14 @@ nav ul li a.active {
         padding: 16px 22px;
         text-align: center;
         border-radius: 12px;
-        background: linear-gradient(135deg, #ff6347, #ff7f50);
+        background: rgba(255, 140, 0, 0.85);
         transition: all 0.3s ease;
     }
 
     nav ul li a:hover {
-        background-color: #ff4500;
-        transform: scale(1.1);
-        box-shadow: 0 8px 20px rgba(255, 69, 0, 0.5);
+        background-color: rgba(255, 100, 0, 0.9);
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(255, 100, 0, 0.5);
     }
 }
 
