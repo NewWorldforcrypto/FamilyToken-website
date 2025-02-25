@@ -266,8 +266,7 @@ nav ul li a.active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-size: auto 100%; /* حفظ نسبت تصویر و جلوگیری از بریدگی */
-    background-repeat: repeat-x; /* تکرار افقی برای جلوگیری از پرش */
+    background-size: 200% 100%; /* اندازه پس‌زمینه دو برابر برای حرکت روان */
     background-position: 0 0;
     position: relative;
     background-attachment: scroll; /* حرکت طبیعی در موبایل */
@@ -276,18 +275,18 @@ nav ul li a.active {
 
 /* انیمیشن حرکت پس‌زمینه بدون پرش */
 @keyframes moveBackground {
-    0% { background-position: 0 0; }
-    100% { background-position: -100% 0; } /* حرکت روان و بی‌نهایت */
+    0% { background-position: 0 0; } /* شروع از ابتدا */
+    100% { background-position: -100% 0; } /* حرکت به سمت چپ به اندازه نصف عرض */
 }
 
 /* پس‌زمینه‌ها با انیمیشن برای تمامی اندازه‌ها */
-#hero { background-image: url('images/background7.webp'); }
-#hero2 { background-image: url('images/background8.webp'); }
-#hero3 { background-image: url('images/background9.webp'); }
-#hero4 { background-image: url('images/background10.webp'); }
-#hero5 { background-image: url('images/background11.webp'); }
-#hero6 { background-image: url('images/background12.webp'); }
-#hero7 { background-image: url('images/background13.webp'); }
+#hero { background: url('images/background7.webp') no-repeat center center/cover; }
+#hero2 { background: url('images/background8.webp') no-repeat center center/cover; }
+#hero3 { background: url('images/background9.webp') no-repeat center center/cover; }
+#hero4 { background: url('images/background10.webp') no-repeat center center/cover; }
+#hero5 { background: url('images/background11.webp') no-repeat center center/cover; }
+#hero6 { background: url('images/background12.webp') no-repeat center center/cover; }
+#hero7 { background: url('images/background13.webp') no-repeat center center/cover; }
 
 /* به‌روز رسانی برای حالت‌های بزرگتر صفحه */
 @media (min-width: 1024px) {
@@ -299,7 +298,7 @@ nav ul li a.active {
 /* انیمیشن ویژه برای صفحات بزرگتر */
 @keyframes moveBackgroundLarge {
     0% { background-position: 0 0; }
-    100% { background-position: -100% 0; } /* حرکت بدون پرش */
+    100% { background-position: -100% 0; } /* حرکت روان و چسبیده */
 }
 
 /* انیمیشن برای صفحه‌های کوچکتر */
