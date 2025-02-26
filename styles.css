@@ -326,11 +326,12 @@ nav ul li a.active {
 
 /* ==== فوتر همیشه در انتهای صفحه بماند ==== */
 footer {
-    position: relative;
-    bottom: 0;
     width: 100%;
-    margin-top: 50px; /* جلوگیری از ورود به محتوای صفحه */
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
     text-align: center;
+    position: relative;
 }
 
 /* ==== واکنش‌گرایی برای دستگاه‌های مختلف ==== */
