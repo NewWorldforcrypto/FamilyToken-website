@@ -327,13 +327,13 @@ main {
 .news-item a {
     display: inline-block;
     margin-top: 15px;
-    color: #007bff;  /* رنگ آبی ثابت */
+    color: #007bff !important;  /* رنگ آبی ثابت با اولویت */
     text-decoration: none;
     font-weight: bold;
 }
 
 .news-item a:hover {
-    color: #007bff;  /* رنگ آبی برای حالت هاور */
+    color: #007bff !important;  /* رنگ آبی برای حالت هاور */
     text-decoration: underline;
 }
 
