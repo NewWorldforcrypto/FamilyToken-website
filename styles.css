@@ -280,6 +280,19 @@ nav ul li a.active {
     100% { background-position: 0% 50%; }
 }
 
+/* اطمینان از اینکه محتوا تمام صفحه را بگیرد و فوتر پایین بماند */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* پوشش کل صفحه */
+    margin: 0;
+}
+
+/* محتوای اصلی، فضای خالی را پر کند */
+main {
+    flex: 1;
+}
+
 /* لیست اخبار */
 .news-list {
     display: flex;
@@ -331,7 +344,7 @@ footer {
     background: rgba(0, 0, 0, 0.9);
     color: white;
     text-align: center;
-    position: relative;
+    margin-top: auto; /* فوتر را به پایین صفحه می‌فرستد */
 }
 
 /* ==== واکنش‌گرایی برای دستگاه‌های مختلف ==== */
