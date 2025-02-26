@@ -85,6 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+
+    // ================== اضافه کردن کد برای هدایت به صفحه news.html ==================
+    document.querySelector("a[href='news.html']").addEventListener("click", function(event) {
+        event.preventDefault();
+        window.location.href = "news.html"; // مستقیم به صفحه news.html هدایت کن
+    });
 });
 
 // 🚀 تابع پیشرفته برای اسکرول نرم
