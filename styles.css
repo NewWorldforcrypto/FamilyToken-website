@@ -327,14 +327,14 @@ main {
 .news-item a {
     display: inline-block;
     margin-top: 15px;
-    color: #007bff;  /* تغییر رنگ به آبی */
+    color: #007bff;  /* رنگ آبی ثابت */
     text-decoration: none;
     font-weight: bold;
 }
 
 .news-item a:hover {
+    color: #007bff;  /* رنگ آبی برای حالت هاور */
     text-decoration: underline;
-    color: #ff8c00;
 }
 
 /* ==== فوتر همیشه در انتهای صفحه بماند ==== */
