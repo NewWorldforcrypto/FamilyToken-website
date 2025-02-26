@@ -261,12 +261,14 @@ nav ul li a.active {
 
 /* News section styling */
 .news-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 50px auto;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background: inherit;  /* استفاده از پس‌زمینه مشابه سایر بخش‌ها */
+    color: inherit;  /* رنگ متن مشابه سایر بخش‌ها */
+    font-family: 'Trade Winds', cursive;  /* استفاده از فونت اصلی سایت */
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .news-list {
