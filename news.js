@@ -17,6 +17,18 @@ fetch('news.json')
     })
     .catch(error => console.error('Error loading news:', error));
 
+const canvas = document.getElementById("minimalBackground");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// تغییر اندازه‌ی خودکار
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
 // ایجاد ذرات نوری نئونی
 const particles = [];
 const numParticles = 150;
