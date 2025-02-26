@@ -259,53 +259,100 @@ nav ul li a.active {
     }
 }
 
-/* News section styling */
+/* ==== تنظیمات اصلی بخش News ==== */
 .news-container {
     max-width: 1200px;
     margin: 50px auto;
     padding: 30px;
-    background: inherit;  /* استفاده از پس‌زمینه مشابه سایر بخش‌ها */
-    color: inherit;  /* رنگ متن مشابه سایر بخش‌ها */
-    font-family: 'Trade Winds', cursive;  /* استفاده از فونت اصلی سایت */
+    background: linear-gradient(-45deg, #ff0099, #493240, #1e0f32, #500a3c); /* پس‌زمینه مشابه سایت */
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    color: white;
+    font-family: 'Trade Winds', cursive;
     border-radius: 12px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* انیمیشن گرادینت برای پس‌زمینه */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* لیست اخبار */
 .news-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
+/* هر خبر */
 .news-item {
-    background: #fff;  /* پس‌زمینه سفید برای هماهنگی */
-    padding: 20px;  /* کمی فضای بیشتر */
-    border-left: 5px solid #ff8c00;  /* رنگ مشابه منو */
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);  /* سایه‌ای مشابه سایر بخش‌ها */
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-left: 5px solid #ff8c00; /* رنگ مشابه سایت */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    backdrop-filter: blur(10px); /* افکت محو برای زیبایی بیشتر */
 }
 
+/* تیتر اخبار */
 .news-item h2 {
-    font-size: 1.5em;  /* افزایش اندازه فونت */
+    font-size: 1.5em;
     margin-bottom: 15px;
-    color: #333;  /* رنگ مشابه سایر بخش‌ها */
+    color: #fff;
 }
 
+/* متن خبر */
 .news-item p {
-    color: #666;  /* رنگ متن مشابه سایر بخش‌ها */
+    color: #ddd;
+    font-size: 1.1em;
 }
 
+/* لینک خبر */
 .news-item a {
     display: inline-block;
     margin-top: 15px;
-    color: #007bff;
+    color: #ffcc00;
     text-decoration: none;
     font-weight: bold;
 }
 
 .news-item a:hover {
     text-decoration: underline;
-    color: #ff8c00;  /* رنگ مشابه منو هنگام هاور */
+    color: #ff8c00;
+}
+
+/* ==== واکنش‌گرایی برای دستگاه‌های مختلف ==== */
+
+/* تنظیمات برای تبلت */
+@media (max-width: 1024px) {
+    .news-container {
+        max-width: 90%;
+        padding: 25px;
+    }
+    .news-item h2 {
+        font-size: 1.4em;
+    }
+}
+
+/* تنظیمات برای موبایل */
+@media (max-width: 768px) {
+    .news-container {
+        max-width: 95%;
+        padding: 20px;
+    }
+    .news-item {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    .news-item h2 {
+        font-size: 1.2em;
+    }
+    .news-item p {
+        font-size: 1em;
+    }
 }
 
 
