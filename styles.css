@@ -319,7 +319,7 @@ main {
 
 /* متن خبر */
 .news-item p {
-    color: #ddd;
+    color: #e0e0e0;
     font-size: 1.1em;
 }
 
@@ -327,7 +327,7 @@ main {
 .news-item a {
     display: inline-block;
     margin-top: 15px;
-    color: #ffcc00;
+    color: #007bff;  /* تغییر رنگ به آبی */
     text-decoration: none;
     font-weight: bold;
 }
