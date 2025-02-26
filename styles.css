@@ -127,6 +127,7 @@ nav ul.show li:nth-child(5) a { transition-delay: 0.5s; }
 nav ul.show li:nth-child(6) a { transition-delay: 0.6s; }
 nav ul.show li:nth-child(7) a { transition-delay: 0.7s; }
 nav ul.show li:nth-child(8) a { transition-delay: 0.8s; }
+nav ul.show li:nth-child(9) a { transition-delay: 0.9s; }
 
 /* تنظیمات اولیه برای لینک‌های منو */
 nav ul li a {
@@ -256,6 +257,51 @@ nav ul li a.active {
         transform: scale(1.08);
         box-shadow: 0px 5px 15px rgba(255, 100, 0, 0.5);
     }
+}
+
+/* News section styling */
+.news-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.news-item {
+    background: white;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.news-item h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.news-item p {
+    color: #666;
+}
+
+.news-item a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.news-item a:hover {
+    text-decoration: underline;
 }
 
 
