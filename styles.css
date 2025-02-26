@@ -262,9 +262,9 @@ nav ul li a.active {
 /* ==== تنظیمات اصلی بخش News ==== */
 .news-container {
     max-width: 1200px;
-    margin: 50px auto;
+    margin: 100px auto 50px auto; /* فاصله از هدر برای جلوگیری از تداخل */
     padding: 30px;
-    background: linear-gradient(-45deg, #ff0099, #493240, #1e0f32, #500a3c); /* پس‌زمینه مشابه سایت */
+    background: linear-gradient(-45deg, #ff0099, #493240, #1e0f32, #500a3c);
     background-size: 400% 400%;
     animation: gradientAnimation 15s ease infinite;
     color: white;
@@ -291,10 +291,10 @@ nav ul li a.active {
 .news-item {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    border-left: 5px solid #ff8c00; /* رنگ مشابه سایت */
+    border-left: 5px solid #ff8c00;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    backdrop-filter: blur(10px); /* افکت محو برای زیبایی بیشتر */
+    backdrop-filter: blur(10px);
 }
 
 /* تیتر اخبار */
@@ -322,6 +322,15 @@ nav ul li a.active {
 .news-item a:hover {
     text-decoration: underline;
     color: #ff8c00;
+}
+
+/* ==== فوتر همیشه در انتهای صفحه بماند ==== */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px; /* جلوگیری از ورود به محتوای صفحه */
+    text-align: center;
 }
 
 /* ==== واکنش‌گرایی برای دستگاه‌های مختلف ==== */
