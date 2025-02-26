@@ -2,7 +2,7 @@ fetch('news.json')
     .then(response => response.json())
     .then(data => {
         const newsContainer = document.querySelector('.news-list');
-        newsContainer.innerHTML = '';
+        newsContainer.innerHTML = ''; // Clear any existing news
 
         data.forEach(news => {
             const newsItem = document.createElement('article');
