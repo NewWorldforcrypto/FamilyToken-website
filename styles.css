@@ -60,11 +60,11 @@ header {
     position: fixed;
     top: 15px;  /* کمی پایین‌تر */
     right: 15px; /* تنظیم دقیق موقعیت */
-    width: 50px; /* افزایش اندازه */
-    height: 50px; /* افزایش اندازه */
+    width: 45px; /* افزایش اندازه */
+    height: 45px; /* افزایش اندازه */
     background-color: #ff8c00;
     color: white;
-    font-size: 28px; /* بزرگ‌تر کردن آیکون */
+    font-size: 25px; /* بزرگ‌تر کردن آیکون */
     font-weight: bold;
     text-align: center;
     border-radius: 8px;
