@@ -82,7 +82,7 @@ nav ul {
     display: flex;
     flex-direction: column; /* منو به صورت عمودی */
     position: fixed;
-    top: 85px; /* فاصله منو از بالای صفحه */
+    top: 100px; /* فاصله منو از بالای صفحه */
     right: 10px; /* منو در سمت راست قرار می‌گیرد */
     width: 90%;
     max-width: 250px;
