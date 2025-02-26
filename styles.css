@@ -58,13 +58,13 @@ header {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 10px;  /* تنظیم فاصله از بالای صفحه */
-    right: 10px;  /* آیکون منو در سمت راست قرار می‌گیرد */
-    width: 40px;
-    height: 40px;
+    top: 20px;  /* کمی پایین‌تر */
+    right: 15px; /* تنظیم دقیق موقعیت */
+    width: 50px; /* افزایش اندازه */
+    height: 50px; /* افزایش اندازه */
     background-color: #ff8c00;
     color: white;
-    font-size: 24px;
+    font-size: 28px; /* بزرگ‌تر کردن آیکون */
     font-weight: bold;
     text-align: center;
     border-radius: 8px;
