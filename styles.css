@@ -456,17 +456,15 @@ footer {
 /* استایل بهبود یافته برای نوشته‌های روی تصاویر */
 .hero-text {
     font-family: 'Trade Winds', cursive;
-    font-size: 3rem;
+    font-size: 8rem;  /* اندازه پیش‌فرض برای دسکتاپ */
     font-weight: bold;
-    color: #FF1493; /* صورتی پررنگ و روشن */
+    color: #FF1493;
     display: inline-block;
     transition: all 0.4s ease-in-out;
     animation: neonGlow 2s infinite alternate;
-
-    /* انیمیشن ظاهر شدن */
     opacity: 0;
     animation: fadeInText 1.5s ease-out forwards;
-    animation-delay: 0.5s; /* نیم‌ثانیه تأخیر برای جلوه بهتر */
+    animation-delay: 0.5s;
 }
 
 /* انیمیشن متن برای ظاهر شدن */
@@ -481,24 +479,31 @@ footer {
     }
 }
 
-/* افکت نوری متحرک (هاله ندارد) */
+/* افکت نوری متحرک */
 @keyframes neonGlow {
     0% {
-        text-shadow: none; /* هیچ سایه‌ای نداشته باشد */
+        text-shadow: none;
     }
     100% {
-        text-shadow: none; /* هیچ سایه‌ای نداشته باشد */
+        text-shadow: none;
     }
 }
 
 /* تنظیم اندازه فونت در دسکتاپ */
 @media (min-width: 1024px) {
     .hero-text {
-        font-size: 8rem; /* بزرگ‌تر برای نمایش بهتر در صفحه‌های بزرگ */
+        font-size: 8rem; /* اندازه بزرگ‌تر برای دسکتاپ */
     }
 }
 
-/* تنظیم اندازه در نمایشگرهای کوچک‌تر */
+/* تنظیم اندازه در تبلت */
+@media (max-width: 1024px) {
+    .hero-text {
+        font-size: 5rem; /* مناسب برای تبلت */
+    }
+}
+
+/* تنظیم اندازه در موبایل */
 @media (max-width: 768px) {
     .hero-text {
         font-size: 4rem;
@@ -507,7 +512,7 @@ footer {
 
 @media (max-width: 480px) {
     .hero-text {
-        font-size: 2rem;
+        font-size: 3rem; /* کوچک‌تر برای موبایل */
     }
 }
 
