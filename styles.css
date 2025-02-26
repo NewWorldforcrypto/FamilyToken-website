@@ -58,7 +58,7 @@ header {
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 20px;  /* کمی پایین‌تر */
+    top: 35px;  /* کمی پایین‌تر */
     right: 15px; /* تنظیم دقیق موقعیت */
     width: 50px; /* افزایش اندازه */
     height: 50px; /* افزایش اندازه */
