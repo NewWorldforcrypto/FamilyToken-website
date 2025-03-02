@@ -565,11 +565,25 @@ footer {
     background: transparent;
     position: relative;
     overflow: visible;
-    transition: transform 0.4s ease;
+    transition: transform 0.4s ease, opacity 1s ease-in-out;
     font-family: 'Trade Winds', cursive;
-    touch-action: auto; /* حل مشکل لمس در موبایل */
-    -webkit-overflow-scrolling: touch; /* برای iOS */
+    touch-action: auto;
+    -webkit-overflow-scrolling: touch;
+    opacity: 0; /* برای fade-in */
 }
+
+/* ========== انیمیشن Fade In ========== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-visible {
+    opacity: 1 !important;
+    transform: translateY(0);
+}
+
 .info-section:hover, #contact:hover, #tokenomics:hover {
     transform: scale(1.05);
 }
@@ -593,61 +607,32 @@ footer {
     max-width: 85%;
     margin: 25px auto;
     font-family: 'Trade Winds', cursive;
-    text-align: justify;
+    text-align: start;
+    hyphens: auto;
 }
 
-/* ========== افکت نمایش تدریجی ========== */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-}
-.fade-in.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ========== تنظیمات ریسپانسیو برای Info Sections ========== */
+/* ========== تنظیمات ریسپانسیو برای موبایل ========== */
 @media (max-width: 768px) {
     .info-section, #contact, #tokenomics {
-        padding: 50px 25px;
-        max-width: 95%;
-        border-radius: 15px;
+        max-width: 90vw;
+        padding: 30px 20px;
     }
-    .info-section h2, #contact h2, #tokenomics h2 {
-        font-size: 2.4rem;
-    }
+
     .info-section p, #contact p, #tokenomics p {
         font-size: 1.2rem;
-        line-height: 1.7;
+        line-height: 1.6;
     }
 }
 
-/* برای تبلت */
-@media (max-width: 1024px) {
+/* ========== تنظیمات برای دسکتاپ ========== */
+@media (min-width: 1024px) {
     .info-section, #contact, #tokenomics {
-        padding: 30px 20px;
-        max-width: 90%;
+        max-width: 1200px;
+        padding: 60px 50px;
     }
-    .info-section h2, #contact h2, #tokenomics h2 {
-        font-size: 2.4rem;
-    }
-    .info-section p, #contact p, #tokenomics p {
-        font-size: 1.1rem;
-    }
-}
 
-/* برای دسکتاپ */
-@media (min-width: 1025px) {
-    .info-section, #contact, #tokenomics {
-        padding: 50px 20px;
-        max-width: 1400px;
-    }
-    .info-section h2, #contact h2, #tokenomics h2 {
-        font-size: 3.5rem;
-    }
     .info-section p, #contact p, #tokenomics p {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         line-height: 2;
     }
 }
