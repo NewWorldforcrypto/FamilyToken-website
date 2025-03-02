@@ -603,12 +603,13 @@ footer {
 .info-section p, #contact p, #tokenomics p {
     font-size: clamp(1.2rem, 2vw, 1.4rem);
     color: #e0e0e0;
-    line-height: 1.8;
+    line-height: 1.8em; /* تنظیم یکنواخت ارتفاع خط */
     max-width: 85%;
     margin: 25px auto;
     font-family: 'Trade Winds', cursive;
-    text-align: start;
-    hyphens: auto;
+    text-align: justify;
+    text-justify: inter-word; /* بهبود چینش متن در برخی مرورگرها */
+    word-spacing: normal; /* حفظ فاصله مناسب بین کلمات */
 }
 
 /* ========== تنظیمات ریسپانسیو برای موبایل ========== */
